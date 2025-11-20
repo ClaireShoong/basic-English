@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>고등학교 영어 문법 종합 연습기 FINAL (Complete)</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1000px; margin: 20px auto; line-height: 1.6; padding: 0 20px; color: #333; }
+    h1, h2, h3 { margin: 0.5rem 0; }
+    
+    /* 버튼 디자인 */
+    .topic-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .topic-buttons button {
+      padding: 10px 15px; cursor: pointer; border: 1px solid #ccc; background-color: #f8f9fa; border-radius: 6px;
+      font-size: 0.95rem; transition: all 0.2s;
+    }
+    .topic-buttons button:hover { background-color: #e2e6ea; border-color: #adb5bd; }
+    .topic-buttons button.active { background-color: #007bff; color: white; border-color: #0056b3; }
+
+    /* 섹션 박스 디자인 */
+    .topic-section {
+      display: none; border: 1px solid #e0e0e0; padding: 20px; border-radius: 10px;
+      background: #ffffff; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    /* 테이블 디자인 */
+    table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+    th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; }
+    th { background: #e9ecef; }
+
+    /* 노트 영역 디자인 */
+    .note-area { margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+    .note-display { background-color: #fff3cd; padding: 10px; border-radius: 5px; border: 1px solid #ffeeba; margin-top: 10px; display: none; white-space: pre-wrap; }
+    textarea { width: 100%; height: 80px; padding: 10px; border-radius: 5px; border: 1px solid #ced4da; margin-top: 10px; box-sizing: border-box; font-family: inherit; }
+    
+    .small-note { font-size: 0.95rem; color: #555; margin-bottom: 10px; display: block; }
+
+    /* 퀴즈 박스 디자인 */
+    .quiz-box {
+      border: 1px solid #ced4da; padding: 20px; border-radius: 10px;
+      background: #fdfdfd; margin-top: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .options { margin-top: 15px; }
+    .options button { 
+      margin: 5px 5px 0 0; padding: 10px 20px; cursor: pointer; background: #fff; 
+      border: 2px solid #e9ecef; border-radius: 6px; font-size: 1rem; transition: all 0.2s;
+    }
+    .options button:hover { background: #f1f3f5; border-color: #adb5bd; }
+    .options button:disabled { cursor: default; opacity: 0.7; }
+    
+    .result { margin-top: 15px; font-weight: bold; font-size: 1.1rem; }
+    .control-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+    .control-btn:hover { background-color: #218838; }
+    .reset-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1rem; margin-left: 10px; }
+    .reset-btn:hover { background-color: #c82333; }
+  </style>
+</head>
+<body>
+
+<h1>고등학교 영어 문법 종합 연습기</h1>
+<p class="small-note">상단 버튼을 눌러 문법 설명을 확인하고 나만의 노트를 추가하세요. 아래에서 퀴즈를 풀 수 있습니다.</p>
+
+<h2>① 문법 요약 (Grammar Summary) & 나만의 노트</h2>
+
+<div class="topic-buttons">
+  <button onclick="showTopic('verbs')">불규칙 동사 <span id="count-verbs"></span></button>
+  <button onclick="showTopic('presentPerfect')">현재완료 <span id="count-presentPerfect"></span></button>
+  <button onclick="showTopic('modal')">조동사 <span id="count-modal"></span></button>
+  <button onclick="showTopic('relative')">관계대명사 <span id="count-relative"></span></button>
+  <button onclick="showTopic('relativeAdverb')">관계부사 <span id="count-relativeAdverb"></span></button>
+  <button onclick="showTopic('comparison')">비교급/최상급 <span id="count-comparison"></span></button>
+  <button onclick="showTopic('preposition')">전치사 <span id="count-preposition"></span></button>
+  <button onclick="showTopic('conjunction')">접속사 <span id="count-conjunction"></span></button>
+  <button onclick="showTopic('conditionalPresent')">가정법 현재 <span id="count-conditionalPresent"></span></button>
+  <button onclick="showTopic('conditionalPast')">가정법 과거 <span id="count-conditionalPast"></span></button>
+  <button onclick="showTopic('conditionalPastPerfect')">가정법 과거완료 <span id="count-conditionalPastPerfect"></span></button>
+  <button onclick="showTopic('passive')">수동태 <span id="count-passive"></span></button>
+  <button onclick="showTopic('causative')">사역동사 <span id="count-causative"></span></button>
+  <button onclick="showTopic('perception')">지각동사 <span id="count-perception"></span></button>
+  <button onclick="showTopic('participle')">분사구문 <span id="count-participle"></span></button>
+  <button onclick="showTopic('pronoun')">인칭대명사 <span id="count-pronoun"></span></button>
+  <button onclick="showTopic('toinf')">to부정사 <span id="count-toinf"></span></button>
+  <button onclick="showTopic('gerund')">동명사 주어 <span id="count-gerund"></span></button>
+</div>
+
+<div id="topic-verbs" class="topic-section">
+  <h3>1) 불규칙 동사 (Irregular Verbs)</h3>
+  <p class="small-note">동사원형 - 과거형 - 과거분사 (암기 필수!)</p>
+  <table>
+    <thead><tr><th>현재형</th><th>과거형</th><th>과거분사</th><th>뜻</th></tr></thead>
+    <tbody id="verbTableBody"></tbody>
+  </table>
+  <div class="quiz-box" style="background:#f9f9f9; border:1px dashed #ccc;">
+    <h4>[미니 퀴즈] 불규칙 동사</h4>
+    <select id="verbQuizType" style="padding:5px;">
+      <option value="past">현재형 → 과거형</option>
+      <option value="pp">현재형 → 과거분사</option>
+      <option value="baseFromKo">한국어 → 현재형</option>
+    </select>
+    <button onclick="startVerbQuiz()" style="padding:5px 10px;">문제 풀기</button>
+    <div id="verbQuizArea" style="display:none; margin-top:10px;">
+      <p id="verbQuizQuestion" style="font-weight:bold;"></p>
+      <input type="text" id="verbQuizAnswer" placeholder="정답 입력" style="width:60%; display:inline-block; height:30px; margin:0;" />
+      <button onclick="checkVerbQuiz()" style="padding:5px 10px;">확인</button>
+      <div id="verbQuizResult" class="result"></div>
+    </div>
+  </div>
+</div>
+
+<div id="topic-presentPerfect" class="topic-section">
+  <h3>2) 현재완료 (Present Perfect)</h3>
+  <ul class="small-note">
+    <li>형태: <b style="color:blue">have/has + p.p.</b></li>
+    <li>의미: 과거의 일이 현재까지 영향을 미침 (완료, 경험, 계속, 결과)</li>
+    <li><b style="color:red">주의:</b> yesterday, last year 등 명백한 과거 시점 부사와는 함께 쓸 수 없음.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('presentPerfect')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-presentPerfect" style="display:none;">
+      <textarea id="note-input-presentPerfect" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
+      <button onclick="saveNote('presentPerfect')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-presentPerfect" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-modal" class="topic-section">
+  <h3>3) 조동사 (Modals)</h3>
+  <ul class="small-note">
+    <li><b>Must:</b> 강한 의무 / 강한 추측 (~임에 틀림없다)</li>
+    <li><b>Should:</b> 의무 / 충고 (~하는 게 좋겠다)</li>
+    <li><b>Must have p.p.:</b> ~했음에 틀림없다 (과거 확신)</li>
+    <li><b>Should have p.p.:</b> ~했어야 했는데 (과거 후회)</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('modal')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-modal" style="display:none;">
+      <textarea id="note-input-modal" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('modal')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-modal" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-relative" class="topic-section">
+  <h3>4) 관계대명사</h3>
+  <ul class="small-note">
+    <li><b>Who/Which/That:</b> 선행사를 수식하는 형용사절을 이끈다.</li>
+    <li><b>What:</b> 선행사를 포함하며 "~하는 것"으로 해석 (명사절).</li>
+    <li><b style="color:red">계속적 용법(,):</b> 콤마 뒤에는 <b>that</b>을 쓸 수 없다.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('relative')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-relative" style="display:none;">
+      <textarea id="note-input-relative" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('relative')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-relative" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-relativeAdverb" class="topic-section">
+  <h3>관계부사</h3>
+  <ul class="small-note">
+    <li><b>When, Where, Why, How:</b> 전치사+관계대명사 역할.</li>
+    <li>특징: 뒤에 <b>완전한 문장</b>이 온다.</li>
+    <li><b style="color:red">주의:</b> <b>the way</b>와 <b>how</b>는 절대 함께 쓰지 않는다.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('relativeAdverb')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-relativeAdverb" style="display:none;">
+      <textarea id="note-input-relativeAdverb" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('relativeAdverb')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-relativeAdverb" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-comparison" class="topic-section">
+  <h3>비교급 & 최상급</h3>
+  <ul class="small-note">
+    <li><b>비교급 강조:</b> much, even, still, far, a lot (훨씬). <b style="color:red">Very는 안됨!</b></li>
+    <li><b>The 비교급, the 비교급:</b> ~하면 할수록 더 ~하다.</li>
+    <li><b>One of the 최상급 + 복수명사:</b> 가장 ~한 것들 중 하나.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('comparison')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-comparison" style="display:none;">
+      <textarea id="note-input-comparison" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('comparison')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-comparison" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-preposition" class="topic-section">
+  <h3>전치사 (Prepositions)</h3>
+  <ul class="small-note">
+    <li><b>시간:</b> at(시각), on(날짜/요일), in(월/년/계절)</li>
+    <li><b>기간:</b> for(+숫자), during(+명사)</li>
+    <li><b>장소:</b> at(지점), on(표면), in(공간)</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('preposition')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-preposition" style="display:none;">
+      <textarea id="note-input-preposition" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('preposition')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-preposition" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-conjunction" class="topic-section">
+  <h3>접속사</h3>
+  <ul class="small-note">
+    <li><b>Because vs Because of:</b> Because+절(S+V), Because of+명사구</li>
+    <li><b>명령문, and / or:</b> and(그러면), or(그렇지 않으면)</li>
+    <li><b>Although / Though:</b> 비록 ~일지라도 (뒤에 문장)</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('conjunction')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-conjunction" style="display:none;">
+      <textarea id="note-input-conjunction" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('conjunction')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-conjunction" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-conditionalPresent" class="topic-section">
+  <h3>5-1) 가정법 현재 / 조건문</h3>
+  <p class="small-note"><b>If + 주어 + 현재형, 주어 + will/can + 동사원형</b></p>
+  <ul class="small-note">
+    <li>미래의 가능성이나 불변의 진리를 나타냄.</li>
+    <li><b style="color:red">시간/조건 부사절에서는 현재시제가 미래를 대신한다.</b></li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('conditionalPresent')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-conditionalPresent" style="display:none;">
+      <textarea id="note-input-conditionalPresent" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('conditionalPresent')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-conditionalPresent" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-conditionalPast" class="topic-section">
+  <h3>5-2) 가정법 과거 (현재 사실 반대)</h3>
+  <p class="small-note" style="background:#eef; padding:5px;"><b>If + S + 과거동사(be->were), S + 조동사과거 + R</b></p>
+  <ul class="small-note">
+    <li>해석: (지금) ~라면, ~할 텐데.</li>
+    <li><b>I wish + 가정법 과거:</b> (지금) ~라면 좋을 텐데.</li>
+    <li><b>as if + 가정법 과거:</b> 마치 ~인 것처럼.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('conditionalPast')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-conditionalPast" style="display:none;">
+      <textarea id="note-input-conditionalPast" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('conditionalPast')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-conditionalPast" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-conditionalPastPerfect" class="topic-section">
+  <h3>5-3) 가정법 과거완료 (과거 사실 반대)</h3>
+  <p class="small-note" style="background:#fee; padding:5px;"><b>If + S + had p.p., S + 조동사과거 + have p.p.</b></p>
+  <ul class="small-note">
+    <li>해석: (과거에) ~했더라면, ~했을 텐데.</li>
+    <li><b>혼합 가정법:</b> If + had p.p. (과거에 ~했더라면), S + 조동사과거 + R (지금 ~할 텐데).</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('conditionalPastPerfect')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-conditionalPastPerfect" style="display:none;">
+      <textarea id="note-input-conditionalPastPerfect" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('conditionalPastPerfect')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-conditionalPastPerfect" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-passive" class="topic-section">
+  <h3>수동태 (Passive Voice)</h3>
+  <ul class="small-note">
+    <li>기본: <b>be + p.p.</b> (by 행위자)</li>
+    <li>진행형: be being p.p. / 완료형: have been p.p.</li>
+    <li>조동사: will/can be p.p.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('passive')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-passive" style="display:none;">
+      <textarea id="note-input-passive" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('passive')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-passive" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-causative" class="topic-section">
+  <h3>6) 사역동사 (시키다)</h3>
+  <ul class="small-note">
+    <li><b>Make, Have, Let:</b> 목적어 + <b style="color:red">동사원형</b></li>
+    <li><b>Get:</b> 목적어 + <b style="color:blue">to부정사</b></li>
+    <li><b>Help:</b> 목적어 + 동사원형/to부정사 둘 다 가능</li>
+    <li>* 목적어가 당하는 관계면 <b>p.p.</b>를 씀.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('causative')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-causative" style="display:none;">
+      <textarea id="note-input-causative" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('causative')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-causative" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-perception" class="topic-section">
+  <h3>7) 지각동사 (보다/듣다)</h3>
+  <ul class="small-note">
+    <li>See, Watch, Hear, Feel 등</li>
+    <li>목적보어: <b>동사원형</b> (전체 동작) 또는 <b>-ing</b> (진행 중)</li>
+    <li><b style="color:red">절대 불가:</b> to부정사</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('perception')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-perception" style="display:none;">
+      <textarea id="note-input-perception" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('perception')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-perception" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-participle" class="topic-section">
+  <h3>8) 분사구문</h3>
+  <ul class="small-note">
+    <li>접속사와 주어를 생략하고 동사를 변형.</li>
+    <li>능동: <b>-ing</b> / 수동: <b>(Being) p.p.</b></li>
+    <li>시제 앞섬: <b>Having p.p.</b></li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('participle')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-participle" style="display:none;">
+      <textarea id="note-input-participle" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('participle')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-participle" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-pronoun" class="topic-section">
+  <h3>9) 인칭대명사</h3>
+  <ul class="small-note">
+    <li>재귀대명사(-self): 주어와 목적어가 같을 때 사용.</li>
+    <li>소유대명사: ~의 것 (mine, yours, hers...)</li>
+    <li>It: 가주어, 비인칭 주어 등 다양하게 쓰임.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('pronoun')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-pronoun" style="display:none;">
+      <textarea id="note-input-pronoun" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('pronoun')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-pronoun" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-toinf" class="topic-section">
+  <h3>10) to부정사</h3>
+  <ul class="small-note">
+    <li>명사적: ~하는 것 (주어, 목적어, 보어)</li>
+    <li>형용사적: ~할 (명사 수식)</li>
+    <li>부사적: ~하기 위해, ~해서</li>
+    <li><b>주요 구문:</b> too ~ to (너무 ~해서 못하다), enough to (~할 만큼 충분히)</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('toinf')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-toinf" style="display:none;">
+      <textarea id="note-input-toinf" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('toinf')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-toinf" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-gerund" class="topic-section">
+  <h3>11) 동명사</h3>
+  <ul class="small-note">
+    <li>동사원형+ing: ~하는 것 (명사 역할)</li>
+    <li>주어로 쓰이면 <b>단수 취급</b>.</li>
+    <li><b>동명사만 목적어로 취하는 동사:</b> enjoy, finish, mind, give up, avoid, keep 등.</li>
+  </ul>
+  <div class="note-area">
+    <button onclick="toggleNote('gerund')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-gerund" style="display:none;">
+      <textarea id="note-input-gerund" placeholder="메모를 입력하세요."></textarea>
+      <button onclick="saveNote('gerund')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-gerund" class="note-display"></div>
+  </div>
+</div>
+
+<hr>
+
+<h2>② 퀴즈 (Practice)</h2>
+
+<div class="quiz-box">
+  <h3>A. 문법 객관식 퀴즈</h3>
+  <div style="margin-bottom:10px;">
+    <label for="grammarTopic">주제 선택: </label>
+    <select id="grammarTopic" onchange="resetQuizState()">
+      <option value="all">전체 무작위</option>
+      <option value="presentPerfect">현재완료</option>
+      <option value="modal">조동사</option>
+      <option value="relative">관계대명사</option>
+      <option value="relativeAdverb">관계부사</option>
+      <option value="comparison">비교급/최상급</option>
+      <option value="preposition">전치사</option>
+      <option value="conjunction">접속사</option>
+      <option value="conditionalPresent">가정법 현재</option>
+      <option value="conditionalPast">가정법 과거</option>
+      <option value="conditionalPastPerfect">가정법 과거완료</option>
+      <option value="passive">수동태</option>
+      <option value="causative">사역동사</option>
+      <option value="perception">지각동사</option>
+      <option value="participle">분사구문</option>
+      <option value="pronoun">인칭대명사</option>
+      <option value="toinf">to부정사</option>
+      <option value="gerund">동명사</option>
+    </select>
+  </div>
+  
+  <button onclick="nextQuestion()" class="control-btn" id="nextBtn">새 문제 / 다음 문제</button>
+  <button onclick="resetQuizPool()" class="reset-btn">문제 목록 초기화</button>
+
+  <div id="grammarQuizArea" style="display:none; margin-top:20px;">
+    <p id="quizProgress" style="font-size:0.9rem; color:#666; margin-bottom:5px;"></p>
+    <p id="grammarQuestionEn" style="font-weight:bold; font-size:1.15em; color:#222;"></p>
+    <p id="grammarQuestionKo" class="small-note" style="color:#555;"></p>
+    <div id="grammarOptions" class="options"></div>
+    <div id="grammarQuizResult" class="result"></div>
+    <p id="grammarExplanation" class="small-note" style="margin-top:10px; font-weight:500; color:#0056b3;"></p>
+  </div>
+</div>
+
+<div class="quiz-box">
+  <h3>오답 노트 & 다시 풀기</h3>
+  <p id="wrongList" class="small-note">아직 틀린 문제가 없습니다.</p>
+  <button onclick="retryWrongQuestion()" class="control-btn" style="background-color:#ffc107; color:#000;">틀린 문제 다시 풀기</button>
+
+  <div id="wrongQuizArea" style="display:none; margin-top:20px; background:#fff8e1; padding:15px; border-radius:8px;">
+    <p id="wrongQuestionInfo" style="font-size:0.85rem; color:#777;"></p>
+    <p id="wrongQuestionEn" style="font-weight:bold; font-size:1.1em;"></p>
+    <p id="wrongQuestionKo" class="small-note"></p>
+    <div id="wrongOptions" class="options"></div>
+    <div id="wrongResult" class="result"></div>
+    <p id="wrongExplanation" class="small-note" style="color:#d9534f;"></p>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   1. 데이터 영역 (문제 & 불규칙 동사)
+   ========================================================================== */
+const verbs = [
+  { base:"be", past:"was/were", pp:"been", ko:"이다" },
+  { base:"become", past:"became", pp:"become", ko:"되다" },
+  { base:"begin", past:"began", pp:"begun", ko:"시작하다" },
+  { base:"break", past:"broke", pp:"broken", ko:"깨다" },
+  { base:"bring", past:"brought", pp:"brought", ko:"가져오다" },
+  { base:"build", past:"built", pp:"built", ko:"짓다" },
+  { base:"buy", past:"bought", pp:"bought", ko:"사다" },
+  { base:"catch", past:"caught", pp:"caught", ko:"잡다" },
+  { base:"choose", past:"chose", pp:"chosen", ko:"고르다" },
+  { base:"come", past:"came", pp:"come", ko:"오다" },
+  { base:"do", past:"did", pp:"done", ko:"하다" },
+  { base:"drink", past:"drank", pp:"drunk", ko:"마시다" },
+  { base:"drive", past:"drove", pp:"driven", ko:"운전하다" },
+  { base:"eat", past:"ate", pp:"eaten", ko:"먹다" },
+  { base:"fall", past:"fell", pp:"fallen", ko:"떨어지다" },
+  { base:"feel", past:"felt", pp:"felt", ko:"느끼다" },
+  { base:"find", past:"found", pp:"found", ko:"찾다" },
+  { base:"fly", past:"flew", pp:"flown", ko:"날다" },
+  { base:"forget", past:"forgot", pp:"forgotten", ko:"잊다" },
+  { base:"get", past:"got", pp:"gotten", ko:"얻다" },
+  { base:"give", past:"gave", pp:"given", ko:"주다" },
+  { base:"go", past:"went", pp:"gone", ko:"가다" },
+  { base:"grow", past:"grew", pp:"grown", ko:"자라다" },
+  { base:"have", past:"had", pp:"had", ko:"가지다" },
+  { base:"hear", past:"heard", pp:"heard", ko:"듣다" },
+  { base:"keep", past:"kept", pp:"kept", ko:"유지하다" },
+  { base:"know", past:"knew", pp:"known", ko:"알다" },
+  { base:"leave", past:"left", pp:"left", ko:"떠나다" },
+  { base:"lose", past:"lost", pp:"lost", ko:"잃다" },
+  { base:"make", past:"made", pp:"made", ko:"만들다" },
+  { base:"meet", past:"met", pp:"met", ko:"만나다" },
+  { base:"pay", past:"paid", pp:"paid", ko:"지불하다" },
+  { base:"read", past:"read", pp:"read", ko:"읽다" },
+  { base:"run", past:"ran", pp:"run", ko:"달리다" },
+  { base:"say", past:"said", pp:"said", ko:"말하다" },
+  { base:"see", past:"saw", pp:"seen", ko:"보다" },
+  { base:"send", past:"sent", pp:"sent", ko:"보내다" },
+  { base:"sing", past:"sang", pp:"sung", ko:"노래하다" },
+  { base:"sit", past:"sat", pp:"sat", ko:"앉다" },
+  { base:"sleep", past:"slept", pp:"slept", ko:"자다" },
+  { base:"speak", past:"spoke", pp:"spoken", ko:"말하다" },
+  { base:"stand", past:"stood", pp:"stood", ko:"서다" },
+  { base:"swim", past:"swam", pp:"swum", ko:"수영하다" },
+  { base:"take", past:"took", pp:"taken", ko:"가져가다" },
+  { base:"teach", past:"taught", pp:"taught", ko:"가르치다" },
+  { base:"tell", past:"told", pp:"told", ko:"말하다" },
+  { base:"think", past:"thought", pp:"thought", ko:"생각하다" },
+  { base:"understand", past:"understood", pp:"understood", ko:"이해하다" },
+  { base:"write", past:"wrote", pp:"written", ko:"쓰다" }
+];
+
+const grammarQuestions = [
+  // --- 현재완료 (Present Perfect) ---
+  { id:1, topic:"presentPerfect", en:"I ____ lost my key.", ko:"나는 열쇠를 잃어버렸다. (그래서 지금 없음)", options:["have","has","did","was"], answer:"have", explanation:"I have lost (결과 용법)." },
+  { id:2, topic:"presentPerfect", en:"She ____ visited Paris twice.", ko:"그녀는 파리를 두 번 방문했다.", options:["has","have","is","did"], answer:"has", explanation:"She has visited (경험 용법)." },
+  { id:3, topic:"presentPerfect", en:"We have ____ each other for 10 years.", ko:"우리는 10년 동안 서로 알고 지냈다.", options:["know","knew","known","knowing"], answer:"known", explanation:"have + p.p. (know-knew-known)." },
+  { id:4, topic:"presentPerfect", en:"He has ____ gone out.", ko:"그는 방금 나갔다.", options:["just","ever","yet","since"], answer:"just", explanation:"완료 용법에 쓰이는 just (방금)." },
+  { id:5, topic:"presentPerfect", en:"Have you ____ eaten kimchi?", ko:"김치를 먹어본 적 있니?", options:["ever","never","yet","ago"], answer:"ever", explanation:"경험을 물을 때 ever 사용." },
+  { id:6, topic:"presentPerfect", en:"I haven't finished it ____.", ko:"나는 아직 그것을 끝내지 못했다.", options:["just","already","yet","now"], answer:"yet", explanation:"부정문 끝에는 yet (아직)." },
+  { id:101, topic:"presentPerfect", en:"She has lived here ____ 2010.", ko:"그녀는 2010년부터 여기서 살았다.", options:["since","for","from","during"], answer:"since", explanation:"시작 시점 앞에는 since." },
+  { id:102, topic:"presentPerfect", en:"I have stayed here ____ two weeks.", ko:"나는 여기에 2주 동안 머물렀다.", options:["for","since","during","while"], answer:"for", explanation:"숫자 기간 앞에는 for." },
+  { id:103, topic:"presentPerfect", en:"Mike has ____ to New York.", ko:"마이크는 뉴욕으로 가버렸다. (여기 없음)", options:["gone","been","went","go"], answer:"gone", explanation:"has gone to (결과: 가버리고 없다)." },
+  { id:104, topic:"presentPerfect", en:"I ____ seen him yesterday.", ko:"나는 어제 그를 보았다. (과거)", options:["have","has","saw","did"], answer:"saw", explanation:"yesterday는 명백한 과거이므로 과거시제 saw 사용 (have seen 불가)." },
+  { id:105, topic:"presentPerfect", en:"They have already ____ lunch.", ko:"그들은 이미 점심을 먹었다.", options:["eat","ate","eaten","eating"], answer:"eaten", explanation:"have + p.p. (eat-ate-eaten)." },
+  { id:106, topic:"presentPerfect", en:"My father has ____ his car.", ko:"우리 아빠는 차를 세차했다.", options:["wash","washed","washing","washes"], answer:"washed", explanation:"규칙 동사의 p.p.는 -ed." },
+
+  // --- 조동사 (Modal) ---
+  { id:7, topic:"modal", en:"You ____ go home now.", ko:"너는 지금 집에 가도 좋다. (허가)", options:["can","must","should","will"], answer:"can", explanation:"허가의 의미 can 또는 may." },
+  { id:8, topic:"modal", en:"You ____ not smoke here.", ko:"여기서 담배를 피우면 안 된다. (금지)", options:["must","don't","need","would"], answer:"must", explanation:"must not (금지)." },
+  { id:9, topic:"modal", en:"She ____ be sick.", ko:"그녀는 아픈 게 틀림없다. (강한 추측)", options:["must","should","can","need"], answer:"must", explanation:"must be (~임에 틀림없다)." },
+  { id:10, topic:"modal", en:"You ____ see a doctor.", ko:"너는 의사를 보는 게 좋겠다. (충고)", options:["should","must","can","will"], answer:"should", explanation:"should (충고/조언)." },
+  { id:107, topic:"modal", en:"You ____ have to do it.", ko:"너는 그것을 할 필요가 없다.", options:["don't","mustn't","shouldn't","cannot"], answer:"don't", explanation:"don't have to (=need not) : 할 필요 없다." },
+  { id:108, topic:"modal", en:"It ____ be true.", ko:"그것이 사실일 리가 없다. (부정 추측)", options:["cannot","must not","should not","may not"], answer:"cannot", explanation:"cannot be (~일 리가 없다)." },
+  { id:109, topic:"modal", en:"He ____ have passed the exam.", ko:"그는 시험에 합격했음에 틀림없다. (과거)", options:["must","should","can","would"], answer:"must", explanation:"must have p.p. (과거에 대한 강한 추측)." },
+  { id:110, topic:"modal", en:"I ____ have studied harder.", ko:"나는 더 열심히 공부했어야 했다. (후회)", options:["should","must","can","may"], answer:"should", explanation:"should have p.p. (~했어야 했는데)." },
+  { id:111, topic:"modal", en:"I ____ to swim every day.", ko:"나는 매일 수영하곤 했다.", options:["used","use","would","could"], answer:"used", explanation:"used to (~하곤 했다)." },
+  { id:112, topic:"modal", en:"____ I help you?", ko:"도와드릴까요?", options:["May","Will","Shall","Must"], answer:"May", explanation:"May I...? (제안/허가)." },
+  { id:113, topic:"modal", en:"You ____ better stop now.", ko:"너는 지금 멈추는 게 낫다.", options:["had","have","did","should"], answer:"had", explanation:"had better (~하는 게 낫다)." },
+  { id:114, topic:"modal", en:"Would you ____ opening the door?", ko:"문 좀 열어주시겠어요?", options:["mind","like","want","care"], answer:"mind", explanation:"Would you mind -ing?" },
+
+  // --- 관계대명사 ---
+  { id:11, topic:"relative", en:"This is the man ____ helped me.", ko:"이분이 나를 도와준 남자다.", options:["who","which","whose","whom"], answer:"who", explanation:"선행사 사람(man) + 주격 = who." },
+  { id:12, topic:"relative", en:"I lost the book ____ you gave me.", ko:"네가 준 책을 잃어버렸다.", options:["which","who","what","whose"], answer:"which", explanation:"선행사 사물(book) = which." },
+  { id:13, topic:"relative", en:"This is ____ I want.", ko:"이것이 내가 원하는 것이다.", options:["what","that","which","who"], answer:"what", explanation:"선행사 없음 + '~하는 것' = what." },
+  { id:14, topic:"relative", en:"I have a dog ____ name is Max.", ko:"나는 이름이 Max인 개를 가지고 있다.", options:["whose","who","which","that"], answer:"whose", explanation:"소유격 (그 개의 이름) = whose." },
+  { id:115, topic:"relative", en:"Look at the boy and the dog ____ are running.", ko:"달리고 있는 소년과 개를 봐라.", options:["that","who","which","what"], answer:"that", explanation:"사람+동물 선행사는 that 사용." },
+  { id:116, topic:"relative", en:"He is the only man ____ I trust.", ko:"그는 내가 믿는 유일한 사람이다.", options:["that","who","which","whom"], answer:"that", explanation:"the only, the very 등으로 한정되면 that 선호." },
+  { id:117, topic:"relative", en:"My mom, ____ is a teacher, is kind.", ko:"나의 엄마는, 선생님이신데, 친절하다.", options:["who","that","which","what"], answer:"who", explanation:"계속적 용법(콤마 뒤)에는 that 불가. 사람(mom)이므로 who." },
+  { id:118, topic:"relative", en:"I said nothing, ____ made him angry.", ko:"나는 아무 말도 안 했는데, 그것이 그를 화나게 했다.", options:["which","that","what","who"], answer:"which", explanation:"앞 문장 전체를 받는 계속적 용법 which." },
+  { id:119, topic:"relative", en:"Show me the thing ____ is in your pocket.", ko:"네 주머니에 있는 것을 보여줘.", options:["that","what","who","whom"], answer:"that", explanation:"선행사(thing)가 있으므로 that/which. what은 불가." },
+  { id:120, topic:"relative", en:"Do you know the girl ____ I met yesterday?", ko:"내가 어제 만난 소녀를 아니?", options:["whom","which","whose","what"], answer:"whom", explanation:"목적격 관계대명사 (who/whom/that)." },
+  { id:121, topic:"relative", en:"This is the house in ____ I live.", ko:"이것은 내가 사는 집이다.", options:["which","that","where","what"], answer:"which", explanation:"전치사(in) 뒤에는 that 불가. in which." },
+  { id:122, topic:"relative", en:"Remember ____ I told you.", ko:"내가 너에게 말한 것을 기억해라.", options:["what","that","which","who"], answer:"what", explanation:"선행사 없음 = what." },
+
+  // --- 관계부사 ---
+  { id:15, topic:"relativeAdverb", en:"This is the place ____ we met.", ko:"여기가 우리가 만났던 장소다.", options:["where","when","why","how"], answer:"where", explanation:"장소(place) + 완전한 문장 = where." },
+  { id:16, topic:"relativeAdverb", en:"I know the reason ____ he is mad.", ko:"나는 그가 화난 이유를 안다.", options:["why","where","when","how"], answer:"why", explanation:"이유(reason) = why." },
+  { id:123, topic:"relativeAdverb", en:"Friday is the day ____ I am busy.", ko:"금요일은 내가 바쁜 날이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(day) = when." },
+  { id:124, topic:"relativeAdverb", en:"Tell me ____ you did it.", ko:"네가 그걸 어떻게 했는지 말해줘.", options:["how","the way","the way how","which"], answer:"how", explanation:"방법은 how 또는 the way 하나만 씀 (the way how 불가)." },
+  { id:125, topic:"relativeAdverb", en:"This is the house ____ I live.", ko:"이곳은 내가 사는 집이다.", options:["where","which","that","what"], answer:"where", explanation:"완전한 문장(I live) + 장소 = where." },
+  { id:126, topic:"relativeAdverb", en:"Do you remember the time ____ we started?", ko:"우리가 시작한 시간을 기억하니?", options:["when","where","why","which"], answer:"when", explanation:"시간 = when." },
+  { id:127, topic:"relativeAdverb", en:"That is the reason ____ I like her.", ko:"그것이 내가 그녀를 좋아하는 이유다.", options:["why","for which","that","All above"], answer:"All above", explanation:"why, for which, that 모두 가능." },
+  { id:128, topic:"relativeAdverb", en:"Spring is the season ____ flowers bloom.", ko:"봄은 꽃이 피는 계절이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(season) = when." },
+  
+  // --- 비교급/최상급 ---
+  { id:17, topic:"comparison", en:"He is ____ than me.", ko:"그는 나보다 키가 크다.", options:["taller","tall","tallest","more tall"], answer:"taller", explanation:"tall + er (비교급)." },
+  { id:18, topic:"comparison", en:"This is the ____ movie.", ko:"이것은 가장 슬픈 영화다.", options:["saddest","sadder","sad","most sad"], answer:"saddest", explanation:"the + sad(d)est (최상급)." },
+  { id:129, topic:"comparison", en:"Math is ____ difficult than English.", ko:"수학은 영어보다 더 어렵다.", options:["more","most","very","much"], answer:"more", explanation:"3음절 이상(difficult)은 more 사용." },
+  { id:130, topic:"comparison", en:"It is ____ better now.", ko:"지금은 훨씬 더 낫다.", options:["much","very","many","so"], answer:"much", explanation:"비교급 강조: much, even, still, far, a lot." },
+  { id:131, topic:"comparison", en:"She is the ____ girl in the class.", ko:"그녀는 반에서 가장 예쁜 소녀다.", options:["prettiest","prettier","pretty","most pretty"], answer:"prettiest", explanation:"pretty -> y를 i로 바꾸고 est." },
+  { id:132, topic:"comparison", en:"The ____, the better.", ko:"빠르면 빠를수록 좋다.", options:["sooner","soon","soonest","more soon"], answer:"sooner", explanation:"The 비교급, the 비교급 구문." },
+  { id:133, topic:"comparison", en:"He is as ____ as a lion.", ko:"그는 사자만큼 용감하다.", options:["brave","braver","bravest","more brave"], answer:"brave", explanation:"as + 원급 + as." },
+  { id:134, topic:"comparison", en:"This box is ____ than that one.", ko:"이 상자가 저것보다 더 무겁다.", options:["heavier","heavy","heaviest","more heavy"], answer:"heavier", explanation:"heavy -> heavier." },
+
+  // --- 전치사 ---
+  { id:19, topic:"preposition", en:"See you ____ 5 o'clock.", ko:"5시에 보자.", options:["at","on","in","to"], answer:"at", explanation:"시각 앞에는 at." },
+  { id:20, topic:"preposition", en:"My birthday is ____ May.", ko:"내 생일은 5월에 있다.", options:["in","on","at","of"], answer:"in", explanation:"월(Month) 앞에는 in." },
+  { id:135, topic:"preposition", en:"I was born ____ 2005.", ko:"나는 2005년에 태어났다.", options:["in","on","at","for"], answer:"in", explanation:"년도 앞에는 in." },
+  { id:136, topic:"preposition", en:"The book is ____ the table.", ko:"책은 탁자 위에 있다.", options:["on","in","at","to"], answer:"on", explanation:"표면 위는 on." },
+  { id:137, topic:"preposition", en:"He runs ____ the morning.", ko:"그는 아침에 달린다.", options:["in","at","on","to"], answer:"in", explanation:"in the morning." },
+  { id:138, topic:"preposition", en:"I will wait ____ Monday.", ko:"월요일까지 기다릴게. (계속)", options:["until","by","for","on"], answer:"until", explanation:"계속되는 상태는 until." },
+  { id:139, topic:"preposition", en:"Submit it ____ Friday.", ko:"금요일까지 제출해라. (완료)", options:["by","until","on","at"], answer:"by", explanation:"기한 내 완료는 by." },
+  { id:140, topic:"preposition", en:"He is good ____ math.", ko:"그는 수학을 잘한다.", options:["at","in","on","for"], answer:"at", explanation:"be good at (~을 잘하다)." },
+
+  // --- 접속사 ---
+  { id:21, topic:"conjunction", en:"I was sick, ____ I stayed home.", ko:"나는 아팠다, 그래서 집에 있었다.", options:["so","because","but","if"], answer:"so", explanation:"결과를 나타내는 so." },
+  { id:22, topic:"conjunction", en:"____ it rained, we played soccer.", ko:"비가 왔지만 우리는 축구를 했다.", options:["Although","Because","If","Since"], answer:"Although", explanation:"양보(비록 ~일지라도) Although." },
+  { id:141, topic:"conjunction", en:"I couldn't go ____ of the rain.", ko:"비 때문에 못 갔다.", options:["because","so","due","since"], answer:"because", explanation:"뒤에 of가 있으므로 because of." },
+  { id:142, topic:"conjunction", en:"Study hard, ____ you will pass.", ko:"열심히 공부해라, 그러면 합격할 것이다.", options:["and","or","but","so"], answer:"and", explanation:"명령문, and (그러면)." },
+  { id:143, topic:"conjunction", en:"Hurry up, ____ you will be late.", ko:"서둘러라, 그렇지 않으면 늦을 것이다.", options:["or","and","but","so"], answer:"or", explanation:"명령문, or (그렇지 않으면)." },
+  { id:144, topic:"conjunction", en:"Wait ____ I come back.", ko:"내가 돌아올 때까지 기다려.", options:["until","while","if","because"], answer:"until", explanation:"~할 때까지." },
+  { id:145, topic:"conjunction", en:"Do you know ____ he is rich?", ko:"그가 부자인지 아닌지 아니?", options:["if","what","that","which"], answer:"if", explanation:"~인지 아닌지 (if/whether)." },
+  { id:146, topic:"conjunction", en:"I like him ____ he is kind.", ko:"그가 친절하기 때문에 나는 그를 좋아한다.", options:["because","although","so","but"], answer:"because", explanation:"이유를 나타내는 because." },
+
+  // --- 가정법 현재/조건문 ---
+  { id:147, topic:"conditionalPresent", en:"If it ____ tomorrow, I will stay home.", ko:"내일 비가 오면, 나는 집에 있을 것이다.", options:["rains","will rain","rain","rained"], answer:"rains", explanation:"조건 부사절에서는 현재시제가 미래를 대신함." },
+  { id:148, topic:"conditionalPresent", en:"If you ____ ice, it melts.", ko:"얼음을 가열하면 녹는다.", options:["heat","will heat","heated","heats"], answer:"heat", explanation:"불변의 진리(Zero Conditional)는 현재시제." },
+  { id:149, topic:"conditionalPresent", en:"Unless you ____, you will miss the bus.", ko:"뛰지 않으면 버스를 놓칠 것이다.", options:["run","don't run","will run","ran"], answer:"run", explanation:"Unless = If not. 긍정문 형태(run)를 씀." },
+  { id:150, topic:"conditionalPresent", en:"I will tell him if he ____.", ko:"그가 오면 그에게 말할게.", options:["comes","will come","came","come"], answer:"comes", explanation:"조건절 현재시제." },
+  { id:151, topic:"conditionalPresent", en:"If the weather ____ fine, let's go out.", ko:"날씨가 좋으면 나가자.", options:["is","will be","was","are"], answer:"is", explanation:"조건절 현재시제." },
+  { id:152, topic:"conditionalPresent", en:"You can go if you ____ finished.", ko:"다 끝냈다면 가도 좋다.", options:["have","had","will have","are"], answer:"have", explanation:"조건절에서 완료 시제도 현재완료를 씀." },
+
+  // --- 가정법 과거 ---
+  { id:23, topic:"conditionalPast", en:"If I ____ rich, I would buy a car.", ko:"내가 부자라면 차를 살 텐데.", options:["were","was","am","be"], answer:"were", explanation:"가정법 과거 be동사는 were." },
+  { id:24, topic:"conditionalPast", en:"If I ____ the answer, I would tell you.", ko:"내가 답을 안다면 너에게 말해줄 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"가정법 과거 동사는 과거형." },
+  { id:153, topic:"conditionalPast", en:"If I ____ you, I wouldn't do that.", ko:"내가 너라면 그렇게 안 할 거야.", options:["were","was","am","are"], answer:"were", explanation:"If I were you (관용적 표현)." },
+  { id:154, topic:"conditionalPast", en:"I wish I ____ fly.", ko:"내가 날 수 있다면 좋을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"I wish + 과거조동사." },
+  { id:155, topic:"conditionalPast", en:"He acts as if he ____ my boss.", ko:"그는 마치 내 상사인 것처럼 행동한다.", options:["were","is","was","has been"], answer:"were", explanation:"as if + 가정법 과거." },
+  { id:156, topic:"conditionalPast", en:"If it ____ not for water, we would die.", ko:"물이 없다면 우리는 죽을 것이다.", options:["were","is","had","was"], answer:"were", explanation:"If it were not for (~이 없다면)." },
+  { id:157, topic:"conditionalPast", en:"I wish I ____ a car.", ko:"차가 있다면 좋을 텐데.", options:["had","have","will have","have had"], answer:"had", explanation:"현재 소망 = I wish + 과거동사." },
+  { id:158, topic:"conditionalPast", en:"Without air, we ____ not live.", ko:"공기가 없다면 살 수 없을 것이다.", options:["could","can","will","may"], answer:"could", explanation:"가정법 과거 주절 (could/would)." },
+
+  // --- 가정법 과거완료 ---
+  { id:25, topic:"conditionalPastPerfect", en:"If I ____ studied hard, I would have passed.", ko:"내가 열심히 공부했더라면 합격했을 텐데.", options:["had","have","has","did"], answer:"had", explanation:"If + had p.p." },
+  { id:26, topic:"conditionalPastPerfect", en:"I wish I ____ met her.", ko:"그녀를 만났더라면 좋았을 텐데.", options:["had","have","has","did"], answer:"had", explanation:"과거 후회 = I wish + had p.p." },
+  { id:159, topic:"conditionalPastPerfect", en:"If it ____ not rained, we would have gone.", ko:"비가 안 왔다면 갔을 텐데.", options:["had","has","have","was"], answer:"had", explanation:"If + had p.p." },
+  { id:160, topic:"conditionalPastPerfect", en:"Without your help, I would ____ failed.", ko:"너의 도움이 없었다면 나는 실패했을 것이다.", options:["have","had","has","be"], answer:"have", explanation:"would have p.p." },
+  { id:161, topic:"conditionalPastPerfect", en:"He spoke as if he ____ seen it.", ko:"그는 그것을 봤던 것처럼 말했다.", options:["had","has","have","was"], answer:"had", explanation:"as if + had p.p. (과거 사실 반대)." },
+  { id:162, topic:"conditionalPastPerfect", en:"If I had known, I ____ have told you.", ko:"알았더라면 말해줬을 텐데.", options:["would","will","can","may"], answer:"would", explanation:"would have p.p." },
+  { id:163, topic:"conditionalPastPerfect", en:"But for his advice, I ____ have failed.", ko:"그의 조언이 없었다면 실패했을 것이다.", options:["might","may","can","will"], answer:"might", explanation:"might have p.p." },
+  { id:164, topic:"conditionalPastPerfect", en:"I should ____ studied harder.", ko:"더 열심히 공부했어야 했는데.", options:["have","had","has","be"], answer:"have", explanation:"should have p.p. (후회)." },
+
+  // --- 수동태 ---
+  { id:27, topic:"passive", en:"The room ____ cleaned by him.", ko:"그 방은 그에 의해 청소되었다.", options:["was","is","were","did"], answer:"was", explanation:"과거 단수 수동태." },
+  { id:28, topic:"passive", en:"English is ____ in many countries.", ko:"영어는 많은 나라에서 쓰인다.", options:["spoken","speak","spoke","speaking"], answer:"spoken", explanation:"be + p.p. (speak-spoke-spoken)." },
+  { id:165, topic:"passive", en:"The letter will ____ sent tomorrow.", ko:"편지는 내일 보내질 것이다.", options:["be","been","being","is"], answer:"be", explanation:"will be p.p." },
+  { id:166, topic:"passive", en:"The car is ____ repaired now.", ko:"차는 지금 수리되는 중이다.", options:["being","be","been","is"], answer:"being", explanation:"진행 수동태: be being p.p." },
+  { id:167, topic:"passive", en:"He was ____ in 1990.", ko:"그는 1990년에 태어났다.", options:["born","bear","bore","birth"], answer:"born", explanation:"be born (태어나다)." },
+  { id:168, topic:"passive", en:"She is interested ____ music.", ko:"그녀는 음악에 관심이 있다.", options:["in","on","at","with"], answer:"in", explanation:"be interested in." },
+  { id:169, topic:"passive", en:"The mountain is covered ____ snow.", ko:"산은 눈으로 덮여 있다.", options:["with","by","at","in"], answer:"with", explanation:"be covered with." },
+  { id:170, topic:"passive", en:"This bag was ____ in Italy.", ko:"이 가방은 이탈리아에서 만들어졌다.", options:["made","make","making","makes"], answer:"made", explanation:"be made in." },
+
+  // --- 사역동사 ---
+  { id:29, topic:"causative", en:"He made me ____ the car.", ko:"그는 나에게 세차를 시켰다.", options:["wash","to wash","washing","washed"], answer:"wash", explanation:"make + O + 동사원형." },
+  { id:30, topic:"causative", en:"I had my hair ____.", ko:"나는 머리를 잘랐다. (미용사에게 시켜서)", options:["cut","to cut","cutting","cuts"], answer:"cut", explanation:"have + 사물 + p.p. (수동 관계)." },
+  { id:171, topic:"causative", en:"Let him ____.", ko:"그가 가게 해라.", options:["go","to go","going","gone"], answer:"go", explanation:"let + O + 동사원형." },
+  { id:172, topic:"causative", en:"I got him ____ the window.", ko:"나는 그에게 창문을 닦게 했다.", options:["to clean","clean","cleaning","cleaned"], answer:"to clean", explanation:"get + 사람 + to부정사." },
+  { id:173, topic:"causative", en:"She helped me ____ my homework.", ko:"그녀는 내가 숙제하는 걸 도왔다.", options:["finish","finishing","finished","finishes"], answer:"finish", explanation:"help는 원형 또는 to부정사 가능." },
+  { id:174, topic:"causative", en:"Don't make me ____.", ko:"나를 울게 하지 마.", options:["cry","to cry","crying","cried"], answer:"cry", explanation:"make + O + 원형." },
+  { id:175, topic:"causative", en:"I had the computer ____.", ko:"나는 컴퓨터를 수리했다 (맡겨서).", options:["fixed","fix","fixing","to fix"], answer:"fixed", explanation:"have + 사물 + p.p." },
+  { id:176, topic:"causative", en:"Please let me ____.", ko:"제가 알게 해주세요 (알려주세요).", options:["know","to know","knowing","knew"], answer:"know", explanation:"Let me know." },
+
+  // --- 지각동사 ---
+  { id:31, topic:"perception", en:"I saw him ____ across the street.", ko:"나는 그가 길을 건너는 것을 보았다.", options:["run","to run","ran","runs"], answer:"run", explanation:"지각동사 + O + 원형/-ing." },
+  { id:32, topic:"perception", en:"I heard someone ____ my name.", ko:"누군가 내 이름을 부르는 것을 들었다.", options:["calling","to call","called","calls"], answer:"calling", explanation:"진행 중인 동작은 -ing." },
+  { id:177, topic:"perception", en:"Did you see the birds ____?", ko:"새들이 날아가는 걸 봤니?", options:["fly","to fly","flew","flown"], answer:"fly", explanation:"see + O + 원형." },
+  { id:178, topic:"perception", en:"I felt the house ____.", ko:"나는 집이 흔들리는 것을 느꼈다.", options:["shake","to shake","shook","shaken"], answer:"shake", explanation:"feel + O + 원형/-ing." },
+  { id:179, topic:"perception", en:"Watch him ____ the ball.", ko:"그가 공을 차는 것을 잘 봐.", options:["kick","to kick","kicked","kicks"], answer:"kick", explanation:"watch + O + 원형." },
+  { id:180, topic:"perception", en:"I smell something ____.", ko:"무언가 타는 냄새가 난다.", options:["burning","burn","to burn","burned"], answer:"burning", explanation:"smell + O + -ing (진행)." },
+  { id:181, topic:"perception", en:"He heard his name ____.", ko:"그는 자신의 이름이 불리는 것을 들었다.", options:["called","call","calling","to call"], answer:"called", explanation:"목적어(name)가 불리는 수동 관계 = p.p." },
+  { id:182, topic:"perception", en:"She saw the accident ____.", ko:"그녀는 사고가 일어나는 것을 보았다.", options:["happen","to happen","happened","happens"], answer:"happen", explanation:"see + O + 원형." },
+
+  // --- 분사구문 ---
+  { id:33, topic:"participle", en:"____ the room, I saw a mouse.", ko:"방에 들어갔을 때, 나는 쥐를 보았다.", options:["Entering","Enter","Entered","To enter"], answer:"Entering", explanation:"능동 분사구문 (-ing)." },
+  { id:34, topic:"participle", en:"____ in English, the book is easy to read.", ko:"영어로 쓰여 있어서, 그 책은 읽기 쉽다.", options:["Written","Writing","Wrote","Write"], answer:"Written", explanation:"수동 분사구문 (Being Written -> Written)." },
+  { id:183, topic:"participle", en:"____ tired, I went to bed early.", ko:"피곤해서, 일찍 잤다.", options:["Feeling","Felt","Feel","To feel"], answer:"Feeling", explanation:"능동/진행 의미 (-ing)." },
+  { id:184, topic:"participle", en:"____ left alone, the baby cried.", ko:"혼자 남겨져서, 아기는 울었다.", options:["Left","Leaving","Leave","To leave"], answer:"Left", explanation:"수동 의미 (Being Left -> Left)." },
+  { id:185, topic:"participle", en:"____ not knowing what to do, I asked him.", ko:"무엇을 할지 몰라서, 그에게 물어봤다.", options:["Not","No","Never","Don't"], answer:"Not", explanation:"분사구문의 부정은 Not + -ing." },
+  { id:186, topic:"participle", en:"____ the work, he went out.", ko:"일을 다 끝내고 나서, 그는 나갔다.", options:["Having finished","Finishing","Finished","Finish"], answer:"Having finished", explanation:"완료 분사구문 (시제가 앞설 때)." },
+  { id:187, topic:"participle", en:"Generally ____, women live longer.", ko:"일반적으로 말해서, 여자가 더 오래 산다.", options:["speaking","spoken","speak","to speak"], answer:"speaking", explanation:"Generally speaking (관용구)." },
+  { id:188, topic:"participle", en:"____ from the sky, the city looks small.", ko:"하늘에서 보면, 그 도시는 작아 보인다.", options:["Seen","Seeing","See","To see"], answer:"Seen", explanation:"(도시가) 보여지는 것이므로 수동(Seen)." },
+
+  // --- 인칭대명사 ---
+  { id:35, topic:"pronoun", en:"I love ____.", ko:"나는 나 자신을 사랑한다.", options:["myself","me","my","mine"], answer:"myself", explanation:"주어=목적어 일 때 재귀대명사." },
+  { id:36, topic:"pronoun", en:"This book is ____.", ko:"이 책은 나의 것이다.", options:["mine","my","me","myself"], answer:"mine", explanation:"소유대명사 (mine = my book)." },
+  { id:189, topic:"pronoun", en:"She looked at ____ in the mirror.", ko:"그녀는 거울 속의 자신을 보았다.", options:["herself","her","she","hers"], answer:"herself", explanation:"재귀대명사." },
+  { id:190, topic:"pronoun", en:"____ is raining.", ko:"비가 온다.", options:["It","This","That","There"], answer:"It", explanation:"비인칭 주어 It (날씨)." },
+  { id:191, topic:"pronoun", en:"He did it by ____.", ko:"그는 혼자서 그것을 했다.", options:["himself","him","his","he"], answer:"himself", explanation:"by himself (혼자서)." },
+  { id:192, topic:"pronoun", en:"Give ____ the book.", ko:"나에게 그 책을 줘.", options:["me","I","my","mine"], answer:"me", explanation:"목적격 me." },
+  { id:193, topic:"pronoun", en:"I hurt ____.", ko:"나는 다쳤다 (내 자신을 다치게 했다).", options:["myself","me","my","mine"], answer:"myself", explanation:"재귀대명사." },
+  { id:194, topic:"pronoun", en:"Is this hat ____?", ko:"이 모자는 너의 것이니?", options:["yours","your","you","yourself"], answer:"yours", explanation:"소유대명사 yours." },
+
+  // --- to부정사 ---
+  { id:37, topic:"toinf", en:"I want ____ home.", ko:"나는 집에 가고 싶다.", options:["to go","going","go","gone"], answer:"to go", explanation:"want + to부정사." },
+  { id:38, topic:"toinf", en:"I have a book ____ read.", ko:"나는 읽을 책이 있다.", options:["to","for","of","in"], answer:"to", explanation:"명사 수식 (to read)." },
+  { id:195, topic:"toinf", en:"It is hard ____ study math.", ko:"수학을 공부하는 것은 어렵다.", options:["to","for","of","ing"], answer:"to", explanation:"가주어 It ... 진주어 to." },
+  { id:196, topic:"toinf", en:"He grew up ____ a doctor.", ko:"그는 자라서 의사가 되었다.", options:["to be","being","be","been"], answer:"to be", explanation:"결과적 용법 (to be)." },
+  { id:197, topic:"toinf", en:"I am happy ____ see you.", ko:"너를 만나서 행복하다.", options:["to","for","of","about"], answer:"to", explanation:"감정의 원인 (to see)." },
+  { id:198, topic:"toinf", en:"He is too tired ____ walk.", ko:"그는 너무 피곤해서 걸을 수 없다.", options:["to","for","that","so"], answer:"to", explanation:"too ~ to (너무 ~해서 ~할 수 없다)." },
+  { id:199, topic:"toinf", en:"I decided ____ go.", ko:"나는 가지 않기로 결심했다.", options:["not to","to not","no to","don't"], answer:"not to", explanation:"to부정사 부정은 not to." },
+  { id:200, topic:"toinf", en:"Please give me something ____ drink.", ko:"마실 것 좀 주세요.", options:["to","for","of","with"], answer:"to", explanation:"something to drink." },
+
+  // --- 동명사 ---
+  { id:39, topic:"gerund", en:"I enjoy ____ TV.", ko:"나는 TV 보는 것을 즐긴다.", options:["watching","to watch","watch","watched"], answer:"watching", explanation:"enjoy + -ing." },
+  { id:40, topic:"gerund", en:"____ is my hobby.", ko:"수영은 내 취미다.", options:["Swimming","Swim","Swam","Swims"], answer:"Swimming", explanation:"주어로 쓰인 동명사." },
+  { id:201, topic:"gerund", en:"He gave up ____.", ko:"그는 흡연을 포기했다.", options:["smoking","to smoke","smoke","smoked"], answer:"smoking", explanation:"give up + -ing." },
+  { id:202, topic:"gerund", en:"She is good at ____.", ko:"그녀는 춤을 잘 춘다.", options:["dancing","dance","to dance","danced"], answer:"dancing", explanation:"전치사 뒤에는 동명사." },
+  { id:203, topic:"gerund", en:"Would you mind ____ the door?", ko:"문 좀 닫아주시겠어요?", options:["closing","to close","close","closed"], answer:"closing", explanation:"mind + -ing." },
+  { id:204, topic:"gerund", en:"Stop ____ noise.", ko:"떠들지 마라.", options:["making","to make","make","made"], answer:"making", explanation:"stop -ing (~하던 것을 멈추다)." },
+  { id:205, topic:"gerund", en:"I finished ____ my homework.", ko:"나는 숙제를 끝냈다.", options:["doing","to do","do","did"], answer:"doing", explanation:"finish + -ing." },
+  { id:206, topic:"gerund", en:"How about ____ out?", ko:"나가는 게 어때?", options:["going","to go","go","gone"], answer:"going", explanation:"How about -ing?" }
+];
+
+/* ==========================================================================
+   2. 로직 함수들
+   ========================================================================== */
+
+// 셔플 함수
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// 초기화 및 상태 변수
+let shuffledQuestions = [];
+let currentQuestionIndex = 0;
+let currentTopicForQuiz = '';
+
+// 화면 전환 함수 (문법 설명 탭)
+function showTopic(id) {
+  document.querySelectorAll('.topic-section').forEach(el => el.style.display = 'none');
+  const target = document.getElementById('topic-' + id);
+  if (target) {
+    target.style.display = 'block';
+    loadNote(id); // 노트 불러오기
+  }
+}
+
+/* --- 나만의 노트 기능 (LocalStorage) --- */
+function toggleNote(id) {
+  const editArea = document.getElementById('note-edit-' + id);
+  if (editArea.style.display === 'block') {
+    editArea.style.display = 'none';
+  } else {
+    const saved = localStorage.getItem('note_' + id) || "";
+    document.getElementById('note-input-' + id).value = saved;
+    editArea.style.display = 'block';
+  }
+}
+
+function saveNote(id) {
+  const val = document.getElementById('note-input-' + id).value;
+  localStorage.setItem('note_' + id, val);
+  alert("저장되었습니다!");
+  document.getElementById('note-edit-' + id).style.display = 'none';
+  loadNote(id);
+}
+
+function loadNote(id) {
+  const val = localStorage.getItem('note_' + id);
+  const display = document.getElementById('note-display-' + id);
+  if (val && val.trim() !== "") {
+    display.textContent = "📌 내 메모:\n" + val;
+    display.style.display = 'block';
+  } else {
+    display.style.display = 'none';
+  }
+}
+
+/* --- 퀴즈 로직 (중복 방지 Deck System) --- */
+function resetQuizState() {
+  // 주제가 바뀌면 풀 초기화 필요
+  shuffledQuestions = [];
+  currentQuestionIndex = 0;
+  currentTopicForQuiz = '';
+  document.getElementById('grammarQuizArea').style.display = 'none';
+}
+
+function resetQuizPool() {
+  if (confirm("현재 진행 중인 문제 목록을 초기화하고 처음부터 다시 시작하시겠습니까?")) {
+    resetQuizState();
+    alert("초기화되었습니다. '새 문제'를 눌러 시작하세요.");
+  }
+}
+
+function nextQuestion() {
+  const topicSelect = document.getElementById('grammarTopic');
+  const selectedTopic = topicSelect.value;
+
+  // 1. 주제가 바뀌었거나, 아직 덱이 안 만들어졌으면 새로 생성
+  if (selectedTopic !== currentTopicForQuiz || shuffledQuestions.length === 0) {
+    currentTopicForQuiz = selectedTopic;
+    let pool = [];
+    if (selectedTopic === 'all') {
+      pool = [...grammarQuestions];
+    } else {
+      pool = grammarQuestions.filter(q => q.topic === selectedTopic);
+    }
+
+    if (pool.length === 0) {
+      alert("해당 주제의 문제가 아직 없습니다.");
+      return;
+    }
+
+    // 셔플 후 저장
+    shuffleArray(pool);
+    shuffledQuestions = pool;
+    currentQuestionIndex = 0;
+  }
+
+  // 2. 모든 문제를 다 풀었는지 확인
+  if (currentQuestionIndex >= shuffledQuestions.length) {
+    alert("선택한 주제의 모든 문제를 다 풀었습니다! \n처음부터 다시 풀려면 '문제 목록 초기화'를 누르세요.");
+    return;
+  }
+
+  // 3. 문제 출제
+  const q = shuffledQuestions[currentQuestionIndex];
+  currentQuestionIndex++; // 인덱스 증가
+
+  // UI 업데이트
+  document.getElementById('grammarQuizArea').style.display = 'block';
+  document.getElementById('quizProgress').textContent = `진행: ${currentQuestionIndex} / ${shuffledQuestions.length}`;
+  
+  document.getElementById('grammarQuestionEn').textContent = "Q. " + q.en;
+  document.getElementById('grammarQuestionKo').textContent = q.ko;
+  
+  const optionsDiv = document.getElementById('grammarOptions');
+  optionsDiv.innerHTML = "";
+  
+  // 보기 섞기
+  let opts = [...q.options];
+  shuffleArray(opts);
+
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(q, opt, btn);
+    optionsDiv.appendChild(btn);
+  });
+
+  // 결과창 초기화
+  document.getElementById('grammarQuizResult').textContent = "";
+  document.getElementById('grammarExplanation').textContent = "";
+}
+
+function checkAnswer(qObj, userAns, btnElem) {
+  // 모든 버튼 비활성화
+  const btns = document.querySelectorAll('#grammarOptions button');
+  btns.forEach(b => {
+    b.disabled = true;
+    if (b.textContent === qObj.answer) b.style.backgroundColor = "#d4edda"; // 정답 초록
+    if (b.textContent === userAns && userAns !== qObj.answer) b.style.backgroundColor = "#f8d7da"; // 오답 빨강
+  });
+
+  const resDiv = document.getElementById('grammarQuizResult');
+  const explDiv = document.getElementById('grammarExplanation');
+
+  if (userAns === qObj.answer) {
+    resDiv.textContent = "정답입니다! 🎉";
+    resDiv.style.color = "green";
+    // 오답 리스트에 있다면 제거
+    wrongList = wrongList.filter(id => id !== qObj.id);
+  } else {
+    resDiv.textContent = "오답입니다. 😢 정답: " + qObj.answer;
+    resDiv.style.color = "red";
+    // 오답 리스트에 추가 (중복 방지)
+    if (!wrongList.includes(qObj.id)) {
+      wrongList.push(qObj.id);
+    }
+  }
+  updateWrongDisplay();
+  explDiv.innerHTML = "💡 <b>해설:</b> " + qObj.explanation;
+}
+
+/* --- 오답 노트 로직 --- */
+let wrongList = [];
+
+function updateWrongDisplay() {
+  const p = document.getElementById('wrongList');
+  if (wrongList.length === 0) {
+    p.textContent = "아직 틀린 문제가 없습니다.";
+  } else {
+    p.textContent = "틀린 문제 ID: " + wrongList.join(", ");
+  }
+}
+
+function retryWrongQuestion() {
+  if (wrongList.length === 0) {
+    alert("틀린 문제가 없습니다.");
+    return;
+  }
+  
+  // 랜덤으로 하나 뽑기
+  const randId = wrongList[Math.floor(Math.random() * wrongList.length)];
+  const q = grammarQuestions.find(item => item.id === randId);
+
+  document.getElementById('wrongQuizArea').style.display = 'block';
+  document.getElementById('wrongQuestionInfo').textContent = `주제: ${q.topic} (ID: ${q.id})`;
+  document.getElementById('wrongQuestionEn').textContent = "Q. " + q.en;
+  document.getElementById('wrongQuestionKo').textContent = q.ko;
+
+  const wOptDiv = document.getElementById('wrongOptions');
+  wOptDiv.innerHTML = "";
+  
+  let opts = [...q.options];
+  shuffleArray(opts);
+
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.onclick = () => {
+      // 오답 확인 로직 (간소화)
+      const wRes = document.getElementById('wrongResult');
+      const wExp = document.getElementById('wrongExplanation');
+      
+      // 버튼 잠그기
+      const wBtns = wOptDiv.querySelectorAll('button');
+      wBtns.forEach(b => {
+         b.disabled = true;
+         if(b.textContent === q.answer) b.style.backgroundColor="#d4edda";
+         else if(b.textContent === opt) b.style.backgroundColor="#f8d7da";
+      });
+
+      if (opt === q.answer) {
+        wRes.textContent = "정답입니다! (오답 목록에서 삭제됨)";
+        wRes.style.color = "green";
+        wrongList = wrongList.filter(id => id !== q.id);
+        updateWrongDisplay();
+        if(wrongList.length === 0) document.getElementById('wrongQuizArea').style.display='none';
+      } else {
+        wRes.textContent = "또 틀렸네요. 정답: " + q.answer;
+        wRes.style.color = "red";
+      }
+      wExp.innerHTML = "💡 <b>해설:</b> " + q.explanation;
+    };
+    wOptDiv.appendChild(btn);
+  });
+
+  document.getElementById('wrongResult').textContent = "";
+  document.getElementById('wrongExplanation').textContent = "";
+}
+
+/* --- 불규칙 동사 퀴즈 (단답형) --- */
+let currentVerb = null;
+function startVerbQuiz() {
+  currentVerb = verbs[Math.floor(Math.random() * verbs.length)];
+  const type = document.getElementById('verbQuizType').value;
+  const qArea = document.getElementById('verbQuizArea');
+  qArea.style.display = 'block';
+  
+  const qText = document.getElementById('verbQuizQuestion');
+  document.getElementById('verbQuizAnswer').value = "";
+  document.getElementById('verbQuizResult').textContent = "";
+  
+  if (type === 'past') qText.textContent = `${currentVerb.base} (${currentVerb.ko})의 과거형은?`;
+  else if (type === 'pp') qText.textContent = `${currentVerb.base} (${currentVerb.ko})의 과거분사는?`;
+  else qText.textContent = `'${currentVerb.ko}'의 영어 현재형(원형)은?`;
+}
+
+function checkVerbQuiz() {
+  if (!currentVerb) return;
+  const type = document.getElementById('verbQuizType').value;
+  const userAns = document.getElementById('verbQuizAnswer').value.trim().toLowerCase();
+  let correctAns = "";
+  
+  if (type === 'past') correctAns = currentVerb.past;
+  else if (type === 'pp') correctAns = currentVerb.pp;
+  else correctAns = currentVerb.base;
+  
+  // 복수 정답 처리 (slash)
+  const answers = correctAns.split('/').map(s => s.trim());
+  
+  const resDiv = document.getElementById('verbQuizResult');
+  if (answers.includes(userAns)) {
+    resDiv.textContent = "정답입니다! ⭕";
+    resDiv.style.color = "green";
+  } else {
+    resDiv.textContent = `오답입니다 ❌. 정답: ${correctAns}`;
+    resDiv.style.color = "red";
+  }
+}
+
+/* ==========================================================================
+   3. 초기화 (Counts & Table)
+   ========================================================================== */
+function updateCounts() {
+  const topics = [
+    "presentPerfect","modal","relative","relativeAdverb","comparison",
+    "preposition","conjunction","conditionalPresent","conditionalPast",
+    "conditionalPastPerfect","passive","causative","perception",
+    "participle","pronoun","toinf","gerund"
+  ];
+  topics.forEach(t => {
+    const cnt = grammarQuestions.filter(q => q.topic === t).length;
+    const span = document.getElementById('count-' + t);
+    if (span) span.textContent = `(${cnt})`;
+  });
+  
+  const vSpan = document.getElementById('count-verbs');
+  if (vSpan) vSpan.textContent = `(${verbs.length})`;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  // 1. 불규칙 동사 테이블 생성
+  const tbody = document.getElementById('verbTableBody');
+  verbs.forEach(v => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${v.base}</td><td>${v.past}</td><td>${v.pp}</td><td>${v.ko}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // 2. 카운트 업데이트
+  updateCounts();
+  
+  // 3. 노트 로드 (각 섹션별)
+  const noteIds = [
+    "presentPerfect","modal","relative","relativeAdverb","comparison",
+    "preposition","conjunction","conditionalPresent","conditionalPast",
+    "conditionalPastPerfect","passive","causative","perception",
+    "participle","pronoun","toinf","gerund"
+  ];
+  noteIds.forEach(id => loadNote(id));
+});
+</script>
+</body>
+</html>
