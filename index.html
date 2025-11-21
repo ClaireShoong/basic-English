@@ -1492,13 +1492,15 @@ let wrongIds = [];
 function resetQuizPool() {
     shuffledQuestionList = [];
     currentQuestionIndex = 0;
-    currentTopic = 'initial';
+    currentTopic = 'initial'; // 주제 초기화 로직은 놔두고, UI 값 변경만 막습니다.
     document.getElementById('grammarQuizArea').style.display = 'none';
     document.getElementById('grammarQuizResult').textContent = "";
     document.getElementById('grammarExplanation').textContent = "";
-    document.getElementById('grammarTopic').value = 'all';
-    alert("문제 목록이 초기화되었습니다.");
-}
+    // document.getElementById('grammarTopic').value = 'all';  <-- 이 줄을 삭제하세요.
+    
+    // (선택 사항) 알림창이 너무 자주 뜨는 게 싫다면 아래 alert도 주석 처리해도 좋습니다.
+    // alert("문제 목록이 초기화되었습니다."); 
+   }
 
 function nextQuestion() {
     const topicSelect = document.getElementById('grammarTopic');
@@ -1888,3 +1890,4 @@ window.onload = function() {
 </script>
 </body>
 </html>
+
