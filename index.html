@@ -120,27 +120,20 @@
   <button onclick="showTopic('pronoun')">인칭대명사 <span id="count-pronoun"></span></button>
   <button onclick="showTopic('toinf')">to부정사 <span id="count-toinf"></span></button>
   <button onclick="showTopic('gerund')">동명사 주어 <span id="count-gerund"></span></button>
+  <button onclick="showTopic('nounParticiple')">명사 수식 분사 <span id="count-nounParticiple"></span></button>
 </div>
 
 <div id="topic-verbs" class="topic-section">
     <h3>1) 불규칙 동사 (Irregular Verbs)</h3>
     <p class="small-note">주요 불규칙 동사 변화표입니다. 암기 후 아래 테스트 기능을 이용해보세요.</p>
-    
     <div style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; margin-bottom: 20px;">
         <table>
             <thead>
-                <tr>
-                    <th>원형 (Base)</th>
-                    <th>과거형 (Past)</th>
-                    <th>과거분사 (P.P)</th>
-                    <th>의미</th>
-                </tr>
+                <tr><th>원형 (Base)</th><th>과거형 (Past)</th><th>과거분사 (P.P)</th><th>의미</th></tr>
             </thead>
-            <tbody id="verbTableBody">
-                </tbody>
+            <tbody id="verbTableBody"></tbody>
         </table>
     </div>
-
     <div class="quiz-box" style="margin-top:0;">
         <h4>불규칙 동사 쪽지 시험</h4>
         <label>퀴즈 유형: </label>
@@ -150,7 +143,6 @@
             <option value="base">원형 쓰기</option>
         </select>
         <button onclick="startVerbQuiz()" class="control-btn" style="padding:5px 10px; font-size:0.9rem;">문제 출제</button>
-        
         <div id="verbQuizArea" style="display:none; margin-top:15px;">
             <p id="verbQuizQuestion" style="font-weight:bold; font-size:1.2em; color:#007bff;"></p>
             <input type="text" id="verbQuizAnswer" placeholder="정답을 입력하세요" onkeydown="if(event.key==='Enter') checkVerbQuiz()">
@@ -162,34 +154,95 @@
 </div>
 
 <div id="topic-presentPerfect" class="topic-section">
-  <h3>2) 현재완료 (Present Perfect) - 과거와 현재의 연결</h3>
+  <h3>2) 현재완료 (Present Perfect) - 과거와 현재의 연결고리</h3>
   
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    **핵심:** 과거의 동작이나 상태가 끝났더라도, 그 **결과나 영향이 현재까지 이어질 때** 사용합니다.
-  </p>
-  
-  <ul class="small-note">
-    <li><b>형태:</b> <b style="color:blue;">have / has + p.p.</b></li>
-    
-    <li><b style="color:#d9534f;">4가지 주요 용법과 예시</b>
-        <br> - **1. 경험 (Experience):** ~해 본 적 있다. (ever, never, before)
-        <br> &nbsp;&nbsp; Ex: I **have been** to Paris once. (파리에 한 번 가본 적이 있다.)
-        
-        <br> - **2. 계속 (Continuation):** ~동안 계속해왔다. (for, since)
-        <br> &nbsp;&nbsp; Ex: She **has lived** here **for** ten years. (10년 동안 계속 살고 있다.)
-        
-        <br> - **3. 완료 (Completion):** 막/이미 ~했다. (just, already, yet)
-        <br> &nbsp;&nbsp; Ex: I **have just finished** my work. (방금 내 일을 끝냈다.)
-        
-        <br> - **4. 결과 (Result):** ~해서 지금 그 상태이다.
-        <br> &nbsp;&nbsp; Ex: He **has lost** his key. (<span style="color:red;">키를 잃어버려서 지금 키가 없다.</span>)
-    </li>
-    
-    <li><b style="color:red;">★ 주의: 과거 시제와 함께 쓰지 않기 ★</b>
-        <br> - **명백한 과거 시점 부사** (yesterday, ago, last year, when...) 와는 절대 함께 쓸 수 없습니다.
-        <br> &nbsp;&nbsp; Ex: I have seen him <span style="text-decoration:line-through; color:#888;">yesterday</span>. (X)
-    </li>
-  </ul>
+  <div style="background-color:#e3f2fd; border-radius:8px; padding:15px; margin-bottom:20px; text-align:center; border:1px solid #bbdefb;">
+    <p style="margin:0; font-size:1.1em; font-weight:bold; color:#0d47a1;">
+      "과거에 시작된 일이 현재까지 영향을 미침"
+    </p>
+    <div style="margin-top:10px; font-size:0.9rem; color:#555;">
+      <span>과거 (Past)</span> 
+      <span style="color:#0d47a1; font-weight:bold;">────────── Connected ──────────▶</span> 
+      <span>현재 (Present)</span>
+    </div>
+    <p style="margin-top:8px; font-weight:bold; color:#d63384;">
+      공식: have / has + p.p. (과거분사)
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📌 핵심: 4가지 주요 용법과 힌트 단어</h4>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom:20px;">
+    <div style="border:1px solid #ffeeba; background-color:#fff3cd; padding:10px; border-radius:8px;">
+      <b style="color:#856404;">① 경험 (Experience)</b>
+      <p style="font-size:0.9rem; margin:5px 0;">"~해 본 적 있다"</p>
+      <hr style="border-top:1px dashed #856404; opacity:0.3;">
+      <span style="font-size:0.85rem; color:#856404; font-weight:bold;">Key: ever, never, before, once</span>
+      <p style="font-size:0.85rem; color:#555; margin-top:5px;">Ex: I <b>have been</b> to Paris.</p>
+    </div>
+    <div style="border:1px solid #b8daff; background-color:#cce5ff; padding:10px; border-radius:8px;">
+      <b style="color:#004085;">② 계속 (Continuation)</b>
+      <p style="font-size:0.9rem; margin:5px 0;">"쭉 ~해오고 있다"</p>
+      <hr style="border-top:1px dashed #004085; opacity:0.3;">
+      <span style="font-size:0.85rem; color:#004085; font-weight:bold;">Key: for(+기간), since(+시점)</span>
+      <p style="font-size:0.85rem; color:#555; margin-top:5px;">Ex: She <b>has lived</b> here <b>for</b> 10 years.</p>
+    </div>
+    <div style="border:1px solid #c3e6cb; background-color:#d4edda; padding:10px; border-radius:8px;">
+      <b style="color:#155724;">③ 완료 (Completion)</b>
+      <p style="font-size:0.9rem; margin:5px 0;">"막/이미 ~했다 (끝남)"</p>
+      <hr style="border-top:1px dashed #155724; opacity:0.3;">
+      <span style="font-size:0.85rem; color:#155724; font-weight:bold;">Key: just, already, yet</span>
+      <p style="font-size:0.85rem; color:#555; margin-top:5px;">Ex: I <b>have just finished</b> it.</p>
+    </div>
+    <div style="border:1px solid #f5c6cb; background-color:#f8d7da; padding:10px; border-radius:8px;">
+      <b style="color:#721c24;">④ 결과 (Result)</b>
+      <p style="font-size:0.9rem; margin:5px 0;">"~해버렸다 (그래서 지금 없음)"</p>
+      <hr style="border-top:1px dashed #721c24; opacity:0.3;">
+      <span style="font-size:0.85rem; color:#721c24; font-weight:bold;">Key: lost, gone, broken</span>
+      <p style="font-size:0.85rem; color:#555; margin-top:5px;">Ex: He <b>has lost</b> his key.<br>(그래서 지금 키가 없음)</p>
+    </div>
+  </div>
+  <h4 style="margin-bottom:10px; color:#333;">⚖️ 비교: 단순 과거 vs 현재완료 (시험 출제 1순위)</h4>
+  <div style="overflow-x:auto;">
+    <table style="font-size:0.9rem; background:white;">
+        <thead>
+            <tr style="background:#f1f3f5;">
+                <th style="width:40%;">단순 과거 (Simple Past)</th>
+                <th style="width:60%;">현재 완료 (Present Perfect)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>지나간 사실</b>만 중요함<br>(현재와 상관 X)</td>
+                <td>과거의 일이 <b>현재까지 영향</b>을 미침<br>(현재 상태가 중요)</td>
+            </tr>
+            <tr>
+                <td style="color:#d9534f;"><b>명백한 과거 부사 사용 O</b><br>(yesterday, ago, last year, when)</td>
+                <td style="color:#28a745;"><b>명백한 과거 부사 사용 절대 금지 X</b><br>(since, for 등과 어울림)</td>
+            </tr>
+            <tr>
+                <td style="background:#fff5f5; text-align:left; padding:10px;">
+                    Ex: I <b>lost</b> my key.<br>
+                    <span style="color:#777; font-size:0.85em;">(과거에 잃어버림. 지금 찾았는지는 모름)</span>
+                </td>
+                <td style="background:#f0fff4; text-align:left; padding:10px;">
+                    Ex: I <b>have lost</b> my key.<br>
+                    <span style="color:#777; font-size:0.85em;">(잃어버려서 <b>지금도 키가 없음</b>)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <div style="margin-top:20px; padding:10px; border:2px solid #dc3545; border-radius:5px; background:#fff;">
+    <b style="color:#dc3545;">🚫 절대 주의! (오답 함정)</b>
+    <p style="margin:5px 0 0 0; font-size:0.95rem;">
+      <b>Yesterday, ...ago, last..., When(언제)</b> 같은 명백한 과거 시점 단어는<br>
+      현재완료(have p.p.)와 <span style="text-decoration:underline; font-weight:bold;">절대 함께 쓸 수 없습니다.</span>
+    </p>
+    <div style="margin-top:8px; background:#f8f9fa; padding:5px; border-radius:3px; font-size:0.9rem;">
+      ❌ I <b>have seen</b> him <u>yesterday</u>. (X) <br>
+      ⭕ I <b>saw</b> him <u>yesterday</u>. (O)
+    </div>
+  </div>
   <div class="note-area">
     <button onclick="toggleNote('presentPerfect')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-presentPerfect" style="display:none;">
@@ -201,49 +254,72 @@
 </div>
 
 <div id="topic-modal" class="topic-section">
-  <h3>3) 조동사 (Modals) - 뉘앙스와 과거 시제 끝판왕</h3>
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    조동사는 동사의 의미를 <b style="color:blue;">추측, 의무, 능력, 허가</b> 등으로 변화시킵니다.
-    조동사 뒤에는 항상 **동사원형**이 옵니다.
-  </p>
- 
-  <ul class="small-note">
-    <li><b style="color:#28a745;">1. 능력 & 허가</b>
-        <br> - **Can**: ~할 수 있다 (능력) / ~해도 좋다 (허가).
-        <br> &nbsp;&nbsp; Ex: She **can** speak three languages.
-        <br> - **May**: ~일지도 모른다 (약한 추측) / ~해도 좋다 (허가).
-        <br> &nbsp;&nbsp; Ex: It **may** rain tomorrow.
-    </li>
-    
-    <li><b style="color:red;">2. 의무/필요 (강도 구분 중요!)</b>
-        <br> - **Must**: <span style="background-color:yellow;">~임에 틀림없다 (강한 추측)</span>, ~해야 한다 (강한 의무).
-        <br> - **Have to**: ~해야 한다 (외부 규칙이나 상황에 의한 의무).
-        <br> - **Should**: ~해야 한다 (충고, 조언).
-    </li>
-    
-    <li><b style="color:blue;">3. 부정문 함정 (의미가 완전히 다름)</b>
-        <br> - **Must not**: <b style="color:red;">~하면 절대 안 된다</b> (강한 금지).
-        <br> - **Don't have to**: <b style="color:blue;">~할 필요가 없다</b> (불필요).
-        <br> &nbsp;&nbsp; Ex: You **don't have to** wait. (기다릴 필요 없음)
-    </li>
-    
-    <li><b style="color:#d9534f;">4. 과거 사실에 대한 추측/후회 (Must/Should + have p.p.)</b>
-        <br> - **Must have p.p.:** ~했음에 틀림없다.
-        (Ex: He **must have forgotten** the meeting.)
-        <br> - **Cannot have p.p.:** ~했을 **리가 없다**.
-        (Ex: He **cannot have broken** it.)
-        <br> - **Should have p.p.:** ~했어야 **했는데** (후회).
-        (Ex: I **should have studied** harder.)
-    </li>
-    
-    <li><b style="color:#6c757d;">5. 과거 습관 및 공손한 표현</b>
-        <br> - **Used to**: 과거에 ~하곤 했다 (지금은 안 함).
-        (Ex: I **used to** live here.)
-        <br> - **Would rather A than B**: B하느니 차라리 A하겠다.
-        <br> - **Would/Could you ~?:** ~해 주시겠어요? (공손한 요청).
-    </li>
-  </ul>
-  
+  <h3>3) 조동사 (Modals) - 동사의 뉘앙스를 바꾸는 마법</h3>
+  <div style="background-color:#fff3e0; border-left:5px solid #ff9800; padding:12px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 동사 앞에 붙어서 <b style="color:#e65100;">능력, 허가, 의무, 추측</b> 등의 <b>'맛(뉘앙스)'</b>을 더해주는 역할을 합니다.<br>
+      <span style="display:block; margin-top:5px; font-weight:bold; color:#d32f2f;">
+        ⚠️ 절대 규칙: 조동사 뒤에는 무조건 [동사원형(R)]이 와야 합니다.
+      </span>
+    </p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom:20px;">
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <h4 style="margin:0 0 10px 0; color:#198754; border-bottom:2px solid #198754; display:inline-block;">① 능력 & 허가</h4>
+      <ul style="padding-left:20px; margin:0; color:#555; font-size:0.95rem;">
+        <li style="margin-bottom:5px;"><b>Can:</b> 할 수 있다 (능력) / 해도 좋다 (허가)</li>
+        <li><b>May:</b> 일지도 모른다 (약한 추측) / 해도 좋다 (허가)</li>
+      </ul>
+    </div>
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <h4 style="margin:0 0 10px 0; color:#dc3545; border-bottom:2px solid #dc3545; display:inline-block;">② 의무/필요 (강도 차이)</h4>
+      <div style="font-size:0.9rem; color:#333;">
+        <div style="margin-bottom:5px;"><span style="color:white; background:#dc3545; padding:2px 6px; border-radius:4px; font-size:0.8em;">최강</span> <b>Must:</b> 반드시 해야 한다 (법/규칙)</div>
+        <div style="margin-bottom:5px;"><span style="color:white; background:#fd7e14; padding:2px 6px; border-radius:4px; font-size:0.8em;">중간</span> <b>Have to:</b> 해야 한다 (상황적 의무)</div>
+        <div><span style="color:white; background:#ffc107; color:#333; padding:2px 6px; border-radius:4px; font-size:0.8em;">약함</span> <b>Should:</b> 하는 게 좋다 (충고/조언)</div>
+      </div>
+    </div>
+  </div>
+  <div style="border:2px solid #dc3545; background-color:#fff5f5; padding:15px; border-radius:8px; margin-bottom:25px;">
+    <b style="color:#dc3545; font-size:1.1em;">🚫 [시험 함정] 부정문의 의미가 완전히 달라요!</b>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:10px;">
+      <div style="flex:1; min-width:200px;">
+        <span style="font-size:1.1em; font-weight:bold; color:#333;">Must not</span><br>
+        <span style="color:red; font-weight:bold;">= 금지 (절대 안 돼!)</span><br>
+        <span style="font-size:0.9em; color:#666;">Ex: You must not smoke here.</span>
+      </div>
+      <div style="border-left:1px solid #ccc;"></div>
+      <div style="flex:1; min-width:200px;">
+        <span style="font-size:1.1em; font-weight:bold; color:#333;">Don't have to</span><br>
+        <span style="color:blue; font-weight:bold;">= 불필요 (할 필요 없어)</span><br>
+        <span style="font-size:0.9em; color:#666;">Ex: You don't have to wait.</span>
+      </div>
+    </div>
+  </div>
+  <h4 style="margin-bottom:10px; color:#333;">🕰️ 과거 사실에 대한 추측/후회 (필수 암기)</h4>
+  <p class="small-note" style="margin-top:0;">"과거에 ~했었음에 틀림없다" 처럼 지난 일을 회상할 때 씁니다.</p>
+  <div style="overflow-x:auto; margin-bottom:20px;">
+    <table style="font-size:0.9rem; background:white; width:100%;">
+        <thead>
+            <tr style="background:#f8f9fa;">
+                <th style="width:25%;">표현 (Form)</th><th style="width:35%;">의미 (Meaning)</th><th style="width:40%;">예시 (Example)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td style="color:#d63384; font-weight:bold;">Must have p.p.</td><td><b>~했음에 틀림없다</b><br><span style="font-size:0.85em; color:#666;">(과거에 대한 강한 확신)</span></td><td style="text-align:left;">He <b>must have slept</b>.<br>(그는 잤음에 틀림없다.)</td></tr>
+            <tr><td style="color:#0d6efd; font-weight:bold;">Cannot have p.p.</td><td><b>~했을 리가 없다</b><br><span style="font-size:0.85em; color:#666;">(과거에 대한 강한 부정)</span></td><td style="text-align:left;">He <b>cannot have broken</b> it.<br>(그가 깼을 리가 없다.)</td></tr>
+            <tr><td style="color:#198754; font-weight:bold;">Should have p.p.</td><td><b>~했어야 했는데 (못 했다)</b><br><span style="font-size:0.85em; color:red;">(과거에 대한 후회)</span></td><td style="text-align:left;">I <b>should have studied</b>.<br>(공부 좀 할걸...)</td></tr>
+        </tbody>
+    </table>
+  </div>
+  <div style="background:#f8f9fa; padding:10px; border-radius:5px;">
+    <b style="color:#666;">➕ 기타 주요 표현</b>
+    <ul style="margin:5px 0 0 20px; padding:0; font-size:0.9rem; color:#444;">
+      <li><b>Used to + R:</b> (과거에) ~하곤 했다. (지금은 안 함)</li>
+      <li><b>Would rather A than B:</b> B하느니 차라리 A하겠다.</li>
+      <li><b>Would / Could you ~?:</b> (공손하게) ~해 주시겠어요?</li>
+    </ul>
+  </div>
   <div class="note-area">
     <button onclick="toggleNote('modal')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-modal" style="display:none;">
@@ -255,42 +331,78 @@
 </div>
 
 <div id="topic-relative" class="topic-section">
-  <h3>4) 관계대명사 (Relative Pronouns)</h3>
-  
-  <ul class="small-note">
-    <li style="font-size:1.05em; font-weight:bold;">1. 기본 용법 (Who/Which/That)</li>
-    <li style="margin-top:5px;">
-        - <b>Who (주격):</b> <span style="color:#28a745;">The teacher who helped me is very kind.</span>
-        <br> &nbsp;&nbsp; (해석: 나를 도와준 그 선생님은 매우 친절하시다.)
+  <h3>4) 관계대명사 (Relative Pronouns) - 문장의 접착제</h3>
+  <div style="background-color:#e3f2fd; border-left:5px solid #2196f3; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <b style="color:#0d47a1; font-size:1.1em;">🤔 관계대명사, 도대체 왜 쓸까요?</b>
+    <p style="margin:10px 0 0 0; line-height:1.6; color:#333;">
+      "선생님은 친절해."라고만 하면 <b>'어떤'</b> 선생님인지 모르죠?<br>
+      이때 관계대명사를 쓰면 <b>대상을 콕 집어서 구체적으로 설명</b>해줄 수 있습니다.
+    </p>
+    <div style="margin-top:10px; background:white; padding:10px; border-radius:5px; border:1px dashed #2196f3;">
+      ❌ The teacher is kind. (어떤 선생님? 정보 부족)<br>
+      ⭕ The teacher <b style="color:#2196f3;">who helped me</b> is kind.<br>
+      &nbsp;&nbsp;&nbsp; (<b>나를 도와줬던</b> 바로 그 선생님은 친절해.)
+    </div>
+    <p style="margin-top:10px; font-size:0.9rem; color:#555;">
+      즉, <b>[접속사 + 대명사]</b> 역할을 하며 앞의 명사(선행사)를 꾸며주는 <b>긴 형용사</b>입니다.
+    </p>
+  </div>
+  <h4 style="margin-bottom:10px; color:#333;">📋 선행사(수식 대상)에 따른 짝꿍 찾기</h4>
+  <div style="overflow-x:auto; margin-bottom:25px;">
+    <table style="font-size:0.95rem; background:white; width:100%; text-align:center;">
+        <thead>
+            <tr style="background:#f8f9fa; color:#333;">
+                <th style="width:20%;">선행사</th><th style="width:25%;">주격<br><span style="font-size:0.8em; font-weight:normal;">(뒤에 동사가 옴)</span></th><th style="width:25%;">목적격<br><span style="font-size:0.8em; font-weight:normal;">(뒤에 주어+동사가 옴)</span></th><th style="width:30%;">소유격<br><span style="font-size:0.8em; font-weight:normal;">(~의)</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>사람</b></td><td style="color:#d32f2f; font-weight:bold;">who</td><td style="color:#d32f2f;">whom / who</td><td rowspan="2" style="color:#6c757d; font-weight:bold; vertical-align:middle;">whose</td>
+            </tr>
+            <tr>
+                <td><b>사물/동물</b></td><td style="color:#1976d2; font-weight:bold;">which</td><td style="color:#1976d2;">which</td>
+            </tr>
+            <tr>
+                <td><b>사람+사물/만능</b></td><td colspan="2" style="color:#2e7d32; font-weight:bold;">that</td><td style="background:#f1f1f1; color:#aaa;">(없음)</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <ul class="small-note" style="line-height:1.8;">
+    <li style="margin-bottom:15px;">
+        <b style="color:#d32f2f;">① Who (사람 수식)</b><br> - 주격: The teacher <b style="color:#d32f2f;">who</b> helped me is kind.<br> - 목적격: The woman <b style="color:#d32f2f;">whom</b> I met is my boss.
     </li>
-    <li>
-        - <b>Whom (목적격):</b> <span style="color:#28a745;">The woman whom I met yesterday is my boss.</span>
-        <br> &nbsp;&nbsp; (해석: 내가 어제 만났던 그 여성분은 나의 상사이다.)
+    <li style="margin-bottom:15px;">
+        <b style="color:#1976d2;">② Which (사물 수식)</b><br> - The document <b style="color:#1976d2;">which</b> arrived late needs checking.
     </li>
-    <li>
-        - <b>Which (사물):</b> <span style="color:#28a745;">The document which arrived late needs checking.</span>
-        <br> &nbsp;&nbsp; (해석: 늦게 도착한 그 문서는 확인이 필요하다.)
-    </li>
-    <li>
-        - <b>That (모두):</b> <span style="color:#28a745;">The phone that I use every day is broken.</span>
-        <br> &nbsp;&nbsp; (해석: 내가 매일 사용하는 그 휴대폰이 고장 났다.)
-    </li>
-    
-    <li style="margin-top:15px;"><b style="color:red; font-size:1.1em;">2. What의 특별 용법 (명사절)</b>
-        <br> - **What** = **the thing which**. 앞에 선행사가 절대 <span style="color:red;">없어야</span> 합니다.
-        <br> - Ex: I understand <b style="color:blue;">what you said</b>. (해석: 네가 <span style="color:blue;">말한 것</span>을 이해한다.)
-    </li>
-    
-    <li style="margin-top:10px;"><b style="color:green;">3. 계속적 용법 (콤마 ,)</b>
-        <br> - 역할: 선행사에 대한 **부가 설명**. 콤마 뒤에는 **that**을 쓸 수 없습니다.
-        <br> - Ex: I bought a new phone, <b style="color:blue;">which</b> was very expensive.
+    <li style="margin-bottom:15px;">
+        <b style="color:#2e7d32;">③ That (만능 해결사)</b><br> - 사람, 사물 가리지 않고 쓸 수 있습니다.<br> - The phone <b style="color:#2e7d32;">that</b> I use every day is broken.
     </li>
   </ul>
-  
+  <div style="background-color:#fff3cd; border:2px solid #ffeeba; padding:15px; border-radius:10px; margin-top:20px;">
+    <b style="color:#856404; font-size:1.1em;">★ What: 명사를 삼켜버린 관계대명사</b>
+    <p style="margin:5px 0 10px 0; font-size:0.95rem; color:#555;">
+        다른 애들과 달리 <b>꾸며줄 명사(선행사)가 필요 없습니다.</b> 이미 자기 안에 'the thing(것)'이 들어있거든요.
+    </p>
+    <div style="background:white; padding:10px; border-radius:5px; border:1px solid #e0e0e0; text-align:center;">
+        <b>What = The thing(s) which (~하는 것)</b>
+    </div>
+    <p style="margin-top:10px; font-size:0.9rem;">
+        Ex: I understand <b style="color:#d39e00;">what</b> you said.<br>&nbsp;&nbsp;&nbsp;&nbsp; (= 나는 네가 <b>말한 것</b>을 이해해.)
+    </p>
+  </div>
+  <div style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px;">
+    <h4 style="margin:0 0 10px 0; color:#555;">쉼표(,)가 있는 계속적 용법</h4>
+    <p class="small-note">대상을 콕 집는 게 아니라, <b>"아, 그런데 걔는 말이야~"</b> 하고 <b>부가적인 설명</b>을 덧붙일 때 씁니다.</p>
+    <ul class="small-note">
+        <li>I bought a new phone, <b style="color:#007bff;">which</b> was expensive.<br><span style="color:#777;">(새 폰을 샀는데, <b>그런데 그게</b> 비쌌어.)</span></li>
+        <li style="margin-top:5px; color:#d32f2f; font-weight:bold;">🚨 주의: 콤마(,) 뒤에는 절대 'that'을 쓸 수 없습니다!</li>
+    </ul>
+  </div>
   <div class="note-area">
     <button onclick="toggleNote('relative')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-relative" style="display:none;">
-      <textarea id="note-input-relative" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-relative" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('relative')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-relative" class="note-display"></div>
@@ -298,44 +410,56 @@
 </div>
 
 <div id="topic-relativeAdverb" class="topic-section">
-  <h3>5) 관계 부사 (Relative Adverbs) - 뒤에는 완전한 문장!</h3>
-  
-  <ul class="small-note">
-    <li><b style="color:red;">핵심 특징:</b> 관계대명사와 달리 뒤에 항상 **완전한 문장 (주어 + 동사 + 목적어/보어)**이 옵니다.</li>
-    <li>대용: **전치사 + 관계대명사**로 바꿔 쓸 수 있습니다.</li>
-  </ul>
-  
-  <ul class="small-note">
-    <li style="margin-top:10px;"><b style="color:#1976d2;">1. When (시간)</b>
-        <br> - 선행사: time, day, year, moment, season 등
-        <br> - Ex: I remember the day **when** we first met.
-        <br> &nbsp;&nbsp; (해석: 우리가 처음 만났던 **그날**을 기억한다.)
-    </li>
-    
-    <li><b style="color:#1976d2;">2. Where (장소)</b>
-        <br> - 선행사: place, city, house, school, town 등
-        <br> - Ex: This is the city **where** I grew up.
-        <br> &nbsp;&nbsp; (해석: 여기가 내가 자란 **도시**이다.)
-    </li>
-    
-    <li><b style="color:#1976d2;">3. Why (이유)</b>
-        <br> - 선행사: reason
-        <br> - Ex: Tell me the reason **why** he left early.
-        <br> &nbsp;&nbsp; (해석: 그가 일찍 떠난 **이유**를 말해줘.)
-    </li>
-    
-    <li><b style="color:#d9534f;">4. How (방법) - [함정 주의!]</b>
-        <br> - 선행사: way
-        <br> - 규칙: **The way**와 **how**는 절대 함께 쓰지 않습니다. (둘 중 하나만 사용)
-        <br> &nbsp;&nbsp; Ex: This is **the way** he solved the problem. (O)
-        <br> &nbsp;&nbsp; Ex: This is **how** he solved the problem. (O)
-    </li>
-  </ul>
-  
+  <h3>5) 관계 부사 (Relative Adverbs) - 완전한 문장의 연결고리</h3>
+  <div style="background-color:#e8f5e9; border-left:5px solid #2e7d32; padding:15px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 접속사와 부사 역할을 동시에 하며, 뒤에 <b style="color:#d32f2f; text-decoration:underline;">완전한 문장</b>(주어+동사+목적어/보어)이 옵니다.<br>
+      <span style="display:block; margin-top:8px; background:white; padding:5px; border-radius:4px; border:1px dashed #2e7d32; font-weight:bold; text-align:center; color:#1b5e20;">
+        공식: 관계부사 = 전치사 (in, at, on, for) + 관계대명사 (which)
+      </span>
+    </p>
+  </div>
+  <h4 style="margin-bottom:10px; color:#333;">🔄 한눈에 보는 변환 공식 (암기 필수!)</h4>
+  <div style="overflow-x:auto; margin-bottom:25px;">
+    <table style="font-size:0.9rem; background:white; width:100%; text-align:center;">
+        <thead>
+            <tr style="background:#f1f3f5; color:#333;">
+                <th style="width:15%;">구분</th><th style="width:20%;">관계부사</th><th style="width:30%;">선행사 (힌트)</th><th style="width:35%;">전치사 + 관계대명사</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><b>시간</b></td><td style="color:#1976d2; font-weight:bold;">When</td><td>time, day, year, moment</td><td><b>at / on / in</b> + which</td></tr>
+            <tr><td><b>장소</b></td><td style="color:#1976d2; font-weight:bold;">Where</td><td>place, house, city, park</td><td><b>at / on / in</b> + which</td></tr>
+            <tr><td><b>이유</b></td><td style="color:#1976d2; font-weight:bold;">Why</td><td>the reason</td><td><b>for</b> + which</td></tr>
+            <tr><td><b>방법</b></td><td style="color:#d32f2f; font-weight:bold;">How</td><td>the way</td><td><b>in</b> + which</td></tr>
+        </tbody>
+    </table>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#0d47a1; font-size:1.05em;">① When (시간) & Where (장소)</b>
+      <ul style="margin:10px 0 0 20px; padding:0; color:#555; line-height:1.6;">
+        <li><b>When:</b> I remember the day <b style="color:#0d47a1;">when</b> we first met. <span style="font-size:0.85em; color:#777;">(= on which)</span></li>
+        <li><b>Where:</b> This is the city <b style="color:#0d47a1;">where</b> I grew up. <span style="font-size:0.85em; color:#777;">(= in which)</span></li>
+      </ul>
+    </div>
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#d32f2f; font-size:1.05em;">② Why (이유) & How (방법) ★함정 주의★</b>
+      <ul style="margin:10px 0 0 20px; padding:0; color:#555; line-height:1.6;">
+        <li><b>Why:</b> Tell me the reason <b style="color:#0d47a1;">why</b> he left. <span style="font-size:0.85em; color:#777;">(= for which)</span></li>
+        <li style="margin-top:15px; list-style:none;">
+            <div style="background:#fff5f5; border:2px solid #ffcdd2; padding:10px; border-radius:5px;">
+                <b style="color:#c62828;">🚨 절대 주의: The way와 How는 공존 불가!</b>
+                <p style="margin:5px 0 0 0; font-size:0.9rem;">둘 중 <b>하나만</b> 써야 합니다. (시험 단골 출제)</p>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="note-area">
     <button onclick="toggleNote('relativeAdverb')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-relativeAdverb" style="display:none;">
-      <textarea id="note-input-relativeAdverb" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-relativeAdverb" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('relativeAdverb')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-relativeAdverb" class="note-display"></div>
@@ -343,47 +467,77 @@
 </div>
 
 <div id="topic-comparison" class="topic-section">
-  <h3>6) 비교급 & 최상급 (Comparison) - 형태 변화와 강조</h3>
-  
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    **기본:** 두 대상을 비교할 때는 **비교급**, 세 대상 이상 중 최고를 나타낼 때는 **최상급**을 사용합니다.
-  </p>
-  
-  <ul class="small-note">
-    <li><b style="color:#d9534f; font-size:1.1em;">1. 규칙 변화 (음절 기준)</b>
-        <br> - **1~2음절 (짧은 단어):** 원급 + **-er** (비교급), 원급 + **-est** (최상급)
-        <br> &nbsp;&nbsp; Ex: Tall → Tall**er** / Tall**est** | Easy → Easi**er** / Easi**est**
-        <br> - **3음절 이상 (긴 단어):** **more** + 원급, **most** + 원급
-        <br> &nbsp;&nbsp; Ex: Difficult → **more** difficult / **most** difficult
-    </li>
-    
-    <li><b style="color:red; font-size:1.1em;">2. 불규칙 변화 (필수 암기)</b>
-        <br> - Good/Well → **Better** → **Best**
-        <br> - Bad/Ill → **Worse** → **Worst**
-        <br> - Much/Many → **More** → **Most**
-        <br> - Little → **Less** → **Least**
-    </li>
+  <h3>6) 비교급 & 최상급 (Comparison) - 더 ~한 것 vs 가장 ~한 것</h3>
 
-    <li><b style="background-color:yellow;">3. 강조 표현 (훨씬/단연코)</b>
-        <br> - **비교급 강조 (훨씬):** 비교급 앞에 <b style="color:blue;">much, even, still, far, a lot</b>을 사용합니다.
-        <br> &nbsp;&nbsp; Ex: This laptop is **much faster** than mine.
-        <br> - **최상급 강조 (단연코):** 최상급 앞에 **by far** 또는 **the very**를 사용합니다.
-        <br> &nbsp;&nbsp; Ex: This is **by far the best** option.
-        <br> - <b style="color:red;">주의:</b> **very**는 비교급을 절대 강조할 수 없습니다!
-    </li>
+  <div style="background-color:#e8eaf6; border-left:5px solid #3f51b5; padding:15px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 대상을 서로 견주어 표현하는 방법입니다.<br>
+      <span style="color:#3f51b5;">● 비교급:</span> 둘 사이를 비교 ("더 ~한")<br>
+      <span style="color:#d32f2f;">● 최상급:</span> 셋 이상 중에서 으뜸 ("가장 ~한")
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📏 형태 만드는 법 (Rules)</h4>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom:25px;">
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#28a745;">A. 규칙 변화</b>
+      <ul style="padding-left:20px; margin:5px 0 0 0; font-size:0.9rem; line-height:1.6;">
+        <li><b>짧은 단어 (1-2음절):</b><br> -er / -est<br> (tall → taller → tallest)</li>
+        <li style="margin-top:5px;"><b>긴 단어 (3음절~):</b><br> more ~ / most ~<br> (beautiful → more beautiful → most beautiful)</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#dc3545;">B. 불규칙 변화 (암기!)</b>
+      <ul style="padding-left:20px; margin:5px 0 0 0; font-size:0.9rem; line-height:1.6;">
+        <li>good/well → <b>better</b> → <b>best</b></li>
+        <li>bad/ill → <b>worse</b> → <b>worst</b></li>
+        <li>many/much → <b>more</b> → <b>most</b></li>
+        <li>little → <b>less</b> → <b>least</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">🔥 강조 표현: 뉘앙스를 살리는 법</h4>
+  <div style="background-color:#fff3e0; border:1px solid #ffe0b2; padding:15px; border-radius:8px;">
     
-    <li><b style="color:#28a745;">4. 주요 비교 구문</b>
-        <br> - **The 비교급, the 비교급:** ~하면 할수록 더 ~하다.
-        <br> &nbsp;&nbsp; Ex: **The sooner** you start, **the easier** it will be.
-        <br> - **One of the 최상급 + 복수명사:** 가장 ~한 것들 중 하나.
-        <br> &nbsp;&nbsp; Ex: She is one of **the tallest students**.
-    </li>
-  </ul>
+    <div style="margin-bottom:15px; padding-bottom:15px; border-bottom:1px dashed #ccc;">
+      <b style="color:#e65100; font-size:1.05em;">① 비교급 강조 ("훨씬 더")</b>
+      <p style="margin:5px 0; font-size:0.9rem; color:#555;">
+        단순히 "더 ~하다"가 아니라 <b>"압도적으로/훨씬 더 ~하다"</b>라고 차이를 강조할 때 씁니다.
+      </p>
+      <div style="background:white; padding:8px; border-radius:5px; margin-top:5px;">
+        <span style="color:#e65100; font-weight:bold;">[much, even, still, far, a lot]</span> + 비교급
+      </div>
+      <p style="font-size:0.85rem; color:#d32f2f; margin-top:5px;">
+        🚫 주의: <b>Very</b>는 비교급을 꾸밀 수 없습니다! (Very faster X)
+      </p>
+      <p style="font-size:0.9rem; margin-top:5px;">
+        Ex: It is <b style="color:#e65100;">much</b> harder than I thought.<br>
+        (내가 생각했던 것보다 <b>훨씬 더</b> 어렵다.)
+      </p>
+    </div>
+
+    <div>
+      <b style="color:#5e35b1; font-size:1.05em;">② 최상급 강조 ("단연코/가장")</b>
+      <p style="margin:5px 0; font-size:0.9rem; color:#555;">
+        "최고 중에서도 <b>단연코</b> 최고다"라고 강조할 때 씁니다.
+      </p>
+      <div style="background:white; padding:8px; border-radius:5px; margin-top:5px;">
+        <span style="color:#5e35b1; font-weight:bold;">[by far, quite, the very]</span> + 최상급
+      </div>
+      <p style="font-size:0.9rem; margin-top:5px;">
+        Ex: She is <b style="color:#5e35b1;">by far</b> the best singer.<br>
+        (그녀는 <b>단연코</b> 최고의 가수다.)
+      </p>
+    </div>
+  </div>
   
   <div class="note-area">
     <button onclick="toggleNote('comparison')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-comparison" style="display:none;">
-      <textarea id="note-input-comparison" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-comparison" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('comparison')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-comparison" class="note-display"></div>
@@ -391,123 +545,118 @@
 </div>
 
 <div id="topic-preposition" class="topic-section">
-  <h3>7) 전치사 (Prepositions)</h3>
-  <ul class="small-note">
-    <li>
-      <b style="color:#1a73e8;">시간(Time):</b> 
-      <b style="color:#d32f2f;">at</b>(정확한 시각), 
-      <b style="color:#1976d2;">on</b>(특정 날짜·요일), 
-      <b style="color:#388e3c;">in</b>(월·계절·연도·긴 시간 범위)
-      <br>
-      <span style="color:#555;">
-        • <b>at</b> 7 o’clock / at midnight / at lunchtime  
-        <br>• <b>on</b> Monday / on July 15 / on Christmas Day  
-        <br>• <b>in</b> March / in 2025 / in winter / in the morning  
-      </span>
-    </li>
+  <h3>7) 전치사 (Prepositions) - 시간과 공간의 나침반</h3>
+  
+  <div style="background-color:#e8f5e9; border-left:5px solid #4caf50; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 핵심 이미지 (Core Image):</b><br>
+      • <b style="color:#d32f2f;">At (점):</b> 콕 찍는 느낌 🎯 (하나의 지점, 시각)<br>
+      • <b style="color:#1976d2;">On (면):</b> 딱 붙어있는 느낌 ✋ (표면 접촉, 특정한 날)<br>
+      • <b style="color:#388e3c;">In (공간):</b> 푹 들어가는 느낌 📦 (내부, 넓은 공간/기간)
+    </p>
+  </div>
 
-    <li>
-      <b style="color:#1a73e8;">기간(Duration):</b> 
-      <b style="color:#d32f2f;">for</b>(숫자 기간),  
-      <b style="color:#1976d2;">during</b>(특정 기간·이벤트)
-      <br>
-      <span style="color:#555;">
-        • I stayed there <b>for</b> 3 days.
-        <br>• She slept <b>for</b> ten hours.  
-        <br>• No phones <b>during</b> class.  
-        <br>• Many animals migrate <b>during</b> winter.
+  <h4 style="margin-bottom:10px; color:#333;">⏰ 시간 (Time) - 좁은 곳에서 넓은 곳으로</h4>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom:20px;">
+    
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#d32f2f;">At (시각/순간)</b><br>
+      <span style="font-size:0.9rem; color:#555; line-height:1.6;">
+        at 7 o'clock (7시에)<br>
+        at noon (정오에)<br>
+        at that moment (그 순간에)
       </span>
-    </li>
+    </div>
 
-    <li>
-      <b style="color:#1a73e8;">장소(Place):</b> 
-      <b style="color:#d32f2f;">at</b>(지점·점),  
-      <b style="color:#1976d2;">on</b>(표면·접촉),  
-      <b style="color:#388e3c;">in</b>(3D 공간·지역·큰 장소)
-      <br>
-      <span style="color:#555;">
-        • She is <b>at</b> the bus stop.
-        <br>• He is waiting <b>at</b> the door.  
-        <br>• The book is <b>on</b> the table.
-        <br>• There is a crack <b>on</b> the wall.  
-        <br>• They live <b>in</b> Seoul.  
-        <br>• I found it <b>in</b> the box.
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#1976d2;">On (날짜/요일)</b><br>
+      <span style="font-size:0.9rem; color:#555; line-height:1.6;">
+        on Monday (월요일에)<br>
+        on May 5th (5월 5일에)<br>
+        on Christmas Day
       </span>
+    </div>
+
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#388e3c;">In (월/년/계절)</b><br>
+      <span style="font-size:0.9rem; color:#555; line-height:1.6;">
+        in 2025 (2025년에)<br>
+        in December (12월에)<br>
+        in the morning (아침에)
+      </span>
+    </div>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">🗺️ 장소 (Place) - 점, 면, 공간의 차이</h4>
+  <ul class="small-note" style="line-height:1.8;">
+    <li><b style="color:#d32f2f;">At (지점/기능):</b> 지도상의 한 점이나 본래 목적.<br>
+        Ex: at the bus stop (정류장에서), at school (학교에서-공부하러)
+    </li>
+    <li><b style="color:#1976d2;">On (표면/접촉):</b> 어떤 면에 붙어 있을 때 (위/옆/아래 상관없음).<br>
+        Ex: on the table (탁자 위에), on the wall (벽에 붙어서)
+    </li>
+    <li><b style="color:#388e3c;">In (내부):</b> 경계가 있는 공간 안.<br>
+        Ex: in the box (상자 안에), in Seoul (서울에), in the car (차 안에)
     </li>
   </ul>
+
+  <div style="margin-top:20px; border-top:1px dashed #ccc; padding-top:15px;">
+    <h4 style="margin:0 0 10px 0; color:#333;">⚖️ 헷갈리는 전치사 구분 (시험 단골)</h4>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+      <div style="background:#fff3e0; padding:10px; border-radius:6px;">
+        <b style="color:#e65100;">① 기간 (How long?)</b>
+        <ul style="margin:5px 0 0 15px; padding:0; font-size:0.9rem; color:#555;">
+          <li><b>For + 숫자:</b><br> for 3 days (3일 동안)</li>
+          <li><b>During + 명사(사건):</b><br> during the vacation (방학 동안)</li>
+        </ul>
+      </div>
+
+      <div style="background:#f3e5f5; padding:10px; border-radius:6px;">
+        <b style="color:#7b1fa2;">② 완료 vs 계속 (~까지)</b>
+        <ul style="margin:5px 0 0 15px; padding:0; font-size:0.9rem; color:#555;">
+          <li><b>By (완료/기한):</b><br> Finish <b>by</b> 6. (6시까지 끝내)</li>
+          <li><b>Until (계속):</b><br> Wait <b>until</b> 6. (6시까지 쭉 기다려)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('preposition')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-preposition" style="display:none;">
-    <textarea id="note-input-preposition" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-preposition" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('preposition')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-preposition" class="note-display"></div>
   </div>
 </div>
-
-<div id="topic-conjunction" class="topic-section">
-  <h3>8) 접속사 (Conjunctions) - 문장 연결의 논리</h3>
-  <ul class="small-note">
-    <li><b style="color:red; font-size:1.1em;">1. 최다 혼동: Because vs. Because of</b>
-        <br> - **Because (접속사):** 뒤에 <span style="color:green;">주어 + 동사</span> (문장)이 와야 함.
-        <br> &nbsp;&nbsp; Ex: We stayed home <b style="color:red;">because</b> <span style="color:green;">it was raining</span>.
-        <br> - **Because of (전치사구):** 뒤에 <span style="color:red;">명사(구)</span>가 와야 함.
-        <br> &nbsp;&nbsp; Ex: We stayed home <b style="color:red;">because of</b> <span style="color:red;">the rain</span>.
-    </li>
-    
-    <li><b style="color:blue;">2. 명령문과 함께 쓰는 등위 접속사</b>
-        <br> - Study hard, <b style="color:#28a745;">and</b> you will succeed. (<span style="color:#28a745;">~해라, 그러면</span> ~할 것이다)
-        <br> - Hurry up, <b style="color:#d9534f;">or</b> you will be late. (<span style="color:#d9534f;">~해라, 그렇지 않으면</span> ~할 것이다)
-    </li>
-    
-    <li><b style="color:#28a745;">3. 상관 접속사 (짝꿍)</b>
-        <br> - **Both A and B** (A와 B 둘 다)
-        <br> - **Either A or B** (A나 B 둘 중 하나)
-        <br> - **Neither A nor B** (A도 B도 아니다)
-        <br> - **Not only A but also B** (A뿐만 아니라 B도)
-    </li>
-  </ul>
-  <div class="note-area">
-    <button onclick="toggleNote('conjunction')">📝 나만의 설명 추가/수정</button>
-    <div id="note-edit-conjunction" style="display:none;">
-      <textarea id="note-input-conjunction" placeholder="메모를 입력하세요."></textarea>
-      <button onclick="saveNote('conjunction')" style="margin-top:5px;">저장하기</button>
-    </div>
-    <div id="note-display-conjunction" class="note-display"></div>
-  </div>
-</div>
-
 <div id="topic-conditionalPresent" class="topic-section">
-  <h3>9-1) 가정법 현재 / 조건문 (미래의 가능성/현재의 진리)</h3>
-  
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    **핵심 공식:** <b style="color:blue;">If + 주어 + 현재형</b>, <b style="color:#d9534f;">주어 + will/can/must + 동사원형</b>
-  </p>
-  
-  <ul class="small-note">
-    <li><b style="color:#1976d2;">1. 미래의 가능성 (First Conditional)</b>
-        <br> - Ex 1: If it **rains** tomorrow, we **will cancel** the trip. (내일 비가 오면, 여행을 취소할 것이다.)
-        <br> - Ex 2: If he **comes** early, I **can talk** to him. (그가 일찍 오면, 나는 그와 이야기할 수 있다.)
-        <br> - Ex 3: If you **need** help, **call** me. (도움이 필요하면, 나에게 전화하세요. [주절에 명령문 사용])
-    </li>
-    
-    <li><b style="color:#28a745;">2. 불변의 진리 (Zero Conditional)</b>
-        <br> - 공식: If + 현재형, 현재형 (일반적/과학적 사실)
-        <br> - Ex 1: If you **heat** ice, it **melts**. (얼음을 가열하면, 그것은 녹는다.)
-        <br> - Ex 2: If the light **is** red, you **stop**. (불이 빨간색이면, 멈춘다.)
-        <br> - Ex 3: If plants **don't get** water, they **die**. (식물이 물을 얻지 못하면, 죽는다.)
-    </li>
-    
-    <li><b style="color:red;">★ 핵심 규칙: 시제 함정 ★</b>
-        <br> **시간/조건**을 나타내는 부사절에서는 <span style="background-color:yellow; font-weight:bold;">현재 시제가 미래 시제를 대신합니다.</span>
-        <br> &nbsp;&nbsp; (Ex: If it **rains** tomorrow, ... - 'will rain' (X))
-    </li>
-  </ul>
-  
+  <h3>9-1) 가정법 현재 / 조건문 - "일어날 법한 미래와 진리"</h3>
+  <div style="background-color:#fff3e0; border-left:5px solid #ff9800; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <b style="color:#e65100; font-size:1.1em;">🔥 [시험 0순위] 시제 일치의 예외 규칙</b>
+    <p style="margin:10px 0 0 0; line-height:1.6; color:#333;">
+      미래에 일어날 일이라도, <b>조건(If)</b>이나 <b>시간(When)</b> 부사절 안에서는 <b style="color:#d32f2f; text-decoration:underline;">반드시 '현재 시제'가 '미래 시제'를 대신합니다.</b>
+    </p>
+    <div style="margin-top:10px; background:white; padding:8px; border-radius:5px; border:1px dashed #ff9800; font-size:0.95rem;">
+      ❌ If it <s>will rain</s> tomorrow... <br>
+      ⭕ If it <b style="color:#d32f2f;">rains</b> tomorrow...
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom:25px;">
+    <div style="border:1px solid #28a745; border-radius:8px; padding:15px; background:#f1f8e9;">
+      <h4 style="margin:0 0 10px 0; color:#2e7d32;">① 불변의 진리</h4>
+      <p style="font-size:0.9rem; color:#555;">If you <b>heat</b> ice, it <b>melts</b>. (100% 팩트)</p>
+    </div>
+    <div style="border:1px solid #007bff; border-radius:8px; padding:15px; background:#f0f8ff;">
+      <h4 style="margin:0 0 10px 0; color:#0056b3;">② 미래의 가능성</h4>
+      <p style="font-size:0.9rem; color:#555;">If he <b>comes</b> early, I <b>will tell</b> him.</p>
+    </div>
+  </div>
   <div class="note-area">
     <button onclick="toggleNote('conditionalPresent')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-conditionalPresent" style="display:none;">
-      <textarea id="note-input-conditionalPresent" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-conditionalPresent" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('conditionalPresent')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-conditionalPresent" class="note-display"></div>
@@ -515,35 +664,106 @@
 </div>
 
 <div id="topic-conditionalPast" class="topic-section">
-  <h3>9-2) 가정법 과거 (현재 사실 반대)</h3>
+  <h3>9-2) 가정법 과거 - "현재 사실의 반대"를 상상함</h3>
   
-  <p class="small-note" style="background:#fff0f0; padding:8px; border-radius:5px;">
-    **핵심 공식:** <b style="color:red;">If + S + 과거동사(be->were)</b>, <b style="color:blue;">S + would/could/might + R(원형)</b>
-  </p>
- 
-  <ul class="small-note">
-    <li>**개념:** <span style="color:#d9534f;">**현재 사실**</span>과 반대되거나 실현 불가능한 일을 <b style="color:blue;">가정</b>할 때 씁니다.</li>
-    <li>**해석:** (지금) <b style="color:red;">"~라면, ~할 텐데."</b></li>
-    
-    <li><b style="color:#1976d2;">1. Would/Could/Might 활용 예시 (현재의 결과)</b>
-        <br> - (Would 예시 1) If I **had** a map, I **would tell** you the way. (지금 지도가 있다면 알려줄 텐데.)
-        <br> - (Would 예시 2) If she **were** here, she **would agree** with us. (그녀가 여기 있다면 동의할 텐데.)
-        <br> - (Could 예시 1) If I **knew** his name, I **could introduce** him. (내가 그의 이름을 안다면 소개할 수 있을 텐데.)
-        <br> - (Could 예시 2) If the tickets **were** cheaper, I **could buy** them. (표가 더 싸다면 살 수 있을 텐데.)
-        <br> - (Might 예시 1) If he **tried** harder, he **might succeed**. (그가 더 열심히 노력한다면 성공할지도 모른다.)
-        <br> - (Might 예시 2) If I **didn't have** to work, I **might join** the trip. (일하지 않아도 된다면 여행에 합류할지도 모른다.)
+  <div style="background-color:#fff5f5; border-left:5px solid #e03131; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 지금 일어날 수 없는 일이나, 현재 상황과 <b style="color:#c92a2a;">반대되는 일</b>을 상상할 때 씁니다.<br>
+      <span style="font-size:0.9rem; color:#555;">(이름은 '과거'지만, 해석은 <b style="text-decoration:underline;">현재</b>로 합니다!)</span>
+    </p>
+    <div style="margin-top:10px; background:white; padding:10px; border-radius:5px; border:1px dashed #e03131; text-align:center;">
+      <b style="color:#c92a2a; font-size:1.1em;">If + 주어 + <span style="background:#ffe3e3;">과거동사(were)</span>, 주어 + <span style="background:#e7f5ff;">우/쿠/슈/마</span> + 원형</b><br>
+      <span style="font-size:0.85em; color:#888;">* 우쿠슈마 = would, could, should, might</span>
+    </div>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">⚖️ 뉘앙스 비교: "할 수 있는 일" vs "못 하는 일"</h4>
+  <div style="overflow-x:auto; margin-bottom:25px;">
+    <table style="font-size:0.9rem; background:white; width:100%; border-collapse:collapse;">
+        <thead>
+            <tr style="background:#f8f9fa; color:#333;">
+                <th style="padding:10px; border-bottom:2px solid #ddd; width:50%;">가정법 현재 (단순 조건)</th>
+                <th style="padding:10px; border-bottom:2px solid #e03131; width:50%; color:#e03131;">가정법 과거 (상상)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding:10px; border-right:1px solid #eee; vertical-align:top;">
+                    <b style="color:#0d6efd;">가능성 있음 (Real)</b><br>
+                    "혹시 시간 있으면..."
+                </td>
+                <td style="padding:10px; vertical-align:top;">
+                    <b style="color:#e03131;">가능성 거의 없음 (Unreal)</b><br>
+                    "시간이 (없지만) 있다면..."
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:10px; border-right:1px solid #eee; background:#f0f8ff;">
+                    If I <b>have</b> time, I <b>will</b> go.<br>
+                    <span style="font-size:0.85em; color:#666;">(시간이 날 수도 있음. 나면 갈게.)</span>
+                </td>
+                <td style="padding:10px; background:#fff5f5;">
+                    If I <b>had</b> time, I <b>would</b> go.<br>
+                    <span style="font-size:0.85em; color:#666;">(지금 <b>시간이 없어</b>. 그래서 못 가.)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <div style="background-color:#f3f0ff; padding:10px; border-radius:8px; margin-bottom:25px; border:1px solid #d0bfff;">
+    <b style="color:#5f3dc4;">💡 Tip: 왜 과거형이 더 공손할까요?</b>
+    <p style="margin:5px 0 0 0; font-size:0.9rem; color:#444;">
+      가정법 과거는 현실과 <b>거리</b>를 두는 표현입니다.<br>
+      상대방에게 "당장 해!"(현재)라고 하기보다, <br>
+      <b>"혹시라도(If) 할 수 있다면(Could)..."</b>이라며 한 발 물러서서 말하기 때문에 더 정중하게 들립니다.
+      <br>→ <i>Could you help me? (Can you보다 공손함)</i>
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📝 조동사별 뉘앙스 차이와 예문</h4>
+  <ul class="small-note" style="line-height:1.7;">
+    <li style="margin-bottom:15px;">
+        <span style="background:#e7f5ff; color:#0056b3; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Would (의지/추측: ~할 텐데)</span>
+        <br> - If I <b>were</b> rich, I <b>would buy</b> a boat.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(내가 부자라면 보트를 살 텐데. → 현실: 부자 아님)</span>
+        <br> - If I <b>were</b> you, I <b>wouldn't do</b> that.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(내가 너라면 그걸 안 할 거야. → 충고)</span>
     </li>
-    
-    <li><b style="color:#28a745;">2. I wish / As if 구문</b>
-        <br> - **I wish + 가정법 과거:** (지금) ~라면 좋을 텐데. (Ex: I wish I **were** taller.)
-        <br> - **as if + 가정법 과거:** 마치 ~인 것처럼. (Ex: She acts as if she **owned** the company.)
+    <li style="margin-bottom:15px;">
+        <span style="background:#e3fafc; color:#0c8599; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Could (능력/가능성: ~할 수 있을 텐데)</span>
+        <br> - If I <b>knew</b> the answer, I <b>could tell</b> you.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(답을 안다면 말해줄 수 있을 텐데. → 현실: 몰라서 말 못 해줌)</span>
+        <br> - If the ticket <b>were</b> cheaper, I <b>could buy</b> it.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(표가 더 싸다면 살 수 있을 텐데.)</span>
+    </li>
+    <li style="margin-bottom:15px;">
+        <span style="background:#fff3bf; color:#b17a05; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Might (약한 추측: ~할지도 모를 텐데)</span>
+        <br> - If he <b>tried</b> harder, he <b>might succeed</b>.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(그가 더 노력한다면 성공할지도 모르는데. → 현실: 노력 안 해서 성공 불투명)</span>
+        <br> - If I <b>didn't have</b> to work, I <b>might join</b> you.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(일 안 해도 된다면 너랑 같이 갈지도 모르는데.)</span>
     </li>
   </ul>
-  
+
+  <div style="border-top:1px dashed #ccc; padding-top:15px; margin-top:20px;">
+    <b style="color:#333;">➕ 특수 가정법 구문</b>
+    <ul class="small-note" style="margin-top:10px;">
+        <li style="margin-bottom:10px;">
+            <b>I wish + 가정법 과거:</b> "(지금) ~라면 좋을 텐데" (실현 불가능한 소망)
+            <br>Ex: I wish I <b>were</b> taller. <span style="color:#888; font-size:0.9em;">(키가 더 컸으면 좋겠는데..)</span>
+        </li>
+        <li>
+            <b>As if + 가정법 과거:</b> "마치 (지금) ~인 것처럼" (사실이 아닌데 그런 척)
+            <br>Ex: He acts as if he <b>knew</b> everything. <span style="color:#888; font-size:0.9em;">(쥐뿔도 모르면서 다 아는 척한다.)</span>
+        </li>
+    </ul>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('conditionalPast')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-conditionalPast" style="display:none;">
-      <textarea id="note-input-conditionalPast" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-conditionalPast" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('conditionalPast')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-conditionalPast" class="note-display"></div>
@@ -551,117 +771,176 @@
 </div>
 
 <div id="topic-conditionalPastPerfect" class="topic-section">
-  <h3>9-3) 가정법 과거완료 (과거 사실 반대)</h3>
+  <h3>9-3) 가정법 과거완료 - "지나간 일에 대한 후회"</h3>
   
-  <p class="small-note" style="background:#fee; padding:8px; border-radius:5px;">
-    **핵심 공식:** <b style="color:red;">If + S + had p.p.</b>, <b style="color:blue;">S + would/could/might + have p.p.</b>
-  </p>
-  
-  <ul class="small-note">
-    <li>**개념:** <span style="color:#d9534f;">**과거 사실**</span>과 반대되는 일을 가정하며, 과거에 대한 후회나 유감을 나타냅니다.</li>
-    <li>**해석:** (과거에) <b style="color:red;">"~했더라면, ~했을 텐데."</b></li>
-    <br>
-    <li><b style="color:#28a745;">1. 예시 (과거 반대)</b>
-        <br> - Ex: If I **had seen** you, I **would have said** hello.
-        <br> &nbsp;&nbsp; (해석: 내가 너를 봤었더라면, 인사를 했을 텐데.)
+  <div style="background-color:#ffebee; border-left:5px solid #d32f2f; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 이미 지나간 <b>과거의 사실</b>을 반대로 상상하거나 후회할 때 씁니다.<br>
+      <span style="font-size:0.9rem; color:#555;">(해석은 무조건 <b style="text-decoration:underline; color:#d32f2f;">"과거(~했었다)"</b>로 해야 합니다!)</span>
+    </p>
+    <div style="margin-top:10px; background:white; padding:10px; border-radius:5px; border:1px dashed #d32f2f; text-align:center;">
+      <b style="color:#d32f2f; font-size:1.1em;">If + 주어 + <span style="background:#ffcdd2;">had p.p.</span>, 주어 + <span style="background:#bbdefb;">우/쿠/슈/마 + have p.p.</span></b>
+    </div>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">⏳ 시점 비교: 언제 이야기를 하는 걸까?</h4>
+  <div style="overflow-x:auto; margin-bottom:25px;">
+    <table style="font-size:0.9rem; background:white; width:100%; border-collapse:collapse; text-align:center;">
+        <thead>
+            <tr style="background:#f1f3f5; color:#333;">
+                <th style="padding:10px; border-bottom:2px solid #ddd; width:50%;">가정법 과거</th>
+                <th style="padding:10px; border-bottom:2px solid #d32f2f; width:50%; color:#d32f2f;">가정법 과거완료</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding:10px; border-right:1px solid #eee;">
+                    <b style="color:#007bff;">현재 (Now)</b>를 상상함<br>
+                    "지금 ~라면, ~할 텐데"
+                </td>
+                <td style="padding:10px;">
+                    <b style="color:#d32f2f;">과거 (Past)</b>를 회상함<br>
+                    "그때 ~했더라면, ~했을 텐데"
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:10px; border-right:1px solid #eee; background:#f8f9fa; text-align:left;">
+                    If I <b>knew</b> it, I <b>would tell</b> you.<br>
+                    <span style="font-size:0.85em; color:#666;">(지금 모르니까, 지금 말 못 해.)</span>
+                </td>
+                <td style="padding:10px; background:#fff5f5; text-align:left;">
+                    If I <b>had known</b> it, I <b>would have told</b> you.<br>
+                    <span style="font-size:0.85em; color:#666;">(그때 몰랐어서, 그때 말 못 했어.)</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📝 상황별 예시 (뉘앙스 & 부정문)</h4>
+  <ul class="small-note" style="line-height:1.7;">
+    <li style="margin-bottom:15px;">
+        <span style="background:#e3f2fd; color:#0d47a1; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Would have p.p. (단순 결과/추측: ~했을 텐데)</span>
+        <br> - If I had seen you, I <b>would have said</b> hello.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(너를 봤더라면 인사했을 거야. → 못 봐서 안 함)</span>
+        <br> - If it <b>had not rained</b>, we <b>would have gone</b> out.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(비가 안 왔더라면 나갔을 텐데. → 부정문 예시)</span>
     </li>
-    
-    <li><b style="background-color:yellow;">2. If절 대용 구문 (암기 필수!)</b>
-        <br> - **But for / Without + 명사:** <span style="color:blue;">~이 없었더라면</span> (주로 과거완료 대신 사용)
-        <br> - **도치:** If 생략 시 **Had + S + p.p.** 순서로 바꿈. (Ex: **Had I known** her name, ...)
+    <li style="margin-bottom:15px;">
+        <span style="background:#e0f2f1; color:#00695c; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Could have p.p. (능력/가능성: ~할 수 있었을 텐데)</span>
+        <br> - If I had run faster, I <b>could have caught</b> the bus.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(더 빨리 뛰었더라면 잡을 수 있었을 텐데. → 능력 부족으로 못 잡음)</span>
+        <br> - I <b>could have passed</b> the exam if I had studied.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(공부했더라면 합격할 수 있었을 텐데.)</span>
     </li>
-    
-    <li><b style="color:red;">3. 혼합 가정법 (Mixed Conditional)</b>
-        <br> - If절(과거완료) + 주절(가정법 과거)
-        <br> - 의미: **과거에 ~했더라면, 지금 ~할 텐데.** (시제가 섞임)
-        <br> - Ex: If he **had saved** money, he **would be** rich now.
+    <li style="margin-bottom:15px;">
+        <span style="background:#fff3e0; color:#e65100; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:0.85em;">Might have p.p. (약한 추측: ~했을지도 모를 텐데)</span>
+        <br> - If you had joined us, it <b>might have been</b> more fun.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(네가 왔더라면 더 재밌었을지도 몰라.)</span>
+        <br> - He <b>might have missed</b> the train.
+        <br> &nbsp;&nbsp; <span style="color:#777;">(조건절 생략: 그는 기차를 놓쳤을지도 모른다.)</span>
     </li>
   </ul>
-  
+
+  <div style="border:2px solid #6c757d; background-color:#fff; padding:15px; border-radius:8px; margin-bottom:20px;">
+    <h4 style="margin:0 0 10px 0; color:#333;">🔄 "만약 ~이 없었더라면" (암기 필수!)</h4>
+    <p style="font-size:0.9rem; color:#555; margin-bottom:10px;">
+      긴 문장을 짧게 줄여 쓰는 다양한 표현법입니다. (의미는 모두 같습니다)
+    </p>
+    
+    <table style="width:100%; font-size:0.9rem; background:#f8f9fa; border-collapse:collapse;">
+        <tr>
+            <td style="padding:8px; border-bottom:1px solid #ddd; font-weight:bold; color:#555;">1. 기본 (If 사용)</td>
+            <td style="padding:8px; border-bottom:1px solid #ddd;"><b>If it had not been for</b> your help,<br>I would have failed.</td>
+        </tr>
+        <tr>
+            <td style="padding:8px; border-bottom:1px solid #ddd; font-weight:bold; color:#007bff;">2. 도치 (If 생략)</td>
+            <td style="padding:8px; border-bottom:1px solid #ddd;"><b>Had it not been for</b> your help,<br>I would have failed. <span style="color:red; font-size:0.8em;">(If가 사라지며 Had가 앞으로!)</span></td>
+        </tr>
+        <tr>
+            <td style="padding:8px; border-bottom:1px solid #ddd; font-weight:bold; color:#28a745;">3. 전치사구</td>
+            <td style="padding:8px; border-bottom:1px solid #ddd;"><b>But for</b> your help, ...<br><b>Without</b> your help, ...</td>
+        </tr>
+    </table>
+  </div>
+
+  <div style="background-color:#fff3cd; padding:10px; border-radius:5px; border-left:4px solid #ffc107;">
+    <b style="color:#856404;">➕ 혼합 가정법 (Mixed Conditional)</b>
+    <p style="margin:5px 0 0 0; font-size:0.9rem; color:#333;">
+      "과거에 ~했더라면(원인), 지금 ~할 텐데(결과)" <br>
+      → <b>If + had p.p.</b> (과거), <b>주어 + would + 동사원형</b> (현재)
+    </p>
+    <p style="margin-top:5px; font-size:0.9rem; color:#555;">
+        Ex: If I <b>had eaten</b> breakfast, I <b>would not be</b> hungry <u style="color:red;">now</u>.
+    </p>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('conditionalPastPerfect')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-conditionalPastPerfect" style="display:none;">
-      <textarea id="note-input-conditionalPastPerfect" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-conditionalPastPerfect" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('conditionalPastPerfect')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-conditionalPastPerfect" class="note-display"></div>
   </div>
 </div>
-
-<div id="topic-passive" class="topic-section">
-  <h3>10) 수동태 (Passive Voice) - 행위를 당하는 주체 강조</h3>
-  
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    **수동태의 목적:** 동작을 **당하는 대상(주어)**을 강조하거나, **행위자가 불분명할 때** 사용합니다.
-    <br>Ex: The document was sent. (누가 보냈는지는 중요하지 않음)
-  </p>
-  
-  <ul class="small-note">
-    <li>**기본 형태:** <b style="color:#1976d2;">be 동사 + p.p.</b> (by 행위자)</li>
-    
-    <li><b style="color:#d9534f;">1. 시제별 수동태 예시</b>
-        <br> - **현재:** The room **is cleaned** every day. (방은 매일 청소된다.)
-        <br> - **과거:** The window **was broken** yesterday. (창문이 어제 깨졌다.)
-        <br> - **진행형:** The project **is being discussed** now. (프로젝트가 지금 논의되는 중이다.)
-        <br> - **완료형:** The bridge **has been built** since 2020. (다리가 2020년부터 건설되어 왔다.)
-    </li>
-    
-    <li><b style="color:red;">2. 5형식 동사의 수동태 변화 (to부정사 부활)</b>
-        <br> - 능동: They **made** him **clean** the floor.
-        <br> - 수동: He **was made** <b style="color:#28a745;">to clean</b> the floor. (사역동사가 수동태가 되면 동사원형은 to부정사로 바뀝니다.)
-    </li>
-    
-    <li><b style="color:#007bff;">3. 관용적 수동태 (전치사 주의!)</b>
-        <br> - be surprised **at** (Ex: I was surprised **at** the news.)
-        <br> - be covered **with** (Ex: The ground is covered **with** snow.)
-        <br> - be known **as** (Ex: He is known **as** a good leader.)
-    </li>
-  </ul>
-  
-  <div class="note-area">
-    <button onclick="toggleNote('passive')">📝 나만의 설명 추가/수정</button>
-    <div id="note-edit-passive" style="display:none;">
-      <textarea id="note-input-passive" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
-      <button onclick="saveNote('passive')" style="margin-top:5px;">저장하기</button>
-    </div>
-    <div id="note-display-passive" class="note-display"></div>
-  </div>
-</div>
-
 <div id="topic-causative" class="topic-section">
-  <h3>11) 사역동사 (시키다) - 행위의 강도와 형태 결정</h3>
+  <h3>11) 사역동사 - "남에게 시킬 때" (The Boss Verbs)</h3>
   
-  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
-    **개념:** 주어가 목적어에게 어떤 동작을 하도록 **'시키거나(사역)' '돕는(준사역)'** 동사입니다.
-  </p>
-  
-  <ul class="small-note">
-    <li><b style="color:red;">1. 강제/단호한 사역 (Make)</b>
-        <br> - 의미: **강제적으로 ~하게 만들다.** (가장 강한 사역)
-        <br> - 공식: Make + 목적어 + <b style="color:red;">동사원형</b>
-        <br> - Ex: The teacher **made** the students <b style="color:red;">study</b>. (선생님은 학생들을 공부하게 만들었다.)
-    </li>
-    
-    <li><b style="color:orange;">2. 허락/방임의 사역 (Let)</b>
-        <br> - 의미: **~하도록 허락하다/내버려두다.**
-        <br> - 공식: Let + 목적어 + <b style="color:red;">동사원형</b>
-        <br> - Ex: My parents **let** me <b style="color:red;">go</b> out late. (부모님은 내가 늦게 외출하도록 허락하셨다.)
-    </li>
-    
-    <li><b style="color:green;">3. 부탁/부탁하여 얻어냄 (Have & Get)</b>
-        <br> - **Have (사역):** 목적어 + <b style="color:red;">동사원형</b> (의뢰/부탁하여 시킴)
-        <br> &nbsp;&nbsp; Ex: I **had** the repairman <b style="color:red;">fix</b> the faucet.
-        <br> - **Get (준사역):** 목적어 + <b style="color:blue;">to 부정사</b> (설득/노력으로 ~하게 함)
-        <br> &nbsp;&nbsp; Ex: I **got** him <b style="color:blue;">to agree</b> with me.
-    </li>
-    
-    <li><b style="background-color:yellow;">4. 수동 관계 (능동/수동 구분!)</b>
-        <br> - 목적어와 목적 보어의 관계가 **수동**일 때는 사역 동사 종류에 관계없이 **p.p. (과거분사)**를 사용합니다.
-        <br> - 공식: Make/Have/Get + 사물 목적어 + **p.p.**
-        <br> - Ex: She **had** her hair <b style="color:red;">cut</b>. (머리가 잘리도록 시켰다.)
-    </li>
-  </ul>
-  
+  <div style="background-color:#fff3e0; border-left:5px solid #ff9800; padding:15px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 주어가 직접 하지 않고 남에게 <b>시키거나(Make), 하게 해주거나(Let), 부탁할 때(Have)</b> 씁니다.<br>
+      <span style="color:#e65100; font-weight:bold;">핵심은 목적어 뒤에 오는 '동사의 모양'을 맞추는 것입니다.</span>
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📋 종류별 강도와 공식 (암기 필수!)</h4>
+  <div style="overflow-x:auto; margin-bottom:20px;">
+    <table style="font-size:0.9rem; background:white; width:100%; text-align:center; border-collapse:collapse;">
+        <thead>
+            <tr style="background:#f8f9fa;">
+                <th style="padding:8px; border-bottom:2px solid #ff9800;">동사</th>
+                <th style="padding:8px; border-bottom:2px solid #ff9800;">의미 (뉘앙스)</th>
+                <th style="padding:8px; border-bottom:2px solid #ff9800;">목적보어 (능동)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:bold; color:#d32f2f;">Make</td>
+                <td>강제로 시키다 (명령)<br><span style="font-size:0.8em; color:#666;">"안 하면 혼나!"</span></td>
+                <td style="font-weight:bold; color:#d32f2f;">동사원형 (R)</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; color:#198754;">Have</td>
+                <td>부탁/요청하다 (계약)<br><span style="font-size:0.8em; color:#666;">"이것 좀 해주세요"</span></td>
+                <td style="font-weight:bold; color:#d32f2f;">동사원형 (R)</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; color:#0d6efd;">Let</td>
+                <td>허락하다 / 내버려두다<br><span style="font-size:0.8em; color:#666;">"~하게 해주다"</span></td>
+                <td style="font-weight:bold; color:#d32f2f;">동사원형 (R)</td>
+            </tr>
+            <tr style="border-top:2px solid #ddd;">
+                <td style="font-weight:bold; color:#6610f2;">Get</td>
+                <td>설득해서 하게 하다 (준사역)<br><span style="font-size:0.8em; color:#666;">"꼬셔서 하게 만듦"</span></td>
+                <td style="font-weight:bold; color:#6610f2;">to 부정사 ★</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <div style="background-color:#fff5f5; padding:12px; border-radius:6px; border:1px solid #ffcdd2;">
+    <b style="color:#c62828;">🚑 [중요 예외] 목적어가 동작을 '당할 때' (수동)</b>
+    <p style="font-size:0.9rem; color:#555; margin:5px 0;">
+      목적어가 사물(내 머리카락, 내 차, 내 시계 등)인 경우 스스로 동작을 할 수 없으므로<br>
+      동사 종류(Make/Have/Get)에 상관없이 무조건 <b style="color:#c62828;">p.p.(과거분사)</b>를 씁니다.
+    </p>
+    <div style="background:white; padding:5px; border-radius:4px; font-size:0.9rem; border-left:3px solid #c62828;">
+      Ex: I had my hair <b style="color:#c62828;">cut</b>. (내 머리카락은 잘리니까)<br>
+      Ex: I got the car <b style="color:#c62828;">washed</b>. (차는 세차되니까)
+    </div>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('causative')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-causative" style="display:none;">
@@ -673,26 +952,54 @@
 </div>
 
 <div id="topic-perception" class="topic-section">
-  <h3>12) 지각동사 (Perception Verbs) - 오감으로 느끼는 동작</h3>
+  <h3>12) 지각동사 (Perception) - 보고 듣고 느끼고!</h3>
   
-  <ul class="small-note">
-    <li>**종류:** **See, Watch, Hear, Feel, Notice** 등 오감 관련 동사입니다.</li>
-    
-    <li><b style="color:blue;">1. 목적 보어 형태 (능동 관계)</b>
-        <br> - **동사원형 (V):** 처음부터 끝까지 **전체 동작**을 보았을 때 사용합니다.
-        <br> - **현재분사 (-ing):** 동작이 **진행 중**인 순간을 보았을 때 사용합니다.
-    </li>
-    
-    <li><b style="color:red;">2. 절대 불가:</b> 목적 보어로 <b style="color:red;">to 부정사</b>는 절대 사용할 수 없습니다.</li>
+  <div style="background-color:#e8f5e9; border-left:5px solid #4caf50; padding:15px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> See, Watch, Hear, Feel, Smell 등 감각을 통해 인지하는 동사입니다.<br>
+      <span style="font-weight:bold; color:#2e7d32;">목적어가 하는 행동을 묘사</span>할 때, 그 형태가 중요합니다.
+    </p>
+  </div>
 
-    <li><b style="color:#28a745;">3. 용법별 예시 및 해석</b>
-        <br> - Ex 1 (V): I saw him **cross** the street. (<span style="color:#1976d2;">그가 길을 건너는 전체 과정</span>을 보았다.)
-        <br> - Ex 2 (-ing): I heard someone **singing** in the next room. (<span style="color:#1976d2;">옆방에서 노래하고 있는 중</span>인 것을 들었다.)
-        <br> - Ex 3 (수동): We saw the car **driven** away. (차가 <span style="color:#1976d2;">몰려가는 것</span>을 보았다.)
-        <br> - Ex 4 (V): I felt the ground **shake**. (땅이 흔들리는 것을 느꼈다.)
-    </li>
-  </ul>
-  
+  <h4 style="margin-bottom:10px; color:#333;">👀 목적보어 형태의 차이 (뉘앙스)</h4>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom:20px;">
+    
+    <div style="border:1px solid #a5d6a7; background:#f1f8e9; padding:12px; border-radius:8px;">
+      <b style="color:#2e7d32;">① 동사원형 (R)</b>
+      <p style="font-size:0.85rem; color:#555; margin:5px 0;">
+        "처음부터 끝까지 다 봤다"<br>
+        (전체 동작 / 사실 전달)
+      </p>
+      <hr style="border-top:1px dashed #a5d6a7;">
+      <span style="font-size:0.9rem;">I saw him <b>dance</b>.<br><span style="font-size:0.8em; color:#666;">(춤추는 걸 처음부터 끝까지 봄)</span></span>
+    </div>
+
+    <div style="border:1px solid #81d4fa; background:#e1f5fe; padding:12px; border-radius:8px;">
+      <b style="color:#0277bd;">② 현재분사 (-ing)</b>
+      <p style="font-size:0.85rem; color:#555; margin:5px 0;">
+        "한창 ~하고 있는 중이더라"<br>
+        (진행 중인 순간 강조)
+      </p>
+      <hr style="border-top:1px dashed #81d4fa;">
+      <span style="font-size:0.9rem;">I saw him <b>dancing</b>.<br><span style="font-size:0.8em; color:#666;">(춤추고 있는 그 장면을 목격)</span></span>
+    </div>
+
+    <div style="border:1px solid #ef9a9a; background:#ffebee; padding:12px; border-radius:8px;">
+      <b style="color:#c62828;">③ 과거분사 (p.p.)</b>
+      <p style="font-size:0.85rem; color:#555; margin:5px 0;">
+        "목적어가 ~당하는 걸 봤다"<br>
+        (수동 관계)
+      </p>
+      <hr style="border-top:1px dashed #ef9a9a;">
+      <span style="font-size:0.9rem;">I heard my name <b>called</b>.<br><span style="font-size:0.8em; color:#666;">(이름이 불리는 것을 들음)</span></span>
+    </div>
+  </div>
+
+  <div style="text-align:center; background:#f9f9f9; padding:10px; border-radius:5px; border:1px solid #eee;">
+    <b style="color:#d32f2f;">🚨 절대 금지: 지각동사 뒤에 [to 부정사]는 절대 못 옵니다!</b><br>
+    <span style="font-size:0.9rem; color:#888;">(I saw him <s>to dance</s> X)</span>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('perception')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-perception" style="display:none;">
@@ -703,132 +1010,438 @@
   </div>
 </div>
 
-<div id="topic-participle" class="topic-section">
-  <h3>13) 분사구문 (Participle Phrases) - 시간 관계와 주어</h3>
+  <h3>13) 분사구문 (Participle Construction) - 문장 다이어트</h3>
   
-  <p class="small-note">
-    **개념:** 문장의 의미를 명확히 유지하면서 부사절(<span style="color:blue;">접속사 + 주어 + 동사</span>)을 간결하게 줄여 쓰는 구문입니다.
-  </p>
-  
-  <ul class="small-note">
-    <li><b style="color:red;">만드는 공식:</b> 1. 접속사 생략. 2. 주어가 같으면 생략. 3. 동사원형에 <b style="color:blue;">-ing</b> 붙이기.</li>
+  <div style="background-color:#f3e5f5; border-left:5px solid #9c27b0; padding:15px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 긴 부사절(<span style="color:#9c27b0;">접속사 + 주어 + 동사</span>)을 <b>-ing</b>나 <b>p.p.</b>를 사용하여 짧고 간결한 구(Phrase)로 줄여 쓰는 표현법입니다.
+    </p>
+    <div style="margin-top:10px; background:white; padding:8px; border-radius:5px; border:1px dashed #9c27b0; text-align:center; font-weight:bold; color:#7b1fa2;">
+      공식: 접속사 생략 + 주어 생략(같으면) + 동사원형-ing
+    </div>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">🔍 문맥에 따른 해석 (생략된 접속사 찾기)</h4>
+  <div style="overflow-x:auto; margin-bottom:25px;">
+    <table style="font-size:0.9rem; background:white; width:100%; border-collapse:collapse;">
+        <thead>
+            <tr style="background:#f3e5f5; color:#4a148c;">
+                <th style="padding:8px; border-bottom:2px solid #ce93d8; width:20%;">의미</th>
+                <th style="padding:8px; border-bottom:2px solid #ce93d8; width:30%;">원래 접속사</th>
+                <th style="padding:8px; border-bottom:2px solid #ce93d8;">예시 (변환 전 → 후)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:bold;">시간 / 동시</td>
+                <td>When, While, As<br>(~할 때, ~하면서)</td>
+                <td style="text-align:left;">
+                    While I walked...<br>
+                    → <b>Walking</b> on the street, I met him.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">이유 / 원인</td>
+                <td>Because, Since<br>(~때문에)</td>
+                <td style="text-align:left;">
+                    Because I felt tired...<br>
+                    → <b>Feeling</b> tired, I slept early.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">조건</td>
+                <td>If<br>(~라면)</td>
+                <td style="text-align:left;">
+                    If you turn left...<br>
+                    → <b>Turning</b> left, you will find it.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">양보</td>
+                <td>Though<br>(~일지라도)</td>
+                <td style="text-align:left;">
+                    Though I admit it...<br>
+                    → <b>Admitting</b> it, I can't forgive him.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">⚖️ 주어와 태(Voice) 확인하기</h4>
+  <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom:20px;">
     
-    <li><b style="color:#28a745;">시간 관계를 나타내는 분사구문 예시 (주어 일치):</b>
-        <br> - **동시 동작 (While/When):** 길을 걷는 동안 (While I **walked**...)
-        <br> &nbsp;&nbsp; Ex: **Walking** down the street, I met an old friend.
-        <br> - **순간 동작/이유 (When):** 그 소식을 듣자마자 (When I **heard**...)
-        <br> &nbsp;&nbsp; Ex: **Hearing** the news, she started to cry.
-        <br> - **순서/후 (After):** 숙제를 끝낸 후에 (After I **finished**...)
-        <br> &nbsp;&nbsp; Ex: **Having finished** the project, he went home. (*완료 분사구문 사용*)
-        <br> - **전/순서 (Before):** 그녀를 만나기 전에 (Before I **met**...)
-        <br> &nbsp;&nbsp; Ex: **Knowing** her schedule, he called her first. (스케줄을 알기 전에)
-    </li>
-    
-    <li><b style="background-color:yellow;">★ 독립 분사구문 (주어가 다를 때) ★</b>
-        <br> - **규칙:** 주절의 주어와 종속절의 주어가 다르면, 종속절의 주어를 <span style="color:red;">반드시 남겨 둡니다.</span>
-        <br> - Ex: **The weather being** fine, we went out.
-        <br> &nbsp;&nbsp; (해석: 날씨가 좋았기 때문에, 우리는 외출했다.) [주어: The weather ≠ we]
-    </li>
-    
-    <li><b style="color:#d9534f;">능동/수동 구분:</b>
-        <br> - **능동/진행:** <b style="color:blue;">-ing</b> (Ex: **Reading** the book...)
-        <br> - **수동:** <b style="color:red;">p.p.</b> (Ex: **Written** in English...)
-    </li>
-  </ul>
-  
+    <div style="border:1px solid #ba68c8; background:#f8f0fc; padding:15px; border-radius:8px;">
+      <b style="color:#6a1b9a; font-size:1.05em;">A. 주어가 다를 때 (독립 분사구문)</b>
+      <p style="font-size:0.9rem; margin:5px 0 10px 0; color:#555;">
+        주절의 주어와 부사절의 주어가 다르면, <b>주어를 지우지 않고 남겨둡니다.</b>
+      </p>
+      <div style="background:white; padding:8px; border-radius:5px; font-size:0.9rem;">
+        As <b style="color:#e65100;">it</b> was fine, <b style="color:#0d47a1;">we</b> went out.<br>
+        → <b style="color:#e65100;">It</b> <b>being</b> fine, <b style="color:#0d47a1;">we</b> went out.<br>
+        <span style="font-size:0.85em; color:#888;">(날씨(It)와 우리(We)는 다르므로 It을 남김)</span>
+      </div>
+    </div>
+
+    <div style="border:1px solid #ff9800; background:#fff3e0; padding:15px; border-radius:8px;">
+      <b style="color:#e65100; font-size:1.05em;">B. 수동 분사구문 (Being 생략)</b>
+      <p style="font-size:0.9rem; margin:5px 0 10px 0; color:#555;">
+        수동태(be p.p.) 문장을 줄일 때, <b>Being은 생략</b>하고 <b>p.p.(과거분사)</b>만 남기는 경우가 많습니다.
+      </p>
+      <div style="background:white; padding:8px; border-radius:5px; font-size:0.9rem;">
+        As it was written in English...<br>
+        → (Being) <b style="color:#d32f2f;">Written</b> in English, the book is easy.<br>
+        <span style="font-size:0.85em; color:#888;">(쓰여진 것이므로 p.p.로 시작)</span>
+      </div>
+    </div>
+  </div>
+
   <div class="note-area">
     <button onclick="toggleNote('participle')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-participle" style="display:none;">
-      <textarea id="note-input-participle" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-participle" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('participle')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-participle" class="note-display"></div>
   </div>
 </div>
 
-<div id="topic-pronoun" class="topic-section">
-  <h3>14) 인칭대명사</h3>
-  <ul class="small-note">
-    <li>재귀대명사(-self): 주어와 목적어가 같을 때 사용.</li>
-    <li>소유대명사: ~의 것 (mine, yours, hers...)</li>
-    <li>It: 가주어, 비인칭 주어 등 다양하게 쓰임.</li>
-  </ul>
-  <div class="note-area">
-    <button onclick="toggleNote('pronoun')">📝 나만의 설명 추가/수정</button>
-    <div id="note-edit-pronoun" style="display:none;">
-      <textarea id="note-input-pronoun" placeholder="메모를 입력하세요."></textarea>
-      <button onclick="saveNote('pronoun')" style="margin-top:5px;">저장하기</button>
-    </div>
-    <div id="note-display-pronoun" class="note-display"></div>
-  </div>
-</div>
+
 
 <div id="topic-toinf" class="topic-section">
-  <h3>10) to부정사 (명사/형용사/부사 변신)</h3>
-  <p class="small-note">
-    동사원형 앞에 <b>to</b>를 붙여 문장에서 명사, 형용사, 부사의 역할을 수행합니다.
-  </p>
+  <h3>10) to부정사 (Infinitive) - 동사의 무한 변신</h3>
   
-  <ul class="small-note">
-    <li><b style="color:#d9534f;">1. 명사적 용법 (~하는 것)</b>
-        <br> - 역할: 주어, 목적어, 보어
-        <br> - Ex 1: **To study** English is difficult. (<span style="color:#1976d2;">영어를 공부하는 것</span>은 어렵다.)
-        <br> - Ex 2: I want **to travel** abroad. (나는 해외로 <span style="color:#1976d2;">여행하는 것</span>을 원한다.)
-    </li>
+  <div style="background-color:#e3f2fd; border-left:5px solid #2196f3; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 동사(Verb) 앞에 <b>to</b>를 붙여서 <b style="color:#d32f2f;">명사, 형용사, 부사</b>로 변신시켜 사용하는 문법입니다.<br>
+      <span style="font-size:0.9rem; color:#555;">(동사 원형의 성질은 그대로 가지면서 문장에서의 역할만 바뀝니다!)</span>
+    </p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom:25px;">
     
-    <li><b style="color:#28a745;">2. 형용사적 용법 (~할, ~하는)</b>
-        <br> - 역할: 명사 뒤에서 명사 수식
-        <br> - Ex 1: I have many books **to read**. (나는 <span style="color:#28a745;">읽을</span> 책이 많다.)
-        <br> - Ex 2: He needs a friend **to talk with**. (<span style="color:#28a745;">함께 이야기할</span> 친구가 필요하다.)
-    </li>
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <h4 style="margin:0 0 10px 0; color:#d32f2f; border-bottom:2px solid #d32f2f; display:inline-block;">① 명사적 용법 ("~하는 것")</h4>
+      <ul style="padding-left:20px; margin:0; color:#555; font-size:0.95rem; line-height:1.7;">
+        <li><b style="background:#ffebee; color:#c62828; padding:2px 5px; border-radius:3px;">주어</b>
+            <b>To study</b> English is fun.<br>
+            <span style="font-size:0.85em;">(영어를 <b>공부하는 것은</b> 재밌다.)</span>
+        </li>
+        <li><b style="background:#ffebee; color:#c62828; padding:2px 5px; border-radius:3px;">목적어</b>
+            I want <b>to travel</b> abroad.<br>
+            <span style="font-size:0.85em;">(나는 해외 <b>여행하는 것을</b> 원한다.)</span>
+        </li>
+        <li><b style="background:#ffebee; color:#c62828; padding:2px 5px; border-radius:3px;">보어</b>
+            My dream is <b>to be</b> a pilot.<br>
+            <span style="font-size:0.85em;">(내 꿈은 조종사가 <b>되는 것이다</b>.)</span>
+        </li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <h4 style="margin:0 0 10px 0; color:#2e7d32; border-bottom:2px solid #2e7d32; display:inline-block;">② 형용사적 용법 ("~할 / ~하는")</h4>
+      <p style="font-size:0.9rem; margin-bottom:8px; color:#333;">명사 <b>뒤에서</b> 앞의 명사를 꾸며줍니다.</p>
+      <ul style="padding-left:20px; margin:0; color:#555; font-size:0.95rem; line-height:1.7;">
+        <li>I have many books <b>to read</b>.<br>
+            <span style="font-size:0.85em;">(나는 <b>읽을</b> 책이 많다.)</span>
+        </li>
+        <li>Give me something <b>to drink</b>.<br>
+            <span style="font-size:0.85em;">(<b>마실</b> 무언가를 주세요.)</span>
+        </li>
+        
+        <li style="margin-top:10px; list-style:none;">
+            <div style="background:#e8f5e9; border:1px dashed #2e7d32; padding:8px; border-radius:5px;">
+                <b style="color:#1b5e20; font-size:0.9em;">🚨 전치사 주의 (자동사일 때)</b><br>
+                <span style="font-size:0.85em;">
+                a chair to sit <b style="color:red;">on</b> (O) / a chair to sit (X)<br>
+                a friend to talk <b style="color:red;">with</b> (O)
+                </span>
+            </div>
+        </li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <h4 style="margin:0 0 10px 0; color:#007bff; border-bottom:2px solid #007bff; display:inline-block;">③ 부사적 용법 (다양한 의미)</h4>
+      <ul style="padding-left:20px; margin:0; color:#555; font-size:0.95rem; line-height:1.7;">
+        <li><b style="color:#007bff;">목적:</b> I went there <b>to meet</b> her.<br>
+            <span style="font-size:0.85em;">(그녀를 <b>만나기 위해</b> 갔다.)</span>
+        </li>
+        <li><b style="color:#007bff;">감정의 원인:</b> I am glad <b>to see</b> you.<br>
+            <span style="font-size:0.85em;">(너를 <b>봐서</b> 기쁘다.)</span>
+        </li>
+        <li><b style="color:#007bff;">결과:</b> He grew up <b>to be</b> a doctor.<br>
+            <span style="font-size:0.85em;">(그는 자라서 <b>결국 의사가 되었다</b>.)</span>
+        </li>
+        <li><b style="color:#007bff;">판단의 근거:</b> He must be crazy <b>to do</b> that.<br>
+            <span style="font-size:0.85em;">(그걸 <b>하다니</b> 미친 게 틀림없다.)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background-color:#fff3cd; border:2px solid #ffeeba; padding:15px; border-radius:10px;">
+    <b style="color:#856404; font-size:1.1em;">★ 필수 암기 구문 (해석 주의!)</b>
     
-    <li><b style="color:#007bff;">3. 부사적 용법 (~하기 위해, ~해서 등)</b>
-        <br> - 목적: I went there **to meet** her. (<span style="color:#007bff;">그녀를 만나기 위해</span> 거기에 갔다.)
-        <br> - 감정의 원인: I am glad **to see** you. (당신을 <span style="color:#007bff;">만나서</span> 기쁘다.)
-    </li>
-    
-    <li><b style="background-color:yellow;">★ 주요 구문 암기 ★</b>
-        <br> - <b>too ~ to...:</b> 너무 ~해서 ...할 수 <span style="color:red;">없다</span>.
-        <br> - <b>enough to...:</b> ...할 수 있을 만큼 <span style="color:blue;">충분히</span> ~하다.
-    </li>
-  </ul>
+    <div style="margin-top:10px; display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <div style="background:white; padding:10px; border-radius:5px; border:1px solid #e0e0e0;">
+        <b style="color:#d32f2f;">Too (A) to (B)</b>
+        <p style="margin:5px 0; font-size:0.9rem;">
+          "너무 A해서 B할 수 <b style="color:red; text-decoration:underline;">없다</b>"
+        </p>
+        <span style="font-size:0.85em; color:#555;">Ex: I am <b>too</b> tired <b>to</b> walk.<br>(너무 힘들어서 걸을 수 없다.)</span>
+      </div>
+
+      <div style="background:white; padding:10px; border-radius:5px; border:1px solid #e0e0e0;">
+        <b style="color:#2e7d32;">(A) enough to (B)</b>
+        <p style="margin:5px 0; font-size:0.9rem;">
+          "B할 만큼 충분히 A하다"
+        </p>
+        <span style="font-size:0.85em; color:#555;">Ex: He is rich <b>enough to</b> buy it.<br>(그걸 살 만큼 충분히 부자다.)</span>
+      </div>
+    </div>
+  </div>
   
   <div class="note-area">
     <button onclick="toggleNote('toinf')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-toinf" style="display:none;">
-      <textarea id="note-input-toinf" placeholder="메모를 입력하세요."></textarea>
+      <textarea id="note-input-toinf" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
       <button onclick="saveNote('toinf')" style="margin-top:5px;">저장하기</button>
     </div>
     <div id="note-display-toinf" class="note-display"></div>
   </div>
 </div>
 
-<div id="topic-gerund" class="topic-section">
-  <h3>15) 동명사 (Gerund) - 동사이면서 명사</h3>
-  <p class="small-note">
-    **개념:** 동사원형에 **-ing**를 붙여 **'~하는 것'**이라는 의미의 **명사**처럼 사용합니다.
-    <br>동명사는 to부정사와 달리, 문장에서 **구체적인 행위나 습관**을 나타낼 때 선호됩니다.
-  </p>
+<div id="topic-pronoun" class="topic-section">
+  <h3>14) 인칭대명사 (Pronouns) - 대신 부르는 이름</h3>
   
-  <ul class="small-note">
-    <li><b style="color:#d9534f;">1. 명사 역할 (주어, 목적어, 보어)</b>
-        <br> - 주어: **Smoking** is bad for health. (<span style="color:#1976d2;">흡연하는 것은</span> 건강에 나쁘다.)
-        <br> - 목적어: I enjoy **reading** books. (나는 책 <span style="color:#1976d2;">읽는 것을</span> 즐긴다.)
-        <br> - 전치사의 목적어: He is afraid **of falling**. (그는 <span style="color:#1976d2;">넘어지는 것을</span> 두려워한다.)
-    </li>
+  <div style="background-color:#e3f2fd; border-left:5px solid #2196f3; padding:12px; margin-bottom:20px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 사람이나 사물의 이름을 반복해서 부르지 않고, <b>I, You, He, It</b> 등으로 대신 가리키는 말입니다.<br>
+      문장 내 역할(주어/목적어/소유)에 따라 <b style="color:#0d47a1;">모양(격)이 변합니다.</b>
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📋 인칭대명사 변화표 (한눈에 보기)</h4>
+  <div style="overflow-x:auto; margin-bottom:25px; border:1px solid #ddd; border-radius:8px;">
+    <table style="font-size:0.9rem; background:white; width:100%; text-align:center; border-collapse:collapse;">
+        <thead>
+            <tr style="background:#f1f8e9; color:#2e7d32;">
+                <th style="padding:8px; border-bottom:2px solid #81c784;">구분</th>
+                <th style="padding:8px; border-bottom:2px solid #81c784;">주격<br>(~은/는)</th>
+                <th style="padding:8px; border-bottom:2px solid #81c784;">소유격<br>(~의)</th>
+                <th style="padding:8px; border-bottom:2px solid #81c784;">목적격<br>(~을/를)</th>
+                <th style="padding:8px; border-bottom:2px solid #81c784;">소유대명사<br>(~의 것)</th>
+                <th style="padding:8px; border-bottom:2px solid #81c784;">재귀대명사<br>(~자신)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">1인칭 (나)</td>
+                <td><b>I</b></td>
+                <td>my</td>
+                <td>me</td>
+                <td><b>mine</b></td>
+                <td>myself</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">2인칭 (너)</td>
+                <td><b>You</b></td>
+                <td>your</td>
+                <td>you</td>
+                <td><b>yours</b></td>
+                <td>yourself</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">3인칭 (남)</td>
+                <td><b>He</b></td>
+                <td>his</td>
+                <td>him</td>
+                <td><b>his</b></td>
+                <td>himself</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">3인칭 (여)</td>
+                <td><b>She</b></td>
+                <td>her</td>
+                <td>her</td>
+                <td><b>hers</b></td>
+                <td>herself</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">3인칭 (물건)</td>
+                <td><b>It</b></td>
+                <td>its</td>
+                <td>it</td>
+                <td style="color:#aaa;">(없음)</td>
+                <td>itself</td>
+            </tr>
+            <tr style="border-top:2px solid #ddd;">
+                <td style="font-weight:bold; background:#f9f9f9;">1인칭 복수</td>
+                <td><b>We</b></td>
+                <td>our</td>
+                <td>us</td>
+                <td><b>ours</b></td>
+                <td>ourselves</td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold; background:#f9f9f9;">3인칭 복수</td>
+                <td><b>They</b></td>
+                <td>their</td>
+                <td>them</td>
+                <td><b>theirs</b></td>
+                <td>themselves</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">🔄 재귀대명사 (-self/selves) 완전 정복</h4>
+  <div style="background-color:#fff3e0; padding:15px; border-radius:8px; border:1px solid #ffe0b2; margin-bottom:25px;">
+    <ul style="margin:0; padding-left:20px; line-height:1.8; color:#444;">
+        <li>
+            <b style="color:#e65100;">1. 재귀 용법 (생략 불가):</b><br>
+            주어와 목적어가 <b style="color:red;">같을 때</b> 사용합니다.<br>
+            Ex: I love <b style="color:#e65100;">myself</b>. (나는 나 자신을 사랑해.)<br>
+            <span style="font-size:0.85em; color:#888;">(I love me 라고 쓰면 틀림!)</span>
+        </li>
+        <li style="margin-top:10px;">
+            <b style="color:#e65100;">2. 강조 용법 (생략 가능):</b><br>
+            주어, 목적어 등을 강조하기 위해 덧붙입니다.<br>
+            Ex: I did it <b style="color:#e65100;">myself</b>. (내가 직접 그걸 했어!)
+        </li>
+        <li style="margin-top:10px;">
+            <b style="color:#e65100;">3. 주요 관용구 (암기):</b><br>
+            - <b>by oneself:</b> 홀로, 혼자 힘으로<br>
+            - <b>for oneself:</b> 스스로를 위해, 혼자 힘으로
+        </li>
+    </ul>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">🎭 카멜레온 같은 'It'의 쓰임</h4>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;">
     
-    <li><b style="color:#d9534f;">2. 동사 성질 & 수 일치</b>
-        <br> - **주어:** 동명사 주어는 항상 <b style="color:red;">단수 취급</b>합니다.
-        <br> &nbsp;&nbsp; Ex: Playing games **is** fun.
-        <br> - **목적어:** 동명사는 동사처럼 <b style="color:blue;">자신의 목적어</b>를 가질 수 있습니다.
-        <br> &nbsp;&nbsp; Ex: **Playing soccer** is fun. (soccer는 playing의 목적어)
-    </li>
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#007bff;">① 대명사 It (그것)</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        앞에 나온 단어/구/절을 받음.<br>
+        Ex: I bought a book. <b>It</b> is fun.
+      </p>
+    </div>
+
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#28a745;">② 비인칭 주어 It (해석 X)</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        시간, 날씨, 거리, 명암 등을 나타낼 때 주어 자리에 씀.<br>
+        Ex: <b>It</b> is raining. (비가 온다.)
+      </p>
+    </div>
+
+    <div style="border:1px solid #dee2e6; padding:12px; border-radius:6px; background:white;">
+      <b style="color:#dc3545;">③ 가주어 / 가목적어</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        진짜 주어(to부정사 등)가 너무 길 때 자리를 채워줌.<br>
+        Ex: <b>It</b> is hard <u style="text-decoration:underline;">to study</u>.
+      </p>
+    </div>
+  </div>
+
+  <div class="note-area">
+    <button onclick="toggleNote('pronoun')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-pronoun" style="display:none;">
+      <textarea id="note-input-pronoun" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
+      <button onclick="saveNote('pronoun')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-pronoun" class="note-display"></div>
+  </div>
+</div>
+
+<div id="topic-gerund" class="topic-section">
+  <h3>15) 동명사 (Gerund) - 동사의 명사화</h3>
+  
+  <div style="background-color:#f8f9fa; border-left:5px solid #007bff; padding:15px; margin-bottom:25px; border-radius:4px;">
+    <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
+      <b>💡 개념:</b> 동사원형에 <b style="color:red;">-ing</b>를 붙여 <b>"~하는 것"</b>으로 해석하며, 문장에서 <b style="color:blue;">명사(주어, 목적어, 보어)</b> 역할을 합니다.<br>
+      <span style="font-size:0.9rem; color:#555; display:block; margin-top:8px;">
+        (Tip: <b>to부정사</b>가 '미래/계획/추상적' 느낌이라면, <b>동명사</b>는 <b style="text-decoration:underline;">'과거/경험/구체적 행위'</b>의 뉘앙스가 강합니다.)
+      </span>
+    </p>
+  </div>
+
+  <h4 style="margin-bottom:10px; color:#333;">📋 문장에서의 역할 (Role)</h4>
+  <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom:25px;">
     
-    <li><b style="background-color:yellow;">★ 동명사만 목적어로 취하는 동사 (암기) ★</b>
-        <br> - **M**ind, **E**njoy, **G**ive up, **A**void, **F**inish, **S**top, **P**ostpone, **A**dmit, **R**isk 등. (MEG SAFAR)
-        <br> &nbsp;&nbsp; Ex: She finished **writing** the letter.
-    </li>
-  </ul>
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#28a745; font-size:1.05em;">① 주어 ("~하는 것은")</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        문장의 맨 앞에 오며, <b>무조건 단수 취급</b>(is/s) 합니다.
+      </p>
+      <div style="background:#f1f8e9; padding:8px; border-radius:4px; font-size:0.9rem;">
+        Ex: <b style="color:#28a745;">Learning</b> English <b style="color:red;">is</b> fun.<br>
+        (영어를 배우는 것은 재미있다.)
+      </div>
+    </div>
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#007bff; font-size:1.05em;">② 목적어 ("~하는 것을")</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        동사 뒤에서 동작의 대상을 나타냅니다.
+      </p>
+      <div style="background:#e3f2fd; padding:8px; border-radius:4px; font-size:0.9rem;">
+        Ex: I enjoy <b style="color:#007bff;">reading</b> books.<br>
+        (나는 책 읽는 것을 즐긴다.)
+      </div>
+    </div>
+
+    <div style="border:1px solid #dee2e6; border-radius:8px; padding:15px; background:white;">
+      <b style="color:#fd7e14; font-size:1.05em;">③ 보어 ("~하는 것이다")</b>
+      <p style="font-size:0.9rem; margin:5px 0; color:#555;">
+        주어의 상태나 정의를 설명합니다.
+      </p>
+      <div style="background:#fff3e0; padding:8px; border-radius:4px; font-size:0.9rem;">
+        Ex: My hobby is <b style="color:#fd7e14;">collecting</b> stamps.<br>
+        (내 취미는 우표를 수집하는 것이다.)
+      </div>
+    </div>
+  </div>
+
+  <div style="background-color:#fff5f5; border:2px solid #ffcdd2; padding:15px; border-radius:8px; margin-bottom:25px;">
+    <b style="color:#c62828; font-size:1.1em;">🚨 절대 규칙: 전치사 뒤에는 무조건 동명사!</b>
+    <p style="margin:5px 0 0 0; font-size:0.95rem; color:#333;">
+      in, on, at, of, for, about, with 등 <b>전치사 뒤에 동사</b>를 쓸 때는 반드시 <b>-ing</b> 형태여야 합니다. (to부정사 불가)
+    </p>
+    <ul style="margin:10px 0 0 20px; padding:0; font-size:0.9rem; color:#555;">
+      <li>I am good <b>at</b> <b style="color:#c62828;">speaking</b> English. (speaking O / speak X)</li>
+      <li>Thank you <b>for</b> <b style="color:#c62828;">helping</b> me. (helping O / to help X)</li>
+      <li>He is afraid <b>of</b> <b style="color:#c62828;">falling</b>. (falling O / fall X)</li>
+    </ul>
+  </div>
+
+  <div style="background-color:#fff3cd; border:2px solid #ffeeba; padding:15px; border-radius:10px; position:relative;">
+    <div style="position:absolute; top:-12px; left:15px; background:#fff3cd; padding:0 10px; font-weight:bold; color:#856404;">
+      ★ 필수 암기: 동명사만 좋아하는 동사들
+    </div>
+    
+    <div style="text-align:center; margin-bottom:10px; margin-top:10px;">
+        <b style="font-size:1.2em; color:#d39e00;">"MEG SAFAR (메가 사파리)로 외우자!"</b>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; text-align:center;">
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>M</b>ind<br><span style="font-size:0.8em; color:#666;">(꺼리다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>E</b>njoy<br><span style="font-size:0.8em; color:#666;">(즐기다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>G</b>ive up<br><span style="font-size:0.8em; color:#666;">(포기하다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>A</b>void<br><span style="font-size:0.8em; color:#666;">(피하다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>F</b>inish<br><span style="font-size:0.8em; color:#666;">(끝내다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>S</b>top<br><span style="font-size:0.8em; color:#666;">(멈추다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>P</b>ostpone<br><span style="font-size:0.8em; color:#666;">(미루다)</span></div>
+        <div style="background:white; padding:5px; border-radius:5px; border:1px solid #eee;"><b>K</b>eep<br><span style="font-size:0.8em; color:#666;">(계속하다)</span></div>
+    </div>
+
+    <div style="margin-top:15px; background:white; padding:10px; border-radius:5px; border-left:4px solid #ffc107;">
+        Ex: She <b>finished</b> <b style="color:red;">writing</b> the letter.<br>
+        <span style="color:#777; font-size:0.9em;">(finish 뒤에는 to write가 아니라 writing이 정답!)</span>
+    </div>
+  </div>
   
   <div class="note-area">
     <button onclick="toggleNote('gerund')">📝 나만의 설명 추가/수정</button>
@@ -840,10 +1453,45 @@
   </div>
 </div>
 
+<div id="topic-nounParticiple" class="topic-section">
+  <h3>16) 명사 수식 분사 (Noun + -ing / p.p.)</h3>
+  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
+    **핵심 개념:** 분사(Participle)가 명사 **뒤**에 와서 앞의 명사를 꾸며주는 형용사 역할을 합니다.<br>
+    이는 흔히 **'주격 관계대명사 + be동사'가 생략된 형태**로 볼 수 있습니다.
+  </p>
+  <ul class="small-note">
+    <li><b style="color:#d9534f; font-size:1.1em;">1. 현재분사 수식 (Noun + -ing)</b><br> - **의미:** <b style="color:blue;">능동(~하는)</b> 또는 **진행(~하고 있는)**.</li>
+    <li><b style="color:#28a745; font-size:1.1em;">2. 과거분사 수식 (Noun + p.p.)</b><br> - **의미:** <b style="color:red;">수동(~된/받은)</b> 또는 **완료(~해진)**.</li>
+  </ul>
+  
+  <div style="margin-top:20px; padding-top:15px; border-top:1px dashed #ccc;">
+    <h4 style="margin-bottom:10px;">🔍 심화: 일반 형용사 vs 분사 차이점</h4>
+    <p class="small-note"><b style="font-size:1.05em;">1. 일반 형용사</b>: 사물의 <b>고유한 성질</b> (Ex: happy boy)<br>
+    <b style="font-size:1.05em;">2. 분사</b>: 사물의 <b>동작이나 행위</b> (Ex: sleeping baby)</p>
+  </div>
+  
+  <div style="background-color:#e8f5e9; padding:10px; border-radius:5px; border:1px solid #c8e6c9; margin-top:15px;">
+    <b style="color:#2e7d32;">💡 [심화] 사물인데 -ing를 쓰는 경우</b>
+    <p style="margin:5px 0 0 0; font-size:0.95rem;">감정이나 영향을 <b>주는 원인</b>일 때 (Ex: boring movie)</p>
+  </div>
+  
+  <div style="margin-top:10px; background-color:#e3f2fd; padding:10px; border-radius:5px; border:1px solid #bbdefb;">
+    <b style="color:#0d47a1;">❓ 기차는 사물인데 왜 leaving인가요?</b>
+    <p style="margin:5px 0 0 0; font-size:0.95rem;">'떠나다, 도착하다' 같은 <b>왕래발착 동사</b>는 사물이 주체여도 능동(-ing)을 씁니다. (Ex: The train <b>leaving</b> for Seoul)</p>
+  </div>
+
+  <div class="note-area">
+    <button onclick="toggleNote('nounParticiple')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-nounParticiple" style="display:none;">
+      <textarea id="note-input-nounParticiple" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
+      <button onclick="saveNote('nounParticiple')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-nounParticiple" class="note-display"></div>
+  </div>
+</div>
+
 <hr>
-
 <h2>② 퀴즈 (Practice)</h2>
-
 <div class="quiz-box">
   <h3>A. 문법 객관식 퀴즈</h3>
   <div style="margin-bottom:10px;">
@@ -867,12 +1515,11 @@
       <option value="pronoun">인칭대명사</option>
       <option value="toinf">to부정사</option>
       <option value="gerund">동명사</option>
+      <option value="nounParticiple">명사 수식 분사</option>
     </select>
   </div>
-  
   <button onclick="nextQuestion()" class="control-btn" id="nextBtn">새 문제 / 다음 문제</button>
   <button onclick="resetQuizPool()" class="reset-btn">문제 목록 초기화</button>
-
   <div id="grammarQuizArea" style="display:none; margin-top:20px;">
     <p id="quizProgress" style="font-size:0.9rem; color:#666; margin-bottom:5px;"></p>
     <p id="grammarQuestionEn" style="font-weight:bold; font-size:1.15em; color:#222;"></p>
@@ -887,7 +1534,6 @@
   <h3>오답 노트 & 다시 풀기</h3>
   <p id="wrongList" class="small-note">아직 틀린 문제가 없습니다.</p>
   <button onclick="retryWrongQuestion()" class="control-btn" style="background-color:#ffc107; color:#000;">틀린 문제 다시 풀기</button>
-
   <div id="wrongQuizArea" style="display:none; margin-top:20px; background:#fff8e1; padding:15px; border-radius:8px;">
     <p id="wrongQuestionInfo" style="font-size:0.85rem; color:#777;"></p>
     <p id="wrongQuestionEn" style="font-weight:bold; font-size:1.1em;"></p>
@@ -899,17 +1545,9 @@
 </div>
 
 <hr>
-
 <h2>③ 최종 평가 (Final Evaluation)</h2>
-
 <div class="quiz-box" id="final-assessment-box" style="border: 2px solid #007bff;">
   <h3>최종 능력 평가 (30문제 / 100점 만점)</h3>
-  <p class="small-note">
-    * 전체 문법 문제 중 무작위로 30문제가 출제됩니다.<br>
-    * 제한 시간은 <b>10분</b>입니다.<br>
-    * 시작 버튼을 누르면 바로 시험이 시작됩니다.
-  </p>
-
   <div id="assessment-input-area">
     <div class="assessment-input">
         <label>소속(학과): </label><input type="text" id="st-dept" placeholder="예: SW개발과">
@@ -920,18 +1558,15 @@
     </div>
     <button onclick="startFinalEvaluation()" class="control-btn" style="width:100%; padding:15px; font-size:1.2rem;">시험 시작하기</button>
   </div>
-
   <div id="assessment-area" style="display:none;">
     <div style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:15px; overflow:hidden;">
         <span id="assessment-progress" style="font-weight:bold; font-size:1.1rem;">문제 1 / 30</span>
         <span id="timer-display">10:00</span>
     </div>
-    
     <p id="assessment-q-en" style="font-weight:bold; font-size:1.2em; margin-bottom:5px;"></p>
     <p id="assessment-q-ko" style="color:#555; font-size:1rem; margin-bottom:15px;"></p>
     <div id="assessment-options" class="options"></div>
   </div>
-
   <div id="assessment-result" style="display:none;">
     <div class="score-board">
         <span id="result-student-info"></span><br>
@@ -1017,7 +1652,8 @@ const topicMap = {
     "participle": "분사구문",
     "pronoun": "인칭대명사",
     "toinf": "to부정사",
-    "gerund": "동명사"
+    "gerund": "동명사",
+    "nounParticiple": "명사 수식 분사"
 };
 
 const grammarQuestions = [
@@ -1088,26 +1724,26 @@ const grammarQuestions = [
   { id:60, topic:"relative", en:"He has two sons, ____ are doctors.", ko:"그는 두 아들이 있는데, 그들은 의사이다.", options:["who","that","which","whom"], answer:"who", explanation:"계속적 용법." },
 
  // --- 관계부사 (Relative Adverbs) (20개) ---
-  { id:61, topic:"relativeAdverb", en:"This is the place ____ we met.", ko:"여기가 우리가 만났던 장소다.", options:["where","when","why","how"], answer:"where", explanation:"장소(place) + 완전한 문장 = where." },
-  { id:62, topic:"relativeAdverb", en:"I know the reason ____ he is mad.", ko:"나는 그가 화난 이유를 안다.", options:["why","where","when","how"], answer:"why", explanation:"이유(reason) = why." },
-  { id:63, topic:"relativeAdverb", en:"Friday is the day ____ I am busy.", ko:"금요일은 내가 바쁜 날이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(day) = when." },
-  { id:64, topic:"relativeAdverb", en:"Tell me ____ you did it.", ko:"네가 그걸 어떻게 했는지 말해줘.", options:["how","the way","the way how","which"], answer:"how", explanation:"방법은 how 또는 the way 하나만 씀 (the way how 불가)." },
-  { id:65, topic:"relativeAdverb", en:"This is the house ____ I live.", ko:"이곳은 내가 사는 집이다.", options:["where","which","that","what"], answer:"where", explanation:"완전한 문장(I live) + 장소 = where." },
-  { id:66, topic:"relativeAdverb", en:"Do you remember the time ____ we started?", ko:"우리가 시작한 시간을 기억하니?", options:["when","where","why","which"], answer:"when", explanation:"시간 = when." },
-  { id:67, topic:"relativeAdverb", en:"That is the reason ____ I like her.", ko:"그것이 내가 그녀를 좋아하는 이유다.", options:["why","for which","that","All above"], answer:"All above", explanation:"why, for which, that 모두 가능." },
-  { id:68, topic:"relativeAdverb", en:"Spring is the season ____ flowers bloom.", ko:"봄은 꽃이 피는 계절이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(season) = when." },
-  { id:69, topic:"relativeAdverb", en:"I know the city ____ he lives.", ko:"나는 그가 사는 도시를 안다.", options:["where","when","why","how"], answer:"where", explanation:"장소." },
-  { id:70, topic:"relativeAdverb", en:"Tell me the day ____ you can come.", ko:"네가 올 수 있는 날을 말해줘.", options:["when","where","why","how"], answer:"when", explanation:"시간." },
-  { id:71, topic:"relativeAdverb", en:"This is ____ I study English.", ko:"이것이 내가 영어를 공부하는 방법이다.", options:["how","the way how","where","when"], answer:"how", explanation:"방법." },
-  { id:72, topic:"relativeAdverb", en:"The reason ____ I was late is simple.", ko:"내가 늦은 이유는 간단하다.", options:["why","where","when","how"], answer:"why", explanation:"이유." },
-  { id:73, topic:"relativeAdverb", en:"Can you tell me ____ you solved it?", ko:"어떻게 풀었는지 말해줄래?", options:["how","the way how","where","when"], answer:"how", explanation:"방법." },
-  { id:74, topic:"relativeAdverb", en:"Summer is the time ____ we go to the beach.", ko:"여름은 우리가 해변에 가는 때이다.", options:["when","where","why","how"], answer:"when", explanation:"시간." },
-  { id:75, topic:"relativeAdverb", en:"This is the park ____ we played.", ko:"이곳은 우리가 놀았던 공원이다.", options:["where","when","why","how"], answer:"where", explanation:"장소." },
-  { id:76, topic:"relativeAdverb", en:"I don't know the reason ____ she cried.", ko:"나는 그녀가 운 이유를 모른다.", options:["why","where","when","how"], answer:"why", explanation:"이유." },
-  { id:77, topic:"relativeAdverb", en:"That is ____ he succeeded.", ko:"그것이 그가 성공한 방식이다.", options:["how","the way how","where","when"], answer:"how", explanation:"방법." },
-  { id:78, topic:"relativeAdverb", en:"Do you remember the place ____ we hid the key?", ko:"우리가 열쇠를 숨긴 장소를 기억하니?", options:["where","when","why","how"], answer:"where", explanation:"장소." },
-  { id:79, topic:"relativeAdverb", en:"Monday is the day ____ we start work.", ko:"월요일은 우리가 일을 시작하는 날이다.", options:["when","where","why","how"], answer:"when", explanation:"시간." },
-  { id:80, topic:"relativeAdverb", en:"Tell me ____ you made this.", ko:"어떻게 이것을 만들었는지 말해줘.", options:["how","the way how","where","when"], answer:"how", explanation:"방법." },
+  { id:61, topic:"relativeAdverb", en:"This is the place ____ we met.", ko:"여기가 우리가 만났던 장소다.", options:["where","which","who","what"], answer:"where", explanation:"선행사가 장소(place)이고 뒤에 완전한 문장(we met)이 왔으므로 관계부사 where가 정답입니다. (where = at which)" },
+  { id:62, topic:"relativeAdverb", en:"I know the reason ____ he is mad.", ko:"나는 그가 화난 이유를 안다.", options:["why","where","when","which"], answer:"why", explanation:"선행사가 이유(reason)이므로 why가 적절합니다. (why = for which)" },
+  { id:63, topic:"relativeAdverb", en:"Friday is the day ____ I am busy.", ko:"금요일은 내가 바쁜 날이다.", options:["when","where","why","how"], answer:"when", explanation:"선행사가 시간(day)이고 뒷문장이 완전하므로 when이 정답입니다. (when = on which)" },
+  { id:64, topic:"relativeAdverb", en:"Tell me ____ you did it.", ko:"네가 그걸 어떻게 했는지 말해줘.", options:["how","the way","the way how","which"], answer:"how", explanation:"방법을 나타낼 때 'the way'와 'how'는 절대 함께 쓸 수 없습니다. 둘 중 하나만 써야 하므로 보기에 있는 how가 정답입니다." },
+  { id:65, topic:"relativeAdverb", en:"This is the house ____ I live.", ko:"이곳은 내가 사는 집이다. (전치사+관계대명사)", options:["in which","on which","at which","for which"], answer:"in which", explanation:"집 안(in)에 사는 것이므로 전치사 in이 필요합니다. Where는 'in which'로 바꿔 쓸 수 있습니다." },
+  { id:66, topic:"relativeAdverb", en:"Do you remember the time ____ we started?", ko:"우리가 시작한 시간을 기억하니? (전치사+관계대명사)", options:["at which","on which","in which","for which"], answer:"at which", explanation:"특정한 시각(time)은 전치사 at을 씁니다. When은 'at which'로 바꿔 쓸 수 있습니다." },
+  { id:67, topic:"relativeAdverb", en:"That is the reason ____ I like her.", ko:"그것이 내가 그녀를 좋아하는 이유다.", options:["for which","at which","in which","on which"], answer:"for which", explanation:"이유(reason)와 어울리는 전치사는 for입니다. Why는 'for which'로 바꿔 쓸 수 있습니다." },
+  { id:68, topic:"relativeAdverb", en:"Spring is the season ____ flowers bloom.", ko:"봄은 꽃이 피는 계절이다.", options:["in which","at which","on which","why"], answer:"in which", explanation:"계절(season)은 긴 기간이므로 전치사 in을 씁니다. When = in which." },
+  { id:69, topic:"relativeAdverb", en:"I know the city ____ he lives.", ko:"나는 그가 사는 도시를 안다.", options:["where","which","that","what"], answer:"where", explanation:"장소(city) + 완전한 문장(he lives) = where. (만약 which를 쓰려면 in which가 되어야 함)" },
+  { id:70, topic:"relativeAdverb", en:"Tell me the day ____ you can come.", ko:"네가 올 수 있는 날을 말해줘.", options:["on which","at which","in which","for which"], answer:"on which", explanation:"특정한 날짜/요일(day) 앞에는 전치사 on을 씁니다. When = on which." },
+  { id:71, topic:"relativeAdverb", en:"This is ____ I study English.", ko:"이것이 내가 영어를 공부하는 방법이다.", options:["the way","the way how","which","where"], answer:"the way", explanation:"'The way how'는 불가능합니다. The way만 쓰거나 How만 써야 합니다." },
+  { id:72, topic:"relativeAdverb", en:"The reason ____ I was late is simple.", ko:"내가 늦은 이유는 간단하다.", options:["why","where","when","how"], answer:"why", explanation:"선행사가 reason이므로 관계부사 why가 정답입니다." },
+  { id:73, topic:"relativeAdverb", en:"Can you tell me ____ you solved it?", ko:"어떻게 풀었는지 말해줄래?", options:["how","the way how","where","when"], answer:"how", explanation:"방법을 물을 때 how를 씁니다. (The way how는 오답)" },
+  { id:74, topic:"relativeAdverb", en:"Summer is the time ____ we go to the beach.", ko:"여름은 우리가 해변에 가는 때이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(time) + 완전한 문장 = when." },
+  { id:75, topic:"relativeAdverb", en:"This is the park ____ we played.", ko:"이곳은 우리가 놀았던 공원이다.", options:["at which","on which","for which","why"], answer:"at which", explanation:"공원이라는 좁은 장소/지점은 at을 사용합니다. Where = at which." },
+  { id:76, topic:"relativeAdverb", en:"I don't know the reason ____ she cried.", ko:"나는 그녀가 운 이유를 모른다.", options:["why","where","when","how"], answer:"why", explanation:"이유(reason) 뒤에는 why가 옵니다." },
+  { id:77, topic:"relativeAdverb", en:"That is the way ____ he succeeded.", ko:"그것이 그가 성공한 방식이다.", options:["in which","at which","on which","why"], answer:"in which", explanation:"방법(The way)은 how와 같이 못 쓰지만, 'in which'와는 함께 쓸 수 있습니다. (The way in which = O)" },
+  { id:78, topic:"relativeAdverb", en:"Do you remember the place ____ we hid the key?", ko:"우리가 열쇠를 숨긴 장소를 기억하니?", options:["where","when","why","how"], answer:"where", explanation:"장소(place) + 완전한 문장 = where." },
+  { id:79, topic:"relativeAdverb", en:"Monday is the day ____ we start work.", ko:"월요일은 우리가 일을 시작하는 날이다.", options:["when","where","why","how"], answer:"when", explanation:"시간(day) + 완전한 문장 = when." },
+  { id:80, topic:"relativeAdverb", en:"Tell me ____ you made this.", ko:"어떻게 이것을 만들었는지 말해줘.", options:["how","the way how","where","when"], answer:"how", explanation:"방법을 나타내므로 how가 정답입니다." },
 
  // --- 비교급/최상급 (Comparison) (20개) ---
   { id:81, topic:"comparison", en:"He is ____ than me.", ko:"그는 나보다 키가 크다.", options:["taller","tall","tallest","more tall"], answer:"taller", explanation:"tall + er (비교급)." },
@@ -1154,88 +1790,122 @@ const grammarQuestions = [
   { id:120, topic:"preposition", en:"The book is divided ____ five chapters.", ko:"그 책은 다섯 장으로 나뉘어 있다.", options:["to","into","with","by"], answer:"into", explanation:"divide A into B (A를 B로 나누다)." },
 
  // --- 접속사 (Conjunction) (20개) ---
-  { id:121, topic:"conjunction", en:"I was sick, ____ I stayed home.", ko:"나는 아팠다, 그래서 집에 있었다.", options:["so","because","but","if"], answer:"so", explanation:"결과를 나타내는 so." },
-  { id:122, topic:"conjunction", en:"____ it rained, we played soccer.", ko:"비가 왔지만 우리는 축구를 했다.", options:["Although","Because","If","Since"], answer:"Although", explanation:"양보(비록 ~일지라도) Although." },
-  { id:123, topic:"conjunction", en:"I couldn't go ____ of the rain.", ko:"비 때문에 못 갔다.", options:["because","so","due","since"], answer:"because", explanation:"뒤에 of가 있으므로 because of." },
-  { id:124, topic:"conjunction", en:"Study hard, ____ you will pass.", ko:"열심히 공부해라, 그러면 합격할 것이다.", options:["and","or","but","so"], answer:"and", explanation:"명령문, and (그러면)." },
-  { id:125, topic:"conjunction", en:"Hurry up, ____ you will be late.", ko:"서둘러라, 그렇지 않으면 늦을 것이다.", options:["or","and","but","so"], answer:"or", explanation:"명령문, or (그렇지 않으면)." },
-  { id:126, topic:"conjunction", en:"Wait ____ I come back.", ko:"내가 돌아올 때까지 기다려.", options:["until","while","if","because"], answer:"until", explanation:"~할 때까지." },
-  { id:127, topic:"conjunction", en:"Do you know ____ he is rich?", ko:"그가 부자인지 아닌지 아니?", options:["if","what","that","which"], answer:"if", explanation:"~인지 아닌지 (if/whether)." },
-  { id:128, topic:"conjunction", en:"I like him ____ he is kind.", ko:"그가 친절하기 때문에 나는 그를 좋아한다.", options:["because","although","so","but"], answer:"because", explanation:"이유를 나타내는 because." },
-  { id:129, topic:"conjunction", en:"____ I was reading, the phone rang.", ko:"내가 책을 읽고 있는 동안 전화가 울렸다.", options:["While","During","For","Because"], answer:"While", explanation:"~하는 동안(절) While." },
-  { id:130, topic:"conjunction", en:"I will call you ____ I arrive.", ko:"도착하면 전화할게.", options:["when","where","why","who"], answer:"when", explanation:"시간 접속사 when." },
-  { id:131, topic:"conjunction", en:"He is rich, ____ he is not happy.", ko:"그는 부자이지만 행복하지 않다.", options:["but","so","and","or"], answer:"but", explanation:"역접 but." },
-  { id:132, topic:"conjunction", en:"You can have tea ____ coffee.", ko:"차 또는 커피를 마실 수 있다.", options:["or","and","but","so"], answer:"or", explanation:"선택 or." },
-  { id:133, topic:"conjunction", en:"Both Jane ____ Tom are here.", ko:"제인과 톰 둘 다 여기 있다.", options:["and","or","but","so"], answer:"and", explanation:"Both A and B." },
-  { id:134, topic:"conjunction", en:"Neither he ____ she is right.", ko:"그도 그녀도 옳지 않다.", options:["nor","or","and","but"], answer:"nor", explanation:"Neither A nor B." },
-  { id:135, topic:"conjunction", en:"I won't go ____ you go.", ko:"네가 가지 않으면 나도 안 갈 거야.", options:["unless","if","when","because"], answer:"unless", explanation:"unless (=if not)." },
-  { id:136, topic:"conjunction", en:"Take an umbrella ____ it rains.", ko:"비가 올 경우를 대비해 우산을 가져가라.", options:["in case","if","when","because"], answer:"in case", explanation:"in case." },
-  { id:137, topic:"conjunction", en:"He speaks ____ fast that I can't understand.", ko:"그는 너무 빨리 말해서 내가 이해할 수 없다.", options:["so","very","too","such"], answer:"so", explanation:"so ~ that." },
-  { id:138, topic:"conjunction", en:"I went out ____ it was cold.", ko:"추웠지만 나는 나갔다.", options:["although","because","if","when"], answer:"although", explanation:"양보." },
-  { id:139, topic:"conjunction", en:"As soon ____ he saw me, he ran away.", ko:"그는 나를 보자마자 도망쳤다.", options:["as","like","than","so"], answer:"as", explanation:"as soon as." },
-  { id:140, topic:"conjunction", en:"I studied hard ____ I could pass.", ko:"나는 합격하기 위해 열심히 공부했다.", options:["so that","because","although","if"], answer:"so that", explanation:"목적 so that." },
+  { id:121, topic:"conjunction", en:"I was sick, ____ I stayed home.", ko:"나는 아팠다, 그래서 집에 있었다.", options:["so","because","but","if"], answer:"so", explanation:"앞문장이 원인(아팠다), 뒷문장이 결과(집에 있었다)이므로 인과관계를 나타내는 so가 적절합니다." },
+  { id:122, topic:"conjunction", en:"____ it rained, we played soccer.", ko:"비가 왔지만 우리는 축구를 했다.", options:["Although","Because","If","Since"], answer:"Although", explanation:"비가 오는 상황과 축구를 하는 상황은 대조(양보)되므로 Although(비록 ~일지라도)가 정답입니다." },
+  { id:123, topic:"conjunction", en:"I couldn't go ____ the heavy rain.", ko:"폭우 때문에 나는 갈 수 없었다.", options:["because of","because","so","since"], answer:"because of", explanation:"[핵심] 빈칸 뒤에 'the heavy rain'이라는 명사구가 왔으므로 전치사 'because of'를 써야 합니다. (Because 뒤에는 주어+동사가 옴)" },
+  { id:124, topic:"conjunction", en:"Study hard, ____ you will pass.", ko:"열심히 공부해라, 그러면 합격할 것이다.", options:["and","or","but","so"], answer:"and", explanation:"[공식] 명령문 + and (~해라, 그러면 [긍정적 결과])." },
+  { id:125, topic:"conjunction", en:"Hurry up, ____ you will be late.", ko:"서둘러라, 그렇지 않으면 늦을 것이다.", options:["or","and","but","so"], answer:"or", explanation:"[공식] 명령문 + or (~해라, 그렇지 않으면 [부정적 경고])." },
+  { id:126, topic:"conjunction", en:"Wait here ____ I come back.", ko:"내가 돌아올 때까지 여기서 기다려.", options:["until","while","if","because"], answer:"until", explanation:"동작이 특정 시점까지 계속됨을 나타내는 'until(~할 때까지)'이 적절합니다." },
+  { id:127, topic:"conjunction", en:"Do you know ____ he is rich?", ko:"그가 부자인지 아닌지 아니?", options:["if","what","that","which"], answer:"if", explanation:"불확실한 사실을 물을 때 명사절을 이끄는 접속사는 if 또는 whether (~인지 아닌지)입니다." },
+  { id:128, topic:"conjunction", en:"I like him ____ he is kind.", ko:"그가 친절하기 때문에 나는 그를 좋아한다.", options:["because","because of","although","so"], answer:"because", explanation:"[핵심] 빈칸 뒤에 'he is kind'라는 절(주어+동사)이 왔으므로 접속사 'because'가 정답입니다." },
+  { id:129, topic:"conjunction", en:"____ I was reading, the phone rang.", ko:"내가 책을 읽고 있는 동안 전화가 울렸다.", options:["While","During","For","Because"], answer:"While", explanation:"~하는 동안을 나타낼 때, 뒤에 주어+동사(I was reading)가 오면 접속사 While을 씁니다. (During은 전치사라 뒤에 명사가 옴)" },
+  { id:130, topic:"conjunction", en:"I will call you ____ I arrive.", ko:"도착하면 전화할게.", options:["when","where","why","who"], answer:"when", explanation:"시간을 나타내는 접속사 when입니다. (시간 부사절에서는 현재시제가 미래를 대신함)" },
+  { id:131, topic:"conjunction", en:"He is rich, ____ he is not happy.", ko:"그는 부자이지만 행복하지 않다.", options:["but","so","and","or"], answer:"but", explanation:"부유함과 행복하지 않음은 서로 반대되는 내용이므로 역접 접속사 but이 필요합니다." },
+  { id:132, topic:"conjunction", en:"You can have tea ____ coffee.", ko:"차 또는 커피를 마실 수 있다.", options:["or","and","but","so"], answer:"or", explanation:"둘 중 하나를 선택하는 상황이므로 or가 적절합니다." },
+  { id:133, topic:"conjunction", en:"Both Jane ____ Tom are here.", ko:"제인과 톰 둘 다 여기 있다.", options:["and","or","but","so"], answer:"and", explanation:"[짝꿍 찾기] Both A and B (A와 B 둘 다)." },
+  { id:134, topic:"conjunction", en:"Neither he ____ she is right.", ko:"그도 그녀도 옳지 않다.", options:["nor","or","and","but"], answer:"nor", explanation:"[짝꿍 찾기] Neither A nor B (A도 B도 아닌)." },
+  { id:135, topic:"conjunction", en:"I won't go ____ you go.", ko:"네가 가지 않으면 나도 안 갈 거야.", options:["unless","if","when","because"], answer:"unless", explanation:"Unless = If not (~하지 않는다면). 의미상 '네가 가야 나도 간다'는 조건입니다." },
+  { id:136, topic:"conjunction", en:"Take an umbrella ____ it rains.", ko:"비가 올 경우를 대비해 우산을 가져가라.", options:["in case","if","when","because"], answer:"in case", explanation:"'~할 경우를 대비하여'라는 목적/준비의 의미는 in case가 적절합니다." },
+  { id:137, topic:"conjunction", en:"He speaks ____ fast that I can't understand.", ko:"그는 너무 빨리 말해서 내가 이해할 수 없다.", options:["so","very","too","such"], answer:"so", explanation:"[구문] so [형용사/부사] that [주어+동사] (너무 ~해서 ...하다)." },
+  { id:138, topic:"conjunction", en:"I went out ____ it was cold.", ko:"추웠지만 나는 나갔다.", options:["although","because","if","when"], answer:"although", explanation:"추운 날씨와 외출은 상반된 내용이므로 양보 접속사 although가 맞습니다." },
+  { id:139, topic:"conjunction", en:"As soon ____ he saw me, he ran away.", ko:"그는 나를 보자마자 도망쳤다.", options:["as","like","than","so"], answer:"as", explanation:"As soon as (~하자마자) 관용 표현입니다." },
+  { id:140, topic:"conjunction", en:"I studied hard ____ I could pass.", ko:"나는 합격하기 위해 열심히 공부했다.", options:["so that","because","although","if"], answer:"so that", explanation:"목적(~하기 위해서)을 나타내는 접속사는 so that입니다." },
 
-// --- 가정법 현재/조건문 (20개) ---
-  { id:321, topic:"conditionalPresent", en:"If it ____ tomorrow, I will stay home.", ko:"내일 비가 오면, 나는 집에 있을 것이다.", options:["rains","will rain","rain","rained"], answer:"rains", explanation:"조건 부사절에서는 현재시제가 미래를 대신함." },
-  { id:322, topic:"conditionalPresent", en:"If you ____ ice, it melts.", ko:"얼음을 가열하면 녹는다.", options:["heat","will heat","heated","heats"], answer:"heat", explanation:"불변의 진리(Zero Conditional)는 현재시제." },
-  { id:323, topic:"conditionalPresent", en:"Unless you ____, you will miss the bus.", ko:"뛰지 않으면 버스를 놓칠 것이다.", options:["run","don't run","will run","ran"], answer:"run", explanation:"Unless = If not. 긍정문 형태(run)를 씀." },
-  { id:324, topic:"conditionalPresent", en:"I will tell him if he ____.", ko:"그가 오면 그에게 말할게.", options:["comes","will come","came","come"], answer:"comes", explanation:"조건절 현재시제." },
-  { id:325, topic:"conditionalPresent", en:"If the weather ____ fine, let's go out.", ko:"날씨가 좋으면 나가자.", options:["is","will be","was","are"], answer:"is", explanation:"조건절 현재시제." },
-  { id:326, topic:"conditionalPresent", en:"You can go if you ____ finished.", ko:"다 끝냈다면 가도 좋다.", options:["have","had","will have","are"], answer:"have", explanation:"조건절에서 완료 시제도 현재완료를 씀." },
-  { id:327, topic:"conditionalPresent", en:"If you ____ the button, the machine starts.", ko:"버튼을 누르면 기계가 작동한다.", options:["press","will press","pressed","pressing"], answer:"press", explanation:"단순 조건." },
-  { id:328, topic:"conditionalPresent", en:"If I ____ time, I will help you.", ko:"시간이 있으면 도와줄게.", options:["have","will have","had","has"], answer:"have", explanation:"미래 조건." },
-  { id:329, topic:"conditionalPresent", en:"Please call me if you ____ him.", ko:"그를 보면 나에게 전화해줘.", options:["see","will see","saw","seen"], answer:"see", explanation:"조건절." },
-  { id:330, topic:"conditionalPresent", en:"If water freezes, it ____ ice.", ko:"물이 얼면 얼음이 된다.", options:["becomes","will become","became","become"], answer:"becomes", explanation:"불변의 진리." },
-  { id:331, topic:"conditionalPresent", en:"If she ____ hard, she will succeed.", ko:"그녀가 열심히 공부하면 성공할 것이다.", options:["studies","will study","studied","study"], answer:"studies", explanation:"조건절 3인칭 단수." },
-  { id:332, topic:"conditionalPresent", en:"I'll buy it if it ____ cheap.", ko:"싸다면 살 거야.", options:["is","will be","was","are"], answer:"is", explanation:"조건절." },
-  { id:333, topic:"conditionalPresent", en:"If you ____ late, we will leave without you.", ko:"늦으면 너 없이 갈 거야.", options:["are","will be","were","was"], answer:"are", explanation:"조건절." },
-  { id:334, topic:"conditionalPresent", en:"What will you do if it ____?", ko:"비가 오면 어쩔 거니?", options:["rains","will rain","rained","rain"], answer:"rains", explanation:"조건절." },
-  { id:335, topic:"conditionalPresent", en:"If he ____ tomorrow, I'll give him the book.", ko:"그가 내일 온다면 책을 줄게.", options:["comes","will come","came","come"], answer:"comes", explanation:"시간 부사절." },
-  { id:336, topic:"conditionalPresent", en:"If you ____ to Paris, visit the Eiffel Tower.", ko:"파리에 간다면 에펠탑을 방문해라.", options:["go","will go","went","gone"], answer:"go", explanation:"조건절." },
+// --- 가정법 현재/조건문 (30개) ---
+  { id:321, topic:"conditionalPresent", en:"If it ____ tomorrow, I will stay home.", ko:"내일 비가 오면, 나는 집에 있을 것이다.", options:["rains","will rain","rain","rained"], answer:"rains", explanation:"[핵심] 시간/조건 부사절에서는 '현재 시제'가 '미래 시제'를 대신합니다. (Tomorrow가 있어도 rains)" },
+  { id:322, topic:"conditionalPresent", en:"If you ____ ice, it melts.", ko:"얼음을 가열하면 녹는다.", options:["heat","will heat","heated","heats"], answer:"heat", explanation:"[불변의 진리] 과학적 사실은 'If + 현재, 주절 + 현재'를 씁니다." },
+  { id:323, topic:"conditionalPresent", en:"Unless you ____, you will miss the bus.", ko:"뛰지 않으면 버스를 놓칠 것이다.", options:["run","don't run","will run","ran"], answer:"run", explanation:"Unless = If not. 이미 부정의 의미가 포함되어 있으므로 긍정형(run)을 씁니다." },
+  { id:324, topic:"conditionalPresent", en:"I will tell him if he ____.", ko:"그가 오면 그에게 말할게.", options:["comes","will come","came","come"], answer:"comes", explanation:"주절은 미래(will tell)지만, If절 안에서는 현재시제(comes)를 써야 합니다." },
+  { id:325, topic:"conditionalPresent", en:"If the weather ____ fine, let's go out.", ko:"날씨가 좋으면 나가자.", options:["is","will be","was","are"], answer:"is", explanation:"조건절 내에서의 be동사 현재형입니다. (will be 불가)" },
+  { id:326, topic:"conditionalPresent", en:"You can go if you ____ finished.", ko:"다 끝냈다면 가도 좋다.", options:["have","had","will have","are"], answer:"have", explanation:"조건절에서 완료된 상황을 말할 때도 '현재완료(have p.p)'가 미래완료를 대신합니다." },
+  { id:327, topic:"conditionalPresent", en:"If you ____ the button, the machine starts.", ko:"버튼을 누르면 기계가 작동한다.", options:["press","will press","pressed","pressing"], answer:"press", explanation:"[조작/기계] 버튼을 누르면 100% 작동하므로 불변의 진리(Zero Conditional)입니다." },
+  { id:328, topic:"conditionalPresent", en:"If I ____ time, I will help you.", ko:"시간이 있으면 도와줄게.", options:["have","will have","had","has"], answer:"have", explanation:"미래의 조건이지만 형태는 현재시제(have)를 씁니다." },
+  { id:329, topic:"conditionalPresent", en:"Please call me if you ____ him.", ko:"그를 보면 나에게 전화해줘.", options:["see","will see","saw","seen"], answer:"see", explanation:"명령문(Call me)과 함께 쓰인 조건절입니다. 현재시제 see가 정답입니다." },
+  { id:330, topic:"conditionalPresent", en:"If water freezes, it ____ ice.", ko:"물이 얼면 얼음이 된다.", options:["becomes","will become","became","become"], answer:"becomes", explanation:"[불변의 진리] 주절에도 현재시제를 써서 변하지 않는 사실을 나타냅니다." },
+  { id:331, topic:"conditionalPresent", en:"If she ____ hard, she will succeed.", ko:"그녀가 열심히 공부하면 성공할 것이다.", options:["studies","will study","studied","study"], answer:"studies", explanation:"주어(She)가 3인칭 단수이므로 studies." },
+  { id:332, topic:"conditionalPresent", en:"I'll buy it if it ____ cheap.", ko:"싸다면 살 거야.", options:["is","will be","was","are"], answer:"is", explanation:"조건절(If) 내부에서는 will be 대신 is를 씁니다." },
+  { id:333, topic:"conditionalPresent", en:"If you ____ late, we will leave without you.", ko:"늦으면 너 없이 갈 거야.", options:["are","will be","were","was"], answer:"are", explanation:"단순 조건문: If you are late." },
+  { id:334, topic:"conditionalPresent", en:"What will you do if it ____?", ko:"비가 오면 어쩔 거니?", options:["rains","will rain","rained","rain"], answer:"rains", explanation:"의문문에서도 조건절의 규칙(현재가 미래 대용)은 동일합니다." },
+  { id:335, topic:"conditionalPresent", en:"If he ____ tomorrow, I'll give him the book.", ko:"그가 내일 온다면 책을 줄게.", options:["comes","will come","came","come"], answer:"comes", explanation:"Tomorrow가 있어도 If절 안에서는 comes." },
+  { id:336, topic:"conditionalPresent", en:"If you ____ to Paris, visit the Eiffel Tower.", ko:"파리에 간다면 에펠탑을 방문해라.", options:["go","will go","went","gone"], answer:"go", explanation:"충고/제안을 나타내는 명령문 조건절입니다." },
+  { id:337, topic:"conditionalPresent", en:"When I ____ him, I will let you know.", ko:"그를 만나면(만날 때), 너에게 알려줄게.", options:["meet","will meet","met","meeting"], answer:"meet", explanation:"[시간 부사절] When절 안에서도 미래 대신 현재시제(meet)를 씁니다." },
+  { id:338, topic:"conditionalPresent", en:"I will wait here until he ____.", ko:"그가 올 때까지 여기서 기다릴게.", options:["comes","will come","came","come"], answer:"comes", explanation:"Until(~할 때까지)도 시간을 나타내는 부사절이므로 현재시제를 씁니다." },
+  { id:339, topic:"conditionalPresent", en:"As soon as I ____, I will call you.", ko:"도착하자마자 전화할게.", options:["arrive","will arrive","arrived","arriving"], answer:"arrive", explanation:"As soon as(~하자마자)는 시간 부사절입니다. 현재시제 사용." },
+  { id:340, topic:"conditionalPresent", en:"If it ____ not rain, we will go on a picnic.", ko:"비가 오지 않는다면, 소풍을 갈 것이다.", options:["does","will","do","is"], answer:"does", explanation:"일반동사(rain)의 부정 조건문은 don't/doesn't를 씁니다. (won't rain 아님)" },
+  { id:341, topic:"conditionalPresent", en:"Unless he ____ now, he will be late.", ko:"지금 떠나지 않으면, 그는 늦을 것이다.", options:["leaves","doesn't leave","will leave","leave"], answer:"leaves", explanation:"Unless 안에 이미 부정(not)이 있으므로 긍정 형태(leaves)를 씁니다." },
+  { id:342, topic:"conditionalPresent", en:"Before you ____, please close the window.", ko:"나가기 전에 창문을 닫아주세요.", options:["leave","will leave","left","leaving"], answer:"leave", explanation:"Before(~전에) 시간 부사절 + 현재시제." },
+  { id:343, topic:"conditionalPresent", en:"If you ____ mix red and white, you get pink.", ko:"빨간색과 흰색을 섞으면 분홍색이 된다.", options:["mix","will mix","mixed","mixes"], answer:"mix", explanation:"[불변의 진리] 0차 조건문(Zero Conditional)입니다." },
+  { id:344, topic:"conditionalPresent", en:"What happens if you ____ the sun?", ko:"태양을 쳐다보면 무슨 일이 일어나는가?", options:["touch","will touch","touched","touching"], answer:"touch", explanation:"일반적인 사실을 묻는 질문이므로 현재시제를 씁니다. (문맥상 예시용 질문)" },
+  { id:345, topic:"conditionalPresent", en:"If I ____ the exam, I will be happy.", ko:"시험에 합격한다면 행복할 거야.", options:["pass","will pass","passed","passing"], answer:"pass", explanation:"미래의 가능성을 나타내는 제1 조건문(First Conditional)." },
+  { id:346, topic:"conditionalPresent", en:"Make sure to lock the door when you ____.", ko:"나갈 때 문을 꼭 잠가라.", options:["go","will go","went","going"], answer:"go", explanation:"When절(시간) + 현재시제." },
+  { id:347, topic:"conditionalPresent", en:"If the price ____ too high, I won't buy it.", ko:"가격이 너무 비싸면 안 살 거야.", options:["is","will be","was","be"], answer:"is", explanation:"조건절의 상태 동사 be의 현재형." },
+  { id:348, topic:"conditionalPresent", en:"Give this to him if you ____ him.", ko:"그를 보게 되면 이것을 그에게 줘.", options:["see","will see","saw","seen"], answer:"see", explanation:"미래에 볼 가능성을 가정한 조건절." },
+  { id:349, topic:"conditionalPresent", en:"I will stay here until the rain ____.", ko:"비가 그칠 때까지 여기 있을게.", options:["stops","will stop","stopped","stop"], answer:"stops", explanation:"Until + 주어(3인칭 단수) + 현재시제(s)." },
+  { id:350, topic:"conditionalPresent", en:"If we ____ the train, we can take the bus.", ko:"기차를 놓치면 버스를 타면 돼.", options:["miss","will miss","missed","missing"], answer:"miss", explanation:"현실적인 대안(Can)을 제시하는 조건문." },
 
- // --- 가정법 과거 (20개) ---
-  { id:141, topic:"conditionalPast", en:"If I ____ rich, I would buy a car.", ko:"내가 부자라면 차를 살 텐데.", options:["were","was","am","be"], answer:"were", explanation:"가정법 과거 be동사는 were." },
-  { id:142, topic:"conditionalPast", en:"If I ____ the answer, I would tell you.", ko:"내가 답을 안다면 너에게 말해줄 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"가정법 과거 동사는 과거형." },
-  { id:143, topic:"conditionalPast", en:"If I ____ you, I wouldn't do that.", ko:"내가 너라면 그렇게 안 할 거야.", options:["were","was","am","are"], answer:"were", explanation:"If I were you (관용적 표현)." },
-  { id:144, topic:"conditionalPast", en:"I wish I ____ fly.", ko:"내가 날 수 있다면 좋을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"I wish + 과거조동사." },
-  { id:145, topic:"conditionalPast", en:"He acts as if he ____ my boss.", ko:"그는 마치 내 상사인 것처럼 행동한다.", options:["were","is","was","has been"], answer:"were", explanation:"as if + 가정법 과거." },
-  { id:146, topic:"conditionalPast", en:"If it ____ not for water, we would die.", ko:"물이 없다면 우리는 죽을 것이다.", options:["were","is","had","was"], answer:"were", explanation:"If it were not for (~이 없다면)." },
-  { id:147, topic:"conditionalPast", en:"I wish I ____ a car.", ko:"차가 있다면 좋을 텐데.", options:["had","have","will have","have had"], answer:"had", explanation:"현재 소망 = I wish + 과거동사." },
-  { id:148, topic:"conditionalPast", en:"Without air, we ____ not live.", ko:"공기가 없다면 살 수 없을 것이다.", options:["could","can","will","may"], answer:"could", explanation:"가정법 과거 주절 (could/would)." },
-  { id:149, topic:"conditionalPast", en:"If I ____ time, I would go.", ko:"시간이 있다면 갈 텐데.", options:["had","have","has","will have"], answer:"had", explanation:"가정법 과거." },
-  { id:150, topic:"conditionalPast", en:"If she ____ here, she would help us.", ko:"그녀가 여기 있다면 우리를 도울 텐데.", options:["were","is","was","be"], answer:"were", explanation:"가정법 과거 be동사." },
-  { id:151, topic:"conditionalPast", en:"I wish I ____ taller.", ko:"키가 더 컸으면 좋겠다.", options:["were","am","was","be"], answer:"were", explanation:"I wish + were." },
-  { id:152, topic:"conditionalPast", en:"If he ____ harder, he would pass.", ko:"그가 더 열심히 공부한다면 합격할 텐데.", options:["studied","studies","will study","study"], answer:"studied", explanation:"가정법 과거." },
-  { id:153, topic:"conditionalPast", en:"If I ____ a bird, I would fly to you.", ko:"내가 새라면 너에게 날아갈 텐데.", options:["were","am","was","be"], answer:"were", explanation:"가정법 과거." },
-  { id:154, topic:"conditionalPast", en:"I would buy it if I ____ enough money.", ko:"돈이 충분하다면 그것을 살 텐데.", options:["had","have","has","will have"], answer:"had", explanation:"가정법 과거." },
-  { id:155, topic:"conditionalPast", en:"She talks as if she ____ everything.", ko:"그녀는 모든 것을 아는 것처럼 말한다.", options:["knew","knows","know","known"], answer:"knew", explanation:"as if + 과거동사." },
-  { id:156, topic:"conditionalPast", en:"If you ____ early, you could meet him.", ko:"일찍 온다면 그를 만날 수 있을 텐데.", options:["came","come","will come","comes"], answer:"came", explanation:"가정법 과거." },
-  { id:157, topic:"conditionalPast", en:"If it ____ snow, we would go skiing.", ko:"눈이 온다면 스키 타러 갈 텐데.", options:["snowed","snows","will snow","snow"], answer:"snowed", explanation:"가정법 과거." },
-  { id:158, topic:"conditionalPast", en:"I wish he ____ here now.", ko:"그가 지금 여기 있으면 좋을 텐데.", options:["were","is","was","be"], answer:"were", explanation:"I wish + were." },
-  { id:159, topic:"conditionalPast", en:"If I ____ his number, I would call him.", ko:"그의 번호를 안다면 전화할 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"가정법 과거." },
-  { id:160, topic:"conditionalPast", en:"What would you do if you ____ the lottery?", ko:"복권에 당첨된다면 무엇을 하겠니?", options:["won","win","will win","wins"], answer:"won", explanation:"가정법 과거." },
+// --- 가정법 과거 (30개) ---
+  { id:351, topic:"conditionalPast", en:"If I ____ rich, I would buy a car.", ko:"내가 부자라면 차를 살 텐데. (현재 가난함)", options:["were","was","am","have been"], answer:"were", explanation:"[공식] 가정법 과거의 be동사는 인칭에 상관없이 'were'를 쓰는 것이 원칙입니다." },
+  { id:352, topic:"conditionalPast", en:"If I ____ the answer, I would tell you.", ko:"내가 답을 안다면 너에게 말해줄 텐데. (현재 모름)", options:["knew","know","known","knows"], answer:"knew", explanation:"현재 사실의 반대를 가정할 때는 동사의 '과거형'을 씁니다." },
+  { id:353, topic:"conditionalPast", en:"If I ____ you, I wouldn't do that.", ko:"내가 너라면 그렇게 안 할 거야.", options:["were","was","am","are"], answer:"were", explanation:"[관용 표현] If I were you (내가 너라면) - 충고할 때 자주 쓰입니다." },
+  { id:354, topic:"conditionalPast", en:"I wish I ____ fly.", ko:"내가 날 수 있다면 좋을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"I wish + 가정법 과거(과거 조동사) = 현재 이루기 힘든 소망." },
+  { id:355, topic:"conditionalPast", en:"He acts as if he ____ my boss.", ko:"그는 마치 내 상사인 것처럼 행동한다. (사실 아님)", options:["were","is","was","has been"], answer:"were", explanation:"as if + 과거동사/were: 마치 현재 ~인 것처럼 (사실이 아님)." },
+  { id:356, topic:"conditionalPast", en:"If it ____ not for water, we would die.", ko:"(지금) 물이 없다면 우리는 죽을 것이다.", options:["were","is","had","was"], answer:"were", explanation:"[가정법 과거] If it were not for = Without (~이 없다면)." },
+  { id:357, topic:"conditionalPast", en:"I wish I ____ a car.", ko:"(지금) 차가 있다면 좋을 텐데.", options:["had","have","will have","have had"], answer:"had", explanation:"현재 차가 없는 상황을 아쉬워하므로 동사 have의 과거형 had를 씁니다." },
+  { id:358, topic:"conditionalPast", en:"Without air, we ____ not live.", ko:"공기가 없다면 살 수 없을 것이다.", options:["could","can","will","may"], answer:"could", explanation:"가정법 과거의 주절에는 반드시 [우/쿠/슈/마 + 원형]이 와야 합니다." },
+  { id:359, topic:"conditionalPast", en:"If I ____ time, I would go.", ko:"(지금) 시간이 있다면 갈 텐데.", options:["had","have","has","will have"], answer:"had", explanation:"현재 시간이 없어서 못 가는 상황 → 가정법 과거." },
+  { id:360, topic:"conditionalPast", en:"If she ____ here, she would help us.", ko:"그녀가 여기 있다면 우리를 도울 텐데.", options:["were","is","was","be"], answer:"were", explanation:"be동사는 were로 통일합니다." },
+  { id:361, topic:"conditionalPast", en:"I wish I ____ taller.", ko:"키가 더 컸으면 좋겠다.", options:["were","am","was","be"], answer:"were", explanation:"현재 키가 작아서 아쉬움 → I wish + were." },
+  { id:362, topic:"conditionalPast", en:"If he ____ harder, he would pass.", ko:"그가 더 열심히 공부한다면 합격할 텐데. (지금 안 함)", options:["studied","studies","will study","study"], answer:"studied", explanation:"현재 공부를 안 하고 있는 상황을 반대로 가정하므로 과거형(studied)." },
+  { id:363, topic:"conditionalPast", en:"If I ____ a bird, I would fly to you.", ko:"내가 새라면 너에게 날아갈 텐데.", options:["were","am","was","be"], answer:"were", explanation:"사람이 새가 되는 건 불가능한 상상이므로 가정법 과거." },
+  { id:364, topic:"conditionalPast", en:"I would buy it if I ____ enough money.", ko:"돈이 충분하다면 그것을 살 텐데.", options:["had","have","has","will have"], answer:"had", explanation:"조건절(If)이 뒤로 가도 규칙은 똑같습니다. (If + 과거형)" },
+  { id:365, topic:"conditionalPast", en:"She talks as if she ____ everything.", ko:"그녀는 모든 것을 아는 것처럼 말한다. (실제론 모름)", options:["knew","knows","know","known"], answer:"knew", explanation:"as if + 과거동사 = (현재) 거짓/가정." },
+  { id:366, topic:"conditionalPast", en:"If you ____ early, you could meet him.", ko:"일찍 온다면 그를 만날 수 있을 텐데.", options:["came","come","will come","comes"], answer:"came", explanation:"가능성을 나타내는 Could가 주절에 있으므로 If절은 과거형." },
+  { id:367, topic:"conditionalPast", en:"If it ____ snow, we would go skiing.", ko:"눈이 온다면 스키 타러 갈 텐데. (눈 안 옴)", options:["snowed","snows","will snow","snow"], answer:"snowed", explanation:"현재 눈이 오지 않는 상황의 반대." },
+  { id:368, topic:"conditionalPast", en:"I wish he ____ here now.", ko:"그가 지금 여기 있으면 좋을 텐데.", options:["were","is","was","be"], answer:"were", explanation:"Now(지금)가 있지만 I wish 뒤에는 가정법 과거(were)를 씁니다." },
+  { id:369, topic:"conditionalPast", en:"If I ____ his number, I would call him.", ko:"그의 번호를 안다면 전화할 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"현재 모르는 사실의 반대." },
+  { id:370, topic:"conditionalPast", en:"What would you do if you ____ the lottery?", ko:"복권에 당첨된다면 무엇을 하겠니?", options:["won","win","will win","wins"], answer:"won", explanation:"실현 가능성이 낮은 상상이므로 가정법 과거(won) 사용." },
+  { id:371, topic:"conditionalPast", en:"If I were you, I ____ accept the offer.", ko:"내가 너라면 그 제안을 받아들일 텐데.", options:["would","will","can","am"], answer:"would", explanation:"If절이 과거(were)이므로 주절은 과거조동사(would)가 와야 짝이 맞습니다." },
+  { id:372, topic:"conditionalPast", en:"Could you help me if you ____ busy?", ko:"바쁘지 않다면 저를 도와주실 수 있나요? (공손)", options:["weren't","aren't","won't be","not"], answer:"weren't", explanation:"[공손함] Could를 사용하여 정중하게 부탁할 때, If절도 과거형(weren't)을 씁니다." },
+  { id:373, topic:"conditionalPast", en:"If he ____, I might forgive him.", ko:"그가 사과한다면, 용서해 줄지도 몰라. (추측)", options:["apologized","apologizes","will apologize","apologize"], answer:"apologized", explanation:"주절에 might(과거조동사)가 있으므로 If절은 과거형." },
+  { id:374, topic:"conditionalPast", en:"It is time we ____ to bed.", ko:"우리가 잠자리에 들어야 할 시간이다. (이미 늦음)", options:["went","go","will go","have gone"], answer:"went", explanation:"[관용구] It is time + 주어 + 과거동사 (~해야 할 시간인데 아직 안 했다는 재촉)." },
+  { id:375, topic:"conditionalPast", en:"If I ____ magic, I would change the world.", ko:"내가 마법을 쓸 수 있다면 세상을 바꿀 텐데.", options:["could use","can use","will use","use"], answer:"could use", explanation:"능력(can)의 가정법 표현 = could + 원형." },
+  { id:376, topic:"conditionalPast", en:"I'm sorry I am not rich. = I wish I ____ rich.", ko:"부자가 아니라서 유감이다 = 부자라면 좋을 텐데.", options:["were","am","will be","have been"], answer:"were", explanation:"직설법(am not)을 가정법(were)으로 고치는 패턴." },
+  { id:377, topic:"conditionalPast", en:"If the sun ____ in the west, I would change my mind.", ko:"해가 서쪽에서 뜬다면 내 마음을 바꿀게. (절대 안 바꿈)", options:["rose","rises","will rise","rise"], answer:"rose", explanation:"절대 일어날 수 없는 불가능한 일을 가정할 때도 가정법 과거를 씁니다." },
+  { id:378, topic:"conditionalPast", en:"Suppose you ____ a million dollars.", ko:"네가 백만 달러가 있다고 가정해보자.", options:["had","have","will have","has"], answer:"had", explanation:"Suppose = If. 상상해보는 상황이므로 과거형(had) 사용." },
+  { id:379, topic:"conditionalPast", en:"He looks as if he ____ a ghost.", ko:"그는 마치 유령을 본 것처럼 보인다.", options:["saw","sees","will see","has seen"], answer:"saw", explanation:"지금 보기에(looks) 유령을 본 것 같은(saw) 상황." },
+  { id:380, topic:"conditionalPast", en:"If I didn't have to work, I ____ go with you.", ko:"일할 필요가 없다면 너와 함께 갈 텐데.", options:["could","can","will","may"], answer:"could", explanation:"조건(didn't have to)에 맞춰 주절도 과거조동사(could) 사용." },
 
- // --- 가정법 과거완료 (20개) ---
-  { id:161, topic:"conditionalPastPerfect", en:"If she had studied, she ____ have passed.", ko:"그녀가 공부했더라면 합격했을 것이다. (과거 사실 반대)", options:["would","would have","will","had"], answer:"would have", explanation:"가정법 과거완료(과거 사실 반대) → would have p.p." },
-  { id:162, topic:"conditionalPastPerfect", en:"I wish I ____ met her.", ko:"그녀를 만났더라면 좋았을 텐데.", options:["had","have","has","did"], answer:"had", explanation:"과거 후회 = I wish + had p.p." },
-  { id:163, topic:"conditionalPastPerfect", en:"If it ____ not rained, we would have gone.", ko:"비가 안 왔다면 갔을 텐데.", options:["had","has","have","was"], answer:"had", explanation:"If + had p.p." },
-  { id:164, topic:"conditionalPastPerfect", en:"Without your help, I would ____ failed.", ko:"너의 도움이 없었다면 나는 실패했을 것이다.", options:["have","had","has","be"], answer:"have", explanation:"would have p.p." },
-  { id:165, topic:"conditionalPastPerfect", en:"He spoke as if he ____ seen it.", ko:"그는 그것을 봤던 것처럼 말했다.", options:["had","has","have","was"], answer:"had", explanation:"as if + had p.p. (과거 사실 반대)." },
-  { id:166, topic:"conditionalPastPerfect", en:"If I had known, I ____ have told you.", ko:"알았더라면 말해줬을 텐데.", options:["would","will","can","may"], answer:"would", explanation:"would have p.p." },
-  { id:167, topic:"conditionalPastPerfect", en:"But for his advice, I ____ have failed.", ko:"그의 조언이 없었다면 실패했을 것이다.", options:["might","may","can","will"], answer:"might", explanation:"might have p.p." },
-  { id:168, topic:"conditionalPastPerfect", en:"I should ____ studied harder.", ko:"더 열심히 공부했어야 했는데.", options:["have","had","has","be"], answer:"have", explanation:"should have p.p. (후회)." },
-  { id:169, topic:"conditionalPastPerfect", en:"If I ____ gone there, I would have met him.", ko:"거기 갔더라면 그를 만났을 텐데.", options:["had","have","has","did"], answer:"had", explanation:"가정법 과거완료." },
-  { id:170, topic:"conditionalPastPerfect", en:"She would have bought it if she ____ had money.", ko:"돈이 있었더라면 샀을 텐데.", options:["had","has","have","was"], answer:"had", explanation:"If + had p.p." },
-  { id:171, topic:"conditionalPastPerfect", en:"I wish I ____ not eaten so much.", ko:"그렇게 많이 먹지 말았어야 했는데.", options:["had","have","did","was"], answer:"had", explanation:"I wish + had p.p." },
-  { id:172, topic:"conditionalPastPerfect", en:"If he ____ driven carefully, he wouldn't have crashed.", ko:"그가 조심해서 운전했더라면 사고 나지 않았을 텐데.", options:["had","has","have","was"], answer:"had", explanation:"가정법 과거완료." },
-  { id:173, topic:"conditionalPastPerfect", en:"If we had hurried, we ____ have caught the train.", ko:"서둘렀더라면 기차를 탔을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"could have p.p." },
-  { id:174, topic:"conditionalPastPerfect", en:"He acted as if he ____ known the secret.", ko:"그는 비밀을 알았던 것처럼 행동했다.", options:["had","has","have","was"], answer:"had", explanation:"as if + had p.p." },
-  { id:175, topic:"conditionalPastPerfect", en:"If you ____ asked me, I would have helped.", ko:"네가 부탁했더라면 도와줬을 텐데.", options:["had","have","did","were"], answer:"had", explanation:"가정법 과거완료." },
-  { id:176, topic:"conditionalPastPerfect", en:"I ____ have finished it without your help.", ko:"너의 도움 없이는 그것을 끝내지 못했을 것이다.", options:["couldn't","can't","won't","shouldn't"], answer:"couldn't", explanation:"couldn't have p.p." },
-  { id:177, topic:"conditionalPastPerfect", en:"If I ____ seen you, I would have said hello.", ko:"너를 봤더라면 인사했을 텐데.", options:["had","have","saw","did"], answer:"had", explanation:"가정법 과거완료." },
-  { id:178, topic:"conditionalPastPerfect", en:"If it ____ not been for his help, I would have failed.", ko:"그의 도움이 없었더라면 나는 실패했을 것이다.", options:["had","has","was","is"], answer:"had", explanation:"If it had not been for." },
-  { id:179, topic:"conditionalPastPerfect", en:"I wish I ____ gone to the party.", ko:"파티에 갔더라면 좋았을 텐데.", options:["had","have","did","was"], answer:"had", explanation:"I wish + had p.p." },
-  { id:180, topic:"conditionalPastPerfect", en:"If I had had time, I ____ visited you.", ko:"시간이 있었더라면 너를 방문했을 텐데.", options:["would have","will have","have","had"], answer:"would have", explanation:"would have p.p." },
+// --- 가정법 과거완료 (30개) ---
+  { id:381, topic:"conditionalPastPerfect", en:"If she ____ harder, she would have passed the exam.", ko:"그녀가 더 열심히 공부했더라면, 시험에 합격했을 텐데. (과거 반대)", options:["had studied","studied","studies","has studied"], answer:"had studied", explanation:"[공식] 주절이 'would have passed(과거완료 형태)'이므로, If절은 'had p.p.'가 되어야 합니다." },
+  { id:382, topic:"conditionalPastPerfect", en:"I would have bought the bag if I ____ enough money.", ko:"돈이 충분했더라면 그 가방을 샀을 텐데. (그때 돈이 없었음)", options:["had had","have had","had","have"], answer:"had had", explanation:"가정법 과거완료 If절: had + p.p. (가지다 have의 p.p.는 had이므로 had had가 정답)" },
+  { id:383, topic:"conditionalPastPerfect", en:"If I had known the truth, I ____ told you.", ko:"내가 진실을 알았더라면, 너에게 말해줬을 거야.", options:["would have","will have","would","had"], answer:"would have", explanation:"If절이 had known(과거완료)이므로 주절은 [조동사 과거 + have p.p.]가 와야 합니다." },
+  { id:384, topic:"conditionalPastPerfect", en:"I wish I ____ seen him yesterday.", ko:"어제 그를 봤더라면 좋았을 텐데. (못 봐서 아쉬움)", options:["had","have","saw","did"], answer:"had", explanation:"과거 사실(yesterday)에 대한 유감은 'I wish + had p.p.'를 씁니다." },
+  { id:385, topic:"conditionalPastPerfect", en:"He talked as if he ____ been there before.", ko:"그는 마치 전에 그곳에 가본 적이 있었던 것처럼 말했다.", options:["had","has","was","did"], answer:"had", explanation:"말한 시점(과거)보다 더 이전에 가본 것처럼(대과거) 가정하므로 as if + had p.p." },
+  { id:386, topic:"conditionalPastPerfect", en:"If it ____ not rained, we would have gone on a picnic.", ko:"비가 오지 않았더라면, 우리는 소풍을 갔을 것이다.", options:["had","has","did","was"], answer:"had", explanation:"가정법 과거완료의 부정형: If + S + had not p.p." },
+  { id:387, topic:"conditionalPastPerfect", en:"____ I known his number, I would have called him.", ko:"그의 번호를 알았더라면, 전화했을 텐데. (도치 구문)", options:["Had","If","Did","Were"], answer:"Had", explanation:"[도치] If가 생략되면 Had가 주어 앞으로 나옵니다. (Had I known = If I had known)" },
+  { id:388, topic:"conditionalPastPerfect", en:"____ your help, I would have failed.", ko:"너의 도움이 없었더라면, 나는 실패했을 거야.", options:["Without","Unless","If","Because"], answer:"Without", explanation:"[대용] Without + 명사 = If it had not been for (~이 없었더라면)." },
+  { id:389, topic:"conditionalPastPerfect", en:"If it had not ____ for your advice, I couldn't have succeeded.", ko:"너의 조언이 없었더라면, 나는 성공할 수 없었을 거야.", options:["been","be","being","was"], answer:"been", explanation:"If it had not 'been' for (~이 없었더라면) 관용 표현입니다." },
+  { id:390, topic:"conditionalPastPerfect", en:"I ____ have finished it without you.", ko:"너 없이는 그것을 끝내지 못했을 거야.", options:["couldn't","can't","won't","shouldn't"], answer:"couldn't", explanation:"문맥상 '불가능했을 것'이라는 의미이므로 능력의 부정 couldn't have p.p.가 적절합니다." },
+  { id:391, topic:"conditionalPastPerfect", en:"But ____ his mistake, we would have won.", ko:"그의 실수가 아니었다면, 우리가 이겼을 텐데.", options:["for","of","to","with"], answer:"for", explanation:"But for + 명사 (~이 없었더라면) = Without." },
+  { id:392, topic:"conditionalPastPerfect", en:"If I had gone to bed early, I would not ____ tired now.", ko:"일찍 잤더라면, 지금 피곤하지 않을 텐데. (혼합 가정법)", options:["be","have been","been","am"], answer:"be", explanation:"[혼합 가정법] 옛날에 일찍 잤더라면(과거 원인), 지금 안 피곤할 텐데(현재 결과). 주절에는 would + 원형(be)이 옵니다." },
+  { id:393, topic:"conditionalPastPerfect", en:"If he ____ driven carefully, the accident wouldn't have happened.", ko:"그가 조심해서 운전했더라면, 사고는 안 났을 것이다.", options:["had","has","was","did"], answer:"had", explanation:"과거 사실(사고가 남)의 반대 가정이므로 가정법 과거완료 had p.p." },
+  { id:394, topic:"conditionalPastPerfect", en:"She would have bought the dress if it ____ been cheaper.", ko:"더 쌌더라면 그녀는 그 드레스를 샀을 것이다.", options:["had","has","would","was"], answer:"had", explanation:"If절의 가정법 과거완료 형태는 had + p.p.(been)입니다." },
+  { id:395, topic:"conditionalPastPerfect", en:"I should ____ studied harder for the test.", ko:"시험 공부를 더 열심히 했어야 했는데. (후회)", options:["have","had","has","be"], answer:"have", explanation:"should have p.p. (~했어야 했는데 하지 않았다) - 과거에 대한 후회." },
+  { id:396, topic:"conditionalPastPerfect", en:"____ it not been for the traffic, I would have arrived on time.", ko:"교통 체증이 없었더라면, 제시간에 도착했을 것이다.", options:["Had","If","Has","Was"], answer:"Had", explanation:"If it had not been for... 에서 If생략 -> Had it not been for..." },
+  { id:397, topic:"conditionalPastPerfect", en:"If I had seen the signal, I would ____ stopped.", options:["have","had","has","be"], answer:"have", explanation:"주절 공식: 조동사 과거(would) + have + p.p." },
+  { id:398, topic:"conditionalPastPerfect", en:"I wish I ____ eaten so much last night.", ko:"어젯밤에 그렇게 많이 먹지 말았어야 했는데.", options:["hadn't","didn't","haven't","won't"], answer:"hadn't", explanation:"과거(last night)의 일을 후회하므로 I wish + had p.p.의 부정형 hadn't p.p." },
+  { id:399, topic:"conditionalPastPerfect", en:"If we had taken a taxi, we ____ have been late.", ko:"택시를 탔더라면, 늦지 않았을 텐데.", options:["wouldn't","won't","don't","didn't"], answer:"wouldn't", explanation:"가정법 과거완료의 부정 주절: would not have p.p." },
+  { id:400, topic:"conditionalPastPerfect", en:"You could ____ done it if you had tried.", ko:"네가 시도했더라면 그것을 할 수 있었을 것이다.", options:["have","had","has","be"], answer:"have", explanation:"조동사(could) 뒤에는 항상 원형(have)이 옵니다. could have p.p." },
+  { id:401, topic:"conditionalPastPerfect", en:"If I ____ known you were coming, I would have baked a cake.", ko:"네가 오는 줄 알았더라면 케이크를 구웠을 텐데.", options:["had","have","did","were"], answer:"had", explanation:"과거 몰랐던 사실의 반대 -> Had known." },
+  { id:402, topic:"conditionalPastPerfect", en:"Had we arrived earlier, we ____ have met him.", ko:"우리가 더 일찍 도착했더라면, 그를 만났을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"가정법 과거완료의 짝꿍 조동사는 과거형(could)입니다." },
+  { id:403, topic:"conditionalPastPerfect", en:"If I had not lost my wallet, I would ____ happy now.", ko:"지갑을 잃어버리지 않았더라면, 지금 행복할 텐데. (혼합)", options:["be","have been","been","am"], answer:"be", explanation:"[혼합 가정법] now(지금)가 있으므로 주절은 가정법 과거(would + 원형)를 씁니다." },
+  { id:404, topic:"conditionalPastPerfect", en:"Suppose you ____ won the lottery yesterday.", ko:"어제 네가 복권에 당첨됐다고 가정해보자.", options:["had","have","did","were"], answer:"had", explanation:"Suppose = If. 어제(Yesterday) 일이므로 과거완료 had won." },
+  { id:405, topic:"conditionalPastPerfect", en:"I would have visited you if I ____ had time.", ko:"시간이 있었더라면 너를 방문했을 거야.", options:["had","have","has","did"], answer:"had", explanation:"If I had had time (앞의 had는 조동사, 뒤의 had는 가지다의 p.p.)." },
+  { id:406, topic:"conditionalPastPerfect", en:"He told me he ____ finished the work.", ko:"그는 그 일을 (이미) 끝냈다고 말했다.", options:["had","has","have","was"], answer:"had", explanation:"말한 시점(과거)보다 더 이전에 끝낸 것이므로 대과거(had p.p.) 사용." },
+  { id:407, topic:"conditionalPastPerfect", en:"____ for his advice, I would have failed.", ko:"그의 조언이 없었더라면 나는 실패했을 것이다.", options:["But","Except","Without","Unless"], answer:"But", explanation:"But for + 명사 = ~이 없었더라면." },
+  { id:408, topic:"conditionalPastPerfect", en:"If she ____ left earlier, she wouldn't have missed the train.", ko:"그녀가 더 일찍 떠났더라면, 기차를 놓치지 않았을 텐데.", options:["had","has","did","was"], answer:"had", explanation:"과거 사실 반대 가정 -> had left." },
+  { id:409, topic:"conditionalPastPerfect", en:"It would have been better if you ____ invited him.", ko:"네가 그를 초대했더라면 더 좋았을 텐데.", options:["had","have","did","were"], answer:"had", explanation:"가정법 과거완료 If절." },
+  { id:410, topic:"conditionalPastPerfect", en:"I wish I ____ studied English harder when I was young.", ko:"젊었을 때 영어를 더 열심히 공부했더라면 좋았을 텐데.", options:["had","have","did","was"], answer:"had", explanation:"과거(young)의 후회 -> had p.p." },
 
 // --- 수동태 (20개) ---
   { id:181, topic:"passive", en:"The room ____ cleaned by him.", ko:"그 방은 그에 의해 청소되었다.", options:["was","is","were","did"], answer:"was", explanation:"과거 단수 수동태." },
@@ -1389,7 +2059,29 @@ const grammarQuestions = [
   { id:317, topic:"gerund", en:"I am used to ____ up early.", ko:"나는 일찍 일어나는 데 익숙하다.", options:["getting","get","to get","got"], answer:"getting", explanation:"be used to -ing." },
   { id:318, topic:"gerund", en:"____ English is fun.", ko:"영어를 배우는 것은 재미있다.", options:["Learning","Learn","To learn","Learned"], answer:"Learning", explanation:"주어." },
   { id:319, topic:"gerund", en:"He denied ____ the money.", ko:"그는 돈을 훔친 것을 부인했다.", options:["stealing","to steal","steal","stole"], answer:"stealing", explanation:"deny + -ing." },
-  { id:320, topic:"gerund", en:"Do you feel like ____?", ko:"춤추고 싶니?", options:["dancing","to dance","dance","danced"], answer:"dancing", explanation:"feel like -ing." }
+  { id:320, topic:"gerund", en:"Do you feel like ____?", ko:"춤추고 싶니?", options:["dancing","to dance","dance","danced"], answer:"dancing", explanation:"feel like -ing." },
+
+  // --- 명사 수식 분사 (20개) ---
+  { id:4001, topic:"nounParticiple", en:"The man ____ next to me is my uncle.", ko:"내 옆에 앉아 있는 남자는 나의 삼촌이다.", options:["sitting","sat","sit","sits"], answer:"sitting", explanation:"남자가 직접 앉아 있는(능동) 진행 상황이므로 -ing." },
+  { id:4002, topic:"nounParticiple", en:"Look at the leaves ____ on the ground.", ko:"땅에 떨어진 낙엽들을 봐라.", options:["fallen","falling","fell","fall"], answer:"fallen", explanation:"이미 떨어진(완료) 상태이므로 p.p. (fallen leaves)." },
+  { id:4003, topic:"nounParticiple", en:"I received a letter ____ in English.", ko:"나는 영어로 쓰여진 편지를 받았다.", options:["written","writing","wrote","write"], answer:"written", explanation:"편지는 쓰여지는(수동) 대상이므로 p.p." },
+  { id:4004, topic:"nounParticiple", en:"The girl ____ the piano is Jane.", ko:"피아노를 치고 있는 소녀는 제인이다.", options:["playing","played","play","plays"], answer:"playing", explanation:"소녀가 피아노를 직접 치는(능동) 중이므로 -ing." },
+  { id:4005, topic:"nounParticiple", en:"I like the song ____ by BTS.", ko:"나는 BTS에 의해 불려진 그 노래를 좋아한다.", options:["sung","singing","sang","sing"], answer:"sung", explanation:"노래는 가수에 의해 불려지는(수동) 대상이므로 p.p." },
+  { id:4006, topic:"nounParticiple", en:"The people ____ for the bus look tired.", ko:"버스를 기다리는 사람들이 피곤해 보인다.", options:["waiting","waited","wait","waits"], answer:"waiting", explanation:"사람들이 직접 기다리는(능동) 것이므로 -ing." },
+  { id:4007, topic:"nounParticiple", en:"This is a book ____ by millions of people.", ko:"이것은 수백만 명의 사람들에 의해 읽힌 책이다.", options:["read","reading","reads","to read"], answer:"read", explanation:"책은 읽히는(수동) 대상이므로 p.p. (read-read-read)." },
+  { id:4008, topic:"nounParticiple", en:"Do you know the boy ____ a red cap?", ko:"빨간 모자를 쓰고 있는 소년을 아니?", options:["wearing","worn","wear","wears"], answer:"wearing", explanation:"소년이 모자를 직접 쓰고 있는(능동) 상태이므로 -ing." },
+  { id:4009, topic:"nounParticiple", en:"The house ____ on the hill is mine.", ko:"언덕 위에 지어진 그 집은 나의 것이다.", options:["built","building","build","builds"], answer:"built", explanation:"집은 지어지는(수동) 대상이므로 p.p." },
+  { id:4010, topic:"nounParticiple", en:"Look at the birds ____ in the sky.", ko:"하늘을 날고 있는 새들을 봐라.", options:["flying","flown","fly","flew"], answer:"flying", explanation:"새들이 직접 날고 있는(능동) 것이므로 -ing." },
+  { id:4011, topic:"nounParticiple", en:"The language ____ in Brazil is Portuguese.", ko:"브라질에서 사용되는(말해지는) 언어는 포르투갈어다.", options:["spoken","speaking","spoke","speak"], answer:"spoken", explanation:"언어는 사람들에 의해 말해지는(수동) 대상이므로 p.p." },
+  { id:4012, topic:"nounParticiple", en:"The baby ____ in the crib is cute.", ko:"아기 침대에서 자고 있는 아기는 귀엽다.", options:["sleeping","slept","sleep","sleeps"], answer:"sleeping", explanation:"아기가 직접 자고 있는(능동) 중이므로 -ing." },
+  { id:4013, topic:"nounParticiple", en:"I have a watch ____ in Switzerland.", ko:"나는 스위스에서 만들어진 시계를 가지고 있다.", options:["made","making","make","makes"], answer:"made", explanation:"시계는 만들어지는(수동) 대상이므로 p.p." },
+  { id:4014, topic:"nounParticiple", en:"Who is the lady ____ to your mother?", ko:"너의 어머니와 이야기하고 있는 숙녀분은 누구니?", options:["talking","talked","talk","talks"], answer:"talking", explanation:"숙녀가 직접 이야기하고 있는(능동) 중이므로 -ing." },
+  { id:4015, topic:"nounParticiple", en:"The window ____ yesterday has been fixed.", ko:"어제 깨진 창문은 수리되었다.", options:["broken","breaking","broke","break"], answer:"broken", explanation:"창문은 깨진(수동) 것이므로 p.p." },
+  { id:4016, topic:"nounParticiple", en:"The train ____ for Seoul arrives soon.", ko:"서울로 떠나는 기차가 곧 도착한다.", options:["leaving","left","leave","leaves"], answer:"leaving", explanation:"기차가 (서울을 향해) 떠나는(능동) 것이므로 -ing." },
+  { id:4017, topic:"nounParticiple", en:"Most cars ____ in this factory are exported.", ko:"이 공장에서 생산된 대부분의 차들은 수출된다.", options:["produced","producing","produce","produces"], answer:"produced", explanation:"차는 생산되는(수동) 대상이므로 p.p." },
+  { id:4018, topic:"nounParticiple", en:"There is a cat ____ under the table.", ko:"탁자 아래에 숨어 있는 고양이가 있다.", options:["hiding","hidden","hide","hid"], answer:"hiding", explanation:"고양이가 직접 숨어 있는(능동) 행동을 하므로 -ing." },
+  { id:4019, topic:"nounParticiple", en:"The pictures ____ by him are famous.", ko:"그에 의해 그려진 그림들은 유명하다.", options:["painted","painting","paint","paints"], answer:"painted", explanation:"그림은 그려지는(수동) 대상이므로 p.p." },
+  { id:4020, topic:"nounParticiple", en:"The rumor ____ the actor is not true.", ko:"그 배우를 둘러싼 소문은 사실이 아니다.", options:["surrounding","surrounded","surround","surrounds"], answer:"surrounding", explanation:"소문이 배우를 둘러싸고 있는(능동) 상황이므로 -ing." }
 ];
 
 /* ==========================================================================
@@ -1404,6 +2096,7 @@ function shuffleArray(array) {
 
 function showTopic(key) {
   const section = document.getElementById('topic-' + key);
+  if (!section) return; // 안전장치
   if (section.style.display === 'block') {
     section.style.display = 'none';
     return;
@@ -1423,18 +2116,15 @@ function showTopic(key) {
       document.getElementById('grammarQuizArea').style.display = 'none';
   }
 }
+
 /* --- 나만의 노트 기능 (LocalStorage) --- */
-// 1. 저장된 노트 불러오기
 function loadSavedExplanation(topicKey) {
   const savedText = localStorage.getItem('userExplanation-' + topicKey);
   const displayDiv = document.getElementById('note-display-' + topicKey);
   const inputArea = document.getElementById('note-input-' + topicKey);
-  // 입력창에 저장된 내용 채우기
   if (inputArea) {
     inputArea.value = savedText || '';
   }
-
-  // 화면에 저장된 내용 보여주기
   if (displayDiv) {
     if (savedText && savedText.trim() !== '') {
       displayDiv.innerHTML = '<b>[나만의 메모]</b><br>' + savedText.replace(/\n/g, '<br>');
@@ -1445,36 +2135,25 @@ function loadSavedExplanation(topicKey) {
   }
 }
 
-// 2. 노트 편집창 열기/닫기 (토글)
 function toggleNote(topicKey) {
   const editArea = document.getElementById('note-edit-' + topicKey);
   if (editArea) {
     if (editArea.style.display === 'block') {
       editArea.style.display = 'none';
-      // 이미 열려있으면 닫기
     } else {
       loadSavedExplanation(topicKey);
-      // 내용 불러오고
       editArea.style.display = 'block';
-      // 열기
     }
-  } else {
-    console.error("ID를 찾을 수 없습니다: note-edit-" + topicKey);
   }
 }
 
-// 3. 노트 저장하기
 function saveNote(topicKey) {
   const inputArea = document.getElementById('note-input-' + topicKey);
   if (inputArea) {
     const text = inputArea.value;
     localStorage.setItem('userExplanation-' + topicKey, text);
     alert("저장되었습니다!");
-    
     loadSavedExplanation(topicKey);
-    // 저장된 내용 화면에 반영
-    
-    // 저장 후 편집창 닫기
     const editArea = document.getElementById('note-edit-' + topicKey);
     if (editArea) {
         editArea.style.display = 'none';
@@ -1492,15 +2171,11 @@ let wrongIds = [];
 function resetQuizPool() {
     shuffledQuestionList = [];
     currentQuestionIndex = 0;
-    currentTopic = 'initial'; // 주제 초기화 로직은 놔두고, UI 값 변경만 막습니다.
+    currentTopic = 'initial'; 
     document.getElementById('grammarQuizArea').style.display = 'none';
     document.getElementById('grammarQuizResult').textContent = "";
     document.getElementById('grammarExplanation').textContent = "";
-    // document.getElementById('grammarTopic').value = 'all';  <-- 이 줄을 삭제하세요.
-    
-    // (선택 사항) 알림창이 너무 자주 뜨는 게 싫다면 아래 alert도 주석 처리해도 좋습니다.
-    // alert("문제 목록이 초기화되었습니다."); 
-   }
+}
 
 function nextQuestion() {
     const topicSelect = document.getElementById('grammarTopic');
@@ -1633,9 +2308,7 @@ function startVerbQuiz() {
     const type = document.getElementById('verbQuizType').value;
     document.getElementById('verbQuizArea').style.display = 'block';
     document.getElementById('verbQuizResult').textContent = '';
-    document.getElementById('verbQuizAnswer').value
-
-= ""; // 입력창 초기화
+    document.getElementById('verbQuizAnswer').value = ""; 
     document.getElementById('verbQuizAnswer').focus();
     document.getElementById('verbQuizExplanation').textContent = "";
 
@@ -1662,9 +2335,7 @@ function checkVerbQuiz() {
     else if (type === 'pp') correctAnswer = currentVerb.pp;
     else if (type === 'base') correctAnswer = currentVerb.base;
 
-    // 복수 정답 처리 (예: was/were)
     const answers = correctAnswer.split('/').map(s => s.trim());
-    
     if (answers.includes(userAnswer)) {
         resultElem.textContent = "정답입니다! ⭕";
         resultElem.style.color = "green";
@@ -1689,11 +2360,9 @@ function checkWrongQuiz(selectedOption) {
             button.style.backgroundColor = '#f8d7da';
         }
     });
-
     if (selectedOption === currentGrammarQuestion.answer) {
         r.textContent = "정답입니다! 복습 완료! 🎉";
         r.style.color = "green";
-        // 맞췄으니 오답 리스트에서 제거
         const idx = wrongIds.indexOf(currentGrammarQuestion.id);
         if (idx > -1) {
             wrongIds.splice(idx, 1);
@@ -1706,7 +2375,6 @@ function checkWrongQuiz(selectedOption) {
     e.innerHTML = "💡 <b>해설:</b> " + currentGrammarQuestion.explanation;
 }
 
-/* HTML onchange 함수 연결 */
 function resetQuizState() {
     resetQuizPool();
 }
@@ -1718,7 +2386,7 @@ let assessmentQuestions = [];
 let assessmentIndex = 0;
 let assessmentScore = 0;
 let assessmentTimer = null;
-let timeLeft = 600; // 10분 = 600초
+let timeLeft = 600;
 let assessmentWrongList = [];
 
 function startFinalEvaluation() {
@@ -1728,34 +2396,28 @@ function startFinalEvaluation() {
         return;
     }
     
-    // 1. 문제 30개 랜덤 추출
     const shuffled = [...grammarQuestions];
     shuffleArray(shuffled);
     assessmentQuestions = shuffled.slice(0, 30);
     
-    // 2. 변수 초기화
     assessmentIndex = 0;
     assessmentScore = 0;
     assessmentWrongList = [];
     timeLeft = 600;
     
-    // 3. UI 전환
     document.getElementById('assessment-input-area').style.display = 'none';
     document.getElementById('assessment-area').style.display = 'block';
     document.getElementById('assessment-result').style.display = 'none';
     
-    // 4. 타이머 시작
     updateTimerDisplay();
     if(assessmentTimer) clearInterval(assessmentTimer);
     assessmentTimer = setInterval(function() {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 0) {
-            finishAssessment(true); // 시간 초과 종료
+            finishAssessment(true);
         }
     }, 1000);
-    
-    // 5. 첫 문제 표시
     showAssessmentQuestion();
 }
 
@@ -1768,7 +2430,7 @@ function updateTimerDisplay() {
 
 function showAssessmentQuestion() {
     if (assessmentIndex >= assessmentQuestions.length) {
-        finishAssessment(false); // 모든 문제 풀이 완료
+        finishAssessment(false);
         return;
     }
     
@@ -1793,11 +2455,9 @@ function showAssessmentQuestion() {
 
 function checkAssessmentAnswer(selected) {
     const currentQ = assessmentQuestions[assessmentIndex];
-    
     if (selected === currentQ.answer) {
-        assessmentScore++; // 정답 시 점수 추가
+        assessmentScore++;
     } else {
-        // 오답 시 기록 (나중에 보여주기 위함)
         assessmentWrongList.push({
             q: currentQ,
             myAns: selected
@@ -1822,9 +2482,7 @@ function finishAssessment(isTimeOut) {
     
     const studentInfoStr = `${dept} ${grade}학년 ${cls}반 ${num}번 ${name}`;
     document.getElementById('result-student-info').textContent = studentInfoStr + " 님의 성적";
-    
-    // 30문제 중 맞은 개수 -> 100점 만점 환산 (1문제당 약 3.3점)
-    // 소수점 반올림 처리
+
     const finalScore = Math.round((assessmentScore / 30) * 100);
     document.getElementById('result-score').textContent = finalScore;
     
@@ -1832,7 +2490,6 @@ function finishAssessment(isTimeOut) {
         alert("시험 시간이 종료되었습니다! 답안이 자동 제출됩니다.");
     }
     
-    // 오답 리스트 출력
     const wrongListDiv = document.getElementById('assessment-wrong-list');
     wrongListDiv.innerHTML = "";
     
@@ -1845,6 +2502,7 @@ function finishAssessment(isTimeOut) {
             div.innerHTML = `
                 <p><b>${idx+1}. [${topicMap[item.q.topic]}]</b> ${item.q.en}</p>
                 <p style="font-size:0.9rem; color:#555;">(${item.q.ko})</p>
+        
                 <p>내가 쓴 답: <span style="color:red; text-decoration:line-through;">${item.myAns}</span> 
                    → 정답: <span style="color:green; font-weight:bold;">${item.q.answer}</span></p>
                 <p class="small-note" style="color:blue;">${item.q.explanation}</p>
@@ -1890,4 +2548,3 @@ window.onload = function() {
 </script>
 </body>
 </html>
-
