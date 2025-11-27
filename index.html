@@ -121,6 +121,7 @@
   <button onclick="showTopic('toinf')">to부정사 <span id="count-toinf"></span></button>
   <button onclick="showTopic('gerund')">동명사 주어 <span id="count-gerund"></span></button>
   <button onclick="showTopic('nounParticiple')">명사 수식 분사 <span id="count-nounParticiple"></span></button>
+  <button onclick="showTopic('emphasis')">강조 구문 <span id="count-emphasis"></span></button>
 </div>
 
 <div id="topic-verbs" class="topic-section">
@@ -1689,6 +1690,45 @@
     <div id="note-display-nounParticiple" class="note-display"></div>
   </div>
 </div>
+<div id="topic-emphasis" class="topic-section">
+  <h3>18) 강조 구문 (Emphatic Constructions)</h3>
+  
+  <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
+    문장의 특정 부분을 두드러지게 하기 위해 문장 구조를 변형하는 방식입니다.
+    <br><b>"누가/무엇이/언제/어디서"</b>를 명확히 지정하여 의미를 강화합니다.
+  </p>
+
+  <ul class="small-note">
+    <li><b style="color:#d9534f; font-size:1.1em;">1. It-cleft 구문 (It ~ that 강조)</b>
+        <br> - **형식:** It + be동사 + <span style="background-color:yellow;">[강조 대상]</span> + that/who + 나머지 문장
+        <br> - **특징:** 문장을 쪼개어(cleft) 강조하고 싶은 요소를 'It is'와 'that' 사이에 넣습니다.
+        <br> &nbsp;&nbsp; Ex: **It was** <b style="color:blue;">Siyoon</b> **that** solved the puzzle first.
+        <br> &nbsp;&nbsp; (퍼즐을 처음 푼 사람은 다름 아닌 **시윤**이었다.)
+        <br> &nbsp;&nbsp; Ex: **It is** <b style="color:blue;">in Rome</b> **that** Latin grammar started to make sense.
+        <br> &nbsp;&nbsp; (라틴어 문법이 이해되기 시작한 곳은 바로 **로마**였다.)
+        <br> - <b style="color:red;">주의:</b> 동사는 강조할 수 없습니다. (동사 강조는 do/does/did 사용)
+    </li>
+    
+    <li style="margin-top:15px;"><b style="color:#28a745; font-size:1.1em;">2. Wh-cleft / Pseudo-cleft 구문</b>
+        <br> - **형식:** What + S + V + be동사 + <span style="background-color:yellow;">[강조 대상]</span>
+        <br> - **특징:** 관계대명사 What(~하는 것)을 주어로 사용하여 정보의 중심을 뒤쪽(보어 자리)으로 밀어주며 강조합니다.
+        <br> &nbsp;&nbsp; Ex: **What** I need **is** <b style="color:blue;">time</b>.
+        <br> &nbsp;&nbsp; (내가 필요한 것은 바로 **시간**이다.)
+        <br> &nbsp;&nbsp; Ex: **What** she really hates **is** <b style="color:blue;">dishonesty</b>.
+        <br> &nbsp;&nbsp; (그녀가 정말 싫어하는 것은 **부정직함**이다.)
+        <br> - **변형:** "All (that) I want is..." 구조도 자주 쓰입니다.
+    </li>
+  </ul>
+  
+  <div class="note-area">
+    <button onclick="toggleNote('emphasis')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-emphasis" style="display:none;">
+      <textarea id="note-input-emphasis" placeholder="여기에 강조 구문 관련 암기 팁이나 예문을 적어보세요."></textarea>
+      <button onclick="saveNote('emphasis')" style="margin-top:5px;">저장하기</button>
+    </div>
+    <div id="note-display-emphasis" class="note-display"></div>
+  </div>
+</div>
 
 <hr>
 <h2>② 퀴즈 (Practice)</h2>
@@ -1716,6 +1756,7 @@
       <option value="toinf">to부정사</option>
       <option value="gerund">동명사</option>
       <option value="nounParticiple">명사 수식 분사</option>
+      <option value="emphasis">강조 구문</option>
     </select>
   </div>
   <button onclick="nextQuestion()" class="control-btn" id="nextBtn">새 문제 / 다음 문제</button>
@@ -2311,7 +2352,32 @@ const grammarQuestions = [
   { id:4017, topic:"nounParticiple", en:"Most cars ____ in this factory are exported.", ko:"이 공장에서 생산된 대부분의 차들은 수출된다.", options:["produced","producing","produce","produces"], answer:"produced", explanation:"차는 생산되는(수동) 대상이므로 p.p." },
   { id:4018, topic:"nounParticiple", en:"There is a cat ____ under the table.", ko:"탁자 아래에 숨어 있는 고양이가 있다.", options:["hiding","hidden","hide","hid"], answer:"hiding", explanation:"고양이가 직접 숨어 있는(능동) 행동을 하므로 -ing." },
   { id:4019, topic:"nounParticiple", en:"The pictures ____ by him are famous.", ko:"그에 의해 그려진 그림들은 유명하다.", options:["painted","painting","paint","paints"], answer:"painted", explanation:"그림은 그려지는(수동) 대상이므로 p.p." },
-  { id:4020, topic:"nounParticiple", en:"The rumor ____ the actor is not true.", ko:"그 배우를 둘러싼 소문은 사실이 아니다.", options:["surrounding","surrounded","surround","surrounds"], answer:"surrounding", explanation:"소문이 배우를 둘러싸고 있는(능동) 상황이므로 -ing." }
+  { id:4020, topic:"nounParticiple", en:"The rumor ____ the actor is not true.", ko:"그 배우를 둘러싼 소문은 사실이 아니다.", options:["surrounding","surrounded","surround","surrounds"], answer:"surrounding", explanation:"소문이 배우를 둘러싸고 있는(능동) 상황이므로 -ing." },
+
+// --- 강조 구문 (Emphasis) 20문항 --
+  // A. It-cleft 구문 (10문항)
+  { id:601, topic:"emphasis", en:"It was ____ that called you yesterday.", ko:"어제 너에게 전화한 사람은 바로 제인이었어.", options:["Jane","Jane is","Jane who","if Jane"], answer:"Jane", explanation:"It was와 that 사이에 강조할 대상(주어: Jane)이 들어갑니다." },
+  { id:602, topic:"emphasis", en:"It is ____ that I want to buy.", ko:"내가 사고 싶은 것은 바로 이 컴퓨터야.", options:["this computer","computer this","a computer is","computers"], answer:"this computer", explanation:"강조 대상(목적어: this computer)이 It is와 that 사이에 위치합니다." },
+  { id:603, topic:"emphasis", en:"It was ____ that we met.", ko:"우리가 만난 곳은 바로 서울이었어.", options:["in Seoul","Seoul","Seoul in","at Seoul"], answer:"in Seoul", explanation:"장소를 강조할 때는 전치사를 포함한 부사구(in Seoul)가 들어갑니다." },
+  { id:604, topic:"emphasis", en:"It was ____ that the accident happened.", ko:"그 사고가 일어난 것은 바로 지난밤이었어.", options:["last night","tomorrow","night","time"], answer:"last night", explanation:"시제가 과거(was)이므로 과거 시간 부사 last night이 적절합니다." },
+  { id:605, topic:"emphasis", en:"It is ____ that motivates me.", ko:"나에게 동기를 부여하는 것은 바로 너의 사랑이야.", options:["your love","love your","you love","loving"], answer:"your love", explanation:"It is [명사] that 동사... 구조로 주어(your love)를 강조합니다." },
+  { id:606, topic:"emphasis", en:"It ____ Tom that fixed the car.", ko:"차를 수리한 사람은 바로 톰이었다.", options:["was","is","are","were"], answer:"was", explanation:"fixed(과거) 시제와 일치해야 하므로 It was를 씁니다." },
+  { id:607, topic:"emphasis", en:"It was his advice ____ saved me.", ko:"나를 구한 것은 바로 그의 조언이었다.", options:["that","what","where","when"], answer:"that", explanation:"It-cleft 강조 구문의 연결사는 that입니다. (사람일 경우 who, 사물일 경우 which도 가능하나 보기엔 that이 정답)" },
+  { id:608, topic:"emphasis", en:"It was not until 2020 ____ I graduated.", ko:"내가 졸업한 것은 2020년이 되어서였다.", options:["that","when","after","before"], answer:"that", explanation:"'It was not until ... that ...' (비로소 ~하다) 강조 구문입니다." },
+  { id:609, topic:"emphasis", en:"____ is money that makes the world go round.", ko:"세상을 돌아가게 하는 것은 바로 돈이다.", options:["It","That","This","What"], answer:"It", explanation:"It-that 강조 구문의 가주어 자리는 항상 It입니다." },
+  { id:610, topic:"emphasis", en:"It was because he was ill ____ he didn't come.", ko:"그가 오지 않은 것은 바로 그가 아팠기 때문이었다.", options:["that","why","because","when"], answer:"that", explanation:"이유의 부사절(because...)을 강조하는 It ~ that 구문입니다." },
+
+  // B. Wh-cleft 구문 (10문항)
+  { id:611, topic:"emphasis", en:"____ I need is your help.", ko:"내가 필요한 것은 너의 도움이다.", options:["What","That","It","How"], answer:"What", explanation:"'~하는 것'의 의미로 문장의 주어가 되는 관계대명사 What입니다." },
+  { id:612, topic:"emphasis", en:"What she really likes ____ pizza.", ko:"그녀가 정말 좋아하는 것은 피자이다.", options:["is","are","were","been"], answer:"is", explanation:"What절이 주어일 때 동사는 단수(is) 취급하는 것이 원칙입니다." },
+  { id:613, topic:"emphasis", en:"What he did was ____ the letter.", ko:"그가 한 일은 편지를 쓴 것이었다.", options:["write","wrote","written","writing"], answer:"write", explanation:"'What S did was...' 뒤에는 to를 생략한 동사원형(write)이 보어로 올 수 있습니다." },
+  { id:614, topic:"emphasis", en:"____ annoyed me most was his silence.", ko:"나를 가장 짜증 나게 한 것은 그의 침묵이었다.", options:["What","That","Who","It"], answer:"What", explanation:"'~한 것'은 선행사를 포함한 관계대명사 What으로 표현합니다." },
+  { id:615, topic:"emphasis", en:"What happened ____ that the car broke down.", ko:"일어난 일은 차가 고장 났다는 것이다.", options:["was","were","did","had"], answer:"was", explanation:"주어(What happened) 전체를 단수 취급하여 과거형 단수 동사 was를 씁니다." },
+  { id:616, topic:"emphasis", en:"All (that) I want ____ a chance.", ko:"내가 원하는 전부는 기회 한번뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"All (that) S V 구문도 Wh-cleft의 변형으로, 단수 동사(is)를 주로 사용합니다." },
+  { id:617, topic:"emphasis", en:"____ matters is your effort.", ko:"중요한 것은 너의 노력이다.", options:["What","It","That","Which"], answer:"What", explanation:"'중요한 것' = What matters." },
+  { id:618, topic:"emphasis", en:"What they are looking for ____ a new house.", ko:"그들이 찾고 있는 것은 새 집이다.", options:["is","are","were","was"], answer:"is", explanation:"보어(a new house)가 단수이고, What절 주어도 단수 취급하므로 is가 적절합니다." },
+  { id:619, topic:"emphasis", en:"What I realized later ____ that I was wrong.", ko:"내가 나중에 깨달은 것은 내가 틀렸다는 사실이었다.", options:["was","is","did","were"], answer:"was", explanation:"realized(과거) 시제에 맞춰 전체 문장 동사도 과거형(was)을 씁니다." },
+  { id:620, topic:"emphasis", en:"What makes him special ____ his kindness.", ko:"그를 특별하게 만드는 것은 그의 친절함이다.", options:["is","are","do","does"], answer:"is", explanation:"What절 주어 + 단수 동사(is) 구조입니다." }
 ];
 
 /* ==========================================================================
@@ -2792,36 +2858,33 @@ function clearExamHistory() {
 /* ==========================================================================
    4. 초기화 (Initialization)
    ========================================================================== */
+/* ==========================================================================
+   4. 초기화 (Initialization) - 최종 수정본
+   ========================================================================== */
 window.onload = function() {
-    // 1. 불규칙 동사 표 채우기
-    const tableBody = document.getElementById('verbTableBody');
-    verbs.forEach(v => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${v.base}</td>
-            <td>${v.past}</td>
-            <td>${v.pp}</td>
-            <td>${v.ko}</td>
-        `;
-        tableBody.appendChild(tr);
-    });
+  // 주제 선택 버튼을 넣을 컨테이너 선택
+  const btnContainer = document.getElementById('topicBtnContainer');
+  
+  // 기존 내용 비우기 (중복 방지)
+  btnContainer.innerHTML = '';
 
-    // 2. 각 주제별 문제 개수 카운트하여 버튼에 표시
-    // topicMap의 키들을 순회
-    for (let key in topicMap) {
-        // 해당 키(topic)를 가진 문제 필터링
-        const count = grammarQuestions.filter(q => q.topic === key).length;
-        const badge = document.getElementById('count-' + key);
-        if (badge) {
-            badge.textContent = `(${count})`;
-            badge.style.fontSize = "0.8em";
-            badge.style.color = "#666";
-        }
-    }
+  // topicMap에 있는 모든 주제에 대해 반복
+  for (const [key, value] of Object.entries(topicMap)) {
+    const btn = document.createElement('button');
     
-    // 불규칙 동사 개수
-    document.getElementById('count-verbs').textContent = `(${verbs.length})`;
-loadExamHistory();
+    // [핵심] examData에서 해당 주제의 문제 개수 가져오기
+    // 데이터가 있으면 길이를, 없으면 0을 표시
+    const count = examData[key] ? examData[key].length : 0;
+    
+    // 버튼 텍스트 설정: "주제명 (문제수)" 예: 영문학 (40)
+    btn.innerText = `${value} (${count})`; 
+    
+    // 클릭 시 해당 주제 시작 함수 연결
+    btn.onclick = (e) => startTopic(key, e); 
+    
+    // 화면에 버튼 추가
+    btnContainer.appendChild(btn);
+  }
 };
 </script>
 </body>
