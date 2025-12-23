@@ -123,7 +123,7 @@
 
   <button class="step-struct" onclick="showTopic('toinf')">16. to부정사 <span id="count-toinf"></span></button>
   <button class="step-struct" onclick="showTopic('gerund')">17. 동명사 <span id="count-gerund"></span></button>
-  <button class="step-struct" onclick="showTopic('Participle')">18. 분사구문 <span id="count-Participle"></span></button>
+  <button class="step-struct" onclick="showTopic('participle')">18. 분사구문 <span id="count-participle"></span></button>
   <button class="step-struct" onclick="showTopic('nounParticiple')">19. 명사 수식 분사 <span id="count-nounParticiple"></span></button>
   
   <button class="step-adv" onclick="showTopic('comparison')">20. 비교급/최상급 <span id="count-comparison"></span></button>
@@ -1407,7 +1407,7 @@
 </div>
 
 
-<div id="topic-Participle" class="topic-section">
+<div id="topic-participle" class="topic-section">
   <h3>18) 분사구문 (Participle Construction)</h3>
    <div style="background-color:#f3e5f5; border-left:5px solid #9c27b0; padding:15px; margin-bottom:20px; border-radius:4px;">
     <p class="small-note" style="margin:0; font-size:1rem; color:#333;">
@@ -1494,12 +1494,12 @@
   </div>
 
   <div class="note-area">
-    <button onclick="toggleNote('Participle')">📝 나만의 설명 추가/수정</button>
-    <div id="note-edit-Participle" style="display:none;">
-      <textarea id="note-input-Participle" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
-      <button onclick="saveNote('Participle')" style="margin-top:5px;">저장하기</button>
+    <button onclick="toggleNote('participle')">📝 나만의 설명 추가/수정</button>
+    <div id="note-edit-participle" style="display:none;">
+      <textarea id="note-input-participle" placeholder="여기에 자신만의 암기 팁이나 설명을 적어보세요."></textarea>
+      <button onclick="saveNote('participle')" style="margin-top:5px;">저장하기</button>
     </div>
-    <div id="note-display-Participlee" class="note-display"></div>
+    <div id="note-display-participle" class="note-display"></div>
   </div>
 </div>
 
@@ -2002,90 +2002,35 @@
 
 
 <div id="topic-emphasis" class="topic-section">
-  <h3 style="border-bottom: 2px solid #007bff; padding-bottom: 10px; color: #333;">26) 강조 구문 (Emphasis)</h3>
-  
-  <p class="small-note" style="background:#f0f8ff; padding:15px; border-radius:8px; border-left: 5px solid #007bff; line-height: 1.6;">
-    평범한 문장에서 <b>"바로 그 사람", "바로 그 장소", "바로 그 시간"</b>을 콕 집어 말하고 싶을 때 사용합니다.<br>
-    문장의 어순을 바꿔서 듣는 사람의 주의를 집중시키는 효과가 있습니다.
+  <h3>26) 강조 구문</h3>
+ <p class="small-note" style="background:#f0f8ff; padding:8px; border-radius:5px;">
+    문장의 특정 부분을 두드러지게 하기 위해 문장 구조를 변형하는 방식입니다.
+    <br><b>"누가/무엇이/언제/어디서"</b>를 명확히 지정하여 의미를 강화합니다.
   </p>
 
-  <div style="margin-top: 20px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
-    <h4 style="color: #d9534f; margin-top: 0;">1. It - that 강조 구문 (It-Cleft)</h4>
-    <p style="margin-bottom: 10px;">
-      <b style="background-color: #ffeeba; padding: 2px 5px;">공식: It is/was + [강조하는 말] + that + 나머지 문장</b>
-    </p>
-    <p>원래 문장을 쪼개서(Cleft), 강조하고 싶은 말을 <b>It is</b>와 <b>that</b> 사이에 가둡니다. <br>
-    <span style="color: #888; font-size: 0.9em;">(※ 동사는 이 방법으로 강조할 수 없습니다.)</span></p>
-
-    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 10px;">
-      <p style="margin-bottom: 10px; font-weight: bold; color: #555;">[예시 문장]</p>
-      <p style="font-size: 1.1em; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
-        Tom met Jerry in the park yesterday.<br>
-        <span style="font-size: 0.8em; color: #666;">(Tom은 어제 공원에서 Jerry를 만났다.)</span>
-      </p>
-
-      <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
-        <li>
-          <span style="color: #d9534f; font-weight: bold;">① 주어 강조 (Tom)</span><br>
-          It was <b style="color: blue; background-color: #e7f5ff; padding: 2px 5px;">Tom</b> that met Jerry in the park yesterday.<br>
-          → 어제 공원에서 Jerry를 만난 건 <b>다름 아닌 Tom이었다.</b>
-        </li>
-        <li style="margin-top: 8px;">
-          <span style="color: #d9534f; font-weight: bold;">② 목적어 강조 (Jerry)</span><br>
-          It was <b style="color: blue; background-color: #e7f5ff; padding: 2px 5px;">Jerry</b> that Tom met in the park yesterday.<br>
-          → Tom이 어제 공원에서 만난 건 <b>바로 Jerry였다.</b>
-        </li>
-        <li style="margin-top: 8px;">
-          <span style="color: #d9534f; font-weight: bold;">③ 장소 강조 (in the park)</span><br>
-          It was <b style="color: blue; background-color: #e7f5ff; padding: 2px 5px;">in the park</b> that Tom met Jerry yesterday.<br>
-          → Tom이 어제 Jerry를 만난 곳은 <b>바로 공원이었다.</b>
-        </li>
-        <li style="margin-top: 8px;">
-          <span style="color: #d9534f; font-weight: bold;">④ 시간 강조 (yesterday)</span><br>
-          It was <b style="color: blue; background-color: #e7f5ff; padding: 2px 5px;">yesterday</b> that Tom met Jerry in the park.<br>
-          → Tom이 공원에서 Jerry를 만난 건 <b>바로 어제였다.</b>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div style="margin-top: 20px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
-    <h4 style="color: #28a745; margin-top: 0;">2. What 강조 구문 (Wh-Cleft)</h4>
-    <p style="margin-bottom: 10px;">
-      <b style="background-color: #d4edda; padding: 2px 5px;">공식: What + 주어 + 동사 + be동사 + [강조 대상]</b>
-    </p>
-    <p>관계대명사 <b>What(~하는 것)</b>을 주어로 사용하여, 중요한 정보를 문장의 뒷부분(보어 자리)으로 보내 강조합니다.</p>
-
-    <ul style="line-height: 1.8; margin-top: 10px;">
-      <li>
-        <b>[기본]</b> I need <span style="color:purple;">time</span>. (나는 시간이 필요해.)<br>
-        → <b style="color: #28a745;">What</b> I need <b>is</b> <b style="color: purple; background-color: #f3e5f5; padding: 2px 5px;">time</b>.<br>
-        (내가 필요한 것은 <b>바로 시간</b>이다.)
-      </li>
-      <li style="margin-top: 10px;">
-        <b>[행위 강조]</b> He studied hard. (그는 열심히 공부했다.)<br>
-        → <b style="color: #28a745;">What</b> he did <b>was</b> <b style="color: purple; background-color: #f3e5f5; padding: 2px 5px;">(to) study hard</b>.<br>
-        (그가 한 일은 <b>열심히 공부하는 것</b>이었다.) <br>
-        <span style="font-size: 0.9em; color: #666;">※ 'What ... did' 구문 뒤에는 to를 생략하고 동사원형을 자주 씁니다.</span>
-      </li>
-      <li style="margin-top: 10px;">
-        <b>[All 강조]</b> "What" 대신 <b>"All(유일한 것/모든 것)"</b>을 쓰기도 합니다.<br>
-        → <b style="color: #28a745;">All</b> you have to do <b>is</b> <b style="color: purple; background-color: #f3e5f5; padding: 2px 5px;">press</b> the button.<br>
-        (네가 해야 할 일은 <b>오직 버튼을 누르는 것뿐</b>이다.)
-      </li>
-    </ul>
-  </div>
-
-  <div style="margin-top: 20px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
-    <h4 style="color: #fd7e14; margin-top: 0;">3. 동사 강조 (do / does / did)</h4>
-    <p>동사는 It~that 구문으로 강조할 수 없으므로, 동사 앞에 <b>do, does, did</b>를 붙여서 <b>"정말로, 진짜로"</b>라는 의미를 더합니다.</p>
-    <ul>
-      <li>I <b style="color: #fd7e14;">do</b> hope you pass the exam. (나는 <b>정말로</b> 네가 합격하길 바란다.)</li>
-      <li>He <b style="color: #fd7e14;">did</b> finish the work. (그는 <b>진짜로</b> 그 일을 끝냈다.)</li>
-    </ul>
-  </div>
+  <ul class="small-note">
+    <li><b style="color:#d9534f; font-size:1.1em;">1. It-cleft 구문 (It ~ that 강조)</b>
+        <br> - **형식:** It + be동사 + <span style="background-color:yellow;">[강조 대상]</span> + that/who + 나머지 문장
+        <br> - **특징:** 문장을 쪼개어(cleft) 강조하고 싶은 요소를 'It is'와 'that' 사이에 넣습니다.
+        <br> &nbsp;&nbsp; Ex: **It was** <b style="color:blue;">Siyoon</b> **that** solved the puzzle first.
+        <br> &nbsp;&nbsp; (퍼즐을 처음 푼 사람은 다름 아닌 **시윤**이었다.)
+        <br> &nbsp;&nbsp; Ex: **It is** <b style="color:blue;">in Rome</b> **that** Latin grammar started to make sense.
+        <br> &nbsp;&nbsp; (라틴어 문법이 이해되기 시작한 곳은 바로 **로마**였다.)
+        <br> - <b style="color:red;">주의:</b> 동사는 강조할 수 없습니다. (동사 강조는 do/does/did 사용)
+    </li>
+    
+    <li style="margin-top:15px;"><b style="color:#28a745; font-size:1.1em;">2. Wh-cleft / Pseudo-cleft 구문</b>
+        <br> - **형식:** What + S + V + be동사 + <span style="background-color:yellow;">[강조 대상]</span>
+        <br> - **특징:** 관계대명사 What(~하는 것)을 주어로 사용하여 정보의 중심을 뒤쪽(보어 자리)으로 밀어주며 강조합니다.
+        <br> &nbsp;&nbsp; Ex: **What** I need **is** <b style="color:blue;">time</b>.
+        <br> &nbsp;&nbsp; (내가 필요한 것은 바로 **시간**이다.)
+        <br> &nbsp;&nbsp; Ex: **What** she really hates **is** <b style="color:blue;">dishonesty</b>.
+        <br> &nbsp;&nbsp; (그녀가 정말 싫어하는 것은 **부정직함**이다.)
+        <br> - **변형:** "All (that) I want is..." 구조도 자주 쓰입니다.
+    </li>
+  </ul>
   
-  <div class="note-area" style="margin-top: 20px;">
+  <div class="note-area">
     <button onclick="toggleNote('emphasis')">📝 나만의 설명 추가/수정</button>
     <div id="note-edit-emphasis" style="display:none;">
       <textarea id="note-input-emphasis" placeholder="여기에 강조 구문 관련 암기 팁이나 예문을 적어보세요."></textarea>
@@ -2127,7 +2072,7 @@
 
       <option value="toinf">16. to부정사 (To-Infinitive)</option>
       <option value="gerund">17. 동명사 (Gerund)</option>
-      <option value="Participle">18. 분사구문 (Participle)</option>
+      <option value="participle">18. 분사구문 (Participle)</option>
       <option value="nounParticiple">19. 명사 수식 분사</option>
 
       <option value="comparison">20. 비교급/최상급</option>
@@ -2294,7 +2239,7 @@ const topicMap = {
     "relativeAdverb": "관계부사",
     "toinf": "to부정사",
     "gerund": "동명사",
-    "Participle": "분사구문",
+    "participle": "분사구문",
     "nounParticiple": "명사 수식 분사",
     "comparison": "비교급/최상급",
     "causative": "사역동사",
@@ -2792,7 +2737,7 @@ const grammarQuestions = [
   { id:1304, topic:"conjunction", en:"Wait here ____ I come back.", ko:"내가 돌아올 때까지 기다려.", options:["until","if","because","so"], answer:"until", explanation:"시간의 한계(~까지)는 until." },
   { id:1305, topic:"conjunction", en:"Study hard, ____ you will pass.", ko:"열심히 공부해라, 그러면 합격할 것이다.", options:["and","or","but","so"], answer:"and", explanation:"명령문 + and (~해라, 그러면)." },
 
-  // 14. 관계대명사 (ID: 1401 ~ 1440) - [번호 정정: 1300단위 -> 1400단위]
+  // 13. 관계대명사 (ID: 1401 ~ 1440) - [번호 정정: 1300단위 -> 1400단위]
   
   // --- [초급: 선행사(사람/사물) 구별 및 기본 주격/목적격] (15문제) ---
   { id:1401, topic:"relative", en:"I met a girl ____ is very kind.", ko:"나는 매우 친절한 소녀를 만났다.", options:["who","which","whose","what"], answer:"who", explanation:"[초급] 선행사가 사람(girl)이고 뒤에 동사(is)가 오므로 주격 'who'입니다." },
@@ -2840,7 +2785,7 @@ const grammarQuestions = [
   { id:1439, topic:"relative", en:"You can take ____ you want.", ko:"네가 원하는 것은 무엇이든지 가져도 좋다.", options:["whatever","what","which","that"], answer:"whatever", explanation:"[고급] 'Anything that'의 의미를 가진 복합관계대명사 'whatever'." },
   { id:1440, topic:"relative", en:"The man ____ I thought was honest lied to me.", ko:"정직하다고 내가 생각했던 그 남자가 나에게 거짓말을 했다.", options:["who","whom","which","what"], answer:"who", explanation:"[고급] 삽입절(I thought)을 제외하면 'The man (who) was honest' 구조이므로 주격 who가 맞습니다." },
 
- // 15. 관계부사 (ID: 1501 ~ 1530) - [번호 정정: 1400단위 -> 1500단위]
+ // 14. 관계부사 (ID: 1501 ~ 1530) - [번호 정정: 1400단위 -> 1500단위]
   
   // --- [초급: 선행사 보고 짝꿍 찾기 (장소/시간/이유)] (10문제) ---
   { id:1501, topic:"relativeAdverb", en:"This is the house ____ I live.", ko:"이곳은 내가 사는 집이다.", options:["where","when","why","how"], answer:"where", explanation:"[초급] 선행사가 장소(house)이므로 where." },
@@ -2878,7 +2823,7 @@ const grammarQuestions = [
   { id:1529, topic:"relativeAdverb", en:"He was in a situation ____ he couldn't escape.", ko:"그는 탈출할 수 없는 상황에 처해 있었다.", options:["where","which","who","that"], answer:"where", explanation:"[고급] 뒤에 완전한 문장이 오므로, 상황(situation)을 장소 개념으로 보아 where 사용." },
   { id:1530, topic:"relativeAdverb", en:"That's ____ I love you.", ko:"그게 바로 내가 너를 사랑하는 이유야.", options:["why","which","where","when"], answer:"why", explanation:"[고급] 선행사(the reason)가 생략된 형태. That is why ~." },
 
- // 16. to부정사 (ID: 1601 ~ 1640) - [번호 정정: 1500단위 -> 1600단위]
+ // 15. to부정사 (ID: 1601 ~ 1640) - [번호 정정: 1500단위 -> 1600단위]
   
   // --- [초급: 기본 용법 (명사/형용사/부사) 구별] (20문제) ---
   { id:1601, topic:"toinf", en:"I want ____ a teacher.", ko:"나는 선생님이 되고 싶다.", options:["to be","be","being","been"], answer:"to be", explanation:"[초급] want는 to부정사를 목적어로 취합니다." },
@@ -2926,7 +2871,7 @@ const grammarQuestions = [
   { id:1639, topic:"toinf", en:"I'm sorry ____ kept you waiting.", ko:"기다리게 해서 미안해.", options:["to have","to has","to had","to be"], answer:"to have", explanation:"[고급] 기다리게 한 것(과거)이 미안한 것(현재)보다 앞서므로 완료부정사 사용." },
   { id:1640, topic:"toinf", en:"She is likely ____ succeed.", ko:"그녀는 성공할 것 같다.", options:["to","for","of","in"], answer:"to", explanation:"[고급] be likely to R (~할 가능성이 있다/할 것 같다)." },
 
-// 17. 동명사 (ID: 1701 ~ 1730) - [번호 정정: 1600단위 -> 1700단위]
+// 16. 동명사 (ID: 1701 ~ 1730) - [번호 정정: 1600단위 -> 1700단위]
   
   // --- [1. 주어 역할: "~하는 것은"] (초급 - 10문제) ---
   { id:1701, topic:"gerund", en:"____ is believing.", ko:"보는 것이 믿는 것이다.", options:["Seeing","See","To see","Saw"], answer:"Seeing", explanation:"[주어] 문장의 맨 앞 주어 자리에 쓰인 동명사입니다." },
@@ -2964,104 +2909,106 @@ const grammarQuestions = [
   { id:1729, topic:"gerund", en:"Instead of ____ TV, read a book.", ko:"TV를 보는 대신에 책을 읽어라.", options:["watching","watch","to watch","watched"], answer:"watching", explanation:"[전치사] Instead of(~대신에) + 동명사." },
   { id:1730, topic:"gerund", en:"This book is worth ____.", ko:"이 책은 읽을 가치가 있다.", options:["reading","to read","read","reads"], answer:"reading", explanation:"[관용구] be worth -ing (~할 가치가 있다)." },
 
-// 18. 분사구문 (ID: 1801 ~ 1830)
-  
-  // --- [기초: 능동(-ing), 수동(p.p.), 부정, 완료형] (20문제) ---
-  { id:1801, topic:"Participle", en:"____ TV, I fell asleep.", ko:"TV를 보다가 나는 잠이 들었다.", options:["Watching","Watch","Watched","To watch"], answer:"Watching", explanation:"[기초] 주어(I)가 능동적으로 TV를 보는 것이므로 현재분사(Watching)." },
-  { id:1802, topic:"Participle", en:"____ hungry, he ate a pizza.", ko:"배가 고파서, 그는 피자를 먹었다.", options:["Feeling","Felt","Feel","To feel"], answer:"Feeling", explanation:"[기초] 이유를 나타내는 분사구문 (Because he felt...)." },
-  { id:1803, topic:"Participle", en:"____ in English, the book is easy.", ko:"영어로 쓰여져서, 그 책은 쉽다.", options:["Written","Writing","Wrote","Write"], answer:"Written", explanation:"[기초] 책은 '쓰여진(수동)' 대상이므로 과거분사(Written)." },
-  { id:1804, topic:"Participle", en:"____ left, you will find the bank.", ko:"왼쪽으로 돌면, 은행을 찾을 것이다.", options:["Turning","Turned","Turn","To turn"], answer:"Turning", explanation:"[기초] 조건을 나타내는 분사구문 (If you turn...)." },
-  { id:1805, topic:"Participle", en:"____ what to do, I asked him.", ko:"무엇을 해야 할지 몰라서, 나는 그에게 물었다.", options:["Not knowing","No knowing","Not known","Knowing not"], answer:"Not knowing", explanation:"[기초] 분사구문의 부정은 분사 바로 앞에 Not을 씁니다." },
-  { id:1806, topic:"Participle", en:"____ tired, she went to bed early.", ko:"피곤해서, 그녀는 일찍 잠자리에 들었다.", options:["Being","Be","To be","Been"], answer:"Being", explanation:"[기초] 'Being + 형용사'에서 Being은 생략 가능하나, 보기 중에서는 Being이 정답." },
-  { id:1807, topic:"Participle", en:"____ at the station, I called him.", ko:"역에 도착했을 때, 나는 그에게 전화했다.", options:["Arriving","Arrived","Arrive","To arrive"], answer:"Arriving", explanation:"[기초] arrive는 자동사로, 주어가 도착하는 능동 의미입니다." },
-  { id:1808, topic:"Participle", en:"____ by the noise, the baby woke up.", ko:"소음에 놀라서, 아기가 깼다.", options:["Surprised","Surprising","Surprise","To surprise"], answer:"Surprised", explanation:"[기초] 아기가 놀람을 '느낀(수동)' 것이므로 과거분사." },
-  { id:1809, topic:"Participle", en:"____ rich, he can buy the car.", ko:"부유하기 때문에, 그는 그 차를 살 수 있다.", options:["Being","To be","Be","Been"], answer:"Being", explanation:"[기초] 이유 부사절(As he is rich...)의 분사구문." },
-  { id:1810, topic:"Participle", en:"____ his work, he went out.", ko:"일을 다 끝내고서, 그는 밖으로 나갔다.", options:["Having finished","Finishing","Finished","Have finished"], answer:"Having finished", explanation:"[기초] 완료분사구문: 주절(went)보다 앞선 시점(일을 끝낸 것)을 나타낼 때 씁니다." },
-  { id:1811, topic:"Participle", en:"____ a doctor, I know the disease.", ko:"의사이기 때문에, 나는 그 병을 안다.", options:["Being","To be","Be","Been"], answer:"Being", explanation:"[기초] 명사 보어(a doctor) 앞의 Being." },
-  { id:1812, topic:"Participle", en:"____ along the street, I met Tom.", ko:"길을 걷다가 나는 톰을 만났다.", options:["Walking","Walked","Walk","To walk"], answer:"Walking", explanation:"[기초] 시간/진행을 나타내는 분사구문." },
-  { id:1813, topic:"Participle", en:"____ no money, I couldn't buy it.", ko:"돈이 없어서, 나는 그것을 살 수 없었다.", options:["Having","Have","Had","To have"], answer:"Having", explanation:"[기초] 'Not having' money의 의미. 보기 중 가장 적절한 형태는 Having (no가 뒤에 있으므로)." },
-  { id:1814, topic:"Participle", en:"____ from the moon, the earth looks blue.", ko:"달에서 보면(보여지면), 지구는 파랗게 보인다.", options:["Seen","Seeing","See","To see"], answer:"Seen", explanation:"[기초] 지구는 달에서 '보여지는(수동)' 대상입니다." },
-  { id:1815, topic:"Participle", en:"____ brightly, she said hello.", ko:"밝게 웃으면서 그녀는 인사를 했다.", options:["Smiling","Smiled","Smile","To smile"], answer:"Smiling", explanation:"[기초] 동시동작: 웃으면서(능동)." },
-  { id:1816, topic:"Participle", en:"____ alone, the boy felt lonely.", ko:"혼자 남겨져서, 그 소년은 외로움을 느꼈다.", options:["Left","Leaving","Leave","To leave"], answer:"Left", explanation:"[기초] 소년은 '남겨진(수동)' 것이므로 Left (=Being left)." },
-  { id:1817, topic:"Participle", en:"While ____ TV, I fell asleep.", ko:"TV를 보는 동안 잠이 들었다.", options:["watching","watched","watch","to watch"], answer:"watching", explanation:"[기초] 접속사(While)를 생략하지 않고 남겨둔 능동 분사구문." },
-  { id:1818, topic:"Participle", en:"Though ____, he worked hard.", ko:"피곤했지만, 그는 열심히 일했다.", options:["tired","tiring","tire","to tire"], answer:"tired", explanation:"[기초] 접속사(Though) + (being) + p.p.(tired). 수동형 분사구문." },
-  { id:1819, topic:"Participle", en:"____ for the bus, I read a book.", ko:"버스를 기다리며 나는 책을 읽었다.", options:["Waiting","Waited","Wait","To wait"], answer:"Waiting", explanation:"[기초] 능동적으로 기다리는 상황." },
-  { id:1820, topic:"Participle", en:"____ in Korea, he speaks Korean well.", ko:"한국에서 태어났기 때문에, 그는 한국어를 잘한다.", options:["Born","Bearing","Bear","To bear"], answer:"Born", explanation:"[기초] 태어난 것은 수동(be born)이므로 과거분사 Born (=Being born)." },
-
-  // --- [특수: 독립분사구문, With 부대상황, 비인칭 관용구] (10문제) ---
-  { id:1821, topic:"Participle", en:"____ permitting, we will go on a picnic.", ko:"날씨가 허락한다면, 우리는 소풍을 갈 것이다.", options:["Weather","If weather","The weather","It"], answer:"Weather", explanation:"[특수] 독립분사구문: 부사절의 주어(Weather)가 주절의 주어(we)와 다르므로 생략하지 않습니다." },
-  { id:1822, topic:"Participle", en:"It ____ rainy, I stayed at home.", ko:"비가 와서, 나는 집에 있었다.", options:["being","is","was","be"], answer:"being", explanation:"[특수] 비인칭 주어 It이 주절의 주어(I)와 다르므로 남겨두고 being을 씁니다." },
-  { id:1823, topic:"Participle", en:"There ____ no bus, we walked.", ko:"버스가 없어서 우리는 걸었다.", options:["being","is","was","be"], answer:"being", explanation:"[특수] 유도부사 There 구문의 독립분사구문: There being ~." },
-  { id:1824, topic:"Participle", en:"He sat there with his legs ____.", ko:"그는 다리를 꼰 채로 거기에 앉아 있었다.", options:["crossed","crossing","cross","to cross"], answer:"crossed", explanation:"[특수] With + 명사 + 분사: 다리는 '꼬아지는(수동)' 대상이므로 p.p." },
-  { id:1825, topic:"Participle", en:"She was listening with her eyes ____.", ko:"그녀는 눈을 감은 채 듣고 있었다.", options:["closed","closing","close","to close"], answer:"closed", explanation:"[특수] With 부대상황: 눈은 '감겨지는(수동)' 대상." },
-  { id:1826, topic:"Participle", en:"Generally ____, women live longer than men.", ko:"일반적으로 말해서, 여자가 남자보다 오래 산다.", options:["speaking","spoken","speak","to speak"], answer:"speaking", explanation:"[특수] 비인칭 독립분사구문(관용구): Generally speaking." },
-  { id:1827, topic:"Participle", en:"____ from his accent, he is American.", ko:"그의 말투로 판단하건대, 그는 미국인이다.", options:["Judging","Judged","Judge","To judge"], answer:"Judging", explanation:"[특수] 관용구: Judging from (~로 미루어 보아)." },
-  { id:1828, topic:"Participle", en:"____ speaking, I don't like it.", ko:"솔직히 말해서, 나는 그게 싫어.", options:["Frankly","Frank","To frank","Franked"], answer:"Frankly", explanation:"[특수] Frankly speaking (솔직히 말해서)." },
-  { id:1829, topic:"Participle", en:"He was running with his dog ____.", ko:"그는 개가 짖는 채로(짖게 하며) 달리고 있었다.", options:["barking","barked","bark","to bark"], answer:"barking", explanation:"[특수] With + 명사 + 분사: 개가 직접 '짖는(능동)' 것이므로 -ing." },
-  { id:1830, topic:"Participle", en:"Strictly ____, that is not true.", ko:"엄격히 말해서, 그것은 사실이 아니다.", options:["speaking","spoken","speak","to speak"], answer:"speaking", explanation:"[특수] 관용구: Strictly speaking (엄격히 말해서)." },
-
-// 18. 명사 수식 분사 (ID: 1901 ~ 1930) - [번호 정정: 1800단위 -> 1900단위]
-  
-  // --- [초급: 명사 앞에서 꾸미기 & 기초 감정분사] (15문제) ---
-  { id:1901, topic:"nounParticiple", en:"Look at the ____ baby.", ko:"자고 있는 아기를 봐라.", options:["sleeping","slept","sleep","sleeps"], answer:"sleeping", explanation:"[초급] 아기가 스스로(능동적으로) 자고 있으므로 현재분사(-ing)." },
-  { id:1902, topic:"nounParticiple", en:"I have a ____ car.", ko:"나는 중고차(사용된 차)를 가지고 있다.", options:["used","using","use","uses"], answer:"used", explanation:"[초급] 차는 사람에 의해 '사용된(수동)' 것이므로 과거분사(p.p.)." },
-  { id:1903, topic:"nounParticiple", en:"Watch out for the ____ dog.", ko:"짖고 있는 개를 조심해라.", options:["barking","barked","bark","barks"], answer:"barking", explanation:"[초급] 개가 직접 짖고 있는(능동/진행) 상태." },
-  { id:1904, topic:"nounParticiple", en:"There is a ____ window.", ko:"깨진 창문이 있다.", options:["broken","breaking","break","broke"], answer:"broken", explanation:"[초급] 창문은 무언가에 의해 '깨진(수동)' 상태." },
-  { id:1905, topic:"nounParticiple", en:"Falling leaves are beautiful.", ko:"떨어지는(지고 있는) 낙엽은 아름답다.", options:["Falling","Fallen","Fell","Fall"], answer:"Falling", explanation:"[초급] 잎이 지금 떨어지고 있는 '진행'의 의미." },
-  { id:1906, topic:"nounParticiple", en:"Do not touch ____ water.", ko:"끓고 있는 물을 만지지 마라.", options:["boiling","boiled","boil","boils"], answer:"boiling", explanation:"[초급] 물이 지금 펄펄 끓고 있는 '진행' 상태." },
-  { id:1907, topic:"nounParticiple", en:"I like ____ eggs.", ko:"나는 삶은 달걀을 좋아한다.", options:["boiled","boiling","boil","boils"], answer:"boiled", explanation:"[초급] 이미 다 삶아진(완료/수동) 달걀." },
-  { id:1908, topic:"nounParticiple", en:"It was a ____ game.", ko:"그것은 흥미진진한 경기였다.", options:["exciting","excited","excite","excites"], answer:"exciting", explanation:"[초급] 경기가 흥분을 '주는(능동)' 것이므로 exciting." },
-  { id:1909, topic:"nounParticiple", en:"The students were ____.", ko:"그 학생들은 신이 났다.", options:["excited","exciting","excite","excites"], answer:"excited", explanation:"[초급] 학생들이 흥분을 '느낀(수동)' 것이므로 excited." },
-  { id:1910, topic:"nounParticiple", en:"This is a ____ story.", ko:"이것은 지루한 이야기다.", options:["boring","bored","bore","bores"], answer:"boring", explanation:"[초급] 이야기가 지루함을 '주는' 원인이므로 boring." },
-  { id:1911, topic:"nounParticiple", en:"I am ____.", ko:"나는 지루하다(심심하다).", options:["bored","boring","bore","bores"], answer:"bored", explanation:"[초급] 내가 지루함을 '느끼는' 것이므로 bored." },
-  { id:1912, topic:"nounParticiple", en:"Look at the ____ sun.", ko:"떠오르는 태양을 봐라.", options:["rising","risen","rise","rose"], answer:"rising", explanation:"[초급] 태양이 스스로 떠오르고 있는(능동/진행) 중." },
-  { id:1913, topic:"nounParticiple", en:"He found the ____ treasure.", ko:"그는 숨겨진 보물을 발견했다.", options:["hidden","hiding","hide","hid"], answer:"hidden", explanation:"[초급] 보물은 누군가에 의해 '숨겨진(수동)' 대상." },
-  { id:1914, topic:"nounParticiple", en:"She repaired the ____ chair.", ko:"그녀는 부러진 의자를 고쳤다.", options:["broken","breaking","break","broke"], answer:"broken", explanation:"[초급] 의자가 부러짐을 '당한' 상태." },
-  { id:1915, topic:"nounParticiple", en:"Who is that ____ girl?", ko:"저 춤추고 있는 소녀는 누구니?", options:["dancing","danced","dance","dances"], answer:"dancing", explanation:"[초급] 소녀가 직접 춤을 추고 있음(능동)." },
+  // 18. 명사 수식 분사 (ID: 1801 ~ 1899)// --- [초급: 명사 앞에서 꾸미기 & 기초 감정분사] (15문제) ---
+  { id:1801, topic:"nounParticiple", en:"Look at the ____ baby.", ko:"자고 있는 아기를 봐라.", options:["sleeping","slept","sleep","sleeps"], answer:"sleeping", explanation:"[초급] 아기가 스스로(능동적으로) 자고 있으므로 현재분사(-ing)." },
+  { id:1802, topic:"nounParticiple", en:"I have a ____ car.", ko:"나는 중고차(사용된 차)를 가지고 있다.", options:["used","using","use","uses"], answer:"used", explanation:"[초급] 차는 사람에 의해 '사용된(수동)' 것이므로 과거분사(p.p.)." },
+  { id:1803, topic:"nounParticiple", en:"Watch out for the ____ dog.", ko:"짖고 있는 개를 조심해라.", options:["barking","barked","bark","barks"], answer:"barking", explanation:"[초급] 개가 직접 짖고 있는(능동/진행) 상태." },
+  { id:1804, topic:"nounParticiple", en:"There is a ____ window.", ko:"깨진 창문이 있다.", options:["broken","breaking","break","broke"], answer:"broken", explanation:"[초급] 창문은 무언가에 의해 '깨진(수동)' 상태." },
+  { id:1805, topic:"nounParticiple", en:"Falling leaves are beautiful.", ko:"떨어지는(지고 있는) 낙엽은 아름답다.", options:["Falling","Fallen","Fell","Fall"], answer:"Falling", explanation:"[초급] 잎이 지금 떨어지고 있는 '진행'의 의미." },
+  { id:1806, topic:"nounParticiple", en:"Do not touch ____ water.", ko:"끓고 있는 물을 만지지 마라.", options:["boiling","boiled","boil","boils"], answer:"boiling", explanation:"[초급] 물이 지금 펄펄 끓고 있는 '진행' 상태." },
+  { id:1807, topic:"nounParticiple", en:"I like ____ eggs.", ko:"나는 삶은 달걀을 좋아한다.", options:["boiled","boiling","boil","boils"], answer:"boiled", explanation:"[초급] 이미 다 삶아진(완료/수동) 달걀." },
+  { id:1808, topic:"nounParticiple", en:"It was a ____ game.", ko:"그것은 흥미진진한 경기였다.", options:["exciting","excited","excite","excites"], answer:"exciting", explanation:"[초급] 경기가 흥분을 '주는(능동)' 것이므로 exciting." },
+  { id:1809, topic:"nounParticiple", en:"The students were ____.", ko:"그 학생들은 신이 났다.", options:["excited","exciting","excite","excites"], answer:"excited", explanation:"[초급] 학생들이 흥분을 '느낀(수동)' 것이므로 excited." },
+  { id:1810, topic:"nounParticiple", en:"This is a ____ story.", ko:"이것은 지루한 이야기다.", options:["boring","bored","bore","bores"], answer:"boring", explanation:"[초급] 이야기가 지루함을 '주는' 원인이므로 boring." },
+  { id:1811, topic:"nounParticiple", en:"I am ____.", ko:"나는 지루하다(심심하다).", options:["bored","boring","bore","bores"], answer:"bored", explanation:"[초급] 내가 지루함을 '느끼는' 것이므로 bored." },
+  { id:1812, topic:"nounParticiple", en:"Look at the ____ sun.", ko:"떠오르는 태양을 봐라.", options:["rising","risen","rise","rose"], answer:"rising", explanation:"[초급] 태양이 스스로 떠오르고 있는(능동/진행) 중." },
+  { id:1813, topic:"nounParticiple", en:"He found the ____ treasure.", ko:"그는 숨겨진 보물을 발견했다.", options:["hidden","hiding","hide","hid"], answer:"hidden", explanation:"[초급] 보물은 누군가에 의해 '숨겨진(수동)' 대상." },
+  { id:1814, topic:"nounParticiple", en:"She repaired the ____ chair.", ko:"그녀는 부러진 의자를 고쳤다.", options:["broken","breaking","break","broke"], answer:"broken", explanation:"[초급] 의자가 부러짐을 '당한' 상태." },
+  { id:1815, topic:"nounParticiple", en:"Who is that ____ girl?", ko:"저 춤추고 있는 소녀는 누구니?", options:["dancing","danced","dance","dances"], answer:"dancing", explanation:"[초급] 소녀가 직접 춤을 추고 있음(능동)." },
 
   // --- [중급: 명사 뒤에서 꾸미기 (구) & 능동/수동 구별] (15문제) ---
-  { id:1916, topic:"nounParticiple", en:"The boy ____ soccer is my son.", ko:"축구를 하고 있는 저 소년은 내 아들이다.", options:["playing","played","play","plays"], answer:"playing", explanation:"[중급] 소년이 축구를 '직접 하는(능동)' 것이므로 현재분사." },
-  { id:1917, topic:"nounParticiple", en:"The letter ____ by him arrived.", ko:"그에 의해 쓰여진 편지가 도착했다.", options:["written","writing","wrote","write"], answer:"written", explanation:"[중급] 편지는 '쓰여진(수동)' 것이므로 과거분사. (뒤에 by가 힌트)" },
-  { id:1918, topic:"nounParticiple", en:"I know the girl ____ a book.", ko:"나는 책을 읽고 있는 그 소녀를 안다.", options:["reading","read","reads","to read"], answer:"reading", explanation:"[중급] 소녀가 책을 '읽고 있는(능동/진행)' 중." },
-  { id:1919, topic:"nounParticiple", en:"Look at the mountain ____ with snow.", ko:"눈으로 덮인 산을 봐라.", options:["covered","covering","cover","covers"], answer:"covered", explanation:"[중급] 산이 눈에 의해 '덮인(수동)' 상태." },
-  { id:1920, topic:"nounParticiple", en:"The man ____ a hat is Tom.", ko:"모자를 쓰고 있는 남자는 Tom이다.", options:["wearing","worn","wear","wears"], answer:"wearing", explanation:"[중급] 남자가 모자를 '착용하고 있는(능동)' 상태." },
-  { id:1921, topic:"nounParticiple", en:"This is a computer ____ in Korea.", ko:"이것은 한국에서 만들어진 컴퓨터다.", options:["made","making","make","makes"], answer:"made", explanation:"[중급] 컴퓨터는 '만들어진(수동)' 것." },
-  { id:1922, topic:"nounParticiple", en:"Do you know the lady ____ to Mom?", ko:"엄마와 이야기하고 있는 저 숙녀분을 아니?", options:["talking","talked","talk","talks"], answer:"talking", explanation:"[중급] 숙녀분이 직접 이야기하고 있음(능동)." },
-  { id:1923, topic:"nounParticiple", en:"The languages ____ in Canada are English and French.", ko:"캐나다에서 사용되는 언어는 영어와 불어다.", options:["spoken","speaking","spoke","speak"], answer:"spoken", explanation:"[중급] 언어는 사람들에 의해 '말해지는(수동)' 대상." },
-  { id:1924, topic:"nounParticiple", en:"People ____ for the bus are tired.", ko:"버스를 기다리는 사람들은 피곤하다.", options:["waiting","waited","wait","waits"], answer:"waiting", explanation:"[중급] 사람들이 직접 기다리고 있음(능동)." },
-  { id:1925, topic:"nounParticiple", en:"The house ____ on the hill is nice.", ko:"언덕 위에 지어진 그 집은 멋지다.", options:["built","building","build","builds"], answer:"built", explanation:"[중급] 집은 '지어진(수동)' 것." },
-  { id:1926, topic:"nounParticiple", en:"Anyone ____ to the party can come.", ko:"파티에 초대받은 사람은 누구나 와도 좋다.", options:["invited","inviting","invite","invites"], answer:"invited", explanation:"[중급] 사람은 파티에 '초대된(수동)' 입장." },
-  { id:1927, topic:"nounParticiple", en:"The pictures ____ by Picasso are famous.", ko:"피카소에 의해 그려진 그림들은 유명하다.", options:["painted","painting","paint","paints"], answer:"painted", explanation:"[중급] 그림은 화가에 의해 '그려진(수동)' 것." },
-  { id:1928, topic:"nounParticiple", en:"There is a cat ____ under the table.", ko:"탁자 아래에 숨어 있는 고양이가 있다.", options:["hiding","hidden","hide","hid"], answer:"hiding", explanation:"[중급] 고양이가 스스로 숨어 있음(능동). (Hidden은 '숨겨진' 물건일 때 씀)" },
-  { id:1929, topic:"nounParticiple", en:"The train ____ for Seoul will arrive soon.", ko:"서울로 떠나는(향하는) 기차가 곧 도착할 것이다.", options:["leaving","left","leave","leaves"], answer:"leaving", explanation:"[중급] '떠나다, 향하다'는 사물 주어라도 능동(-ing)을 씁니다." },
-  { id:1930, topic:"nounParticiple", en:"Most cars ____ in this factory are exported.", ko:"이 공장에서 생산된 대부분의 차는 수출된다.", options:["produced","producing","produce","produces"], answer:"produced", explanation:"[중급] 차는 공장에서 '생산된(수동)' 제품." },
+  { id:1816, topic:"nounParticiple", en:"The boy ____ soccer is my son.", ko:"축구를 하고 있는 저 소년은 내 아들이다.", options:["playing","played","play","plays"], answer:"playing", explanation:"[중급] 소년이 축구를 '직접 하는(능동)' 것이므로 현재분사." },
+  { id:1817, topic:"nounParticiple", en:"The letter ____ by him arrived.", ko:"그에 의해 쓰여진 편지가 도착했다.", options:["written","writing","wrote","write"], answer:"written", explanation:"[중급] 편지는 '쓰여진(수동)' 것이므로 과거분사. (뒤에 by가 힌트)" },
+  { id:1818, topic:"nounParticiple", en:"I know the girl ____ a book.", ko:"나는 책을 읽고 있는 그 소녀를 안다.", options:["reading","read","reads","to read"], answer:"reading", explanation:"[중급] 소녀가 책을 '읽고 있는(능동/진행)' 중." },
+  { id:1819, topic:"nounParticiple", en:"Look at the mountain ____ with snow.", ko:"눈으로 덮인 산을 봐라.", options:["covered","covering","cover","covers"], answer:"covered", explanation:"[중급] 산이 눈에 의해 '덮인(수동)' 상태." },
+  { id:1820, topic:"nounParticiple", en:"The man ____ a hat is Tom.", ko:"모자를 쓰고 있는 남자는 Tom이다.", options:["wearing","worn","wear","wears"], answer:"wearing", explanation:"[중급] 남자가 모자를 '착용하고 있는(능동)' 상태." },
+  { id:1821, topic:"nounParticiple", en:"This is a computer ____ in Korea.", ko:"이것은 한국에서 만들어진 컴퓨터다.", options:["made","making","make","makes"], answer:"made", explanation:"[중급] 컴퓨터는 '만들어진(수동)' 것." },
+  { id:1822, topic:"nounParticiple", en:"Do you know the lady ____ to Mom?", ko:"엄마와 이야기하고 있는 저 숙녀분을 아니?", options:["talking","talked","talk","talks"], answer:"talking", explanation:"[중급] 숙녀분이 직접 이야기하고 있음(능동)." },
+  { id:1823, topic:"nounParticiple", en:"The languages ____ in Canada are English and French.", ko:"캐나다에서 사용되는 언어는 영어와 불어다.", options:["spoken","speaking","spoke","speak"], answer:"spoken", explanation:"[중급] 언어는 사람들에 의해 '말해지는(수동)' 대상." },
+  { id:1824, topic:"nounParticiple", en:"People ____ for the bus are tired.", ko:"버스를 기다리는 사람들은 피곤하다.", options:["waiting","waited","wait","waits"], answer:"waiting", explanation:"[중급] 사람들이 직접 기다리고 있음(능동)." },
+  { id:1825, topic:"nounParticiple", en:"The house ____ on the hill is nice.", ko:"언덕 위에 지어진 그 집은 멋지다.", options:["built","building","build","builds"], answer:"built", explanation:"[중급] 집은 '지어진(수동)' 것." },
+  { id:1826, topic:"nounParticiple", en:"Anyone ____ to the party can come.", ko:"파티에 초대받은 사람은 누구나 와도 좋다.", options:["invited","inviting","invite","invites"], answer:"invited", explanation:"[중급] 사람은 파티에 '초대된(수동)' 입장." },
+  { id:1827, topic:"nounParticiple", en:"The pictures ____ by Picasso are famous.", ko:"피카소에 의해 그려진 그림들은 유명하다.", options:["painted","painting","paint","paints"], answer:"painted", explanation:"[중급] 그림은 화가에 의해 '그려진(수동)' 것." },
+  { id:1828, topic:"nounParticiple", en:"There is a cat ____ under the table.", ko:"탁자 아래에 숨어 있는 고양이가 있다.", options:["hiding","hidden","hide","hid"], answer:"hiding", explanation:"[중급] 고양이가 스스로 숨어 있음(능동). (Hidden은 '숨겨진' 물건일 때 씀)" },
+  { id:1829, topic:"nounParticiple", en:"The train ____ for Seoul will arrive soon.", ko:"서울로 떠나는(향하는) 기차가 곧 도착할 것이다.", options:["leaving","left","leave","leaves"], answer:"leaving", explanation:"[중급] '떠나다, 향하다'는 사물 주어라도 능동(-ing)을 씁니다." },
+  { id:1830, topic:"nounParticiple", en:"Most cars ____ in this factory are exported.", ko:"이 공장에서 생산된 대부분의 차는 수출된다.", options:["produced","producing","produce","produces"], answer:"produced", explanation:"[중급] 차는 공장에서 '생산된(수동)' 제품." },
 
-// 20. 비교급/최상급 (ID: 2001 ~ 2020) - [번호 정정: 1900단위 -> 2000단위]
-  
-  // --- [초급: 규칙 변화 (-er/-est) 및 기초 불규칙] (10문제) ---
-  { id:2001, topic:"comparison", en:"He is ____ than me.", ko:"그는 나보다 키가 크다.", options:["taller","tall","tallest","more tall"], answer:"taller", explanation:"[초급] 'A is 형용사+er than B'는 가장 기본적인 비교급 문장입니다." },
-  { id:2002, topic:"comparison", en:"Summer is the ____ season.", ko:"여름은 가장 더운 계절이다.", options:["hottest","hotter","hot","most hot"], answer:"hottest", explanation:"[초급] '단모음+단자음'으로 끝나는 단어(hot)는 자음을 하나 더 쓰고 -est를 붙입니다." },
-  { id:2003, topic:"comparison", en:"She is ____ than her sister.", ko:"그녀는 그녀의 언니보다 더 예쁘다.", options:["prettier","pretty","prettiest","more pretty"], answer:"prettier", explanation:"[초급] '자음+y'로 끝나는 단어(pretty)는 y를 i로 바꾸고 -er을 붙입니다." },
-  { id:2004, topic:"comparison", en:"An elephant is ____ than a dog.", ko:"코끼리는 개보다 더 크다.", options:["bigger","big","biggest","more big"], answer:"bigger", explanation:"[초급] big → bigger (자음 하나 더 추가)." },
-  { id:2005, topic:"comparison", en:"This is the ____ pencil.", ko:"이것은 가장 긴 연필이다.", options:["longest","long","longer","most long"], answer:"longest", explanation:"[초급] 최상급 앞에는 정관사 the가 붙고 -est를 씁니다." },
-  { id:2006, topic:"comparison", en:"My grades are ____ than yours.", ko:"내 성적은 네 것보다 좋다.", options:["better","good","best","gooder"], answer:"better", explanation:"[초급] good(좋은)의 비교급은 불규칙 변화인 better입니다." },
-  { id:2007, topic:"comparison", en:"The weather is ____ today than yesterday.", ko:"오늘은 어제보다 날씨가 더 나쁘다.", options:["worse","bad","worst","bader"], answer:"worse", explanation:"[초급] bad(나쁜)의 비교급은 불규칙 변화인 worse입니다." },
-  { id:2008, topic:"comparison", en:"I am ____ than you.", ko:"나는 너보다 나이가 많다.", options:["older","old","oldest","more old"], answer:"older", explanation:"[초급] old의 비교급은 older입니다." },
-  { id:2009, topic:"comparison", en:"Winter is ____ than spring.", ko:"겨울은 봄보다 춥다.", options:["colder","cold","coldest","more cold"], answer:"colder", explanation:"[초급] cold의 비교급은 colder입니다." },
-  { id:2010, topic:"comparison", en:"He runs ____ than I do.", ko:"그는 나보다 더 빨리 달린다.", options:["faster","fast","fastest","more fast"], answer:"faster", explanation:"[초급] 부사 fast의 비교급도 faster입니다." },
+  // 19. 비교급/최상급 (ID: 1901 ~ 1999) // --- [초급: 규칙 변화 (-er/-est) 및 기초 불규칙] (10문제) ---
+  { id:1901, topic:"comparison", en:"He is ____ than me.", ko:"그는 나보다 키가 크다.", options:["taller","tall","tallest","more tall"], answer:"taller", explanation:"[초급] 'A is 형용사+er than B'는 가장 기본적인 비교급 문장입니다." },
+  { id:1902, topic:"comparison", en:"Summer is the ____ season.", ko:"여름은 가장 더운 계절이다.", options:["hottest","hotter","hot","most hot"], answer:"hottest", explanation:"[초급] '단모음+단자음'으로 끝나는 단어(hot)는 자음을 하나 더 쓰고 -est를 붙입니다." },
+  { id:1903, topic:"comparison", en:"She is ____ than her sister.", ko:"그녀는 그녀의 언니보다 더 예쁘다.", options:["prettier","pretty","prettiest","more pretty"], answer:"prettier", explanation:"[초급] '자음+y'로 끝나는 단어(pretty)는 y를 i로 바꾸고 -er을 붙입니다." },
+  { id:1904, topic:"comparison", en:"An elephant is ____ than a dog.", ko:"코끼리는 개보다 더 크다.", options:["bigger","big","biggest","more big"], answer:"bigger", explanation:"[초급] big → bigger (자음 하나 더 추가)." },
+  { id:1905, topic:"comparison", en:"This is the ____ pencil.", ko:"이것은 가장 긴 연필이다.", options:["longest","long","longer","most long"], answer:"longest", explanation:"[초급] 최상급 앞에는 정관사 the가 붙고 -est를 씁니다." },
+  { id:1906, topic:"comparison", en:"My grades are ____ than yours.", ko:"내 성적은 네 것보다 좋다.", options:["better","good","best","gooder"], answer:"better", explanation:"[초급] good(좋은)의 비교급은 불규칙 변화인 better입니다." },
+  { id:1907, topic:"comparison", en:"The weather is ____ today than yesterday.", ko:"오늘은 어제보다 날씨가 더 나쁘다.", options:["worse","bad","worst","bader"], answer:"worse", explanation:"[초급] bad(나쁜)의 비교급은 불규칙 변화인 worse입니다." },
+  { id:1908, topic:"comparison", en:"I am ____ than you.", ko:"나는 너보다 나이가 많다.", options:["older","old","oldest","more old"], answer:"older", explanation:"[초급] old의 비교급은 older입니다." },
+  { id:1909, topic:"comparison", en:"Winter is ____ than spring.", ko:"겨울은 봄보다 춥다.", options:["colder","cold","coldest","more cold"], answer:"colder", explanation:"[초급] cold의 비교급은 colder입니다." },
+  { id:1910, topic:"comparison", en:"He runs ____ than I do.", ko:"그는 나보다 더 빨리 달린다.", options:["faster","fast","fastest","more fast"], answer:"faster", explanation:"[초급] 부사 fast의 비교급도 faster입니다." },
 
   // --- [중급: 긴 단어(more/most), 강조, 관용구] (10문제) ---
-  { id:2011, topic:"comparison", en:"Math is ____ difficult than English.", ko:"수학은 영어보다 더 어렵다.", options:["more","most","very","much"], answer:"more", explanation:"[중급] 3음절 이상의 긴 단어(difficult)는 앞에 more를 붙여 비교급을 만듭니다." },
-  { id:2012, topic:"comparison", en:"This is the ____ interesting movie.", ko:"이것은 가장 재미있는 영화다.", options:["most","more","very","much"], answer:"most", explanation:"[중급] 긴 단어(interesting)의 최상급은 앞에 the most를 붙입니다." },
-  { id:2013, topic:"comparison", en:"It is ____ better now.", ko:"지금은 훨씬 더 낫다.", options:["much","very","many","so"], answer:"much", explanation:"[중급] 비교급을 강조할 때는 much, even, still, far, a lot을 씁니다. (Very는 불가)" },
-  { id:2014, topic:"comparison", en:"She is as ____ as a doll.", ko:"그녀는 인형만큼 예쁘다.", options:["pretty","prettier","prettiest","more pretty"], answer:"pretty", explanation:"[중급] 'as + 원급 + as' (~만큼 ...한) 동등 비교 구문입니다." },
-  { id:2015, topic:"comparison", en:"He is one of the ____ soccer players.", ko:"그는 가장 유명한 축구 선수들 중 한 명이다.", options:["most famous","more famous","famous","famousest"], answer:"most famous", explanation:"[중급] 'one of the + 최상급 + 복수명사' 구문입니다." },
-  { id:2016, topic:"comparison", en:"I have ____ money than you.", ko:"나는 너보다 돈이 더 적다.", options:["less","little","least","few"], answer:"less", explanation:"[중급] little(양)의 비교급은 less입니다." },
-  { id:2017, topic:"comparison", en:"Which do you like ____, apples or bananas?", ko:"사과와 바나나 중 어느 것을 더 좋아하니?", options:["better","best","good","well"], answer:"better", explanation:"[중급] 둘 중 선택을 물을 때는 비교급(better)을 씁니다." },
-  { id:2018, topic:"comparison", en:"It is getting ____ and ____.", ko:"점점 더 어두워지고 있다.", options:["darker and darker","dark and dark","more dark","darkest"], answer:"darker and darker", explanation:"[중급] '비교급 + and + 비교급'은 '점점 더 ~해지다'라는 뜻입니다." },
-  { id:2019, topic:"comparison", en:"The ____, the better.", ko:"빠르면 빠를수록 좋다.", options:["sooner","soon","soonest","more soon"], answer:"sooner", explanation:"[중급] 'The + 비교급, the + 비교급' (~할수록 더 ...하다) 구문입니다." },
-  { id:2020, topic:"comparison", en:"This bag is ____ expensive than that one.", ko:"이 가방은 저것보다 덜 비싸다.", options:["less","little","least","more"], answer:"less", explanation:"[중급] 'less + 원급 + than'은 '~보다 덜 ...한(열등 비교)'입니다." },
- // 21. 지각동사 (ID: 2101 ~ 2130) - [번호 정정: 2200단위 -> 2100단위]
+  { id:1911, topic:"comparison", en:"Math is ____ difficult than English.", ko:"수학은 영어보다 더 어렵다.", options:["more","most","very","much"], answer:"more", explanation:"[중급] 3음절 이상의 긴 단어(difficult)는 앞에 more를 붙여 비교급을 만듭니다." },
+  { id:1912, topic:"comparison", en:"This is the ____ interesting movie.", ko:"이것은 가장 재미있는 영화다.", options:["most","more","very","much"], answer:"most", explanation:"[중급] 긴 단어(interesting)의 최상급은 앞에 the most를 붙입니다." },
+  { id:1913, topic:"comparison", en:"It is ____ better now.", ko:"지금은 훨씬 더 낫다.", options:["much","very","many","so"], answer:"much", explanation:"[중급] 비교급을 강조할 때는 much, even, still, far, a lot을 씁니다. (Very는 불가)" },
+  { id:1914, topic:"comparison", en:"She is as ____ as a doll.", ko:"그녀는 인형만큼 예쁘다.", options:["pretty","prettier","prettiest","more pretty"], answer:"pretty", explanation:"[중급] 'as + 원급 + as' (~만큼 ...한) 동등 비교 구문입니다." },
+  { id:1915, topic:"comparison", en:"He is one of the ____ soccer players.", ko:"그는 가장 유명한 축구 선수들 중 한 명이다.", options:["most famous","more famous","famous","famousest"], answer:"most famous", explanation:"[중급] 'one of the + 최상급 + 복수명사' 구문입니다." },
+  { id:1916, topic:"comparison", en:"I have ____ money than you.", ko:"나는 너보다 돈이 더 적다.", options:["less","little","least","few"], answer:"less", explanation:"[중급] little(양)의 비교급은 less입니다." },
+  { id:1917, topic:"comparison", en:"Which do you like ____, apples or bananas?", ko:"사과와 바나나 중 어느 것을 더 좋아하니?", options:["better","best","good","well"], answer:"better", explanation:"[중급] 둘 중 선택을 물을 때는 비교급(better)을 씁니다." },
+  { id:1918, topic:"comparison", en:"It is getting ____ and ____.", ko:"점점 더 어두워지고 있다.", options:["darker and darker","dark and dark","more dark","darkest"], answer:"darker and darker", explanation:"[중급] '비교급 + and + 비교급'은 '점점 더 ~해지다'라는 뜻입니다." },
+  { id:1919, topic:"comparison", en:"The ____, the better.", ko:"빠르면 빠를수록 좋다.", options:["sooner","soon","soonest","more soon"], answer:"sooner", explanation:"[중급] 'The + 비교급, the + 비교급' (~할수록 더 ...하다) 구문입니다." },
+  { id:1920, topic:"comparison", en:"This bag is ____ expensive than that one.", ko:"이 가방은 저것보다 덜 비싸다.", options:["less","little","least","more"], answer:"less", explanation:"[중급] 'less + 원급 + than'은 '~보다 덜 ...한(열등 비교)'입니다." },
+
+  // 20. 사역동사 (ID: 2001 ~ 2099)
+  
+  // --- [초급: Make/Have/Let 기본 공식 (능동)] (10문제) ---
+  { id:2001, topic:"causative", en:"My dad made me ____ the car.", ko:"아빠는 나에게 세차를 시켰다.", options:["wash","to wash","washing","washed"], answer:"wash", explanation:"[초급] 사역동사 make + 사람 + 동사원형." },
+  { id:2002, topic:"causative", en:"Let him ____ out.", ko:"그가 나가게 해줘라(허락해라).", options:["go","to go","going","gone"], answer:"go", explanation:"[초급] 사역동사 let + 사람 + 동사원형." },
+  { id:2003, topic:"causative", en:"The teacher had us ____ the text.", ko:"선생님은 우리에게 본문을 읽게 했다.", options:["read","to read","reading","reads"], answer:"read", explanation:"[초급] 사역동사 have + 사람 + 동사원형." },
+  { id:2004, topic:"causative", en:"Don't make me ____.", ko:"나를 울게 하지 마.", options:["cry","to cry","crying","cried"], answer:"cry", explanation:"[초급] make + 목적어 + 동사원형." },
+  { id:2005, topic:"causative", en:"Let me ____ myself.", ko:"제 소개를 하겠습니다(하게 해주세요).", options:["introduce","to introduce","introducing","introduced"], answer:"introduce", explanation:"[초급] Let me + 동사원형 (제가 ~할게요)." },
+  { id:2006, topic:"causative", en:"She made her son ____ his room.", ko:"그녀는 아들에게 방 청소를 시켰다.", options:["clean","to clean","cleaning","cleaned"], answer:"clean", explanation:"[초급] make + 사람 + 동사원형." },
+  { id:2007, topic:"causative", en:"Please let me ____.", ko:"제가 알게 해주세요(알려주세요).", options:["know","to know","knowing","knew"], answer:"know", explanation:"[초급] 관용구: Let me know." },
+  { id:2008, topic:"causative", en:"He had his secretary ____ the email.", ko:"그는 비서에게 이메일을 보내라고 했다.", options:["send","to send","sending","sent"], answer:"send", explanation:"[초급] have + 사람 + 동사원형." },
+  { id:2009, topic:"causative", en:"Make him ____ quiet.", ko:"그를 조용히 하게 해라.", options:["be","to be","is","being"], answer:"be", explanation:"[초급] '조용히 하다'는 be quiet이므로 동사원형 be가 옵니다." },
+  { id:2010, topic:"causative", en:"Let's ____ pizza.", ko:"우리 피자 먹자.", options:["eat","to eat","eating","ate"], answer:"eat", explanation:"[초급] Let's (=Let us) + 동사원형." },
+
+  // --- [중급: 준사역동사(Get/Help) & 수동 관계(p.p.)] (10문제) ---
+  { id:2011, topic:"causative", en:"I got him ____ the window.", ko:"나는 그에게 창문을 닦게 했다(설득해서).", options:["to clean","clean","cleaning","cleaned"], answer:"to clean", explanation:"[중급] get + 사람 + to부정사." },
+  { id:2012, topic:"causative", en:"He helped me ____ the box.", ko:"그는 내가 상자 옮기는 것을 도왔다.", options:["carry","carrying","carried","carries"], answer:"carry", explanation:"[중급] help는 동사원형 또는 to부정사(to carry) 둘 다 가능합니다." },
+  { id:2013, topic:"causative", en:"I had my hair ____.", ko:"나는 머리를 잘랐다(미용사에게 시켜서).", options:["cut","to cut","cutting","cuts"], answer:"cut", explanation:"[중급] 내 머리카락은 '잘리는(수동)' 대상이므로 p.p. 사용." },
+  { id:2014, topic:"causative", en:"She got her car ____.", ko:"그녀는 차를 수리했다(맡겨서).", options:["repaired","repair","to repair","repairing"], answer:"repaired", explanation:"[중급] get + 사물 + p.p. (수동 관계)." },
+  { id:2015, topic:"causative", en:"I will help you ____ your homework.", ko:"네가 숙제하는 걸 도와줄게.", options:["do","doing","done","did"], answer:"do", explanation:"[중급] help + 목적어 + 동사원형." },
+  { id:2016, topic:"causative", en:"He had his wallet ____.", ko:"그는 지갑을 도난당했다(당하게 되었다).", options:["stolen","steal","to steal","stealing"], answer:"stolen", explanation:"[중급] have + 사물 + p.p.는 '피해를 입다'는 뜻으로도 쓰입니다." },
+  { id:2017, topic:"causative", en:"Get the work ____ by 5.", ko:"5시까지 그 일을 끝내 놓으세요.", options:["done","do","to do","doing"], answer:"done", explanation:"[중급] 일(work)은 '행해지는(수동)' 것이므로 p.p." },
+  { id:2018, topic:"causative", en:"Can you help me ____ this problem?", ko:"이 문제 푸는 것 좀 도와줄래?", options:["solve","solving","solved","solves"], answer:"solve", explanation:"[중급] help + (to) solve." },
+  { id:2019, topic:"causative", en:"I had the package ____.", ko:"나는 소포를 배달시켰다.", options:["delivered","deliver","to deliver","delivering"], answer:"delivered", explanation:"[중급] 소포는 '배달되는(수동)' 것." },
+  { id:2020, topic:"causative", en:"Don't let the dog ____ out.", ko:"개가 밖으로 나가게 두지 마라.", options:["go","to go","going","gone"], answer:"go", explanation:"[중급] let + 목적어 + 동사원형 (개는 스스로 나갈 수 있음)." },
+
+  // --- [고급: 자연스러운 일상 회화 & 관용 표현] (10문제) ---
+  { id:2021, topic:"causative", en:"What makes you ____ so?", ko:"왜 그렇게 생각하니? (무엇이 너를 그렇게 생각하게 만드니?)", options:["think","to think","thinking","thought"], answer:"think", explanation:"[고급] 회화체: What makes you think so?" },
+  { id:2022, topic:"causative", en:"I'll have him ____ you back.", ko:"그에게 다시 전화하라고 할게요.", options:["call","to call","calling","called"], answer:"call", explanation:"[고급] 전화상의 정중한 표현: have + 사람 + call." },
+  { id:2023, topic:"causative", en:"Let me ____ a look.", ko:"내가 한번 볼게.", options:["have","to have","having","had"], answer:"have", explanation:"[고급] 관용구: Let me have a look (= Let me see)." },
+  { id:2024, topic:"causative", en:"Nothing can make me ____ my mind.", ko:"그 무엇도 내 마음을 바꾸게 할 수 없다.", options:["change","to change","changing","changed"], answer:"change", explanation:"[고급] 강한 의지 표현: make + change." },
+  { id:2025, topic:"causative", en:"Let it ____.", ko:"그냥 내버려 둬 (겨울왕국 OST).", options:["go","to go","going","gone"], answer:"go", explanation:"[고급] 관용구: Let it go (잊어버려, 놔둬)." },
+  { id:2026, topic:"causative", en:"You really made my day ____.", ko:"덕분에 정말 즐거운 하루가 되었어요. (문법적 구조)", options:["(shine)","(complete)","","(happy)"], answer:"", explanation:"[고급] 'You made my day' 자체가 완벽한 문장이지만, 굳이 분석하자면 'You made my day (become) happy'의 의미." }, 
+  // * 2026번은 객관식으로 만들기 애매하여, 더 명확한 문제로 대체합니다.
+  { id:2026, topic:"causative", en:"This song makes me ____ to dance.", ko:"이 노래는 나를 춤추고 싶게 만든다.", options:["want","to want","wanting","wanted"], answer:"want", explanation:"[고급] make + me + want (동사원형)." },
+
+  { id:2027, topic:"causative", en:"He got his leg ____ in the game.", ko:"그는 경기 중에 다리가 부러졌다.", options:["broken","break","to break","breaking"], answer:"broken", explanation:"[고급] get + 신체부위 + p.p. (부상을 입다)." },
+  { id:2028, topic:"causative", en:"Let's not ____ about it.", ko:"그것에 대해 이야기하지 말자.", options:["talk","to talk","talking","talked"], answer:"talk", explanation:"[고급] 제안의 부정: Let's not + 동사원형." },
+  { id:2029, topic:"causative", en:"I'll let you ____ a secret.", ko:"너에게 비밀 하나를 알려줄게(알게 해줄게).", options:["know","to know","knowing","knew"], answer:"know", explanation:"[고급] 회화체: Let you know." },
+  { id:2030, topic:"causative", en:"Did you have your picture ____?", ko:"사진 찍었니? (사진이 찍히게 했니?)", options:["taken","take","to take","taking"], answer:"taken", explanation:"[고급] take a picture의 수동형 사역: have picture taken." },
+
+  // 21. 지각동사 (ID: 2101 ~ 2199)
   
   // --- [초급: 지각동사 + 목적어 + 동사원형 (기본 공식)] (10문제) ---
   { id:2101, topic:"perception", en:"I saw him ____ across the street.", ko:"나는 그가 길을 건너는 것을 보았다.", options:["run","to run","ran","runs"], answer:"run", explanation:"[초급] 지각동사 see + 목적어 + 동사원형." },
@@ -3099,195 +3046,124 @@ const grammarQuestions = [
   { id:2129, topic:"perception", en:"Can you feel the ground ____?", ko:"땅이 흔들리고 있는 게 느껴지니?", options:["shaking","shake","shook","to shake"], answer:"shaking", explanation:"[고급] 지진 등으로 땅이 흔들리고 있는 '중'이므로 -ing." },
   { id:2130, topic:"perception", en:"I saw the bus ____.", ko:"나는 버스가 오고 있는 것을 보았다.", options:["coming","come","came","to come"], answer:"coming", explanation:"[고급] 버스가 다가오고 있는 '진행' 상황이므로 -ing." },
 
-// 22. 지각동사 (ID: 2201 ~ 2230) - [번호 정정: 2100단위 -> 2200단위]
-  
-  // --- [초급: 지각동사 + 목적어 + 동사원형 (기본 공식)] (10문제) ---
-  { id:2201, topic:"perception", en:"I saw him ____ across the street.", ko:"나는 그가 길을 건너는 것을 보았다.", options:["run","to run","ran","runs"], answer:"run", explanation:"[초급] 지각동사 see + 목적어 + 동사원형." },
-  { id:2202, topic:"perception", en:"She felt the earth ____.", ko:"그녀는 땅이 흔들리는 것을 느꼈다.", options:["move","to move","moved","moves"], answer:"move", explanation:"[초급] 지각동사 feel + 목적어 + 동사원형." },
-  { id:2203, topic:"perception", en:"We heard the girl ____.", ko:"우리는 그 소녀가 노래하는 것을 들었다.", options:["sing","to sing","sang","sung"], answer:"sing", explanation:"[초급] 지각동사 hear + 목적어 + 동사원형." },
-  { id:2204, topic:"perception", en:"Watch him ____ the ball.", ko:"그가 공을 차는 것을 잘 봐.", options:["kick","to kick","kicked","kicks"], answer:"kick", explanation:"[초급] 지각동사 watch + 목적어 + 동사원형." },
-  { id:2205, topic:"perception", en:"Did you see anyone ____ out?", ko:"누군가 나가는 걸 봤니?", options:["go","to go","went","gone"], answer:"go", explanation:"[초급] 지각동사 see + 목적어 + 동사원형." },
-  { id:2206, topic:"perception", en:"I noticed him ____ the room.", ko:"나는 그가 방을 떠나는 것을 알아차렸다.", options:["leave","to leave","left","leaves"], answer:"leave", explanation:"[초급] 지각동사 notice + 목적어 + 동사원형." },
-  { id:2207, topic:"perception", en:"Can you hear the birds ____?", ko:"새들이 노래하는 소리가 들리니?", options:["sing","to sing","sang","sung"], answer:"sing", explanation:"[초급] hear + 목적어 + 동사원형." },
-  { id:2208, topic:"perception", en:"She saw the boy ____ the book.", ko:"그녀는 그 소년이 책을 떨어뜨리는 것을 보았다.", options:["drop","to drop","dropped","drops"], answer:"drop", explanation:"[초급] see + 목적어 + 동사원형." },
-  { id:2209, topic:"perception", en:"I felt something ____ my hand.", ko:"나는 무언가가 내 손을 건드리는 것을 느꼈다.", options:["touch","to touch","touched","touches"], answer:"touch", explanation:"[초급] feel + 목적어 + 동사원형." },
-  { id:2210, topic:"perception", en:"Look at the birds ____ high.", ko:"새들이 높이 날아가는 것을 봐라.", options:["fly","to fly","flew","flown"], answer:"fly", explanation:"[초급] look at + 목적어 + 동사원형." },
-
-  // --- [중급: 수동 관계 (목적어가 ~될 때: p.p.)] (10문제) ---
-  { id:2211, topic:"perception", en:"I heard my name ____.", ko:"나는 내 이름이 불리는 것을 들었다.", options:["called","call","calling","to call"], answer:"called", explanation:"[중급] 이름은 불리는(수동) 것이므로 p.p.(called)를 씁니다." },
-  { id:2212, topic:"perception", en:"He saw the window ____.", ko:"그는 창문이 깨진 것을 보았다.", options:["broken","break","breaking","to break"], answer:"broken", explanation:"[중급] 창문은 깨짐을 당하는(수동) 대상이므로 p.p.(broken)." },
-  { id:2213, topic:"perception", en:"She found the money ____.", ko:"그녀는 돈이 도난당한 것을 발견했다.", options:["stolen","steal","stealing","to steal"], answer:"stolen", explanation:"[중급] 돈은 훔쳐지는(수동) 것이므로 p.p.(stolen)." },
-  { id:2214, topic:"perception", en:"I felt my arm ____.", ko:"나는 내 팔이 닿아지는(누군가 만지는) 것을 느꼈다.", options:["touched","touch","touching","to touch"], answer:"touched", explanation:"[중급] 팔은 만져지는(수동) 대상이므로 p.p.(touched)." },
-  { id:2215, topic:"perception", en:"We saw the tree ____ down.", ko:"우리는 나무가 베어지는 것을 보았다.", options:["cut","cutting","to cut","cuts"], answer:"cut", explanation:"[중급] cut의 과거분사는 cut입니다. 나무는 베어지는 것." },
-  { id:2216, topic:"perception", en:"He heard the song ____ by her.", ko:"그는 그 노래가 그녀에 의해 불리는 것을 들었다.", options:["sung","sing","sang","singing"], answer:"sung", explanation:"[중급] 노래는 불려지는(수동) 것이므로 p.p.(sung)." },
-  { id:2217, topic:"perception", en:"I watched the car ____.", ko:"나는 차가 수리되는 것을 지켜보았다.", options:["repaired","repair","repairing","to repair"], answer:"repaired", explanation:"[중급] 차는 수리되는(수동) 것이므로 p.p.(repaired)." },
-  { id:2218, topic:"perception", en:"She noticed the door ____.", ko:"그녀는 문이 잠긴 것을 알아차렸다.", options:["locked","lock","locking","to lock"], answer:"locked", explanation:"[중급] 문은 잠기는(수동) 대상이므로 p.p.(locked)." },
-  { id:2219, topic:"perception", en:"Have you ever seen a ghost ____?", ko:"유령이 잡히는 걸 본 적 있니?", options:["caught","catch","catching","catches"], answer:"caught", explanation:"[중급] 유령이 잡히는(수동) 상황이므로 p.p.(caught)." },
-  { id:2220, topic:"perception", en:"I felt myself ____ up.", ko:"나는 내가 들어 올려지는 것을 느꼈다.", options:["lifted","lift","lifting","to lift"], answer:"lifted", explanation:"[중급] 내가 들어 올려짐을 당하는(수동) 것이므로 p.p.(lifted)." },
-
-  // --- [고급: 동사원형 vs 현재분사(-ing)의 뉘앙스 차이] (10문제) ---
-  { id:2221, topic:"perception", en:"I saw him ____ in the pool.", ko:"나는 그가 수영장에서 수영하고 있는 것을 보았다. (진행 강조)", options:["swimming","swim","swam","to swim"], answer:"swimming", explanation:"[고급] 수영하고 있는 '중'인 장면을 강조할 때는 -ing를 씁니다." },
-  { id:2222, topic:"perception", en:"I heard the dog ____ all night.", ko:"나는 개가 밤새도록 짖는 것을 들었다. (반복/지속)", options:["barking","bark","barked","to bark"], answer:"barking", explanation:"[고급] 밤새 계속 짖고 있었다는 '진행/반복'의 의미는 -ing." },
-  { id:2223, topic:"perception", en:"She felt her heart ____ fast.", ko:"그녀는 심장이 빠르게 뛰고 있는 것을 느꼈다.", options:["beating","beat","beaten","to beat"], answer:"beating", explanation:"[고급] 심장이 쿵쿵 뛰고 있는 '진행' 상태는 -ing." },
-  { id:2224, topic:"perception", en:"Smell the bread ____.", ko:"빵이 굽히는(구워지고 있는) 냄새를 맡아봐.", options:["baking","bake","baked","to bake"], answer:"baking", explanation:"[고급] 빵이 지금 오븐에서 구워지고 있는 '중'이므로 -ing (자동사적 용법)." },
-  { id:2225, topic:"perception", en:"I noticed him ____ at me.", ko:"나는 그가 나를 쳐다보고 있는 것을 알아차렸다.", options:["staring","stare","stared","to stare"], answer:"staring", explanation:"[고급] 쳐다보고 있는 '순간'을 포착했으므로 -ing." },
-  { id:2226, topic:"perception", en:"We watched the sun ____.", ko:"우리는 해가 지는 것을 지켜보았다. (지는 과정)", options:["setting","set","to set","sets"], answer:"setting", explanation:"[고급] 해가 지고 있는 '진행 과정'을 묘사할 때는 -ing." },
-  { id:2227, topic:"perception", en:"Listen to the rain ____.", ko:"비가 떨어지는 소리를 들어봐.", options:["falling","fall","fell","to fall"], answer:"falling", explanation:"[고급] 비가 내리고 있는 '중'이므로 -ing." },
-  { id:2228, topic:"perception", en:"I caught him ____ my diary.", ko:"나는 그가 내 일기장을 읽고 있는 것을 딱 걸렸다(잡았다).", options:["reading","read","to read","reads"], answer:"reading", explanation:"[고급] catch는 현장을 잡는 것이므로 항상 -ing(진행)와 함께 씁니다." },
-  { id:2229, topic:"perception", en:"Can you feel the ground ____?", ko:"땅이 흔들리고 있는 게 느껴지니?", options:["shaking","shake","shook","to shake"], answer:"shaking", explanation:"[고급] 지진 등으로 땅이 흔들리고 있는 '중'이므로 -ing." },
-  { id:2230, topic:"perception", en:"I saw the bus ____.", ko:"나는 버스가 오고 있는 것을 보았다.", options:["coming","come","came","to come"], answer:"coming", explanation:"[고급] 버스가 다가오고 있는 '진행' 상황이므로 -ing." },
-
-// 23. 가정법 현재 / 조건문 (ID: 2301 ~ 2330) - [번호 정정: 2200단위 -> 2300단위]
+  // 22. 가정법 현재 (ID: 2201 ~ 2299)
   
   // --- [Zero Conditional: 불변의 진리, 과학적 사실, 습관 (If+현재, 주절+현재)] (10문제) ---
-  { id:2301, topic:"conditionalPresent", en:"If you heat ice, it ____.", ko:"얼음을 가열하면, 그것은 녹는다.", options:["melts","melted","will melt","melting"], answer:"melts", explanation:"[Zero] 과학적 사실(불변의 진리)은 조건절과 주절 모두 '현재시제'를 씁니다." },
-  { id:2302, topic:"conditionalPresent", en:"If you mix red and blue, you ____ purple.", ko:"빨강과 파랑을 섞으면, 보라색을 얻는다.", options:["get","got","will get","getting"], answer:"get", explanation:"[Zero] 일반적인 사실은 현재시제로 표현합니다." },
-  { id:2303, topic:"conditionalPresent", en:"If I drink coffee, I ____ sleep.", ko:"나는 커피를 마시면 잠을 못 잔다.", options:["cannot","could not","would not","did not"], answer:"cannot", explanation:"[Zero] 개인적인 습관이나 사실도 현재시제를 씁니다." },
-  { id:2304, topic:"conditionalPresent", en:"Plants die if they ____ get water.", ko:"식물은 물을 얻지 못하면 죽는다.", options:["don't","won't","didn't","doesn't"], answer:"don't", explanation:"[Zero] 과학적 사실. 주어(they)가 복수이므로 don't." },
-  { id:2305, topic:"conditionalPresent", en:"If you press this button, the machine ____.", ko:"이 버튼을 누르면 기계가 작동한다.", options:["starts","started","will start","start"], answer:"starts", explanation:"[Zero] 기계 조작법 등 정해진 결과는 현재시제." },
-  { id:2306, topic:"conditionalPresent", en:"Water ____ if the temperature reaches 100°C.", ko:"온도가 100도에 도달하면 물은 끓는다.", options:["boils","boiling","boiled","will boil"], answer:"boils", explanation:"[Zero] 과학적 법칙은 항상 현재시제." },
-  { id:2307, topic:"conditionalPresent", en:"If the sun sets, it ____ dark.", ko:"해가 지면 어두워진다.", options:["gets","got","will get","getting"], answer:"gets", explanation:"[Zero] 자연 현상은 현재시제로 씁니다." },
-  { id:2308, topic:"conditionalPresent", en:"If I am hungry, I ____.", ko:"나는 배가 고프면 먹는다.", options:["eat","ate","will eat","eating"], answer:"eat", explanation:"[Zero] 일반적인 습관." },
-  { id:2309, topic:"conditionalPresent", en:"Snakes bite if they ____ scared.", ko:"뱀들은 겁을 먹으면 문다.", options:["are","were","will be","been"], answer:"are", explanation:"[Zero] 동물의 일반적인 본능/습성." },
-  { id:2310, topic:"conditionalPresent", en:"If you freeze water, it ____ ice.", ko:"물을 얼리면 얼음이 된다.", options:["becomes","became","will become","becoming"], answer:"becomes", explanation:"[Zero] 과학적 사실." },
+  { id:2201, topic:"conditionalPresent", en:"If you heat ice, it ____.", ko:"얼음을 가열하면, 그것은 녹는다.", options:["melts","melted","will melt","melting"], answer:"melts", explanation:"[Zero] 과학적 사실(불변의 진리)은 조건절과 주절 모두 '현재시제'를 씁니다." },
+  { id:2202, topic:"conditionalPresent", en:"If you mix red and blue, you ____ purple.", ko:"빨강과 파랑을 섞으면, 보라색을 얻는다.", options:["get","got","will get","getting"], answer:"get", explanation:"[Zero] 일반적인 사실은 현재시제로 표현합니다." },
+  { id:2203, topic:"conditionalPresent", en:"If I drink coffee, I ____ sleep.", ko:"나는 커피를 마시면 잠을 못 잔다.", options:["cannot","could not","would not","did not"], answer:"cannot", explanation:"[Zero] 개인적인 습관이나 사실도 현재시제를 씁니다." },
+  { id:2204, topic:"conditionalPresent", en:"Plants die if they ____ get water.", ko:"식물은 물을 얻지 못하면 죽는다.", options:["don't","won't","didn't","doesn't"], answer:"don't", explanation:"[Zero] 과학적 사실. 주어(they)가 복수이므로 don't." },
+  { id:2205, topic:"conditionalPresent", en:"If you press this button, the machine ____.", ko:"이 버튼을 누르면 기계가 작동한다.", options:["starts","started","will start","start"], answer:"starts", explanation:"[Zero] 기계 조작법 등 정해진 결과는 현재시제." },
+  { id:2206, topic:"conditionalPresent", en:"Water ____ if the temperature reaches 100°C.", ko:"온도가 100도에 도달하면 물은 끓는다.", options:["boils","boiling","boiled","will boil"], answer:"boils", explanation:"[Zero] 과학적 법칙은 항상 현재시제." },
+  { id:2207, topic:"conditionalPresent", en:"If the sun sets, it ____ dark.", ko:"해가 지면 어두워진다.", options:["gets","got","will get","getting"], answer:"gets", explanation:"[Zero] 자연 현상은 현재시제로 씁니다." },
+  { id:2208, topic:"conditionalPresent", en:"If I am hungry, I ____.", ko:"나는 배가 고프면 먹는다.", options:["eat","ate","will eat","eating"], answer:"eat", explanation:"[Zero] 일반적인 습관." },
+  { id:2209, topic:"conditionalPresent", en:"Snakes bite if they ____ scared.", ko:"뱀들은 겁을 먹으면 문다.", options:["are","were","will be","been"], answer:"are", explanation:"[Zero] 동물의 일반적인 본능/습성." },
+  { id:2210, topic:"conditionalPresent", en:"If you freeze water, it ____ ice.", ko:"물을 얼리면 얼음이 된다.", options:["becomes","became","will become","becoming"], answer:"becomes", explanation:"[Zero] 과학적 사실." },
 
   // --- [First Conditional: 미래의 가정 & 시간/조건 부사절 (If+현재, 주절+미래)] (20문제) ---
-  { id:2311, topic:"conditionalPresent", en:"If it ____ tomorrow, I will stay home.", ko:"내일 비가 오면, 나는 집에 있을 것이다.", options:["rains","will rain","rained","rain"], answer:"rains", explanation:"[First] 조건 부사절(If)에서는 현재시제가 미래를 대신합니다. (will rain 불가)" },
-  { id:2312, topic:"conditionalPresent", en:"I will call you when he ____.", ko:"그가 오면 너에게 전화할게.", options:["comes","will come","came","come"], answer:"comes", explanation:"[First] 시간 부사절(When)에서도 현재시제가 미래를 대신합니다." },
-  { id:2313, topic:"conditionalPresent", en:"Unless you ____, you will be late.", ko:"서두르지 않으면 늦을 것이다.", options:["hurry","don't hurry","will hurry","hurried"], answer:"hurry", explanation:"[First] Unless(=If not) 절 안에도 현재시제를 씁니다." },
-  { id:2314, topic:"conditionalPresent", en:"If I ____ the exam, I will be happy.", ko:"시험에 합격하면 행복할 것이다.", options:["pass","will pass","passed","passing"], answer:"pass", explanation:"[First] 미래에 대한 가정이므로 If절은 현재시제." },
-  { id:2315, topic:"conditionalPresent", en:"We will go for a walk if it ____ fine.", ko:"날씨가 좋으면 산책하러 갈 것이다.", options:["is","will be","was","be"], answer:"is", explanation:"[First] 날씨 조건절: 현재형 is 사용." },
-  { id:2316, topic:"conditionalPresent", en:"As soon as I ____ home, I will text you.", ko:"집에 도착하자마자 문자 할게.", options:["arrive","will arrive","arrived","arriving"], answer:"arrive", explanation:"[First] As soon as(시간 부사절) + 현재시제." },
-  { id:2317, topic:"conditionalPresent", en:"If she ____ not come, we will leave.", ko:"그녀가 오지 않으면 우리는 떠날 것이다.", options:["does","will","is","do"], answer:"does", explanation:"[First] 3인칭 단수 현재 부정은 does not." },
-  { id:2318, topic:"conditionalPresent", en:"I will wait until you ____.", ko:"네가 끝날 때까지 기다릴게.", options:["finish","will finish","finished","finishing"], answer:"finish", explanation:"[First] Until(시간 부사절) + 현재시제." },
-  { id:2319, topic:"conditionalPresent", en:"If you ____ him, give him this letter.", ko:"그를 보면 이 편지를 전해줘.", options:["see","will see","saw","seen"], answer:"see", explanation:"[First] 명령문이 주절인 경우에도 If절은 현재시제." },
-  { id:2320, topic:"conditionalPresent", en:"What will you do if you ____ the bus?", ko:"버스를 놓치면 어떻게 할 거니?", options:["miss","will miss","missed","missing"], answer:"miss", explanation:"[First] 미래 상황 가정이므로 If절은 현재시제." },
-  { id:2321, topic:"conditionalPresent", en:"Before you ____, please clean your room.", ko:"나가기 전에 방을 청소해라.", options:["go","will go","went","going"], answer:"go", explanation:"[First] Before(시간 부사절) + 현재시제." },
-  { id:2322, topic:"conditionalPresent", en:"If he ____ hard, he will succeed.", ko:"그가 열심히 일한다면(공부한다면) 성공할 것이다.", options:["works","work","will work","worked"], answer:"works", explanation:"[First] 주어가 3인칭 단수(he)이므로 works." },
-  { id:2323, topic:"conditionalPresent", en:"You can't go out unless you ____ your lunch.", ko:"점심을 다 먹지 않으면 나갈 수 없다.", options:["finish","don't finish","will finish","finished"], answer:"finish", explanation:"[First] Unless에 부정 의미가 포함되어 있으므로 긍정 동사 finish를 씁니다." },
-  { id:2324, topic:"conditionalPresent", en:"If I ____ enough money, I will buy a car.", ko:"돈이 충분하다면 차를 살 것이다.", options:["have","will have","had","has"], answer:"have", explanation:"[First] 미래의 소유 가능성을 나타내는 현재시제 have." },
-  { id:2325, topic:"conditionalPresent", en:"After I ____ lunch, I will study.", ko:"점심을 먹은 후에 공부할 것이다.", options:["eat","will eat","ate","eaten"], answer:"eat", explanation:"[First] After(시간 부사절) + 현재시제." },
-  { id:2326, topic:"conditionalPresent", en:"If it ____ not rain tomorrow, we will play soccer.", ko:"내일 비가 오지 않는다면 축구를 할 것이다.", options:["does","will","is","do"], answer:"does", explanation:"[First] 내일의 날씨 가정이지만 If절 안이므로 does not rain." },
-  { id:2327, topic:"conditionalPresent", en:"We will stay here while he ____.", ko:"그가 자는 동안 우리는 여기에 머물 것이다.", options:["sleeps","will sleep","slept","sleeping"], answer:"sleeps", explanation:"[First] While(시간 부사절) + 현재시제." },
-  { id:2328, topic:"conditionalPresent", en:"If you ____ to the party, I will go too.", ko:"네가 파티에 간다면 나도 갈게.", options:["go","will go","went","gone"], answer:"go", explanation:"[First] 상대방의 미래 행동을 가정." },
-  { id:2329, topic:"conditionalPresent", en:"Don't open the door until the train ____.", ko:"기차가 멈출 때까지 문을 열지 마라.", options:["stops","will stop","stopped","stop"], answer:"stops", explanation:"[First] 시간 부사절 until + 현재시제 (3인칭 단수 stops)." },
-  { id:2330, topic:"conditionalPresent", en:"If anyone ____, tell them I am busy.", ko:"누구든 전화가 오면 내가 바쁘다고 말해줘.", options:["calls","will call","called","call"], answer:"calls", explanation:"[First] 주어 anyone은 단수 취급하므로 calls." },
- 
+  { id:2211, topic:"conditionalPresent", en:"If it ____ tomorrow, I will stay home.", ko:"내일 비가 오면, 나는 집에 있을 것이다.", options:["rains","will rain","rained","rain"], answer:"rains", explanation:"[First] 조건 부사절(If)에서는 현재시제가 미래를 대신합니다. (will rain 불가)" },
+  { id:2212, topic:"conditionalPresent", en:"I will call you when he ____.", ko:"그가 오면 너에게 전화할게.", options:["comes","will come","came","come"], answer:"comes", explanation:"[First] 시간 부사절(When)에서도 현재시제가 미래를 대신합니다." },
+  { id:2213, topic:"conditionalPresent", en:"Unless you ____, you will be late.", ko:"서두르지 않으면 늦을 것이다.", options:["hurry","don't hurry","will hurry","hurried"], answer:"hurry", explanation:"[First] Unless(=If not) 절 안에도 현재시제를 씁니다." },
+  { id:2214, topic:"conditionalPresent", en:"If I ____ the exam, I will be happy.", ko:"시험에 합격하면 행복할 것이다.", options:["pass","will pass","passed","passing"], answer:"pass", explanation:"[First] 미래에 대한 가정이므로 If절은 현재시제." },
+  { id:2215, topic:"conditionalPresent", en:"We will go for a walk if it ____ fine.", ko:"날씨가 좋으면 산책하러 갈 것이다.", options:["is","will be","was","be"], answer:"is", explanation:"[First] 날씨 조건절: 현재형 is 사용." },
+  { id:2216, topic:"conditionalPresent", en:"As soon as I ____ home, I will text you.", ko:"집에 도착하자마자 문자 할게.", options:["arrive","will arrive","arrived","arriving"], answer:"arrive", explanation:"[First] As soon as(시간 부사절) + 현재시제." },
+  { id:2217, topic:"conditionalPresent", en:"If she ____ not come, we will leave.", ko:"그녀가 오지 않으면 우리는 떠날 것이다.", options:["does","will","is","do"], answer:"does", explanation:"[First] 3인칭 단수 현재 부정은 does not." },
+  { id:2218, topic:"conditionalPresent", en:"I will wait until you ____.", ko:"네가 끝날 때까지 기다릴게.", options:["finish","will finish","finished","finishing"], answer:"finish", explanation:"[First] Until(시간 부사절) + 현재시제." },
+  { id:2219, topic:"conditionalPresent", en:"If you ____ him, give him this letter.", ko:"그를 보면 이 편지를 전해줘.", options:["see","will see","saw","seen"], answer:"see", explanation:"[First] 명령문이 주절인 경우에도 If절은 현재시제." },
+  { id:2220, topic:"conditionalPresent", en:"What will you do if you ____ the bus?", ko:"버스를 놓치면 어떻게 할 거니?", options:["miss","will miss","missed","missing"], answer:"miss", explanation:"[First] 미래 상황 가정이므로 If절은 현재시제." },
+  { id:2221, topic:"conditionalPresent", en:"Before you ____, please clean your room.", ko:"나가기 전에 방을 청소해라.", options:["go","will go","went","going"], answer:"go", explanation:"[First] Before(시간 부사절) + 현재시제." },
+  { id:2222, topic:"conditionalPresent", en:"If he ____ hard, he will succeed.", ko:"그가 열심히 일한다면(공부한다면) 성공할 것이다.", options:["works","work","will work","worked"], answer:"works", explanation:"[First] 주어가 3인칭 단수(he)이므로 works." },
+  { id:2223, topic:"conditionalPresent", en:"You can't go out unless you ____ your lunch.", ko:"점심을 다 먹지 않으면 나갈 수 없다.", options:["finish","don't finish","will finish","finished"], answer:"finish", explanation:"[First] Unless에 부정 의미가 포함되어 있으므로 긍정 동사 finish를 씁니다." },
+  { id:2224, topic:"conditionalPresent", en:"If I ____ enough money, I will buy a car.", ko:"돈이 충분하다면 차를 살 것이다.", options:["have","will have","had","has"], answer:"have", explanation:"[First] 미래의 소유 가능성을 나타내는 현재시제 have." },
+  { id:2225, topic:"conditionalPresent", en:"After I ____ lunch, I will study.", ko:"점심을 먹은 후에 공부할 것이다.", options:["eat","will eat","ate","eaten"], answer:"eat", explanation:"[First] After(시간 부사절) + 현재시제." },
+  { id:2226, topic:"conditionalPresent", en:"If it ____ not rain tomorrow, we will play soccer.", ko:"내일 비가 오지 않는다면 축구를 할 것이다.", options:["does","will","is","do"], answer:"does", explanation:"[First] 내일의 날씨 가정이지만 If절 안이므로 does not rain." },
+  { id:2227, topic:"conditionalPresent", en:"We will stay here while he ____.", ko:"그가 자는 동안 우리는 여기에 머물 것이다.", options:["sleeps","will sleep","slept","sleeping"], answer:"sleeps", explanation:"[First] While(시간 부사절) + 현재시제." },
+  { id:2228, topic:"conditionalPresent", en:"If you ____ to the party, I will go too.", ko:"네가 파티에 간다면 나도 갈게.", options:["go","will go","went","gone"], answer:"go", explanation:"[First] 상대방의 미래 행동을 가정." },
+  { id:2229, topic:"conditionalPresent", en:"Don't open the door until the train ____.", ko:"기차가 멈출 때까지 문을 열지 마라.", options:["stops","will stop","stopped","stop"], answer:"stops", explanation:"[First] 시간 부사절 until + 현재시제 (3인칭 단수 stops)." },
+  { id:2230, topic:"conditionalPresent", en:"If anyone ____, tell them I am busy.", ko:"누구든 전화가 오면 내가 바쁘다고 말해줘.", options:["calls","will call","called","call"], answer:"calls", explanation:"[First] 주어 anyone은 단수 취급하므로 calls." },
 
-  // 24. 가정법 과거 (ID: 2401 ~ 2499)
+  // 23. 가정법 과거 (ID: 2301 ~ 2399)
   
   // --- [초급: 기본 공식 (If + 주어 + 과거동사, 주어 + 조동사과거 + 원형)] (10문제) ---
-  { id:2401, topic:"conditionalPast", en:"If I ____ rich, I would buy a car.", ko:"내가 부자라면 차를 살 텐데.", options:["were","was","am","have been"], answer:"were", explanation:"[초급] 가정법 과거에서 be동사는 인칭에 상관없이 무조건 'were'를 씁니다." },
-  { id:2402, topic:"conditionalPast", en:"If I ____ the answer, I would tell you.", ko:"답을 안다면 너에게 말해줄 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"[초급] 현재 사실의 반대는 과거 시제(knew)를 사용합니다." },
-  { id:2403, topic:"conditionalPast", en:"If I ____ you, I wouldn't do that.", ko:"내가 너라면 그렇게 안 할 거야.", options:["were","was","am","are"], answer:"were", explanation:"[초급] 'If I were you'는 충고할 때 쓰는 관용적 표현입니다." },
-  { id:2404, topic:"conditionalPast", en:"If it ____ snow, we could go skiing.", ko:"눈이 온다면 스키를 타러 갈 수 있을 텐데.", options:["snowed","snows","snowing","will snow"], answer:"snowed", explanation:"[초급] 가정법 과거의 조건절에는 과거 동사(snowed)가 옵니다." },
-  { id:2405, topic:"conditionalPast", en:"If she ____ here, she would help us.", ko:"그녀가 여기 있다면 우리를 도울 텐데.", options:["were","is","be","been"], answer:"were", explanation:"[초급] 현재 그녀가 여기 없지만, '있다면'이라고 가정하는 상황입니다." },
-  { id:2406, topic:"conditionalPast", en:"If I ____ enough money, I would travel.", ko:"돈이 충분하다면 여행을 갈 텐데.", options:["had","have","has","having"], answer:"had", explanation:"[초급] 현재 돈이 없는 상황의 반대 가정이므로 had를 씁니다." },
-  { id:2407, topic:"conditionalPast", en:"We ____ go on a picnic if it were sunny.", ko:"날씨가 맑다면 소풍을 갈 텐데.", options:["would","will","can","shall"], answer:"would", explanation:"[초급] 주절에는 조동사의 과거형(would/could/might)이 옵니다." },
-  { id:2408, topic:"conditionalPast", en:"If he ____ busy, he would come.", ko:"그가 바쁘지 않다면 올 텐데.", options:["weren't","isn't","wasn't","not"], answer:"weren't", explanation:"[초급] be동사의 부정은 were not (weren't)입니다." },
-  { id:2409, topic:"conditionalPast", en:"What ____ you do if you won the lottery?", ko:"복권에 당첨된다면 무엇을 하겠니?", options:["would","will","can","did"], answer:"would", explanation:"[초급] 의문문에서도 'would + 동사원형' 규칙은 동일합니다." },
-  { id:2410, topic:"conditionalPast", en:"If I lived near the sea, I ____ swim every day.", ko:"바다 근처에 산다면 매일 수영할 텐데.", options:["could","can","will","may"], answer:"could", explanation:"[초급] '수영할 수 있을 텐데(능력)'의 의미이므로 could." },
+  { id:2301, topic:"conditionalPast", en:"If I ____ rich, I would buy a car.", ko:"내가 부자라면 차를 살 텐데.", options:["were","was","am","have been"], answer:"were", explanation:"[초급] 가정법 과거에서 be동사는 인칭에 상관없이 무조건 'were'를 씁니다." },
+  { id:2302, topic:"conditionalPast", en:"If I ____ the answer, I would tell you.", ko:"답을 안다면 너에게 말해줄 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"[초급] 현재 사실의 반대는 과거 시제(knew)를 사용합니다." },
+  { id:2303, topic:"conditionalPast", en:"If I ____ you, I wouldn't do that.", ko:"내가 너라면 그렇게 안 할 거야.", options:["were","was","am","are"], answer:"were", explanation:"[초급] 'If I were you'는 충고할 때 쓰는 관용적 표현입니다." },
+  { id:2304, topic:"conditionalPast", en:"If it ____ snow, we could go skiing.", ko:"눈이 온다면 스키를 타러 갈 수 있을 텐데.", options:["snowed","snows","snowing","will snow"], answer:"snowed", explanation:"[초급] 가정법 과거의 조건절에는 과거 동사(snowed)가 옵니다." },
+  { id:2305, topic:"conditionalPast", en:"If she ____ here, she would help us.", ko:"그녀가 여기 있다면 우리를 도울 텐데.", options:["were","is","be","been"], answer:"were", explanation:"[초급] 현재 그녀가 여기 없지만, '있다면'이라고 가정하는 상황입니다." },
+  { id:2306, topic:"conditionalPast", en:"If I ____ enough money, I would travel.", ko:"돈이 충분하다면 여행을 갈 텐데.", options:["had","have","has","having"], answer:"had", explanation:"[초급] 현재 돈이 없는 상황의 반대 가정이므로 had를 씁니다." },
+  { id:2307, topic:"conditionalPast", en:"We ____ go on a picnic if it were sunny.", ko:"날씨가 맑다면 소풍을 갈 텐데.", options:["would","will","can","shall"], answer:"would", explanation:"[초급] 주절에는 조동사의 과거형(would/could/might)이 옵니다." },
+  { id:2308, topic:"conditionalPast", en:"If he ____ busy, he would come.", ko:"그가 바쁘지 않다면 올 텐데.", options:["weren't","isn't","wasn't","not"], answer:"weren't", explanation:"[초급] be동사의 부정은 were not (weren't)입니다." },
+  { id:2309, topic:"conditionalPast", en:"What ____ you do if you won the lottery?", ko:"복권에 당첨된다면 무엇을 하겠니?", options:["would","will","can","did"], answer:"would", explanation:"[초급] 의문문에서도 'would + 동사원형' 규칙은 동일합니다." },
+  { id:2310, topic:"conditionalPast", en:"If I lived near the sea, I ____ swim every day.", ko:"바다 근처에 산다면 매일 수영할 텐데.", options:["could","can","will","may"], answer:"could", explanation:"[초급] '수영할 수 있을 텐데(능력)'의 의미이므로 could." },
 
   // --- [중급: I wish / As if / Without 등 특수 구문] (10문제) ---
-  { id:2411, topic:"conditionalPast", en:"I wish I ____ fly.", ko:"내가 날 수 있다면 좋을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"[중급] I wish + 가정법 과거: 현재 실현 불가능한 소망." },
-  { id:2412, topic:"conditionalPast", en:"I wish I ____ a sister.", ko:"여동생이 있다면 좋을 텐데.", options:["had","have","has","having"], answer:"had", explanation:"[중급] 현재 없지만 있기를 바라는 것이므로 과거형 had." },
-  { id:2413, topic:"conditionalPast", en:"He acts as if he ____ my boss.", ko:"그는 마치 나의 상사인 것처럼 행동한다.", options:["were","is","was","has been"], answer:"were", explanation:"[중급] as if + 가정법 과거: 마치 (지금) ~인 것처럼 (사실은 아님)." },
-  { id:2414, topic:"conditionalPast", en:"She talks as if she ____ everything.", ko:"그녀는 모든 것을 아는 것처럼 말한다.", options:["knew","knows","known","knowing"], answer:"knew", explanation:"[중급] 사실은 모르지만 아는 척하므로 가정법 과거 knew." },
-  { id:2415, topic:"conditionalPast", en:"____ water, we couldn't live.", ko:"물이 없다면 우리는 살 수 없을 것이다.", options:["Without","With","Unless","If"], answer:"Without", explanation:"[중급] Without + 명사: ~이 없다면 (=If it were not for)." },
-  { id:2416, topic:"conditionalPast", en:"If it ____ not for the sun, nothing could grow.", ko:"태양이 없다면 아무것도 자랄 수 없을 것이다.", options:["were","is","was","are"], answer:"were", explanation:"[중급] If it were not for: ~이 없다면 (현재 사실 반대)." },
-  { id:2417, topic:"conditionalPast", en:"It is high time you ____ to bed.", ko:"네가 잠자리에 들 시간이다(이미 늦었다).", options:["went","go","gone","going"], answer:"went", explanation:"[중급] It is (high) time + 주어 + 과거동사: ~해야 할 시간이다(재촉)." },
-  { id:2418, topic:"conditionalPast", en:"I wish I ____ taller.", ko:"키가 더 크면 좋을 텐데.", options:["were","am","was","be"], answer:"were", explanation:"[중급] I wish 가정법에서도 be동사는 were를 씁니다." },
-  { id:2419, topic:"conditionalPast", en:"But for your help, I ____ fail.", ko:"너의 도움이 없다면 나는 실패할 것이다.", options:["would","will","can","shall"], answer:"would", explanation:"[중급] But for (=Without) 가정법의 주절에는 조동사 과거형이 옵니다." },
-  { id:2420, topic:"conditionalPast", en:"If I ____ speak English well!", ko:"영어를 잘할 수 있다면 좋을 텐데! (감탄문)", options:["could","can","will","may"], answer:"could", explanation:"[중급] If only S + V: I wish와 같은 소망 표현." },
+  { id:2311, topic:"conditionalPast", en:"I wish I ____ fly.", ko:"내가 날 수 있다면 좋을 텐데.", options:["could","can","will","may"], answer:"could", explanation:"[중급] I wish + 가정법 과거: 현재 실현 불가능한 소망." },
+  { id:2312, topic:"conditionalPast", en:"I wish I ____ a sister.", ko:"여동생이 있다면 좋을 텐데.", options:["had","have","has","having"], answer:"had", explanation:"[중급] 현재 없지만 있기를 바라는 것이므로 과거형 had." },
+  { id:2313, topic:"conditionalPast", en:"He acts as if he ____ my boss.", ko:"그는 마치 나의 상사인 것처럼 행동한다.", options:["were","is","was","has been"], answer:"were", explanation:"[중급] as if + 가정법 과거: 마치 (지금) ~인 것처럼 (사실은 아님)." },
+  { id:2314, topic:"conditionalPast", en:"She talks as if she ____ everything.", ko:"그녀는 모든 것을 아는 것처럼 말한다.", options:["knew","knows","known","knowing"], answer:"knew", explanation:"[중급] 사실은 모르지만 아는 척하므로 가정법 과거 knew." },
+  { id:2315, topic:"conditionalPast", en:"____ water, we couldn't live.", ko:"물이 없다면 우리는 살 수 없을 것이다.", options:["Without","With","Unless","If"], answer:"Without", explanation:"[중급] Without + 명사: ~이 없다면 (=If it were not for)." },
+  { id:2316, topic:"conditionalPast", en:"If it ____ not for the sun, nothing could grow.", ko:"태양이 없다면 아무것도 자랄 수 없을 것이다.", options:["were","is","was","are"], answer:"were", explanation:"[중급] If it were not for: ~이 없다면 (현재 사실 반대)." },
+  { id:2317, topic:"conditionalPast", en:"It is high time you ____ to bed.", ko:"네가 잠자리에 들 시간이다(이미 늦었다).", options:["went","go","gone","going"], answer:"went", explanation:"[중급] It is (high) time + 주어 + 과거동사: ~해야 할 시간이다(재촉)." },
+  { id:2318, topic:"conditionalPast", en:"I wish I ____ taller.", ko:"키가 더 크면 좋을 텐데.", options:["were","am","was","be"], answer:"were", explanation:"[중급] I wish 가정법에서도 be동사는 were를 씁니다." },
+  { id:2319, topic:"conditionalPast", en:"But for your help, I ____ fail.", ko:"너의 도움이 없다면 나는 실패할 것이다.", options:["would","will","can","shall"], answer:"would", explanation:"[중급] But for (=Without) 가정법의 주절에는 조동사 과거형이 옵니다." },
+  { id:2320, topic:"conditionalPast", en:"If I ____ speak English well!", ko:"영어를 잘할 수 있다면 좋을 텐데! (감탄문)", options:["could","can","will","may"], answer:"could", explanation:"[중급] If only S + V: I wish와 같은 소망 표현." },
 
   // --- [종합: 직설법 전환, 문맥 파악 및 심화] (10문제) ---
-  { id:2421, topic:"conditionalPast", en:"'If I had time, I would go.' means: ____.", ko:"'시간이 있다면 갈 텐데'의 속뜻은?", options:["I don't have time, so I can't go.","I have time, so I will go.","I didn't have time, so I didn't go.","I will have time."], answer:"I don't have time, so I can't go.", explanation:"[종합] 가정법 과거는 '현재의 반대' 상황을 나타냅니다." },
-  { id:2422, topic:"conditionalPast", en:"As I am sick, I cannot go. = If I ____ not sick, I could go.", ko:"아파서 못 간다. = 아프지 않다면 갈 수 있을 텐데.", options:["were","am","was","been"], answer:"were", explanation:"[종합] 직설법(현재, 긍정) -> 가정법(과거, 부정)." },
-  { id:2423, topic:"conditionalPast", en:"If I ____ a bird, I would fly to you.", ko:"내가 새라면 너에게 날아갈 텐데.", options:["were","am","was","be"], answer:"were", explanation:"[종합] 실현 불가능한 상상(내가 새가 되는 것)도 가정법 과거를 씁니다." },
-  { id:2424, topic:"conditionalPast", en:"If I ____ you were coming, I would bake a cake.", ko:"(지금) 네가 온다는 걸 안다면 케이크를 구울 텐데.", options:["knew","know","known","have known"], answer:"knew", explanation:"[종합] were coming(과거진행형 형태지만 가정법 내에서는 현재 의미)과 어울리는 knew." },
-  { id:2425, topic:"conditionalPast", en:"Supposing you ____ a million dollars, what would you do?", ko:"백만 달러가 있다고 가정하면, 뭘 하겠니?", options:["had","have","have had","having"], answer:"had", explanation:"[종합] Supposing = If. 가정법 과거 문장이므로 had." },
-  { id:2426, topic:"conditionalPast", en:"She treats me as if I ____ a child.", ko:"그녀는 나를 마치 어린애 취급한다.", options:["were","am","was","be"], answer:"were", explanation:"[종합] 실제로는 어린애가 아니므로(반대 사실) 가정법 과거 were." },
-  { id:2427, topic:"conditionalPast", en:"I'm sorry I don't have a car. = I wish I ____ a car.", ko:"차가 없어서 유감이다. = 차가 있다면 좋을 텐데.", options:["had","have","didn't have","had not"], answer:"had", explanation:"[종합] I'm sorry(유감이다) 뒤의 직설법 부정을 가정법 긍정으로 바꿉니다." },
-  { id:2428, topic:"conditionalPast", en:"If we ____ a taxi, we would arrive sooner.", ko:"택시를 탄다면 더 빨리 도착할 텐데.", options:["took","take","taken","taking"], answer:"took", explanation:"[종합] 현재 상황에 대한 대안을 가정할 때 과거 동사 took 사용." },
-  { id:2429, topic:"conditionalPast", en:"If I ____ his number, I would call him right now.", ko:"그의 번호를 안다면 지금 당장 전화할 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"[종합] right now(현재)가 있어도, 가정법(상상)이므로 동사는 과거형 knew." },
-  { id:2430, topic:"conditionalPast", en:"He acts as if he ____ the answer.", ko:"그는 마치 답을 아는 것처럼 행동한다.", options:["knew","knows","know","known"], answer:"knew", explanation:"[종합] 주절(acts)이 현재여도, 내용은 '사실은 모르는데 아는 척'하는 것이므로 가정법 과거." },
+  { id:2321, topic:"conditionalPast", en:"'If I had time, I would go.' means: ____.", ko:"'시간이 있다면 갈 텐데'의 속뜻은?", options:["I don't have time, so I can't go.","I have time, so I will go.","I didn't have time, so I didn't go.","I will have time."], answer:"I don't have time, so I can't go.", explanation:"[종합] 가정법 과거는 '현재의 반대' 상황을 나타냅니다." },
+  { id:2322, topic:"conditionalPast", en:"As I am sick, I cannot go. = If I ____ not sick, I could go.", ko:"아파서 못 간다. = 아프지 않다면 갈 수 있을 텐데.", options:["were","am","was","been"], answer:"were", explanation:"[종합] 직설법(현재, 긍정) -> 가정법(과거, 부정)." },
+  { id:2323, topic:"conditionalPast", en:"If I ____ a bird, I would fly to you.", ko:"내가 새라면 너에게 날아갈 텐데.", options:["were","am","was","be"], answer:"were", explanation:"[종합] 실현 불가능한 상상(내가 새가 되는 것)도 가정법 과거를 씁니다." },
+  { id:2324, topic:"conditionalPast", en:"If I ____ you were coming, I would bake a cake.", ko:"(지금) 네가 온다는 걸 안다면 케이크를 구울 텐데.", options:["knew","know","known","have known"], answer:"knew", explanation:"[종합] were coming(과거진행형 형태지만 가정법 내에서는 현재 의미)과 어울리는 knew." },
+  { id:2325, topic:"conditionalPast", en:"Supposing you ____ a million dollars, what would you do?", ko:"백만 달러가 있다고 가정하면, 뭘 하겠니?", options:["had","have","have had","having"], answer:"had", explanation:"[종합] Supposing = If. 가정법 과거 문장이므로 had." },
+  { id:2326, topic:"conditionalPast", en:"She treats me as if I ____ a child.", ko:"그녀는 나를 마치 어린애 취급한다.", options:["were","am","was","be"], answer:"were", explanation:"[종합] 실제로는 어린애가 아니므로(반대 사실) 가정법 과거 were." },
+  { id:2327, topic:"conditionalPast", en:"I'm sorry I don't have a car. = I wish I ____ a car.", ko:"차가 없어서 유감이다. = 차가 있다면 좋을 텐데.", options:["had","have","didn't have","had not"], answer:"had", explanation:"[종합] I'm sorry(유감이다) 뒤의 직설법 부정을 가정법 긍정으로 바꿉니다." },
+  { id:2328, topic:"conditionalPast", en:"If we ____ a taxi, we would arrive sooner.", ko:"택시를 탄다면 더 빨리 도착할 텐데.", options:["took","take","taken","taking"], answer:"took", explanation:"[종합] 현재 상황에 대한 대안을 가정할 때 과거 동사 took 사용." },
+  { id:2329, topic:"conditionalPast", en:"If I ____ his number, I would call him right now.", ko:"그의 번호를 안다면 지금 당장 전화할 텐데.", options:["knew","know","known","knows"], answer:"knew", explanation:"[종합] right now(현재)가 있어도, 가정법(상상)이므로 동사는 과거형 knew." },
+  { id:2330, topic:"conditionalPast", en:"He acts as if he ____ the answer.", ko:"그는 마치 답을 아는 것처럼 행동한다.", options:["knew","knows","know","known"], answer:"knew", explanation:"[종합] 주절(acts)이 현재여도, 내용은 '사실은 모르는데 아는 척'하는 것이므로 가정법 과거." },
 
-  // 25. 가정법 과거완료 (ID: 2501 ~ 2599)
+  // 24. 가정법 과거완료 (ID: 2401 ~ 2499)
   
   // --- [초급: If + had p.p, 주절 + would have p.p. (기본 공식)] (10문제) ---
-  { id:2501, topic:"conditionalPastPerfect", en:"If I ____ harder, I would have passed.", ko:"더 열심히 공부했더라면 합격했을 텐데.", options:["had studied","studied","study","have studied"], answer:"had studied", explanation:"[초급] 과거 사실의 반대는 'If + 주어 + had p.p.'를 씁니다." },
-  { id:2502, topic:"conditionalPastPerfect", en:"If I had known, I ____ told you.", ko:"알았더라면 너에게 말해줬을 텐데.", options:["would have","will have","would","had"], answer:"would have", explanation:"[초급] 주절의 공식: 조동사 과거형(would) + have p.p." },
-  { id:2503, topic:"conditionalPastPerfect", en:"If she ____ the bus, she would have been late.", ko:"그녀가 버스를 놓쳤더라면 늦었을 것이다.", options:["had missed","missed","misses","has missed"], answer:"had missed", explanation:"[초급] '놓쳤었다면(과거)'의 가정은 had missed." },
-  { id:2504, topic:"conditionalPastPerfect", en:"We ____ gone if it had rained.", ko:"비가 왔더라면 우리는 가지 않았을 것이다.", options:["wouldn't have","won't have","didn't have","don't have"], answer:"wouldn't have", explanation:"[초급] 가정법 과거완료의 부정 주절: wouldn't have p.p." },
-  { id:2505, topic:"conditionalPastPerfect", en:"If I ____ enough money, I could have bought it.", ko:"돈이 충분했더라면 샀을 텐데.", options:["had had","had","have had","have"], answer:"had had", explanation:"[초급] have(가지다)의 과거완료형은 had(조동사) + had(p.p.)입니다." },
-  { id:2506, topic:"conditionalPastPerfect", en:"If he had asked me, I ____ helped him.", ko:"그가 부탁했더라면 그를 도왔을 텐데.", options:["would have","will have","can have","did have"], answer:"would have", explanation:"[초급] '도왔을 것이다' = would have helped." },
-  { id:2507, topic:"conditionalPastPerfect", en:"If you had seen the movie, you ____ liked it.", ko:"네가 그 영화를 봤다면 좋아했을 거야.", options:["would have","will have","would","had"], answer:"would have", explanation:"[초급] 가정법 과거완료 주절." },
-  { id:2508, topic:"conditionalPastPerfect", en:"If I ____ not been sick, I would have gone.", ko:"아프지 않았더라면 갔을 텐데.", options:["had","have","was","did"], answer:"had", explanation:"[초급] be sick의 과거완료: had been sick." },
-  { id:2509, topic:"conditionalPastPerfect", en:"They could have won if they ____ practiced.", ko:"연습했더라면 그들이 이길 수 있었을 텐데.", options:["had","have","did","were"], answer:"had", explanation:"[초급] 조건절(If)에는 had p.p.가 옵니다." },
-  { id:2510, topic:"conditionalPastPerfect", en:"If I had met him, I would ____ happy.", ko:"그를 만났더라면 행복했을 텐데.", options:["have been","be","had been","was"], answer:"have been", explanation:"[초급] would have + p.p.(been)." },
+  { id:2401, topic:"conditionalPastPerfect", en:"If I ____ harder, I would have passed.", ko:"더 열심히 공부했더라면 합격했을 텐데.", options:["had studied","studied","study","have studied"], answer:"had studied", explanation:"[초급] 과거 사실의 반대는 'If + 주어 + had p.p.'를 씁니다." },
+  { id:2402, topic:"conditionalPastPerfect", en:"If I had known, I ____ told you.", ko:"알았더라면 너에게 말해줬을 텐데.", options:["would have","will have","would","had"], answer:"would have", explanation:"[초급] 주절의 공식: 조동사 과거형(would) + have p.p." },
+  { id:2403, topic:"conditionalPastPerfect", en:"If she ____ the bus, she would have been late.", ko:"그녀가 버스를 놓쳤더라면 늦었을 것이다.", options:["had missed","missed","misses","has missed"], answer:"had missed", explanation:"[초급] '놓쳤었다면(과거)'의 가정은 had missed." },
+  { id:2404, topic:"conditionalPastPerfect", en:"We ____ gone if it had rained.", ko:"비가 왔더라면 우리는 가지 않았을 것이다.", options:["wouldn't have","won't have","didn't have","don't have"], answer:"wouldn't have", explanation:"[초급] 가정법 과거완료의 부정 주절: wouldn't have p.p." },
+  { id:2405, topic:"conditionalPastPerfect", en:"If I ____ enough money, I could have bought it.", ko:"돈이 충분했더라면 샀을 텐데.", options:["had had","had","have had","have"], answer:"had had", explanation:"[초급] have(가지다)의 과거완료형은 had(조동사) + had(p.p.)입니다." },
+  { id:2406, topic:"conditionalPastPerfect", en:"If he had asked me, I ____ helped him.", ko:"그가 부탁했더라면 그를 도왔을 텐데.", options:["would have","will have","can have","did have"], answer:"would have", explanation:"[초급] '도왔을 것이다' = would have helped." },
+  { id:2407, topic:"conditionalPastPerfect", en:"If you had seen the movie, you ____ liked it.", ko:"네가 그 영화를 봤다면 좋아했을 거야.", options:["would have","will have","would","had"], answer:"would have", explanation:"[초급] 가정법 과거완료 주절." },
+  { id:2408, topic:"conditionalPastPerfect", en:"If I ____ not been sick, I would have gone.", ko:"아프지 않았더라면 갔을 텐데.", options:["had","have","was","did"], answer:"had", explanation:"[초급] be sick의 과거완료: had been sick." },
+  { id:2409, topic:"conditionalPastPerfect", en:"They could have won if they ____ practiced.", ko:"연습했더라면 그들이 이길 수 있었을 텐데.", options:["had","have","did","were"], answer:"had", explanation:"[초급] 조건절(If)에는 had p.p.가 옵니다." },
+  { id:2410, topic:"conditionalPastPerfect", en:"If I had met him, I would ____ happy.", ko:"그를 만났더라면 행복했을 텐데.", options:["have been","be","had been","was"], answer:"have been", explanation:"[초급] would have + p.p.(been)." },
 
   // --- [중급: I wish, As if, 혼합 가정법 (시제 주의)] (10문제) ---
-  { id:2511, topic:"conditionalPastPerfect", en:"I wish I ____ seen him yesterday.", ko:"어제 그를 봤더라면 좋았을 텐데.", options:["had","have","saw","did"], answer:"had", explanation:"[중급] 과거 일(yesterday)에 대한 유감/후회는 I wish + had p.p." },
-  { id:2512, topic:"conditionalPastPerfect", en:"I wish I ____ eaten so much.", ko:"그렇게 많이 먹지 말았어야 했는데.", options:["hadn't","didn't","haven't","won't"], answer:"hadn't", explanation:"[중급] 과거 행동에 대한 후회(부정)." },
-  { id:2513, topic:"conditionalPastPerfect", en:"He talks as if he ____ been there.", ko:"그는 마치 (과거에) 거기에 가봤던 것처럼 말한다.", options:["had","has","was","did"], answer:"had", explanation:"[중급] 말하는 시점보다 '이전의 일'을 가정할 때는 as if + had p.p." },
-  { id:2514, topic:"conditionalPastPerfect", en:"She looked as if she ____ seen a ghost.", ko:"그녀는 마치 유령을 본 것 같은 표정이었다.", options:["had","has","saw","did"], answer:"had", explanation:"[중급] 보였던 것(과거)보다 본 것(대과거)이 먼저이므로 had seen." },
-  { id:2515, topic:"conditionalPastPerfect", en:"I should ____ studied harder.", ko:"나는 더 열심히 공부했어야 했다 (근데 안 했다).", options:["have","had","be","was"], answer:"have", explanation:"[중급] should have p.p.: 과거의 일에 대한 후회." },
-  { id:2516, topic:"conditionalPastPerfect", en:"He must ____ been tired.", ko:"그는 피곤했음에 틀림없다.", options:["have","had","be","was"], answer:"have", explanation:"[중급] must have p.p.: 과거 사실에 대한 강한 추측." },
-  { id:2517, topic:"conditionalPastPerfect", en:"[Mixed] If I had eaten breakfast, I ____ not be hungry now.", ko:"아침을 먹었더라면, 지금 배고프지 않을 텐데.", options:["would","will","had","did"], answer:"would", explanation:"[중급-혼합] 과거의 원인(had eaten) -> 현재의 결과(would + 원형 + now)." },
-  { id:2518, topic:"conditionalPastPerfect", en:"[Mixed] If I had taken the bus, I would ____ here now.", ko:"버스를 탔더라면, 지금 여기 있을 텐데.", options:["be","have been","been","am"], answer:"be", explanation:"[중급-혼합] now가 있으므로 주절은 가정법 과거(would be)를 씁니다." },
-  { id:2519, topic:"conditionalPastPerfect", en:"I'm sorry I lost it. = I wish I ____ lost it.", ko:"그걸 잃어버려서 유감이다 = 잃어버리지 않았더라면 좋았을 텐데.", options:["hadn't","didn't","haven't","won't"], answer:"hadn't", explanation:"[중급] 직설법 과거(lost) -> 가정법 과거완료(had not lost)." },
-  { id:2520, topic:"conditionalPastPerfect", en:"I regret meeting him. = I wish I ____ met him.", ko:"그를 만난 걸 후회해 = 그를 만나지 않았더라면.", options:["hadn't","didn't","haven't","don't"], answer:"hadn't", explanation:"[중급] 과거 사실(met)의 반대 소망." },
+  { id:2411, topic:"conditionalPastPerfect", en:"I wish I ____ seen him yesterday.", ko:"어제 그를 봤더라면 좋았을 텐데.", options:["had","have","saw","did"], answer:"had", explanation:"[중급] 과거 일(yesterday)에 대한 유감/후회는 I wish + had p.p." },
+  { id:2412, topic:"conditionalPastPerfect", en:"I wish I ____ eaten so much.", ko:"그렇게 많이 먹지 말았어야 했는데.", options:["hadn't","didn't","haven't","won't"], answer:"hadn't", explanation:"[중급] 과거 행동에 대한 후회(부정)." },
+  { id:2413, topic:"conditionalPastPerfect", en:"He talks as if he ____ been there.", ko:"그는 마치 (과거에) 거기에 가봤던 것처럼 말한다.", options:["had","has","was","did"], answer:"had", explanation:"[중급] 말하는 시점보다 '이전의 일'을 가정할 때는 as if + had p.p." },
+  { id:2414, topic:"conditionalPastPerfect", en:"She looked as if she ____ seen a ghost.", ko:"그녀는 마치 유령을 본 것 같은 표정이었다.", options:["had","has","saw","did"], answer:"had", explanation:"[중급] 보였던 것(과거)보다 본 것(대과거)이 먼저이므로 had seen." },
+  { id:2415, topic:"conditionalPastPerfect", en:"I should ____ studied harder.", ko:"나는 더 열심히 공부했어야 했다 (근데 안 했다).", options:["have","had","be","was"], answer:"have", explanation:"[중급] should have p.p.: 과거의 일에 대한 후회." },
+  { id:2416, topic:"conditionalPastPerfect", en:"He must ____ been tired.", ko:"그는 피곤했음에 틀림없다.", options:["have","had","be","was"], answer:"have", explanation:"[중급] must have p.p.: 과거 사실에 대한 강한 추측." },
+  { id:2417, topic:"conditionalPastPerfect", en:"[Mixed] If I had eaten breakfast, I ____ not be hungry now.", ko:"아침을 먹었더라면, 지금 배고프지 않을 텐데.", options:["would","will","had","did"], answer:"would", explanation:"[중급-혼합] 과거의 원인(had eaten) -> 현재의 결과(would + 원형 + now)." },
+  { id:2418, topic:"conditionalPastPerfect", en:"[Mixed] If I had taken the bus, I would ____ here now.", ko:"버스를 탔더라면, 지금 여기 있을 텐데.", options:["be","have been","been","am"], answer:"be", explanation:"[중급-혼합] now가 있으므로 주절은 가정법 과거(would be)를 씁니다." },
+  { id:2419, topic:"conditionalPastPerfect", en:"I'm sorry I lost it. = I wish I ____ lost it.", ko:"그걸 잃어버려서 유감이다 = 잃어버리지 않았더라면 좋았을 텐데.", options:["hadn't","didn't","haven't","won't"], answer:"hadn't", explanation:"[중급] 직설법 과거(lost) -> 가정법 과거완료(had not lost)." },
+  { id:2420, topic:"conditionalPastPerfect", en:"I regret meeting him. = I wish I ____ met him.", ko:"그를 만난 걸 후회해 = 그를 만나지 않았더라면.", options:["hadn't","didn't","haven't","don't"], answer:"hadn't", explanation:"[중급] 과거 사실(met)의 반대 소망." },
 
   // --- [고급: 도치(If생략), 전치사구, 특수 구문] (10문제) ---
-  { id:2521, topic:"conditionalPastPerfect", en:"____ I known the truth, I would have told you.", ko:"(만약) 내가 진실을 알았더라면, 너에게 말했을 텐데.", options:["Had","If","Did","Were"], answer:"Had", explanation:"[고급] If가 생략되면 주어와 조동사(Had)가 도치됩니다. (Had I known)" },
-  { id:2522, topic:"conditionalPastPerfect", en:"____ it not been for your help, I would have failed.", ko:"너의 도움이 없었더라면, 나는 실패했을 것이다.", options:["Had","If","Has","Was"], answer:"Had", explanation:"[고급] If it had not been for -> Had it not been for (도치 구문)." },
-  { id:2523, topic:"conditionalPastPerfect", en:"____ your help, I would have failed.", ko:"너의 도움이 없었더라면... (전치사)", options:["Without","Unless","If","Although"], answer:"Without", explanation:"[고급] Without + 명사 = If it had not been for." },
-  { id:2524, topic:"conditionalPastPerfect", en:"____ for his advice, I couldn't have succeeded.", ko:"그의 조언이 없었더라면...", options:["But","Except","Only","With"], answer:"But", explanation:"[고급] But for + 명사 = ~이 없었더라면 (가정법 과거완료 대용)." },
+  { id:2421, topic:"conditionalPastPerfect", en:"____ I known the truth, I would have told you.", ko:"(만약) 내가 진실을 알았더라면, 너에게 말했을 텐데.", options:["Had","If","Did","Were"], answer:"Had", explanation:"[고급] If가 생략되면 주어와 조동사(Had)가 도치됩니다. (Had I known)" },
+  { id:2422, topic:"conditionalPastPerfect", en:"____ it not been for your help, I would have failed.", ko:"너의 도움이 없었더라면, 나는 실패했을 것이다.", options:["Had","If","Has","Was"], answer:"Had", explanation:"[고급] If it had not been for -> Had it not been for (도치 구문)." },
+  { id:2423, topic:"conditionalPastPerfect", en:"____ your help, I would have failed.", ko:"너의 도움이 없었더라면... (전치사)", options:["Without","Unless","If","Although"], answer:"Without", explanation:"[고급] Without + 명사 = If it had not been for." },
+  { id:2424, topic:"conditionalPastPerfect", en:"____ for his advice, I couldn't have succeeded.", ko:"그의 조언이 없었더라면...", options:["But","Except","Only","With"], answer:"But", explanation:"[고급] But for + 명사 = ~이 없었더라면 (가정법 과거완료 대용)." },
   { id:2425, topic:"conditionalPastPerfect", en:"If it ____ not been for the rain, we would have gone.", ko:"비가 오지 않았더라면 갔을 텐데.", options:["had","has","was","is"], answer:"had", explanation:"[고급] If it had not been for (~이 없었더라면) 관용구." },
-  { id:2526, topic:"conditionalPastPerfect", en:"With a little more money, I could ____ bought it.", ko:"돈이 조금만 더 있었더라면, 그걸 살 수 있었을 텐데.", options:["have","had","be","has"], answer:"have", explanation:"[고급] With 전치사구가 조건절(If I had had...) 역할을 대신함." },
-  { id:2527, topic:"conditionalPastPerfect", en:"Otherwise, I would ____ died.", ko:"그렇지 않았더라면(그 도움이 없었더라면), 나는 죽었을 것이다.", options:["have","had","be","has"], answer:"have", explanation:"[고급] Otherwise(앞 문장 상황이 아니었다면) + 가정법 과거완료 주절." },
-  { id:2528, topic:"conditionalPastPerfect", en:"Had he arrived earlier, he ____ met her.", ko:"그가 더 일찍 도착했더라면, 그녀를 만났을 텐데.", options:["could have","could","can have","will have"], answer:"could have", explanation:"[고급] 도치된 조건절(Had he...)에 맞춰 주절도 과거완료(could have p.p.) 사용." },
-  { id:2529, topic:"conditionalPastPerfect", en:"A wise man would not ____ done such a thing.", ko:"현명한 사람이라면 그런 짓은 하지 않았을 것이다.", options:["have","had","be","do"], answer:"have", explanation:"[고급] 주어(A wise man) 자체가 가정의 조건(If he had been a wise man)을 포함." },
-  { id:2530, topic:"conditionalPastPerfect", en:"To hear him speak, you would have ____ him a foreigner.", ko:"그가 말하는 걸 들었더라면, 너는 그를 외국인으로 생각했을 것이다.", options:["thought","think","thinking","thinks"], answer:"thought", explanation:"[고급] To부정사(조건) + 가정법 과거완료 주절(would have p.p.)." },
+  { id:2426, topic:"conditionalPastPerfect", en:"With a little more money, I could ____ bought it.", ko:"돈이 조금만 더 있었더라면, 그걸 살 수 있었을 텐데.", options:["have","had","be","has"], answer:"have", explanation:"[고급] With 전치사구가 조건절(If I had had...) 역할을 대신함." },
+  { id:2427, topic:"conditionalPastPerfect", en:"Otherwise, I would ____ died.", ko:"그렇지 않았더라면(그 도움이 없었더라면), 나는 죽었을 것이다.", options:["have","had","be","has"], answer:"have", explanation:"[고급] Otherwise(앞 문장 상황이 아니었다면) + 가정법 과거완료 주절." },
+  { id:2428, topic:"conditionalPastPerfect", en:"Had he arrived earlier, he ____ met her.", ko:"그가 더 일찍 도착했더라면, 그녀를 만났을 텐데.", options:["could have","could","can have","will have"], answer:"could have", explanation:"[고급] 도치된 조건절(Had he...)에 맞춰 주절도 과거완료(could have p.p.) 사용." },
+  { id:2429, topic:"conditionalPastPerfect", en:"A wise man would not ____ done such a thing.", ko:"현명한 사람이라면 그런 짓은 하지 않았을 것이다.", options:["have","had","be","do"], answer:"have", explanation:"[고급] 주어(A wise man) 자체가 가정의 조건(If he had been a wise man)을 포함." },
+  { id:2430, topic:"conditionalPastPerfect", en:"To hear him speak, you would have ____ him a foreigner.", ko:"그가 말하는 걸 들었더라면, 너는 그를 외국인으로 생각했을 것이다.", options:["thought","think","thinking","thinks"], answer:"thought", explanation:"[고급] To부정사(조건) + 가정법 과거완료 주절(would have p.p.)." },
 
-  // 26. 강조 구문 (ID: 2601 ~ 2699)
-  
-  // --- [실생활 회화 및 기초 강조 구문] (10문제) ---
-  { id:2601, topic:"emphasis", en:"It was ____ who broke the window.", ko:"창문을 깬 사람은 바로 톰이었다.", options:["Tom","Tom is","if Tom","Tom's"], answer:"Tom", explanation:"[회화] It is/was + [강조 대상] + that/who 구문입니다." },
-  { id:2602, topic:"emphasis", en:"____ do sit down and relax.", ko:"제발 앉아서 좀 쉬세요.", options:["Do","Did","Does","Done"], answer:"Do", explanation:"[회화] 동사 앞에 Do를 넣어 명령문이나 권유를 강조합니다 (정말, 제발)." },
-  { id:2603, topic:"emphasis", en:"____ I need is a cup of coffee.", ko:"내가 필요한 것은 오직 커피 한 잔이다.", options:["What","That","Which","Who"], answer:"What", explanation:"[회화] What I need is ~ (내가 필요한 것은 바로 ~이다) 강조 구문." },
-  { id:2604, topic:"emphasis", en:"I ____ remember meeting him.", ko:"나는 그를 만난 것을 정말로 기억한다.", options:["do","did","am","was"], answer:"do", explanation:"[회화] 일반동사(remember)를 강조하기 위해 조동사 do를 사용합니다." },
-  { id:2605, topic:"emphasis", en:"It is ____ that I want to visit.", ko:"내가 가보고 싶은 곳은 바로 뉴욕이다.", options:["New York","New York is","a New York","New York city"], answer:"New York", explanation:"[회화] It is ~ that 사이에 강조하고 싶은 장소(New York)를 넣습니다." },
-  { id:2506, topic:"emphasis", en:"All you have to do ____ listen.", ko:"네가 해야 할 일은 듣는 것뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"[회화] All (that) S + V 구문은 단수(is) 취급하며, 보어인 동사원형 앞에 to가 생략될 수 있습니다." },
-  { id:2607, topic:"emphasis", en:"Why ____ earth are you here?", ko:"도대체 너 왜 여기 있는 거야?", options:["on","in","at","for"], answer:"on", explanation:"[회화] 의문사 뒤에 'on earth'를 붙여 '도대체'라는 의미로 강조합니다." },
-  { id:2608, topic:"emphasis", en:"This is the ____ necklace I was looking for.", ko:"이게 바로 내가 찾던 그 목걸이야.", options:["very","really","so","much"], answer:"very", explanation:"[회화] 명사(necklace) 바로 앞에서 'the very'는 '바로 그'라는 뜻으로 강조합니다." },
-  { id:2609, topic:"emphasis", en:"It was yesterday ____ I realized the truth.", ko:"내가 진실을 깨달은 것은 바로 어제였다.", options:["that","which","what","who"], answer:"that", explanation:"[회화] 시간 부사(yesterday)를 강조하는 It was ~ that 구문." },
-  { id:2610, topic:"emphasis", en:"I did ____ the dishes.", ko:"나 설거지 진짜로 했어! (안 했다고 의심받을 때)", options:["do","done","did","doing"], answer:"do", explanation:"[회화] 과거형 동사(did the dishes)를 강조할 때는 'did + 동사원형'을 씁니다." },
-
-  // --- [비문학/독해: 논리적 강조 및 문어체 표현] (10문제) ---
-  { id:2611, topic:"emphasis", en:"It is health ____ is the most important.", ko:"가장 중요한 것은 바로 건강이다.", options:["that","what","where","when"], answer:"that", explanation:"[비문학] It is ~ that 강조 구문에서 사물(health)을 강조하고 있습니다." },
-  { id:2612, topic:"emphasis", en:"____ matters is not speed but direction.", ko:"중요한 것은 속도가 아니라 방향이다.", options:["What","That","It","This"], answer:"What", explanation:"[비문학] 'What matters' (중요한 것) 주어절을 통한 주제 강조." },
-  { id:2613, topic:"emphasis", en:"It was ____ by working hard that he succeeded.", ko:"그가 성공한 것은 바로 열심히 일함으로써였다.", options:["only","very","just","so"], answer:"only", explanation:"[비문학] 'It was only by ~ing that...' 구문은 수단/방법을 강하게 한정하여 강조합니다." },
-  { id:2614, topic:"emphasis", en:"Science ____ affect our daily lives.", ko:"과학은 정말로 우리 일상생활에 영향을 미친다.", options:["does","is","has","did"], answer:"does", explanation:"[비문학] 주어(Science)가 3인칭 단수이므로 강조의 조동사 does를 씁니다." },
-  { id:2615, topic:"emphasis", en:"It is not until you lose health ____ you realize its value.", ko:"건강을 잃고 나서야 비로소 그 가치를 깨닫는다.", options:["that","when","what","before"], answer:"that", explanation:"[비문학] 'It is not until A that B' (A하고 나서야 비로소 B하다) 필수 강조 구문." },
-  { id:2616, topic:"emphasis", en:"The ____ thing that prevents success is fear.", ko:"성공을 막는 바로 그것은 두려움이다.", options:["very","real","actual","true"], answer:"very", explanation:"[비문학] 명사를 강조하는 'the very' (바로 그)." },
-  { id:2617, topic:"emphasis", en:"What the researchers found ____ surprising.", ko:"연구원들이 발견한 것은 놀라웠다.", options:["was","were","did","had"], answer:"was", explanation:"[비문학] What 주어절은 단수 취급하므로 동사는 was." },
-  { id:2618, topic:"emphasis", en:"It was in 1969 ____ humans landed on the moon.", ko:"인류가 달에 착륙한 것은 바로 1969년이었다.", options:["that","when","where","which"], answer:"that", explanation:"[비문학] 부사구(시간: in 1969)를 강조하는 It was ~ that 구문." },
-  { id:2619, topic:"emphasis", en:"History ____ repeat itself.", ko:"역사는 정말로 반복된다.", options:["does","is","has","was"], answer:"does", explanation:"[비문학] 일반동사(repeat)를 강조하는 does." },
-  { id:2620, topic:"emphasis", en:"All we need ____ is more time.", ko:"우리가 필요한 것은 오직 더 많은 시간뿐이다.", options:["to do","do","done","doing"], answer:"to do", explanation:"[비문학] 문맥상 생략된 부분이 없거나, 강조를 위해 All we need is... 형태로 쓰입니다. (여기서는 보기를 맞추기 위해 관용적 오답 유도가 있을 수 있으나, 문맥상 All S V is... 구조를 묻는 문제입니다. *수정: 이 문제는 All ~ is 구문으로, 동사가 필요 없습니다. 정답 옵션을 수정해드리겠습니다.*) -> *옵션 수정: [is, are, were, have]* 정답: is." },
-  // * 2620번 보기 수정 반영 *
-  { id:2520, topic:"emphasis", en:"All we need ____ more time.", ko:"우리가 필요한 것은 오직 더 많은 시간뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"[비문학] All(주어) ~ is(동사). All이 '모든 것(everything)'을 뜻할 때는 단수 취급합니다." },
-// --- [What 강조 구문: "~하는 것은 바로 ...이다"] (10문제) ---
-  { id:2621, topic:"emphasis", en:"____ makes me happy is your smile.", ko:"나를 행복하게 만드는 것은 바로 너의 미소다.", options:["What","That","Which","Who"], answer:"What", explanation:"[What 강조] '~하는 것'이라는 뜻의 관계대명사 What이 주어로 쓰였습니다. (The thing that makes...)" },
-  { id:2622, topic:"emphasis", en:"What I want to know ____ the truth.", ko:"내가 알고 싶은 것은 바로 진실이다.", options:["is","are","were","am"], answer:"is", explanation:"[What 강조] What 주어절은 단수 취급하므로 동사는 is를 씁니다." },
-  { id:2623, topic:"emphasis", en:"What he said ____ true.", ko:"그가 말했던 것은 사실이었다.", options:["was","is","were","are"], answer:"was", explanation:"[What 강조] What절 안의 동사가 과거(said)이므로 전체 시제도 과거(was)로 일치시킵니다." },
-  { id:2624, topic:"emphasis", en:"What she needs ____ some rest.", ko:"그녀에게 필요한 것은 휴식이다.", options:["is","are","were","have"], answer:"is", explanation:"[What 강조] needs가 현재형이고 단수 취급하므로 is." },
-  { id:2625, topic:"emphasis", en:"____ I did was (to) call him.", ko:"내가 한 일이라고는 그에게 전화한 것뿐이었다.", options:["What","That","How","Why"], answer:"What", explanation:"[What 강조] '내가 한 것은 ~였다'라는 전형적인 행위 강조 구문입니다." },
-  { id:2626, topic:"emphasis", en:"What caused the accident ____ a mistake.", ko:"그 사고를 유발한 것은 바로 실수였다.", options:["was","were","is","are"], answer:"was", explanation:"[What 강조] 사고가 났던 것(caused)이 과거이므로 was." },
-  { id:2627, topic:"emphasis", en:"What you need to do is ____ hard.", ko:"네가 해야 할 일은 열심히 공부하는 것이다.", options:["study","studied","studying","studies"], answer:"study", explanation:"[What 강조] 'What 주어 do is...' 구문에서는 보어 자리에 'to 동사원형'이나 그냥 '동사원형'을 씁니다." },
-  { id:2628, topic:"emphasis", en:"____ matters is not money but love.", ko:"중요한 것은 돈이 아니라 사랑이다.", options:["What","That","It","This"], answer:"What", explanation:"[What 강조] What matters = The thing that matters (중요한 것)." },
-  { id:2629, topic:"emphasis", en:"What impressed me most ____ his voice.", ko:"나에게 가장 깊은 인상을 준 것은 그의 목소리였다.", options:["was","is","were","are"], answer:"was", explanation:"[What 강조] impressed(과거) 시제 일치 -> was." },
-  { id:2630, topic:"emphasis", en:"What we are looking for ____ a solution.", ko:"우리가 찾고 있는 것은 해결책이다.", options:["is","are","were","been"], answer:"is", explanation:"[What 강조] 현재 진행 중인 상황(are looking for)이며 단수 취급 -> is." },
+  // 26. 강조 구문 (ID: 2501 ~ 2599)
+  { id:2501, topic:"emphasis", en:"It was ____ that broke the window.", ko:"창문을 깬 것은 바로 톰이었다.", options:["Tom","Tom is","Tom who","if Tom"], answer:"Tom", explanation:"It is/was [강조] that 구문." },
+  { id:2502, topic:"emphasis", en:"It is ____ that I want.", ko:"내가 원하는 것은 바로 사랑이다.", options:["love","loved","loves","loving"], answer:"love", explanation:"강조 대상(love)이 It is와 that 사이에 옴." },
+  { id:2503, topic:"emphasis", en:"____ I need is time.", ko:"내가 필요한 것은 시간이다.", options:["What","That","It","How"], answer:"What", explanation:"What I need = The thing that I need." },
+  { id:2504, topic:"emphasis", en:"It was yesterday ____ I met her.", ko:"내가 그녀를 만난 것은 바로 어제였다.", options:["that","what","which","who"], answer:"that", explanation:"시간 부사(yesterday) 강조." },
+  { id:2505, topic:"emphasis", en:"All you have to do ____ study.", ko:"네가 해야 할 일은 공부하는 것뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"All ~ is 구문 (단수 취급)." }
 ];
 
 /* ==========================================================================
