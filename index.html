@@ -92,6 +92,21 @@
     #timer-display { font-size: 1.5rem; font-weight: bold; color: #d9534f; float: right; }
     .score-board { font-size: 1.3rem; font-weight: bold; color: #0056b3; padding: 15px; background-color: #e9ecef; border-radius: 8px; margin-bottom: 20px; }
     .wrong-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+    
+    /* TTS 듣기 버튼 스타일 */
+    .tts-btn {
+      cursor: pointer;
+      border: 1px solid #ddd;
+      background: #f0f7ff;
+      font-size: 1.1rem;
+      padding: 2px 8px;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      transition: all 0.2s;
+    }
+    .tts-btn:hover { background: #d0e8ff; border-color: #90bfff; transform: scale(1.15); }
+    .tts-btn:active { transform: scale(0.95); }
   </style>
 </head>
 <body>
@@ -861,7 +876,7 @@
       <b style="color:#455a64; font-size:1.1em;">🧩 'by' 대신 쓰는 전치사 (관용구)</b>
       <p style="font-size:0.9rem; margin:5px 0 10px 0;">행위자가 아니라 <b>재료, 원인, 상태</b>를 나타낼 때 씁니다.</p>
       <ul style="margin:0; padding-left:20px; font-size:0.9rem; color:#333; line-height:1.8;">
-        [cite_start]<li>be interested <b>in</b> (~에 관심이 있다) [cite: 1779]</li>
+        <li>be interested <b>in</b> (~에 관심이 있다)</li>
         <li>be covered <b>with</b> (~로 덮여 있다)</li>
         <li>be filled <b>with</b> (~로 가득 차다)</li>
         <li>be surprised <b>at</b> (~에 놀라다)</li>
@@ -2463,38 +2478,38 @@ const grammarQuestions = [
 
  // 7. 5형식 (ID: 701 ~ 730) - [번호 정정: 600단위 -> 700단위]
   // --- [초급: 명사/형용사 보어 - 쉬운 어휘] (15문제) ---
-  { id:701, topic:"sentence5", en:"You ____ me happy.", ko:"너는 나를 행복하게 만든다.", options:["make","makes","making","made"], answer:"make", explanation:"[초급] 목적어(me)의 상태를 설명하는 형용사(happy) 보어." },
-  { id:702, topic:"sentence5", en:"We ____ him a genius.", ko:"우리는 그를 천재라고 부른다.", options:["call","called","calling","calls"], answer:"call", explanation:"[초급] 목적어(him) = 명사보어(a genius)." },
-  { id:703, topic:"sentence5", en:"The news ____ me sad.", ko:"그 소식은 나를 슬프게 만들었다.", options:["made","make","making","makes"], answer:"made", explanation:"[초급] make + 목적어 + 형용사(sad)." },
-  { id:704, topic:"sentence5", en:"He ____ the door open.", ko:"그는 문을 열어 두었다.", options:["kept","keep","keeping","keeps"], answer:"kept", explanation:"[초급] keep + 목적어 + 형용사(open: 열린 상태)." },
-  { id:705, topic:"sentence5", en:"She ____ her dog Max.", ko:"그녀는 그녀의 개를 Max라고 이름 지었다.", options:["named","name","naming","names"], answer:"named", explanation:"[초급] name + 목적어 + 명사(이름)." },
-  { id:706, topic:"sentence5", en:"Please ____ the room clean.", ko:"방을 깨끗하게 유지해 주세요.", options:["keep","keeps","keeping","kept"], answer:"keep", explanation:"[초급] keep + 목적어(room) + 형용사(clean)." },
-  { id:707, topic:"sentence5", en:"They ____ him captain.", ko:"그들은 그를 주장으로 선출했다.", options:["elected","elect","electing","elects"], answer:"elected", explanation:"[초급] elect + 목적어 + 명사(직책)." },
-  { id:708, topic:"sentence5", en:"I ____ the movie boring.", ko:"나는 그 영화가 지루하다는 것을 알았다(생각했다).", options:["found","find","finding","finds"], answer:"found", explanation:"[초급] find가 5형식으로 쓰이면 '알게 되다/생각하다'는 뜻." },
-  { id:709, topic:"sentence5", en:"Don't ____ me alone.", ko:"나를 혼자 두지 마.", options:["leave","leaves","leaving","left"], answer:"leave", explanation:"[초급] leave + 목적어 + 형용사(alone: 혼자인 상태)." },
-  { id:710, topic:"sentence5", en:"We ____ the baby Angel.", ko:"우리는 그 아기를 천사라고 부른다.", options:["call","calls","called","calling"], answer:"call", explanation:"[초급] call A B (A를 B라고 부르다)." },
-  { id:711, topic:"sentence5", en:"The sun ____ us warm.", ko:"태양은 우리를 따뜻하게 해준다(유지시킨다).", options:["keeps","keep","keeping","kept"], answer:"keeps", explanation:"[초급] 3인칭 단수 주어(The sun) + keeps." },
-  { id:712, topic:"sentence5", en:"I ____ it easy.", ko:"나는 그것이 쉽다고 생각한다.", options:["think","thinks","thinking","thought"], answer:"think", explanation:"[초급] think + 목적어 + 형용사(easy)." },
-  { id:713, topic:"sentence5", en:"He ____ his room blue.", ko:"그는 방을 파란색으로 칠했다.", options:["painted","paint","painting","paints"], answer:"painted", explanation:"[초급] paint + 목적어 + 형용사(색깔)." },
-  { id:714, topic:"sentence5", en:"She ____ her hair short.", ko:"그녀는 머리를 짧게 잘랐다.", options:["cut","cuts","cutting","to cut"], answer:"cut", explanation:"[초급] cut + 목적어 + 형용사(short)." },
-  { id:715, topic:"sentence5", en:"Music ____ me relax.", ko:"음악은 나를 편안하게 해준다(돕는다).", options:["helps","help","helping","helped"], answer:"helps", explanation:"[초급] help + 목적어 + 동사원형(relax)." },
+  { id:651, topic:"sentence5", en:"You ____ me happy.", ko:"너는 나를 행복하게 만든다.", options:["make","makes","making","made"], answer:"make", explanation:"[초급] 목적어(me)의 상태를 설명하는 형용사(happy) 보어." },
+  { id:652, topic:"sentence5", en:"We ____ him a genius.", ko:"우리는 그를 천재라고 부른다.", options:["call","called","calling","calls"], answer:"call", explanation:"[초급] 목적어(him) = 명사보어(a genius)." },
+  { id:653, topic:"sentence5", en:"The news ____ me sad.", ko:"그 소식은 나를 슬프게 만들었다.", options:["made","make","making","makes"], answer:"made", explanation:"[초급] make + 목적어 + 형용사(sad)." },
+  { id:654, topic:"sentence5", en:"He ____ the door open.", ko:"그는 문을 열어 두었다.", options:["kept","keep","keeping","keeps"], answer:"kept", explanation:"[초급] keep + 목적어 + 형용사(open: 열린 상태)." },
+  { id:655, topic:"sentence5", en:"She ____ her dog Max.", ko:"그녀는 그녀의 개를 Max라고 이름 지었다.", options:["named","name","naming","names"], answer:"named", explanation:"[초급] name + 목적어 + 명사(이름)." },
+  { id:656, topic:"sentence5", en:"Please ____ the room clean.", ko:"방을 깨끗하게 유지해 주세요.", options:["keep","keeps","keeping","kept"], answer:"keep", explanation:"[초급] keep + 목적어(room) + 형용사(clean)." },
+  { id:657, topic:"sentence5", en:"They ____ him captain.", ko:"그들은 그를 주장으로 선출했다.", options:["elected","elect","electing","elects"], answer:"elected", explanation:"[초급] elect + 목적어 + 명사(직책)." },
+  { id:658, topic:"sentence5", en:"I ____ the movie boring.", ko:"나는 그 영화가 지루하다는 것을 알았다(생각했다).", options:["found","find","finding","finds"], answer:"found", explanation:"[초급] find가 5형식으로 쓰이면 '알게 되다/생각하다'는 뜻." },
+  { id:659, topic:"sentence5", en:"Don't ____ me alone.", ko:"나를 혼자 두지 마.", options:["leave","leaves","leaving","left"], answer:"leave", explanation:"[초급] leave + 목적어 + 형용사(alone: 혼자인 상태)." },
+  { id:660, topic:"sentence5", en:"We ____ the baby Angel.", ko:"우리는 그 아기를 천사라고 부른다.", options:["call","calls","called","calling"], answer:"call", explanation:"[초급] call A B (A를 B라고 부르다)." },
+  { id:661, topic:"sentence5", en:"The sun ____ us warm.", ko:"태양은 우리를 따뜻하게 해준다(유지시킨다).", options:["keeps","keep","keeping","kept"], answer:"keeps", explanation:"[초급] 3인칭 단수 주어(The sun) + keeps." },
+  { id:662, topic:"sentence5", en:"I ____ it easy.", ko:"나는 그것이 쉽다고 생각한다.", options:["think","thinks","thinking","thought"], answer:"think", explanation:"[초급] think + 목적어 + 형용사(easy)." },
+  { id:663, topic:"sentence5", en:"He ____ his room blue.", ko:"그는 방을 파란색으로 칠했다.", options:["painted","paint","painting","paints"], answer:"painted", explanation:"[초급] paint + 목적어 + 형용사(색깔)." },
+  { id:664, topic:"sentence5", en:"She ____ her hair short.", ko:"그녀는 머리를 짧게 잘랐다.", options:["cut","cuts","cutting","to cut"], answer:"cut", explanation:"[초급] cut + 목적어 + 형용사(short)." },
+  { id:665, topic:"sentence5", en:"Music ____ me relax.", ko:"음악은 나를 편안하게 해준다(돕는다).", options:["helps","help","helping","helped"], answer:"helps", explanation:"[초급] help + 목적어 + 동사원형(relax)." },
 
   // --- [중급: 동작 보어 (to부정사/원형) - 시험 출제 포인트] (15문제) ---
-  { id:716, topic:"sentence5", en:"I want him ____ go.", ko:"나는 그가 가기를 원한다.", options:["to","for","of","at"], answer:"to", explanation:"[중급] want는 목적보어로 to부정사를 취합니다." },
-  { id:717, topic:"sentence5", en:"She told me ____ study hard.", ko:"그녀는 나에게 열심히 공부하라고 말했다.", options:["to","that","for","of"], answer:"to", explanation:"[중급] tell + 사람 + to부정사 (명령/지시)." },
-  { id:718, topic:"sentence5", en:"My mom made me ____ my room.", ko:"엄마는 나에게 방 청소를 시켰다.", options:["clean","to clean","cleaning","cleaned"], answer:"clean", explanation:"[중급] 사역동사 make + 목적어 + 동사원형." },
-  { id:719, topic:"sentence5", en:"I saw him ____ in the park.", ko:"나는 그가 공원에서 달리는 것을 보았다.", options:["running","run","to run","ran"], answer:"running", explanation:"[중급] 지각동사 see + 목적어 + 현재분사(-ing)는 진행 강조." },
-  { id:720, topic:"sentence5", en:"He asked me ____ help him.", ko:"그는 나에게 도와달라고 요청했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] ask + 사람 + to부정사 (요청하다)." },
-  { id:721, topic:"sentence5", en:"Let me ____ it.", ko:"내가 그걸 하게 해줘.", options:["do","to do","doing","done"], answer:"do", explanation:"[중급] 사역동사 Let + 목적어 + 동사원형." },
-  { id:722, topic:"sentence5", en:"I expect you ____ succeed.", ko:"나는 네가 성공하기를 기대한다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] expect + 목적어 + to부정사." },
-  { id:723, topic:"sentence5", en:"She allowed him ____ use her car.", ko:"그녀는 그가 차를 쓰는 것을 허락했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] allow + 목적어 + to부정사." },
-  { id:724, topic:"sentence5", en:"He advised me ____ stop smoking.", ko:"그는 나에게 담배를 끊으라고 충고했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] advise + 사람 + to부정사." },
-  { id:725, topic:"sentence5", en:"I heard someone ____ my name.", ko:"나는 누군가 내 이름을 부르는 것을 들었다.", options:["call","called","to call","calls"], answer:"call", explanation:"[중급] 지각동사 hear + 목적어 + 동사원형." },
-  { id:726, topic:"sentence5", en:"The teacher ordered us ____ be quiet.", ko:"선생님은 우리에게 조용히 하라고 명령했다.", options:["to","that","for","of"], answer:"to", explanation:"[중급] order + 사람 + to부정사." },
-  { id:727, topic:"sentence5", en:"I had my car ____.", ko:"나는 내 차를 수리했다(수리되게 시켰다).", options:["repaired","repair","repairing","to repair"], answer:"repaired", explanation:"[중급] 사역동사 have + 사물(car) + p.p.(수동)." },
-  { id:728, topic:"sentence5", en:"We encouraged him ____ try again.", ko:"우리는 그에게 다시 시도해보라고 격려했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] encourage + 목적어 + to부정사." },
-  { id:729, topic:"sentence5", en:"I saw the window ____.", ko:"나는 창문이 깨진 것을 보았다.", options:["broken","break","breaking","to break"], answer:"broken", explanation:"[중급] 지각동사라도 목적어가 사물(수동)이면 p.p." },
-  { id:730, topic:"sentence5", en:"She helped me ____ the box.", ko:"그녀는 내가 상자 옮기는 것을 도왔다.", options:["carry","carrying","carried","carries"], answer:"carry", explanation:"[중급] help는 동사원형 또는 to부정사 가능." },
+  { id:666, topic:"sentence5", en:"I want him ____ go.", ko:"나는 그가 가기를 원한다.", options:["to","for","of","at"], answer:"to", explanation:"[중급] want는 목적보어로 to부정사를 취합니다." },
+  { id:667, topic:"sentence5", en:"She told me ____ study hard.", ko:"그녀는 나에게 열심히 공부하라고 말했다.", options:["to","that","for","of"], answer:"to", explanation:"[중급] tell + 사람 + to부정사 (명령/지시)." },
+  { id:668, topic:"sentence5", en:"My mom made me ____ my room.", ko:"엄마는 나에게 방 청소를 시켰다.", options:["clean","to clean","cleaning","cleaned"], answer:"clean", explanation:"[중급] 사역동사 make + 목적어 + 동사원형." },
+  { id:669, topic:"sentence5", en:"I saw him ____ in the park.", ko:"나는 그가 공원에서 달리는 것을 보았다.", options:["running","run","to run","ran"], answer:"running", explanation:"[중급] 지각동사 see + 목적어 + 현재분사(-ing)는 진행 강조." },
+  { id:670, topic:"sentence5", en:"He asked me ____ help him.", ko:"그는 나에게 도와달라고 요청했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] ask + 사람 + to부정사 (요청하다)." },
+  { id:671, topic:"sentence5", en:"Let me ____ it.", ko:"내가 그걸 하게 해줘.", options:["do","to do","doing","done"], answer:"do", explanation:"[중급] 사역동사 Let + 목적어 + 동사원형." },
+  { id:672, topic:"sentence5", en:"I expect you ____ succeed.", ko:"나는 네가 성공하기를 기대한다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] expect + 목적어 + to부정사." },
+  { id:673, topic:"sentence5", en:"She allowed him ____ use her car.", ko:"그녀는 그가 차를 쓰는 것을 허락했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] allow + 목적어 + to부정사." },
+  { id:674, topic:"sentence5", en:"He advised me ____ stop smoking.", ko:"그는 나에게 담배를 끊으라고 충고했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] advise + 사람 + to부정사." },
+  { id:675, topic:"sentence5", en:"I heard someone ____ my name.", ko:"나는 누군가 내 이름을 부르는 것을 들었다.", options:["call","called","to call","calls"], answer:"call", explanation:"[중급] 지각동사 hear + 목적어 + 동사원형." },
+  { id:676, topic:"sentence5", en:"The teacher ordered us ____ be quiet.", ko:"선생님은 우리에게 조용히 하라고 명령했다.", options:["to","that","for","of"], answer:"to", explanation:"[중급] order + 사람 + to부정사." },
+  { id:677, topic:"sentence5", en:"I had my car ____.", ko:"나는 내 차를 수리했다(수리되게 시켰다).", options:["repaired","repair","repairing","to repair"], answer:"repaired", explanation:"[중급] 사역동사 have + 사물(car) + p.p.(수동)." },
+  { id:678, topic:"sentence5", en:"We encouraged him ____ try again.", ko:"우리는 그에게 다시 시도해보라고 격려했다.", options:["to","for","that","of"], answer:"to", explanation:"[중급] encourage + 목적어 + to부정사." },
+  { id:679, topic:"sentence5", en:"I saw the window ____.", ko:"나는 창문이 깨진 것을 보았다.", options:["broken","break","breaking","to break"], answer:"broken", explanation:"[중급] 지각동사라도 목적어가 사물(수동)이면 p.p." },
+  { id:680, topic:"sentence5", en:"She helped me ____ the box.", ko:"그녀는 내가 상자 옮기는 것을 도왔다.", options:["carry","carrying","carried","carries"], answer:"carry", explanation:"[중급] help는 동사원형 또는 to부정사 가능." },
 
   // 7. 기본 시제 (ID: 701 ~ 799)
   // --- [초급: 단순 시제 (현재/과거/미래)와 명확한 힌트] (15문제) ---
@@ -2736,6 +2751,31 @@ const grammarQuestions = [
   { id:1303, topic:"conjunction", en:"____ you are busy, I will go alone.", ko:"네가 바쁘기 때문에, 나 혼자 갈게.", options:["Because","Although","If","Before"], answer:"Because", explanation:"이유를 나타내는 접속사 Because." },
   { id:1304, topic:"conjunction", en:"Wait here ____ I come back.", ko:"내가 돌아올 때까지 기다려.", options:["until","if","because","so"], answer:"until", explanation:"시간의 한계(~까지)는 until." },
   { id:1305, topic:"conjunction", en:"Study hard, ____ you will pass.", ko:"열심히 공부해라, 그러면 합격할 것이다.", options:["and","or","but","so"], answer:"and", explanation:"명령문 + and (~해라, 그러면)." },
+  { id:1306, topic:"conjunction", en:"Hurry up, ____ you will be late.", ko:"서둘러라, 그렇지 않으면 늦을 것이다.", options:["or","and","but","so"], answer:"or", explanation:"명령문 + or (~해라, 그렇지 않으면)." },
+  { id:1307, topic:"conjunction", en:"I was tired, ____ I went to bed early.", ko:"나는 피곤해서 일찍 잠자리에 들었다.", options:["so","but","or","and"], answer:"so", explanation:"원인→결과를 연결하는 접속사 so." },
+  { id:1308, topic:"conjunction", en:"He is rich ____ not happy.", ko:"그는 부자이지만 행복하지는 않다.", options:["but","and","so","or"], answer:"but", explanation:"대조/반전을 나타내는 접속사 but." },
+  { id:1309, topic:"conjunction", en:"____ it was cold, she wore a T-shirt.", ko:"추웠지만 그녀는 티셔츠를 입었다.", options:["Although","Because","If","When"], answer:"Although", explanation:"양보(~에도 불구하고)를 나타내는 접속사 Although." },
+  { id:1310, topic:"conjunction", en:"I will stay home ____ it rains.", ko:"비가 오면 나는 집에 있을 것이다.", options:["if","because","although","so"], answer:"if", explanation:"조건(만약 ~라면)을 나타내는 접속사 if." },
+  { id:1311, topic:"conjunction", en:"____ I was sleeping, the phone rang.", ko:"내가 자고 있는 동안 전화가 울렸다.", options:["While","Because","If","So"], answer:"While", explanation:"동시 진행(~하는 동안)을 나타내는 접속사 While." },
+  { id:1312, topic:"conjunction", en:"Wash your hands ____ you eat.", ko:"먹기 전에 손을 씻어라.", options:["before","after","while","until"], answer:"before", explanation:"시간 순서(~하기 전에)를 나타내는 접속사 before." },
+  { id:1313, topic:"conjunction", en:"I went home ____ the class ended.", ko:"수업이 끝난 후에 나는 집에 갔다.", options:["after","before","while","until"], answer:"after", explanation:"시간 순서(~한 후에)를 나타내는 접속사 after." },
+  { id:1314, topic:"conjunction", en:"She likes tea ____ coffee.", ko:"그녀는 차와 커피를 좋아한다.", options:["and","but","or","so"], answer:"and", explanation:"병렬 연결(~와/과)을 나타내는 접속사 and." },
+  { id:1315, topic:"conjunction", en:"Do you want juice ____ milk?", ko:"주스를 원하니 아니면 우유를 원하니?", options:["or","and","but","so"], answer:"or", explanation:"선택(~또는)을 나타내는 접속사 or." },
+  { id:1316, topic:"conjunction", en:"He didn't come ____ he was sick.", ko:"그는 아파서 오지 않았다.", options:["because","although","if","so"], answer:"because", explanation:"이유(~때문에)를 나타내는 접속사 because." },
+  { id:1317, topic:"conjunction", en:"I will call you ____ I arrive.", ko:"도착하자마자 너에게 전화할게.", options:["as soon as","while","before","until"], answer:"as soon as", explanation:"즉시(~하자마자)를 나타내는 접속사 as soon as." },
+  { id:1318, topic:"conjunction", en:"You can't go out ____ you finish homework.", ko:"숙제를 끝내지 않으면 나갈 수 없다.", options:["unless","if","because","although"], answer:"unless", explanation:"unless = if ~ not (~하지 않는 한)." },
+  { id:1319, topic:"conjunction", en:"____ he is young, he is very wise.", ko:"비록 어리지만 그는 매우 현명하다.", options:["Though","Because","If","When"], answer:"Though", explanation:"양보(비록 ~이지만)를 나타내는 접속사 Though (=Although)." },
+  { id:1320, topic:"conjunction", en:"I have lived here ____ I was born.", ko:"나는 태어난 이후로 여기에 살았다.", options:["since","for","while","until"], answer:"since", explanation:"시간의 시작점(~이래로)을 나타내는 접속사 since." },
+  { id:1321, topic:"conjunction", en:"He studied hard ____ he could pass.", ko:"합격할 수 있도록 그는 열심히 공부했다.", options:["so that","because","although","unless"], answer:"so that", explanation:"목적(~하기 위해서)을 나타내는 접속사 so that." },
+  { id:1322, topic:"conjunction", en:"She talks ____ she knows everything.", ko:"그녀는 마치 모든 것을 아는 것처럼 말한다.", options:["as if","because","so that","unless"], answer:"as if", explanation:"가정적 비유(마치 ~인 것처럼)를 나타내는 접속사 as if." },
+  { id:1323, topic:"conjunction", en:"____ rich nor poor, he was content.", ko:"부자도 가난하지도 않았지만 만족했다.", options:["Neither","Either","Both","Not only"], answer:"Neither", explanation:"Neither A nor B (A도 B도 아닌)." },
+  { id:1324, topic:"conjunction", en:"____ you study or not, it's your choice.", ko:"공부하든 안 하든, 그건 네 선택이다.", options:["Whether","If","Because","Although"], answer:"Whether", explanation:"Whether A or B (~이든 아니든)." },
+  { id:1325, topic:"conjunction", en:"He is not only smart ____ also kind.", ko:"그는 똑똑할 뿐만 아니라 친절하기도 하다.", options:["but","and","or","so"], answer:"but", explanation:"not only A but also B (A뿐만 아니라 B도)." },
+  { id:1326, topic:"conjunction", en:"Both Tom ____ Jerry are friends.", ko:"톰과 제리 둘 다 친구이다.", options:["and","or","but","nor"], answer:"and", explanation:"Both A and B (A와 B 둘 다)." },
+  { id:1327, topic:"conjunction", en:"____ you leave, turn off the lights.", ko:"떠나기 전에 불을 꺼라.", options:["Before","After","While","Since"], answer:"Before", explanation:"시간(~하기 전에) 접속사 Before." },
+  { id:1328, topic:"conjunction", en:"I like him ____ he is honest.", ko:"나는 그가 정직하기 때문에 좋아한다.", options:["because","although","unless","if"], answer:"because", explanation:"이유를 나타내는 접속사 because." },
+  { id:1329, topic:"conjunction", en:"____ it rained heavily, the game continued.", ko:"비가 많이 왔음에도 불구하고 경기는 계속되었다.", options:["Even though","Because","So that","Unless"], answer:"Even though", explanation:"강한 양보(~에도 불구하고)를 나타내는 접속사 Even though." },
+  { id:1330, topic:"conjunction", en:"I will wait ____ she comes back.", ko:"그녀가 돌아올 때까지 기다리겠다.", options:["until","while","since","before"], answer:"until", explanation:"시간의 끝(~까지)을 나타내는 접속사 until." },
 
   // 13. 관계대명사 (ID: 1401 ~ 1440) - [번호 정정: 1300단위 -> 1400단위]
   
@@ -2909,7 +2949,45 @@ const grammarQuestions = [
   { id:1729, topic:"gerund", en:"Instead of ____ TV, read a book.", ko:"TV를 보는 대신에 책을 읽어라.", options:["watching","watch","to watch","watched"], answer:"watching", explanation:"[전치사] Instead of(~대신에) + 동명사." },
   { id:1730, topic:"gerund", en:"This book is worth ____.", ko:"이 책은 읽을 가치가 있다.", options:["reading","to read","read","reads"], answer:"reading", explanation:"[관용구] be worth -ing (~할 가치가 있다)." },
 
-  // 18. 명사 수식 분사 (ID: 1801 ~ 1899)// --- [초급: 명사 앞에서 꾸미기 & 기초 감정분사] (15문제) ---
+  // 18. 분사구문 (ID: 1751 ~ 1780)
+  
+  // --- [초급: 분사구문 기본 형태 익히기] (10문제) ---
+  { id:1751, topic:"participle", en:"____ the door, he entered the room.", ko:"문을 열고 그는 방에 들어갔다.", options:["Opening","Opened","Open","To open"], answer:"Opening", explanation:"[초급] 주어(he)가 직접 문을 여는 능동 동작이므로 현재분사 Opening." },
+  { id:1752, topic:"participle", en:"____ tired, she went to bed early.", ko:"피곤해서 그녀는 일찍 잠자리에 들었다.", options:["Being","Been","Be","Was"], answer:"Being", explanation:"[초급] Being tired = Because she was tired. 이유를 나타내는 분사구문." },
+  { id:1753, topic:"participle", en:"____ a book, he fell asleep.", ko:"책을 읽다가 그는 잠이 들었다.", options:["Reading","Read","Reads","To read"], answer:"Reading", explanation:"[초급] 주어(he)가 읽는 능동 행위 중 잠든 것이므로 현재분사." },
+  { id:1754, topic:"participle", en:"____ from the top, the city looked small.", ko:"꼭대기에서 보면, 도시가 작아 보였다.", options:["Seen","Seeing","See","To see"], answer:"Seen", explanation:"[초급] 도시(city)가 보여지는 것(수동)이므로 과거분사 Seen." },
+  { id:1755, topic:"participle", en:"____ in English, the letter was hard to read.", ko:"영어로 쓰여서, 그 편지는 읽기 어려웠다.", options:["Written","Writing","Write","Wrote"], answer:"Written", explanation:"[초급] 편지가 쓰여진 것(수동)이므로 과거분사 Written." },
+  { id:1756, topic:"participle", en:"____ his homework, he watched TV.", ko:"숙제를 끝내고 그는 TV를 봤다.", options:["Finishing","Finished","Finish","To finish"], answer:"Finishing", explanation:"[초급] 주어(he)가 직접 끝내는 능동 행위이므로 현재분사." },
+  { id:1757, topic:"participle", en:"____ along the street, I met an old friend.", ko:"길을 걷다가 나는 오랜 친구를 만났다.", options:["Walking","Walked","Walk","To walk"], answer:"Walking", explanation:"[초급] 주어(I)가 걷는 능동 행위이므로 현재분사." },
+  { id:1758, topic:"participle", en:"____ nothing to do, I went for a walk.", ko:"할 일이 없어서 나는 산책을 나갔다.", options:["Having","Had","Have","Has"], answer:"Having", explanation:"[초급] 이유를 나타내는 분사구문. Having nothing = Because I had nothing." },
+  { id:1759, topic:"participle", en:"____ to music, she studied.", ko:"음악을 들으면서 그녀는 공부했다.", options:["Listening","Listened","Listen","Listens"], answer:"Listening", explanation:"[초급] 동시 동작(~하면서)을 나타내는 분사구문." },
+  { id:1760, topic:"participle", en:"____ the news, she was shocked.", ko:"그 소식을 듣고 그녀는 충격을 받았다.", options:["Hearing","Heard","Hear","Hears"], answer:"Hearing", explanation:"[초급] 주어(she)가 듣는 능동 행위이므로 현재분사." },
+
+  // --- [중급: 완료 분사구문, Being 생략, 부정] (10문제) ---
+  { id:1761, topic:"participle", en:"____ finished lunch, I took a nap.", ko:"점심을 다 먹은 후에 나는 낮잠을 잤다.", options:["Having","Being","Have","Had"], answer:"Having", explanation:"[중급] 완료 분사구문: Having p.p. = After I had finished." },
+  { id:1762, topic:"participle", en:"____ studied all night, he passed the exam.", ko:"밤새 공부한 후에 그는 시험에 합격했다.", options:["Having","Being","Has","Had"], answer:"Having", explanation:"[중급] 분사구문의 시제가 주절보다 앞서면 Having p.p.를 씁니다." },
+  { id:1763, topic:"participle", en:"____ with the result, he smiled.", ko:"결과에 만족하여 그는 미소 지었다.", options:["Satisfied","Satisfying","Satisfy","Satisfies"], answer:"Satisfied", explanation:"[중급] Being satisfied → Being 생략. 주어가 만족을 '느낀(수동)' 것." },
+  { id:1764, topic:"participle", en:"____ in 1990, he is now 36.", ko:"1990년에 태어나서 그는 현재 36세이다.", options:["Born","Boring","Being born","Bear"], answer:"Born", explanation:"[중급] Being born in 1990 → Being 생략. 태어남은 수동(be born)." },
+  { id:1765, topic:"participle", en:"____ what to say, she kept silent.", ko:"무슨 말을 해야 할지 몰라서 그녀는 침묵했다.", options:["Not knowing","Knowing not","Not known","Don't knowing"], answer:"Not knowing", explanation:"[중급] 분사구문의 부정은 Not + 분사 형태입니다." },
+  { id:1766, topic:"participle", en:"____ been to Paris, I can guide you.", ko:"파리에 가본 적이 있어서 내가 안내해 줄 수 있다.", options:["Having","Being","Have","Had"], answer:"Having", explanation:"[중급] Having been to = 경험. 완료 분사구문." },
+  { id:1767, topic:"participle", en:"____ by everyone, she felt lonely.", ko:"모두에게 무시당해서 그녀는 외로웠다.", options:["Ignored","Ignoring","Ignore","Ignores"], answer:"Ignored", explanation:"[중급] Being ignored → Being 생략. 주어가 무시당한 것(수동)." },
+  { id:1768, topic:"participle", en:"____ not invited, I didn't go.", ko:"초대받지 못해서 나는 가지 않았다.", options:["Not being","Not been","Not having","Being not"], answer:"Not being", explanation:"[중급] 수동 분사구문의 부정: Not being p.p." },
+  { id:1769, topic:"participle", en:"____ never seen snow, she was excited.", ko:"눈을 본 적이 없어서 그녀는 신이 났다.", options:["Having","Being","Never","Had"], answer:"Having", explanation:"[중급] Having never seen: 완료 분사구문 + 부정어." },
+  { id:1770, topic:"participle", en:"____ left alone, the child began to cry.", ko:"혼자 남겨지자 그 아이는 울기 시작했다.", options:["Being","Having","Been","Was"], answer:"Being", explanation:"[중급] Being left alone: 수동 분사구문. 혼자 남겨진 것." },
+
+  // --- [고급: 독립 분사구문, with 분사, 관용표현] (10문제) ---
+  { id:1771, topic:"participle", en:"____ being Sunday, the shop was closed.", ko:"일요일이라서 가게가 문을 닫았다.", options:["It","There","This","That"], answer:"It", explanation:"[고급] 독립 분사구문: 분사의 주어와 주절의 주어가 다를 때 분사 앞에 주어를 남깁니다." },
+  { id:1772, topic:"participle", en:"The weather ____ fine, we went on a picnic.", ko:"날씨가 좋아서 우리는 소풍을 갔다.", options:["being","was","is","been"], answer:"being", explanation:"[고급] 독립 분사구문: The weather(분사 주어) ≠ we(주절 주어)." },
+  { id:1773, topic:"participle", en:"She sat with her eyes ____.", ko:"그녀는 눈을 감은 채 앉아 있었다.", options:["closed","closing","close","closes"], answer:"closed", explanation:"[고급] with + 목적어 + 과거분사: 눈이 감겨진(수동) 상태." },
+  { id:1774, topic:"participle", en:"He spoke with his arms ____.", ko:"그는 팔짱을 낀 채 말했다.", options:["folded","folding","fold","folds"], answer:"folded", explanation:"[고급] with + 목적어 + 과거분사: 팔이 접혀진(수동) 상태." },
+  { id:1775, topic:"participle", en:"She ran out with tears ____ down.", ko:"그녀는 눈물을 흘리며 뛰어나갔다.", options:["streaming","streamed","stream","streams"], answer:"streaming", explanation:"[고급] with + 목적어 + 현재분사: 눈물이 흐르는(능동) 상태." },
+  { id:1776, topic:"participle", en:"____ speaking of music, do you play guitar?", ko:"음악 얘기가 나온 김에, 기타 치니?", options:["Speaking","Spoken","Speak","To speak"], answer:"Speaking", explanation:"[고급] 관용적 분사구문: Speaking of (~에 대해 말하자면)." },
+  { id:1777, topic:"participle", en:"Strictly ____, he is not a teacher.", ko:"엄밀히 말하면, 그는 선생님이 아니다.", options:["speaking","spoken","speak","speaks"], answer:"speaking", explanation:"[고급] 관용적 분사구문: Strictly speaking (엄밀히 말하면)." },
+  { id:1778, topic:"participle", en:"____ into account his age, he did well.", ko:"그의 나이를 고려하면, 그는 잘 했다.", options:["Taking","Taken","Take","Takes"], answer:"Taking", explanation:"[고급] 관용적 분사구문: Taking ~ into account (~을 고려하면)." },
+  { id:1779, topic:"participle", en:"____ considered, the plan was good.", ko:"모든 것을 고려하면, 그 계획은 좋았다.", options:["All things","All thing","Every things","All"], answer:"All things", explanation:"[고급] 독립 분사구문 관용구: All things considered (모든 것을 고려하면)." },
+  { id:1780, topic:"participle", en:"He stood there, ____ at the sky.", ko:"그는 하늘을 바라보며 거기 서 있었다.", options:["looking","looked","look","looks"], answer:"looking", explanation:"[고급] 연속 동작/부대상황: 주어가 서 있으면서(and looked) 하늘을 보는 능동 행위." },
+
+  // 19. 명사 수식 분사 (ID: 1801 ~ 1899)// --- [초급: 명사 앞에서 꾸미기 & 기초 감정분사] (15문제) ---
   { id:1801, topic:"nounParticiple", en:"Look at the ____ baby.", ko:"자고 있는 아기를 봐라.", options:["sleeping","slept","sleep","sleeps"], answer:"sleeping", explanation:"[초급] 아기가 스스로(능동적으로) 자고 있으므로 현재분사(-ing)." },
   { id:1802, topic:"nounParticiple", en:"I have a ____ car.", ko:"나는 중고차(사용된 차)를 가지고 있다.", options:["used","using","use","uses"], answer:"used", explanation:"[초급] 차는 사람에 의해 '사용된(수동)' 것이므로 과거분사(p.p.)." },
   { id:1803, topic:"nounParticiple", en:"Watch out for the ____ dog.", ko:"짖고 있는 개를 조심해라.", options:["barking","barked","bark","barks"], answer:"barking", explanation:"[초급] 개가 직접 짖고 있는(능동/진행) 상태." },
@@ -2966,6 +3044,16 @@ const grammarQuestions = [
   { id:1918, topic:"comparison", en:"It is getting ____ and ____.", ko:"점점 더 어두워지고 있다.", options:["darker and darker","dark and dark","more dark","darkest"], answer:"darker and darker", explanation:"[중급] '비교급 + and + 비교급'은 '점점 더 ~해지다'라는 뜻입니다." },
   { id:1919, topic:"comparison", en:"The ____, the better.", ko:"빠르면 빠를수록 좋다.", options:["sooner","soon","soonest","more soon"], answer:"sooner", explanation:"[중급] 'The + 비교급, the + 비교급' (~할수록 더 ...하다) 구문입니다." },
   { id:1920, topic:"comparison", en:"This bag is ____ expensive than that one.", ko:"이 가방은 저것보다 덜 비싸다.", options:["less","little","least","more"], answer:"less", explanation:"[중급] 'less + 원급 + than'은 '~보다 덜 ...한(열등 비교)'입니다." },
+  { id:1921, topic:"comparison", en:"She is the ____ student in the class.", ko:"그녀는 반에서 가장 키가 큰 학생이다.", options:["tallest","taller","most tall","tall"], answer:"tallest", explanation:"[고급] 단음절 형용사 최상급: tall → tallest." },
+  { id:1922, topic:"comparison", en:"This is by far the ____ movie I've ever seen.", ko:"이것은 단연코 내가 본 최고의 영화이다.", options:["best","better","most good","good"], answer:"best", explanation:"[고급] by far + the 최상급: 단연코 가장 ~한." },
+  { id:1923, topic:"comparison", en:"The sooner, the ____.", ko:"빠르면 빠를수록 좋다.", options:["better","best","good","more good"], answer:"better", explanation:"[고급] the 비교급, the 비교급 (~할수록 더 …하다)." },
+  { id:1924, topic:"comparison", en:"He is ____ older than me.", ko:"그는 나보다 훨씬 더 나이가 많다.", options:["much","very","so","too"], answer:"much", explanation:"[고급] 비교급 강조: much/even/far/still/a lot + 비교급." },
+  { id:1925, topic:"comparison", en:"Seoul is one of the ____ cities in Asia.", ko:"서울은 아시아에서 가장 큰 도시 중 하나이다.", options:["largest","larger","large","most large"], answer:"largest", explanation:"[고급] one of the 최상급 + 복수명사." },
+  { id:1926, topic:"comparison", en:"No other boy is ____ than Tom in this school.", ko:"이 학교에서 톰보다 더 키가 큰 소년은 없다.", options:["taller","tallest","as tall","tall"], answer:"taller", explanation:"[고급] No other ~ 비교급 than = 최상급 의미." },
+  { id:1927, topic:"comparison", en:"He is not so much a singer ____ an actor.", ko:"그는 가수라기보다는 배우이다.", options:["as","than","like","but"], answer:"as", explanation:"[고급] not so much A as B (A라기보다는 B)." },
+  { id:1928, topic:"comparison", en:"She is ____ beautiful than her sister.", ko:"그녀는 언니보다 더 아름답다.", options:["more","most","much","very"], answer:"more", explanation:"[고급] 다음절 형용사 비교급: more + beautiful." },
+  { id:1929, topic:"comparison", en:"This is three times ____ large as that.", ko:"이것은 저것보다 세 배 크다.", options:["as","than","more","most"], answer:"as", explanation:"[고급] 배수 표현: 배수 + as 원급 as." },
+  { id:1930, topic:"comparison", en:"The problem was ____ difficult than I expected.", ko:"그 문제는 내가 예상했던 것보다 더 어려웠다.", options:["more","most","much","very"], answer:"more", explanation:"[고급] 다음절 형용사: more difficult than." },
 
   // 20. 사역동사 (ID: 2001 ~ 2099)
   
@@ -2999,7 +3087,7 @@ const grammarQuestions = [
   { id:2023, topic:"causative", en:"Let me ____ a look.", ko:"내가 한번 볼게.", options:["have","to have","having","had"], answer:"have", explanation:"[고급] 관용구: Let me have a look (= Let me see)." },
   { id:2024, topic:"causative", en:"Nothing can make me ____ my mind.", ko:"그 무엇도 내 마음을 바꾸게 할 수 없다.", options:["change","to change","changing","changed"], answer:"change", explanation:"[고급] 강한 의지 표현: make + change." },
   { id:2025, topic:"causative", en:"Let it ____.", ko:"그냥 내버려 둬 (겨울왕국 OST).", options:["go","to go","going","gone"], answer:"go", explanation:"[고급] 관용구: Let it go (잊어버려, 놔둬)." },
-  { id:2026, topic:"causative", en:"You really made my day ____.", ko:"덕분에 정말 즐거운 하루가 되었어요. (문법적 구조)", options:["(shine)","(complete)","","(happy)"], answer:"", explanation:"[고급] 'You made my day' 자체가 완벽한 문장이지만, 굳이 분석하자면 'You made my day (become) happy'의 의미." }, 
+  { id:2031, topic:"causative", en:"You really made my day ____.", ko:"덕분에 정말 즐거운 하루가 되었어요. (문법적 구조)", options:["(shine)","(complete)","","(happy)"], answer:"", explanation:"[고급] 'You made my day' 자체가 완벽한 문장이지만, 굳이 분석하자면 'You made my day (become) happy'의 의미." }, 
   // * 2026번은 객관식으로 만들기 애매하여, 더 명확한 문제로 대체합니다.
   { id:2026, topic:"causative", en:"This song makes me ____ to dance.", ko:"이 노래는 나를 춤추고 싶게 만든다.", options:["want","to want","wanting","wanted"], answer:"want", explanation:"[고급] make + me + want (동사원형)." },
 
@@ -3163,12 +3251,64 @@ const grammarQuestions = [
   { id:2502, topic:"emphasis", en:"It is ____ that I want.", ko:"내가 원하는 것은 바로 사랑이다.", options:["love","loved","loves","loving"], answer:"love", explanation:"강조 대상(love)이 It is와 that 사이에 옴." },
   { id:2503, topic:"emphasis", en:"____ I need is time.", ko:"내가 필요한 것은 시간이다.", options:["What","That","It","How"], answer:"What", explanation:"What I need = The thing that I need." },
   { id:2504, topic:"emphasis", en:"It was yesterday ____ I met her.", ko:"내가 그녀를 만난 것은 바로 어제였다.", options:["that","what","which","who"], answer:"that", explanation:"시간 부사(yesterday) 강조." },
-  { id:2505, topic:"emphasis", en:"All you have to do ____ study.", ko:"네가 해야 할 일은 공부하는 것뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"All ~ is 구문 (단수 취급)." }
+  { id:2505, topic:"emphasis", en:"All you have to do ____ study.", ko:"네가 해야 할 일은 공부하는 것뿐이다.", options:["is","are","were","have"], answer:"is", explanation:"All ~ is 구문 (단수 취급)." },
+  { id:2506, topic:"emphasis", en:"It was ____ that I saw at the park.", ko:"공원에서 내가 본 것은 바로 제인이었다.", options:["Jane","Jane who","Jane is","if Jane"], answer:"Jane", explanation:"It was [강조 대상] that 구문. 목적어(Jane)를 강조." },
+  { id:2507, topic:"emphasis", en:"It is ____ that matters most.", ko:"가장 중요한 것은 바로 건강이다.", options:["health","healthy","healthily","a health"], answer:"health", explanation:"It is [강조 대상] that 구문. 주어(health)를 강조." },
+  { id:2508, topic:"emphasis", en:"It was in Seoul ____ we first met.", ko:"우리가 처음 만난 곳은 바로 서울이었다.", options:["that","what","which","where"], answer:"that", explanation:"It was ~ that 강조구문에서 장소를 강조. (where 아님에 주의)" },
+  { id:2509, topic:"emphasis", en:"I ____ love you.", ko:"나는 정말로 너를 사랑해.", options:["do","am","did","was"], answer:"do", explanation:"do/does/did + 동사원형: 동사를 강조하는 표현." },
+  { id:2510, topic:"emphasis", en:"She ____ finish the project.", ko:"그녀는 정말로 그 프로젝트를 끝냈다.", options:["did","was","does","is"], answer:"did", explanation:"과거 동사 강조: did + 동사원형." },
+  { id:2511, topic:"emphasis", en:"He ____ work hard every day.", ko:"그는 정말로 매일 열심히 일한다.", options:["does","did","is","was"], answer:"does", explanation:"3인칭 단수 현재 동사 강조: does + 동사원형." },
+  { id:2512, topic:"emphasis", en:"____ she really wants is freedom.", ko:"그녀가 정말 원하는 것은 자유이다.", options:["What","That","It","How"], answer:"What", explanation:"What + S + V + is ~ (유사분열문/Wh-cleft)." },
+  { id:2513, topic:"emphasis", en:"____ surprised me was his attitude.", ko:"나를 놀라게 한 것은 그의 태도였다.", options:["What","That","It","Which"], answer:"What", explanation:"What S V = The thing that S V." },
+  { id:2514, topic:"emphasis", en:"____ he said was true.", ko:"그가 말한 것은 사실이었다.", options:["What","That","It","Which"], answer:"What", explanation:"What he said = The thing that he said." },
+  { id:2515, topic:"emphasis", en:"It was ____ who helped me.", ko:"나를 도와준 것은 바로 그녀였다.", options:["she","her","hers","herself"], answer:"she", explanation:"It was [주격] who/that 구문. 주어를 강조할 때 주격 사용." },
+  { id:2516, topic:"emphasis", en:"It is for this reason ____ I quit.", ko:"바로 이 이유 때문에 내가 그만두었다.", options:["that","what","which","why"], answer:"that", explanation:"It is ~ that 강조구문. 이유(for this reason) 강조." },
+  { id:2517, topic:"emphasis", en:"____ I want to say is simple.", ko:"내가 말하고 싶은 것은 간단하다.", options:["What","That","It","Which"], answer:"What", explanation:"What I want to say (내가 말하고 싶은 것) - Wh-cleft 구문." },
+  { id:2518, topic:"emphasis", en:"This is the very book ____ I wanted.", ko:"이것이야말로 내가 원했던 바로 그 책이다.", options:["that","what","which","who"], answer:"that", explanation:"the very(바로 그)로 강조된 선행사 뒤에는 that을 씁니다." },
+  { id:2519, topic:"emphasis", en:"It was not until yesterday ____ I knew.", ko:"어제서야 비로소 나는 알았다.", options:["that","when","what","which"], answer:"that", explanation:"It was not until ~ that: ~하고 나서야 비로소 (강조 구문)." },
+  { id:2520, topic:"emphasis", en:"____ I need is a little rest.", ko:"내가 필요한 것은 약간의 휴식이다.", options:["All","What","It","That"], answer:"All", explanation:"All (that) I need is ~: 내가 필요한 건 오직 ~뿐이다." },
+  { id:2521, topic:"emphasis", en:"It was because of the rain ____ the game was canceled.", ko:"비 때문에 바로 경기가 취소된 것이다.", options:["that","what","which","why"], answer:"that", explanation:"It was ~ that 강조구문. 이유구(because of the rain) 강조." },
+  { id:2522, topic:"emphasis", en:"Never ____ I seen such a beautiful place.", ko:"그렇게 아름다운 곳은 본 적이 없다.", options:["have","did","was","had"], answer:"have", explanation:"부정어(Never) 도치에 의한 강조: Never + have + S + p.p." },
+  { id:2523, topic:"emphasis", en:"Seldom ____ he late for school.", ko:"그는 좀처럼 학교에 늦지 않는다.", options:["is","does","has","did"], answer:"is", explanation:"부정어(Seldom) 도치: Seldom + be동사/조동사 + 주어." },
+  { id:2524, topic:"emphasis", en:"Only then ____ I realize the truth.", ko:"그제서야 나는 진실을 깨달았다.", options:["did","do","was","had"], answer:"did", explanation:"Only then + 도치: Only then did I realize." },
+  { id:2525, topic:"emphasis", en:"It was on Monday ____ she arrived.", ko:"그녀가 도착한 것은 바로 월요일이었다.", options:["that","when","what","which"], answer:"that", explanation:"It was ~ that 강조구문. 시간(on Monday)을 강조." },
+  { id:2526, topic:"emphasis", en:"Do ____ careful!", ko:"정말로 조심해라!", options:["be","is","was","been"], answer:"be", explanation:"명령문 강조: Do + 동사원형. Do be careful." },
+  { id:2527, topic:"emphasis", en:"Little ____ he know about the plan.", ko:"그는 그 계획에 대해 거의 몰랐다.", options:["did","does","was","is"], answer:"did", explanation:"부정어(Little) 도치: Little did he know." },
+  { id:2528, topic:"emphasis", en:"____ annoyed me was his laziness.", ko:"나를 짜증나게 한 것은 그의 게으름이었다.", options:["What","That","It","Which"], answer:"What", explanation:"What + S + V: ~한 것은 (Wh-cleft 강조)." },
+  { id:2529, topic:"emphasis", en:"It is ____ that broke the rule.", ko:"규칙을 어긴 사람은 바로 너다.", options:["you","your","yours","yourself"], answer:"you", explanation:"It is [강조 대상] that 구문. 주어(you) 강조." },
+  { id:2530, topic:"emphasis", en:"Not only ____ she smart, but she was kind.", ko:"그녀는 똑똑했을 뿐만 아니라 친절했다.", options:["was","did","is","does"], answer:"was", explanation:"Not only + 도치 + but (also) ~: ~뿐만 아니라." }
 ];
 
+// --- [데이터 정의: 주제 매핑] (중복 선언 제거됨 - 위 grammarQuestions 배열 바로 아래의 topicMap이 원본입니다) ---
+
+// --- [데이터 정의: 불규칙 동사 목록] (중복 선언 제거됨 - 위 verbs 배열이 원본입니다) ---
+
 /* ==========================================================================
-   2. 로직 함수들 (Logic Functions)
+   2. 로직 함수들 (Logic Functions) + TTS 기능 추가
    ========================================================================== */
+
+// --- [TTS 기능 함수] ---
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    // 기존에 읽고 있던 게 있다면 취소
+    window.speechSynthesis.cancel();
+
+    // 빈칸(____) 처리: 'blank'로 대체하여 자연스럽게 읽기
+    let cleanText = text.replace(/_{2,}/g, 'blank');
+    // HTML 태그 제거 (혹시 포함된 경우)
+    cleanText = cleanText.replace(/<[^>]*>/g, '');
+    
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'en-US'; // 영어 발음 설정
+    utterance.rate = 0.85;    // 속도 (학생용으로 약간 느리게)
+    utterance.pitch = 1;      // 음정
+    
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.warn("이 브라우저는 TTS를 지원하지 않습니다.");
+  }
+}
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -3180,22 +3320,26 @@ function showTopic(key) {
   const section = document.getElementById('topic-' + key);
   if (!section) return;
   
+  // 토글 기능
   if (section.style.display === 'block') {
     section.style.display = 'none';
     return;
   }
   
+  // 다른 섹션 닫기
   document.querySelectorAll('.topic-section').forEach(sec => {
     sec.style.display = 'none';
   });
   
   section.style.display = 'block';
   
+  // 동사 변화표가 아닌 경우 노트 불러오기
   if (key !== 'verbs') { 
     loadSavedExplanation(key);
   }
   
-  const isGrammarTopic = Object.keys(topicMap).includes(key) && key !== 'verbs';
+  // 문법 퀴즈인 경우 셀렉트 박스 동기화 및 퀴즈 리셋
+  const isGrammarTopic = (typeof topicMap !== 'undefined' && Object.keys(topicMap).includes(key)) && key !== 'verbs';
   if (isGrammarTopic) {
       const topicSelect = document.getElementById('grammarTopic');
       if(topicSelect) topicSelect.value = key;
@@ -3208,9 +3352,11 @@ function loadSavedExplanation(topicKey) {
   const savedText = localStorage.getItem('userExplanation-' + topicKey);
   const displayDiv = document.getElementById('note-display-' + topicKey);
   const inputArea = document.getElementById('note-input-' + topicKey);
+  
   if (inputArea) {
     inputArea.value = savedText || '';
   }
+  
   if (displayDiv) {
     if (savedText && savedText.trim() !== '') {
       displayDiv.innerHTML = '<b>[나만의 메모]</b><br>' + savedText.replace(/\n/g, '<br>');
@@ -3267,7 +3413,6 @@ function nextQuestion() {
     const topicSelect = document.getElementById('grammarTopic');
     const selectedTopic = topicSelect.value;
     
-    // 주제 변경 혹은 리스트가 비었을 때 새로 섞음
     const isTopicChanged = selectedTopic !== currentTopic;
     
     if (isTopicChanged || currentQuestionIndex >= shuffledQuestionList.length || shuffledQuestionList.length === 0) {
@@ -3289,20 +3434,28 @@ function nextQuestion() {
         shuffleArray(shuffledQuestionList);
         currentQuestionIndex = 0;
         
-        // 문제 풀이 시작 시 이전에 완료 메시지를 봤더라도 다시 시작
         document.getElementById('grammarQuizArea').style.display = 'block';
     } 
     
-    const nextQuestion = shuffledQuestionList[currentQuestionIndex];
-    displayGrammarQuestion(nextQuestion);
+    const nextQ = shuffledQuestionList[currentQuestionIndex];
+    displayGrammarQuestion(nextQ);
     currentQuestionIndex++;
 }
-
 function displayGrammarQuestion(question) {
   currentGrammarQuestion = question;
   document.getElementById('grammarQuizArea').style.display = 'block';
   const progressText = ` (${currentQuestionIndex} / ${shuffledQuestionList.length})`;
-  document.getElementById('grammarQuestionEn').textContent = "Q. " + question.en + progressText;
+
+  // [수정됨] 따옴표 충돌 방지를 위한 안전한 처리
+  const safeText = question.en.replace(/'/g, "\\'"); // 작은따옴표 이스케이프
+  
+  const qEnElement = document.getElementById('grammarQuestionEn');
+  // HTML 생성 시 onclick 내부에 안전한 텍스트 삽입
+  qEnElement.innerHTML = `Q. ${question.en} ${progressText} <button class="tts-btn" onclick="speak('${safeText}')">🔊</button>`;
+  
+  // 자동 읽기 (에러가 나면 이 줄을 지우세요)
+  speak(question.en);
+
   document.getElementById('grammarQuestionKo').textContent = '해석: ' + question.ko;
   document.getElementById('grammarQuizResult').textContent = "";
   document.getElementById('grammarExplanation').textContent = "";
@@ -3319,7 +3472,6 @@ function displayGrammarQuestion(question) {
     optionsDiv.appendChild(button);
   });
 }
-
 function checkGrammarQuiz(selectedOption) {
   const r = document.getElementById('grammarQuizResult');
   const e = document.getElementById('grammarExplanation');
@@ -3337,7 +3489,9 @@ function checkGrammarQuiz(selectedOption) {
   if (selectedOption === currentGrammarQuestion.answer) {
     r.textContent = "정답입니다! 🎉";
     r.style.color = "green";
-    // 정답 맞히면 오답 리스트에서 제거
+    // 정답 시 정답이 포함된 전체 문장 읽어주기
+    const fullSentence = currentGrammarQuestion.en.replace(/_{2,}/, currentGrammarQuestion.answer);
+    speak(fullSentence);
     const wrongIndex = wrongIds.indexOf(currentGrammarQuestion.id);
     if (wrongIndex > -1) {
       wrongIds.splice(wrongIndex, 1);
@@ -3346,13 +3500,13 @@ function checkGrammarQuiz(selectedOption) {
   } else {
     r.textContent = "오답입니다. 😢 정답: " + currentGrammarQuestion.answer;
     r.style.color = "red";
-    // 틀리면 오답 리스트에 추가
     if (!wrongIds.includes(currentGrammarQuestion.id)) {
       wrongIds.push(currentGrammarQuestion.id);
       updateWrongList();
     }
   }
-  e.innerHTML = "💡 <b>해설:</b> " + currentGrammarQuestion.explanation;
+  const fullCorrectSentence = currentGrammarQuestion.en.replace(/_{2,}/, currentGrammarQuestion.answer);
+  e.innerHTML = `💡 <b>해설:</b> ${currentGrammarQuestion.explanation}<br><span style="color:#007bff; font-size:0.95em;">✅ ${fullCorrectSentence}</span> <button class="tts-btn" onclick="speak('${fullCorrectSentence.replace(/'/g, "\\'")}')">🔊</button>`;
 }
 
 function updateWrongList() {
@@ -3379,10 +3533,17 @@ function retryWrongQuestion() {
 function displayWrongQuestion(question) {
     currentGrammarQuestion = question;
     document.getElementById('wrongQuizArea').style.display = 'block';
-    // topicMap을 통해 한글 주제명 표시
-    const topicName = topicMap[question.topic] || question.topic;
+    
+    const topicName = (typeof topicMap !== 'undefined') ? topicMap[question.topic] : question.topic;
     document.getElementById('wrongQuestionInfo').textContent = `주제: ${topicName}`;
-    document.getElementById('wrongQuestionEn').textContent = "Q. " + question.en;
+    
+    // [TTS 수정] 오답 노트에서도 듣기 버튼 추가
+    const qEnElement = document.getElementById('wrongQuestionEn');
+    qEnElement.innerHTML = `Q. ${question.en} <button class="tts-btn" onclick="speak('${question.en.replace(/'/g, "\\'")}')">🔊</button>`;
+    
+    // 자동 읽기
+    speak(question.en);
+
     document.getElementById('wrongQuestionKo').textContent = question.ko;
     document.getElementById('wrongResult').textContent = "";
     document.getElementById('wrongExplanation').textContent = "";
@@ -3416,6 +3577,9 @@ function checkWrongQuiz(selectedOption) {
     if (selectedOption === currentGrammarQuestion.answer) {
         r.textContent = "정답입니다! 복습 완료! 🎉";
         r.style.color = "green";
+        // 정답 시 전체 문장 읽어주기
+        const fullSentenceW = currentGrammarQuestion.en.replace(/_{2,}/, currentGrammarQuestion.answer);
+        speak(fullSentenceW);
         const idx = wrongIds.indexOf(currentGrammarQuestion.id);
         if (idx > -1) {
             wrongIds.splice(idx, 1);
@@ -3425,7 +3589,8 @@ function checkWrongQuiz(selectedOption) {
         r.textContent = "아직 헷갈리시나요? 다시 학습해보세요. 😢";
         r.style.color = "red";
     }
-    e.innerHTML = "💡 <b>해설:</b> " + currentGrammarQuestion.explanation;
+    const fullCorrectSentenceW = currentGrammarQuestion.en.replace(/_{2,}/, currentGrammarQuestion.answer);
+    e.innerHTML = `💡 <b>해설:</b> ${currentGrammarQuestion.explanation}<br><span style="color:#007bff; font-size:0.95em;">✅ ${fullCorrectSentenceW}</span> <button class="tts-btn" onclick="speak('${fullCorrectSentenceW.replace(/'/g, "\\'")}')">🔊</button>`;
 }
 
 function resetQuizState() {
@@ -3438,6 +3603,7 @@ function startVerbQuiz() {
     if (!verbs || verbs.length === 0) return;
     currentVerb = verbs[Math.floor(Math.random() * verbs.length)];
     const type = document.getElementById('verbQuizType').value;
+    
     document.getElementById('verbQuizArea').style.display = 'block';
     document.getElementById('verbQuizResult').textContent = '';
     document.getElementById('verbQuizAnswer').value = ""; 
@@ -3445,14 +3611,19 @@ function startVerbQuiz() {
     document.getElementById('verbQuizExplanation').textContent = "";
 
     let qText = "";
+    let speakWord = "";
     if (type === 'past') {
         qText = `[${currentVerb.base}] (${currentVerb.ko})의 과거형은?`;
+        speakWord = currentVerb.base;
     } else if (type === 'pp') {
         qText = `[${currentVerb.base}] (${currentVerb.ko})의 과거분사(p.p)형은?`;
+        speakWord = currentVerb.base;
     } else if (type === 'base') {
         qText = `과거: ${currentVerb.past} / p.p: ${currentVerb.pp} 의 원형은?`;
+        speakWord = currentVerb.past.split('/')[0];
     }
-    document.getElementById('verbQuizQuestion').textContent = qText;
+    document.getElementById('verbQuizQuestion').innerHTML = qText + ` <button class="tts-btn" onclick="speak('${speakWord}')">🔊</button>`;
+    speak(speakWord);
 }
 
 function checkVerbQuiz() {
@@ -3467,8 +3638,9 @@ function checkVerbQuiz() {
     else if (type === 'pp') correctAnswer = currentVerb.pp;
     else if (type === 'base') correctAnswer = currentVerb.base;
 
-    // 복수 정답(gotten/got) 처리
+    // 복수 정답 처리 (예: got/gotten)
     const answers = correctAnswer.split('/').map(s => s.trim());
+    
     if (answers.includes(userAnswer)) {
         resultElem.textContent = "정답입니다! ⭕";
         resultElem.style.color = "green";
@@ -3476,20 +3648,19 @@ function checkVerbQuiz() {
         resultElem.textContent = "오답입니다. ❌";
         resultElem.style.color = "red";
     }
-    explainElem.textContent = `정답: ${currentVerb.base} - ${currentVerb.past} - ${currentVerb.pp} (${currentVerb.ko})`;
+    explainElem.innerHTML = `정답: ${currentVerb.base} - ${currentVerb.past} - ${currentVerb.pp} (${currentVerb.ko}) <button class="tts-btn" onclick="speak('${currentVerb.base}, ${currentVerb.past.split('/')[0]}, ${currentVerb.pp.split('/')[0]}')">🔊</button>`;
 }
 
 /* ==========================================================================
-   3. 최종 평가 (Final Assessment) 로직
+   3. 최종 평가 (Final Assessment) 로직 + TTS 추가
    ========================================================================== */
 let assessmentQuestions = [];
 let assessmentIndex = 0;
 let assessmentScore = 0;
 let assessmentTimer = null;
-let timeLeft = 600; // 10분 (600초)
+let timeLeft = 600; // 10분
 let assessmentWrongList = [];
 
-// 1. 시험 시작
 function startFinalEvaluation() {
     const name = document.getElementById('st-name').value.trim();
     if (!name) {
@@ -3497,7 +3668,6 @@ function startFinalEvaluation() {
         return;
     }
     
-    // 전체 문제에서 30개 무작위 추출
     const shuffled = [...grammarQuestions];
     shuffleArray(shuffled);
     assessmentQuestions = shuffled.slice(0, 30);
@@ -3507,19 +3677,17 @@ function startFinalEvaluation() {
     assessmentWrongList = [];
     timeLeft = 600;
     
-    // 화면 전환
     document.getElementById('assessment-input-area').style.display = 'none';
     document.getElementById('assessment-area').style.display = 'block';
     document.getElementById('assessment-result').style.display = 'none';
     
-    // 타이머 시작
     updateTimerDisplay();
     if(assessmentTimer) clearInterval(assessmentTimer);
     assessmentTimer = setInterval(function() {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 0) {
-            finishAssessment(true); // 시간 초과 종료
+            finishAssessment(true);
         }
     }, 1000);
     
@@ -3537,13 +3705,20 @@ function updateTimerDisplay() {
 
 function showAssessmentQuestion() {
     if (assessmentIndex >= assessmentQuestions.length) {
-        finishAssessment(false); // 문제 다 품
+        finishAssessment(false);
         return;
     }
     
     const q = assessmentQuestions[assessmentIndex];
     document.getElementById('assessment-progress').textContent = `문제 ${assessmentIndex + 1} / 30`;
-    document.getElementById('assessment-q-en').textContent = "Q. " + q.en;
+    
+    // [TTS 수정] 평가 모드에서도 듣기 버튼 추가
+    const qEnElem = document.getElementById('assessment-q-en');
+    qEnElem.innerHTML = `Q. ${q.en} <button class="tts-btn" onclick="speak('${q.en.replace(/'/g, "\\'")}')">🔊</button>`;
+    
+    // 평가 모드에서는 자동 읽기가 방해될 수 있으므로 주석 처리함 (원하면 주석 해제)
+    // speak(q.en); 
+    
     document.getElementById('assessment-q-ko').textContent = q.ko;
     
     const optionsDiv = document.getElementById('assessment-options');
@@ -3571,7 +3746,6 @@ function checkAssessmentAnswer(selected) {
     showAssessmentQuestion();
 }
 
-// 2. 시험 종료 및 결과 처리
 function finishAssessment(isTimeOut) {
     clearInterval(assessmentTimer);
     
@@ -3580,19 +3754,17 @@ function finishAssessment(isTimeOut) {
     
     const dept = document.getElementById('st-dept').value;
     const name = document.getElementById('st-name').value;
-    const finalScore = Math.round((assessmentScore / 30) * 100); // 100점 만점 환산
+    const finalScore = Math.round((assessmentScore / 30) * 100);
     
     document.getElementById('result-student-info').textContent = `${dept} ${name} 님의 성적`;
     document.getElementById('result-score').textContent = finalScore;
     
-    // 기록 저장
     saveExamRecord(name, dept, finalScore);
     
     if (isTimeOut) {
         alert("시험 시간이 종료되었습니다! 답안이 자동 제출됩니다.");
     }
     
-    // 오답 리스트 출력
     const wrongListDiv = document.getElementById('assessment-wrong-list');
     wrongListDiv.innerHTML = "";
     
@@ -3602,11 +3774,10 @@ function finishAssessment(isTimeOut) {
         assessmentWrongList.forEach((item, idx) => {
             const div = document.createElement('div');
             div.className = "wrong-item";
-            // topicMap이 있으면 한글 주제명, 없으면 코드명 사용
             const topicName = (typeof topicMap !== 'undefined') ? topicMap[item.q.topic] : item.q.topic;
             
             div.innerHTML = `
-                <p><b>${idx+1}. [${topicName}]</b> ${item.q.en}</p>
+                <p><b>${idx+1}. [${topicName}]</b> ${item.q.en} <button class="tts-btn" onclick="speak('${item.q.en.replace(/'/g, "\\'")}')">🔊</button></p>
                 <p style="font-size:0.9rem; color:#555;">(${item.q.ko})</p>
                 <p>내가 쓴 답: <span style="color:red; text-decoration:line-through;">${item.myAns}</span> 
                    → 정답: <span style="color:green; font-weight:bold;">${item.q.answer}</span></p>
@@ -3632,7 +3803,7 @@ function saveExamRecord(name, dept, score) {
     let history = JSON.parse(localStorage.getItem('engExamHistory')) || [];
     history.push(newRecord);
     localStorage.setItem('engExamHistory', JSON.stringify(history));
-    loadExamHistory(); // 기록 갱신
+    loadExamHistory();
 }
 
 function loadExamHistory() {
@@ -3642,7 +3813,6 @@ function loadExamHistory() {
     tbody.innerHTML = "";
     let history = JSON.parse(localStorage.getItem('engExamHistory')) || [];
     
-    // 최신순 정렬
     history.reverse().forEach(record => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -3705,7 +3875,7 @@ window.onload = function() {
         verbCount.textContent = `(${verbs.length})`;
     }
 
-    // 4. 시험 기록 로드 (타임어택 기록)
+    // 4. 시험 기록 로드
     if(typeof loadExamHistory === 'function') {
         loadExamHistory();
     }
