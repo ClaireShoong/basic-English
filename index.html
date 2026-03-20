@@ -3,108 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>영어 문법 마스터 (Sparta Mode + Hint)</title>
+<title>영어 문법 마스터</title>
 <style>
-    /* 1. 폰트 & 감성 테마 */
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-    body {
-        font-family: 'Pretendard', sans-serif;
-        background-color: #fff9f0; /* 따뜻한 아이보리 배경 */
-        color: #555;
-        margin: 0; padding: 0;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-    /* 2. 메인 컨테이너 */
+    body { font-family: 'Pretendard', sans-serif; background-color: #fff9f0; color: #555; margin: 0; padding: 0; line-height: 1.6; overflow-x: hidden; }
     #container { max-width: 720px; margin: 0 auto; padding: 80px 20px 120px 20px; }
-    h1 { 
-        text-align: center; font-size: 2rem; color: #444; margin-bottom: 40px; 
-        font-weight: 800; letter-spacing: -1px;
-    }
-    /* 3. 메뉴바 & 버튼 */
-    #menu-toggle-btn {
-        position: fixed; top: 20px; left: 20px; z-index: 1001;
-        background-color: #444; color: #fff; border: none;
-        padding: 12px 24px; border-radius: 30px;
-        font-weight: 700; cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
+    h1 { text-align: center; font-size: 2rem; color: #444; margin-bottom: 40px; font-weight: 800; letter-spacing: -1px; }
+    #menu-toggle-btn { position: fixed; top: 20px; left: 20px; z-index: 1001; background-color: #444; color: #fff; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.2s; }
     #menu-toggle-btn:hover { transform: scale(1.05); background-color: #222; }
-    .topic-buttons {
-        position: fixed; top: 0; left: -320px; width: 300px; height: 100vh;
-        background: #fff; z-index: 1000; box-shadow: 5px 0 30px rgba(0,0,0,0.05);
-        display: flex; flex-direction: column; transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
+    .topic-buttons { position: fixed; top: 0; left: -320px; width: 300px; height: 100vh; background: #fff; z-index: 1000; box-shadow: 5px 0 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
     .topic-buttons.active { left: 0; }
-    
     .menu-header { padding: 80px 20px 20px; background: #fff4e6; border-bottom: 2px solid #ffec99; }
     .menu-list { flex: 1; overflow-y: auto; padding: 20px; }
-    .menu-list button {
-        width: 100%; text-align: left; padding: 14px 15px; margin-bottom: 8px;
-        border: none; background: transparent; border-radius: 15px;
-        font-weight: 600; color: #666; cursor: pointer; transition: 0.2s; font-size: 0.95rem;
-    }
+    .menu-list button { width: 100%; text-align: left; padding: 14px 15px; margin-bottom: 8px; border: none; background: transparent; border-radius: 15px; font-weight: 600; color: #666; cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
     .menu-list button:hover { background: #fff9db; color: #e67700; padding-left: 20px; }
-    
-    span[id^="count-"] { 
-        float: right; font-size: 0.8rem; font-weight: bold;
-        background: #fff3bf; color: #e67700;
-        padding: 3px 8px; border-radius: 12px;
-    }
-    /* 4. 카드 디자인 (공통) */
-    .topic-section, #verb-container, #quiz-container, #exam-container, #history-container {
-        background: #ffffff; padding: 40px;
-        border-radius: 35px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        margin-bottom: 30px;
-        border: 4px solid #fff;
-        animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        display: none; 
-        position: relative;
-    }
-    /* 5. 퀴즈/평가 버튼 스타일 */
-    .quiz-option, .exam-option {
-        display: block; width: 120%; text-align: left;
-        padding: 18px 24px; margin: 12px 0;
-        background: #fff; border: 3px solid #f1f3f5;
-        border-radius: 25px; font-size: 1.1rem; color: #555; font-weight: 700;
-        cursor: pointer; transition: all 0.2s;
-    }
-    .quiz-option:hover, .exam-option:hover {
-        border-color: #ffec99; background-color: #fffbeb; color: #f08c00;
-        transform: translateY(-3px) scale(1.01); 
-        box-shadow: 0 8px 20px rgba(255, 212, 59, 0.25);
-    }
+    span[id^="count-"] { float: right; font-size: 0.8rem; font-weight: bold; background: #fff3bf; color: #e67700; padding: 3px 8px; border-radius: 12px; }
+    .topic-section, #verb-container, #quiz-container, #exam-container, #history-container { background: #ffffff; padding: 40px; border-radius: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); margin-bottom: 30px; border: 4px solid #fff; animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; position: relative; }
+    .quiz-option, .exam-option { display: block; width: 100%; box-sizing: border-box; text-align: left; padding: 18px 24px; margin: 12px 0; background: #fff; border: 3px solid #f1f3f5; border-radius: 25px; font-size: 1.1rem; color: #555; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .quiz-option:hover, .exam-option:hover { border-color: #ffec99; background-color: #fffbeb; color: #f08c00; transform: translateY(-3px) scale(1.01); box-shadow: 0 8px 20px rgba(255, 212, 59, 0.25); }
     .quiz-option:disabled, .exam-option:disabled { cursor: default; transform: none; }
-    #score-display, #exam-score {
-        display: inline-block; background-color: #e6fcf5; color: #0ca678;
-        padding: 10px 30px; border-radius: 50px; font-weight: 800; font-size: 1.2rem;
-        margin-bottom: 25px; box-shadow: 0 4px 15px rgba(12, 166, 120, 0.15);
-    }
-    
-    .quiz-item p, #exam-question-text {
-        font-size: 1.4rem; font-weight: 800; color: #343a40; margin-bottom: 30px; text-align: left;
-        background: #f8f9fa; padding: 30px; border-radius: 25px; line-height: 1.6;
-        border-left: 8px solid #ffec99;
-    }
-    /* 6. 피드백 및 기타 */
+    #score-display, #exam-score { display: inline-block; background-color: #e6fcf5; color: #0ca678; padding: 10px 30px; border-radius: 50px; font-weight: 800; font-size: 1.2rem; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(12, 166, 120, 0.15); }
+    .quiz-item p, #exam-question-text { font-size: 1.4rem; font-weight: 800; color: #343a40; margin-bottom: 30px; text-align: left; background: #f8f9fa; padding: 30px; border-radius: 25px; line-height: 1.6; border-left: 8px solid #ffec99; }
     .feedback { margin-top: 25px; padding: 20px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 1.1rem; animation: slideDown 0.3s; }
     .feedback.correct { background: #d3f9d8; color: #2b8a3e; border: 2px solid #b2f2bb; }
     .feedback.wrong { background: #ffe3e3; color: #e03131; border: 2px solid #ffc9c9; }
-    
-    /* 힌트 박스 스타일 */
-    .hint-box {
-        margin-top: 15px; font-size: 1rem; color: #e67700; 
-        background: #fff3bf; padding: 12px 20px; border-radius: 15px; 
-        display: inline-block; font-weight: 600; box-shadow: 0 2px 5px rgba(230, 119, 0, 0.1);
-        animation: slideDown 0.3s;
-    }
-    .toggle-content-btn {
-        position: absolute; top: 30px; right: 30px; background: #f1f3f5; border: none;
-        width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: #868e96; font-size: 1.2rem;
-        transition: 0.2s;
-    }
+    .toggle-content-btn { position: absolute; top: 30px; right: 30px; background: #f1f3f5; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: #868e96; font-size: 1.2rem; transition: 0.2s; }
     .toggle-content-btn:hover { background-color: #e9ecef; color: #333; }
     #menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 900; display: none; backdrop-filter: blur(4px); }
     #menu-overlay.active { display: block; }
@@ -116,10 +39,7 @@
 <button id="menu-toggle-btn" onclick="toggleMenu()">☰ 목차 열기</button>
 <div id="menu-overlay" onclick="closeMenu()"></div>
 <div class="topic-buttons">
-    <div class="menu-header">
-        <h3 style="margin:0; color:#444;">📚 학습 메뉴</h3>
-        <p style="font-size:0.85rem; color:#888;">포기하지 말고 끝까지!</p>
-    </div>
+    <div class="menu-header"><h3 style="margin:0; color:#444;">📚 학습 메뉴</h3><p style="font-size:0.85rem; color:#888;">포기하지 말고 끝까지!</p></div>
     <div class="menu-list">
         <button onclick="toggleVerbTable()" style="color:#e67700;">1) 불규칙 동사표</button>
         <button onclick="showQuizSelection()" style="color:#e03131;">2) 연습 퀴즈 (Quiz)</button>
@@ -162,7 +82,6 @@
                 <button onclick="checkVerbQuiz()" style="padding:12px 25px; background:#444; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">확인</button>
             </div>
             <p id="verbQuizResult" style="min-height:24px; font-weight:bold;"></p>
-            
             <div style="margin-top:20px; border-top:1px dashed #e6c88e; padding-top:20px;">
                 <button onclick="startVerbQuiz()" style="background:#fab005; color:white; border:none; padding:10px 20px; border-radius:20px; font-weight:bold; cursor:pointer; font-size:1rem;">🎲 새 문제</button>
                 <select id="verbQuizType" style="padding:10px; border-radius:15px; border:1px solid #e6c88e; margin-left:10px; background:white;">
@@ -231,29 +150,24 @@
         <h3 style="margin-bottom:30px; color:#fa5252; border-bottom:3px solid #ff8787; display:inline-block;">🎓 Final Evaluation</h3>
         <div id="exam-start-screen" style="text-align:center; padding:50px 30px; background:#fff5f5; border-radius:30px; border:2px solid #ffe3e3;">
             <h2 style="color:#fa5252; margin-bottom:15px;">종합 실력 평가</h2>
-            <p style="color:#555; margin-bottom:40px; font-size:1.1rem;">
-                총 <b>20문제</b>가 무작위로 출제됩니다.<br>
-                당신의 진짜 실력을 확인해보세요!
-            </p>
+            <p style="color:#555; margin-bottom:40px; font-size:1.1rem;">총 <b>20문제</b>가 무작위로 출제됩니다.<br>당신의 진짜 실력을 확인해보세요!</p>
             <button onclick="startFinalExam()" style="padding:18px 50px; border-radius:50px; background:#fa5252; color:white; border:none; font-size:1.3rem; font-weight:800; cursor:pointer; box-shadow:0 8px 20px rgba(250,82,82,0.3); transition:transform 0.2s;">시험 시작 (Start)</button>
         </div>
         <div id="exam-progress-area" style="display:none;">
-            <div style="text-align:center; font-weight:800; color:#fa5252; margin-bottom:25px; font-size:1.2rem;">
-                Question <span id="exam-current-num">1</span>
-            </div>
+            <div style="text-align:center; font-weight:800; color:#fa5252; margin-bottom:25px; font-size:1.2rem;">Question <span id="exam-current-num">1</span></div>
             <div id="exam-question-box">
-                <h4 id="exam-question-text"></h4>
+                <h4 id="exam-question-text" style="font-size:1.3rem; font-weight:800; color:#343a40; background:#f8f9fa; padding:25px; border-radius:20px; border-left:8px solid #ff8787;"></h4>
                 <div id="exam-options-area"></div>
             </div>
         </div>
     </div>
     <div id="history-container">
-        <h3 style="margin-bottom:30px; color:#40c057; border-bottom:3px solid #69db7c; display:inline-block;">📊 My History</h3>
+        <h3 style="margin-bottom:30px; color:#40c057; border-bottom:3px solid #69db7c; display:inline-block;">📊 시험 결과</h3>
         <div id="exam-result-view" style="display:none; text-align:center;">
             <div id="exam-score"></div>
-            <p id="exam-message" style="font-size:1.3rem; font-weight:800; margin-bottom:30px; color:#555;"></p>
-            
-            <div id="retry-btn-area" style="margin-bottom:30px;"></div> <div style="display:flex; justify-content:center; gap:15px; margin-bottom:40px;">
+            <p id="exam-message" style="font-size:1.3rem; font-weight:800; margin-bottom:20px; color:#555;"></p>
+            <div id="retry-btn-area" style="margin-bottom:20px;"></div>
+            <div style="display:flex; justify-content:center; gap:15px; margin-bottom:40px;">
                 <button onclick="startFinalExam()" style="padding:12px 30px; background:#333; color:white; border:none; border-radius:30px; font-weight:bold; cursor:pointer;">새 시험 치기</button>
             </div>
             <div style="text-align:left; background:#f8f9fa; padding:30px; border-radius:25px;">
@@ -268,9 +182,8 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 <script>
-    // 1. 데이터 정의
     const verbs = [
         { base: "be", past: "was/were", pp: "been", ko: "있다, 이다" },
         { base: "become", past: "became", pp: "become", ko: "되다" },
@@ -309,10 +222,7 @@
         { base: "think", past: "thought", pp: "thought", ko: "생각하다" },
         { base: "write", past: "wrote", pp: "written", ko: "쓰다" }
     ];
- const grammarQuestions = [
-// 1. 불규칙 동사 (객관식) (ID: 101 ~ 130)
-  
-  // --- [초급: 기초 과거형 (A-B-B / A-B-C)] (20문제) ---
+    const grammarQuestions = [
   { id:101, topic:"verbs", en:"I ____ to school yesterday.", ko:"나는 어제 학교에 갔다.", options:["go","went","gone","going"], answer:"went", explanation:"[초급] go(가다)의 과거형은 went입니다." },
   { id:102, topic:"verbs", en:"She ____ a movie last night.", ko:"그녀는 지난밤에 영화를 보았다.", options:["see","saw","seen","seeing"], answer:"saw", explanation:"[초급] see(보다)의 과거형은 saw입니다." },
   { id:103, topic:"verbs", en:"We ____ pizza for lunch.", ko:"우리는 점심으로 피자를 먹었다.", options:["eat","ate","eaten","eating"], answer:"ate", explanation:"[초급] eat(먹다)의 과거형은 ate입니다." },
@@ -325,61 +235,58 @@
   { id:110, topic:"verbs", en:"She ____ me a present.", ko:"그녀는 나에게 선물을 주었다.", options:["give","gave","given","giving"], answer:"gave", explanation:"[초급] give(주다)의 과거형은 gave입니다." },
   { id:111, topic:"verbs", en:"I ____ my friend yesterday.", ko:"나는 어제 친구를 만났다.", options:["meet","met","meeting","meets"], answer:"met", explanation:"[초급] meet(만나다)의 과거형은 met입니다." },
   { id:112, topic:"verbs", en:"My dad ____ home early.", ko:"아빠는 일찍 집에 오셨다.", options:["come","came","coming","comes"], answer:"came", explanation:"[초급] come(오다)의 과거형은 came입니다." },
-  { id:113, topic:"verbs", en:"We ____ a good time.", ko:"우리는 좋은 시간을 보냈다(가졌다).", options:["have","had","has","having"], answer:"had", explanation:"[초급] have(가지다/보내다)의 과거형은 had입니다." },
+  { id:113, topic:"verbs", en:"We ____ a good time.", ko:"우리는 좋은 시간을 보냈다.", options:["have","had","has","having"], answer:"had", explanation:"[초급] have(가지다/보내다)의 과거형은 had입니다." },
   { id:114, topic:"verbs", en:"He ____ a letter.", ko:"그는 편지를 썼다.", options:["write","wrote","written","writing"], answer:"wrote", explanation:"[초급] write(쓰다)의 과거형은 wrote입니다." },
   { id:115, topic:"verbs", en:"The bird ____ away.", ko:"그 새는 멀리 날아갔다.", options:["fly","flew","flown","flying"], answer:"flew", explanation:"[초급] fly(날다)의 과거형은 flew입니다." },
-  { id:116, topic:"verbs", en:"I ____ the bus.", ko:"나는 버스를 탔다(잡았다).", options:["take","took","taken","taking"], answer:"took", explanation:"[초급] take(타다/가져가다)의 과거형은 took입니다." },
-  { id:117, topic:"verbs", en:"She ____ happy.", ko:"그녀는 행복해졌다(되었다).", options:["become","became","becoming","becomes"], answer:"became", explanation:"[초급] become(되다)의 과거형은 became입니다." },
+  { id:116, topic:"verbs", en:"I ____ the bus.", ko:"나는 버스를 탔다.", options:["take","took","taken","taking"], answer:"took", explanation:"[초급] take(타다/가져가다)의 과거형은 took입니다." },
+  { id:117, topic:"verbs", en:"She ____ happy.", ko:"그녀는 행복해졌다.", options:["become","became","becoming","becomes"], answer:"became", explanation:"[초급] become(되다)의 과거형은 became입니다." },
   { id:118, topic:"verbs", en:"He ____ fast.", ko:"그는 빨리 달렸다.", options:["run","ran","runned","running"], answer:"ran", explanation:"[초급] run(달리다)의 과거형은 ran입니다." },
   { id:119, topic:"verbs", en:"I ____ the answer.", ko:"나는 정답을 알았다.", options:["know","knew","known","knowing"], answer:"knew", explanation:"[초급] know(알다)의 과거형은 knew입니다." },
   { id:120, topic:"verbs", en:"We ____ in the pool.", ko:"우리는 수영장에서 수영했다.", options:["swim","swam","swum","swimming"], answer:"swam", explanation:"[초급] swim(수영하다)의 과거형은 swam입니다." },
-  // --- [중급: 과거분사(p.p.) 및 혼동하기 쉬운 변화] (10문제) ---
-  { id:121, topic:"verbs", en:"He has ____ to America.", ko:"그는 미국으로 가버렸다. (현재완료)", options:["go","went","gone","going"], answer:"gone", explanation:"[중급] have + p.p. 형태가 필요합니다. go의 과거분사는 gone입니다." },
+  { id:121, topic:"verbs", en:"He has ____ to America.", ko:"그는 미국으로 가버렸다.", options:["go","went","gone","going"], answer:"gone", explanation:"[중급] have + p.p. 형태. go의 과거분사는 gone입니다." },
   { id:122, topic:"verbs", en:"I have ____ that movie.", ko:"나는 저 영화를 본 적이 있다.", options:["see","saw","seen","seeing"], answer:"seen", explanation:"[중급] see의 과거분사는 seen입니다." },
-  { id:123, topic:"verbs", en:"The window was ____.", ko:"창문이 깨졌다. (수동태)", options:["break","broke","broken","breaking"], answer:"broken", explanation:"[중급] 수동태(be + p.p.)에는 과거분사가 필요합니다. break-broke-broken." },
-  { id:124, topic:"verbs", en:"English is ____ here.", ko:"여기서는 영어가 쓰인다(말해진다).", options:["speak","spoke","spoken","speaking"], answer:"spoken", explanation:"[중급] speak의 과거분사는 spoken입니다." },
+  { id:123, topic:"verbs", en:"The window was ____.", ko:"창문이 깨졌다. (수동태)", options:["break","broke","broken","breaking"], answer:"broken", explanation:"[중급] 수동태(be + p.p.)에는 과거분사. break-broke-broken." },
+  { id:124, topic:"verbs", en:"English is ____ here.", ko:"여기서는 영어가 쓰인다.", options:["speak","spoke","spoken","speaking"], answer:"spoken", explanation:"[중급] speak의 과거분사는 spoken입니다." },
   { id:125, topic:"verbs", en:"I have ____ my homework.", ko:"나는 숙제를 다 했다.", options:["do","did","done","doing"], answer:"done", explanation:"[중급] do의 과거분사는 done입니다." },
   { id:126, topic:"verbs", en:"She has ____ a letter.", ko:"그녀는 편지를 썼다.", options:["write","wrote","written","writing"], answer:"written", explanation:"[중급] write의 과거분사는 written입니다." },
-  { id:127, topic:"verbs", en:"The car was ____ by dad.", ko:"그 차는 아빠가 운전했다(운전되었다).", options:["drive","drove","driven","driving"], answer:"driven", explanation:"[중급] drive의 과거분사는 driven입니다." },
+  { id:127, topic:"verbs", en:"The car was ____ by dad.", ko:"그 차는 아빠가 운전했다.", options:["drive","drove","driven","driving"], answer:"driven", explanation:"[중급] drive의 과거분사는 driven입니다." },
   { id:128, topic:"verbs", en:"Have you ____ breakfast?", ko:"아침 먹었니?", options:["eat","ate","eaten","eating"], answer:"eaten", explanation:"[중급] eat의 과거분사는 eaten입니다." },
-  { id:129, topic:"verbs", en:"The race has ____.", ko:"경주가 시작되었다.", options:["begin","began","begun","beginning"], answer:"begun", explanation:"[중급] begin(시작하다)의 3단 변화는 begin-began-begun입니다." },
+  { id:129, topic:"verbs", en:"The race has ____.", ko:"경주가 시작되었다.", options:["begin","began","begun","beginning"], answer:"begun", explanation:"[중급] begin의 3단 변화는 begin-began-begun입니다." },
   { id:130, topic:"verbs", en:"I have ____ him for years.", ko:"나는 그를 오랫동안 알고 지냈다.", options:["know","knew","known","knowing"], answer:"known", explanation:"[중급] know의 과거분사는 known입니다." },
-  // 2. 인칭대명사 (ID: 201 ~ 230) - [번호 변경됨: 100단위 -> 200단위]
   { id:201, topic:"pronoun", en:"____ am a student.", ko:"나는 학생이다.", options:["I","My","Me","Mine"], answer:"I", explanation:"주어 자리에는 주격(I)이 옵니다." },
   { id:202, topic:"pronoun", en:"This is ____ book.", ko:"이것은 나의 책이다.", options:["my","I","me","mine"], answer:"my", explanation:"명사(book) 앞에는 소유격(my)이 옵니다." },
   { id:203, topic:"pronoun", en:"She likes ____.", ko:"그녀는 그를 좋아한다.", options:["him","he","his","himself"], answer:"him", explanation:"동사(likes) 뒤 목적어 자리에는 목적격(him)이 옵니다." },
   { id:204, topic:"pronoun", en:"The red car is ____.", ko:"그 빨간 차는 그녀의 것이다.", options:["hers","her","she","herself"], answer:"hers", explanation:"'~의 것'을 나타내는 소유대명사(hers)입니다." },
   { id:205, topic:"pronoun", en:"I love ____.", ko:"나는 나 자신을 사랑한다.", options:["myself","me","my","I"], answer:"myself", explanation:"주어(I)와 목적어가 같을 때는 재귀대명사(myself)를 씁니다." },
   { id:206, topic:"pronoun", en:"____ are my best friend.", ko:"너는 나의 가장 친한 친구다.", options:["You","Your","Yours","Yourself"], answer:"You", explanation:"주어 자리에는 주격(You)이 옵니다." },
-  { id:207, topic:"pronoun", en:"Look at ____.", ko:"저것을 봐라.", options:["it","its","it's","itself"], answer:"it", explanation:"전치사(at) 뒤에는 목적격(it)이 옵니다." },
+  { id:207, topic:"pronoun", en:"Look at ____.", ko:"저것을 봐라.", options:["it","its","itself","it's"], answer:"it", explanation:"전치사(at) 뒤에는 목적격(it)이 옵니다." },
   { id:208, topic:"pronoun", en:"Is this hat ____?", ko:"이 모자는 너의 것이니?", options:["yours","you","your","yourself"], answer:"yours", explanation:"'너의 것'이라는 소유대명사(yours)가 필요합니다." },
-  { id:209, topic:"pronoun", en:"We finished the work by ____.", ko:"우리는 그 일을 우리끼리(스스로) 끝냈다.", options:["ourselves","us","our","ours"], answer:"ourselves", explanation:"'by oneself'는 '스스로/홀로'라는 뜻의 관용구입니다." },
+  { id:209, topic:"pronoun", en:"We finished the work by ____.", ko:"우리는 그 일을 스스로 끝냈다.", options:["ourselves","us","our","ours"], answer:"ourselves", explanation:"'by oneself'는 '스스로/홀로'라는 뜻의 관용구입니다." },
   { id:210, topic:"pronoun", en:"____ father is a doctor.", ko:"그들의 아버지는 의사이다.", options:["Their","They","Them","Theirs"], answer:"Their", explanation:"명사(father) 앞에는 소유격(Their)이 옵니다." },
   { id:211, topic:"pronoun", en:"Please help ____.", ko:"우리를 도와주세요.", options:["us","we","our","ours"], answer:"us", explanation:"동사(help) 뒤에는 목적격(us)이 옵니다." },
-  { id:212, topic:"pronoun", en:"This bag is not mine, it is ____.", ko:"이 가방은 내 것이 아니라, 그의 것이다.", options:["his","him","he","himself"], answer:"his", explanation:"소유대명사 '그의 것'은 소유격과 형태가 같은 his입니다." },
+  { id:212, topic:"pronoun", en:"This bag is not mine, it is ____.", ko:"이 가방은 내 것이 아니라, 그의 것이다.", options:["his","him","he","himself"], answer:"his", explanation:"소유대명사 '그의 것'은 his입니다." },
   { id:213, topic:"pronoun", en:"____ goes to school by bus.", ko:"그는 버스를 타고 학교에 간다.", options:["He","Him","His","Himself"], answer:"He", explanation:"주어 자리에는 주격(He)이 옵니다." },
   { id:214, topic:"pronoun", en:"Did you see ____?", ko:"너는 그녀를 보았니?", options:["her","she","hers","herself"], answer:"her", explanation:"동사(see) 뒤에는 목적격(her)이 옵니다." },
   { id:215, topic:"pronoun", en:"____ name is Jenny.", ko:"그녀의 이름은 제니이다.", options:["Her","She","Hers","Herself"], answer:"Her", explanation:"명사(name) 앞에는 소유격(Her)이 옵니다." },
-  { id:216, topic:"pronoun", en:"He cut ____ while cooking.", ko:"그는 요리하다가 베였다(자신을 베었다).", options:["himself","him","his","he"], answer:"himself", explanation:"주어(He)가 자기 자신을 다치게 한 것이므로 재귀대명사를 씁니다." },
+  { id:216, topic:"pronoun", en:"He cut ____ while cooking.", ko:"그는 요리하다가 자신을 베었다.", options:["himself","him","his","he"], answer:"himself", explanation:"주어(He)가 자기 자신을 다치게 한 것이므로 재귀대명사를 씁니다." },
   { id:217, topic:"pronoun", en:"These books are ____.", ko:"이 책들은 우리의 것이다.", options:["ours","our","us","we"], answer:"ours", explanation:"'우리의 것'은 소유대명사 ours입니다." },
   { id:218, topic:"pronoun", en:"I met a friend of ____.", ko:"나는 내 친구 한 명을 만났다.", options:["mine","me","my","I"], answer:"mine", explanation:"이중 소유격 표현(a friend of mine)입니다." },
   { id:219, topic:"pronoun", en:"____ are playing soccer.", ko:"그들은 축구를 하고 있다.", options:["They","Them","Their","Theirs"], answer:"They", explanation:"주어 자리에는 주격(They)이 옵니다." },
   { id:220, topic:"pronoun", en:"Give ____ the money.", ko:"나에게 그 돈을 줘.", options:["me","I","my","mine"], answer:"me", explanation:"수여동사(Give)의 간접목적어 자리에는 목적격(me)이 옵니다." },
-  { id:221, topic:"pronoun", en:"Don't touch ____ tail.", ko:"그것(고양이 등)의 꼬리를 만지지 마.", options:["its","it","it's","itself"], answer:"its", explanation:"소유격 its에는 아포스트로피(')가 붙지 않습니다." },
+  { id:221, topic:"pronoun", en:"Don't touch ____ tail.", ko:"그것의 꼬리를 만지지 마.", options:["its","it","itself","it's"], answer:"its", explanation:"소유격 its에는 아포스트로피(')가 붙지 않습니다." },
   { id:222, topic:"pronoun", en:"She lives by ____.", ko:"그녀는 혼자 산다.", options:["herself","her","she","hers"], answer:"herself", explanation:"'by herself'는 '혼자서'라는 뜻입니다." },
-  { id:223, topic:"pronoun", en:"The decision is ____.", ko:"결정은 너의 것이다(네가 할 몫이다).", options:["yours","you","your","yourself"], answer:"yours", explanation:"보어 자리에 쓰인 소유대명사(yours)입니다." },
+  { id:223, topic:"pronoun", en:"The decision is ____.", ko:"결정은 너의 것이다.", options:["yours","you","your","yourself"], answer:"yours", explanation:"보어 자리에 쓰인 소유대명사(yours)입니다." },
   { id:224, topic:"pronoun", en:"Nobody helps ____.", ko:"아무도 그를 돕지 않는다.", options:["him","he","his","himself"], answer:"him", explanation:"동사(helps) 뒤의 목적격 him." },
   { id:225, topic:"pronoun", en:"____ is raining outside.", ko:"밖에 비가 온다.", options:["It","This","That","There"], answer:"It", explanation:"날씨를 나타내는 비인칭 주어 It." },
   { id:226, topic:"pronoun", en:"He and I are classmates. ____ are good friends.", ko:"그와 나는 반 친구다. 우리는 좋은 친구다.", options:["We","Us","Our","They"], answer:"We", explanation:"'그와 나'를 합치면 1인칭 복수(We)가 됩니다." },
   { id:227, topic:"pronoun", en:"Did you enjoy ____ at the party?", ko:"파티에서 즐거운 시간 보냈니?", options:["yourself","you","your","yours"], answer:"yourself", explanation:"'enjoy oneself'는 '즐겁게 보내다'라는 숙어입니다." },
   { id:228, topic:"pronoun", en:"That idea of ____ is brilliant.", ko:"그의 그 아이디어는 훌륭하다.", options:["his","him","he","himself"], answer:"his", explanation:"이중 소유격(of + 소유대명사)입니다." },
   { id:229, topic:"pronoun", en:"Is that bag ____?", ko:"저 가방은 그들의 것이니?", options:["theirs","their","them","they"], answer:"theirs", explanation:"소유대명사 theirs (~의 것)." },
-  { id:230, topic:"pronoun", en:"Let ____ go.", ko:"우리가(우리를) 가게 해줘.", options:["us","we","our","ours"], answer:"us", explanation:"Let's의 원래 형태는 Let us입니다. 목적격 us가 옵니다." },
-// 3. 수 일치 (ID: 301 ~ 330) - [번호 변경됨: 200단위 -> 300단위]
+  { id:230, topic:"pronoun", en:"Let ____ go.", ko:"우리가 가게 해줘.", options:["us","we","our","ours"], answer:"us", explanation:"Let's의 원래 형태는 Let us입니다. 목적격 us가 옵니다." },
   { id:301, topic:"agreement", en:"He ____ apples.", ko:"그는 사과를 좋아한다.", options:["likes","like","liking","to like"], answer:"likes", explanation:"주어가 3인칭 단수(He)이므로 동사에 -s를 붙입니다." },
   { id:302, topic:"agreement", en:"They ____ to school.", ko:"그들은 학교에 간다.", options:["go","goes","going","gone"], answer:"go", explanation:"주어가 복수(They)이므로 동사원형을 씁니다." },
-  { id:303, topic:"agreement", en:"Every student ____ a bag.", ko:"모든 학생은 가방을 가지고 있다.", options:["has","have","having","had"], answer:"has", explanation:"Every는 뜻은 '모든'이지만 문법적으로는 항상 단수 취급합니다." },
-  { id:304, topic:"agreement", en:"Tom and Jerry ____ friends.", ko:"톰과 제리는 친구이다.", options:["are","is","was","be"], answer:"are", explanation:"주어가 'A and B'로 연결되어 두 명(복수)이므로 are를 씁니다." },
+  { id:303, topic:"agreement", en:"Every student ____ a bag.", ko:"모든 학생은 가방을 가지고 있다.", options:["has","have","having","had"], answer:"has", explanation:"Every는 항상 단수 취급합니다." },
+  { id:304, topic:"agreement", en:"Tom and Jerry ____ friends.", ko:"톰과 제리는 친구이다.", options:["are","is","was","be"], answer:"are", explanation:"주어가 'A and B'로 두 명(복수)이므로 are를 씁니다." },
   { id:305, topic:"agreement", en:"Water ____ important.", ko:"물은 중요하다.", options:["is","are","were","be"], answer:"is", explanation:"셀 수 없는 명사(Water)는 단수 취급합니다." },
   { id:306, topic:"agreement", en:"My sister ____ very fast.", ko:"내 여동생은 매우 빨리 달린다.", options:["runs","run","running","ran"], answer:"runs", explanation:"3인칭 단수(My sister)는 동사에 -s를 붙입니다." },
   { id:307, topic:"agreement", en:"There ____ a book on the desk.", ko:"책상 위에 책 한 권이 있다.", options:["is","are","be","am"], answer:"is", explanation:"There 구문의 주어는 뒤에 나오는 명사(a book)입니다." },
@@ -389,48 +296,44 @@
   { id:311, topic:"agreement", en:"Each girl ____ a doll.", ko:"각각의 소녀는 인형을 가지고 있다.", options:["has","have","having","had"], answer:"has", explanation:"Each + 단수명사는 단수 취급합니다." },
   { id:312, topic:"agreement", en:"Bread and butter ____ my favorite.", ko:"버터 바른 빵은 내가 가장 좋아하는 것이다.", options:["is","are","were","have"], answer:"is", explanation:"Bread and butter는 '하나의 음식'으로 보아 단수 취급하는 예외입니다." },
   { id:313, topic:"agreement", en:"Physics ____ difficult.", ko:"물리학은 어렵다.", options:["is","are","were","have"], answer:"is", explanation:"학문 이름(Physics, Math 등)은 -s로 끝나도 단수 취급합니다." },
-  { id:314, topic:"agreement", en:"A number of students ____ here.", ko:"많은 학생들이 여기 있다.", options:["are","is","was","be"], answer:"are", explanation:"'A number of'는 '많은(Many)'이라는 뜻으로 복수 취급합니다." },
+  { id:314, topic:"agreement", en:"A number of students ____ here.", ko:"많은 학생들이 여기 있다.", options:["are","is","was","be"], answer:"are", explanation:"'A number of'는 '많은'이라는 뜻으로 복수 취급합니다." },
   { id:315, topic:"agreement", en:"The number of cars ____ increasing.", ko:"차의 수가 증가하고 있다.", options:["is","are","were","have"], answer:"is", explanation:"'The number of'는 '~의 수'라는 뜻으로 주어가 Number(단수)입니다." },
   { id:316, topic:"agreement", en:"Both he and I ____ happy.", ko:"그와 나 둘 다 행복하다.", options:["are","am","is","was"], answer:"are", explanation:"Both A and B는 무조건 복수 취급합니다." },
   { id:317, topic:"agreement", en:"Either you or he ____ right.", ko:"너 아니면 그가 옳다.", options:["is","are","am","were"], answer:"is", explanation:"Either A or B는 동사에 가까운 B(he)에 수 일치합니다." },
   { id:318, topic:"agreement", en:"Neither she nor I ____ wrong.", ko:"그녀도 나도 틀리지 않았다.", options:["am","is","are","were"], answer:"am", explanation:"Neither A nor B는 동사에 가까운 B(I)에 수 일치합니다." },
   { id:319, topic:"agreement", en:"Not only you but also she ____ kind.", ko:"너뿐만 아니라 그녀도 친절하다.", options:["is","are","am","were"], answer:"is", explanation:"B(she)에 수 일치합니다." },
   { id:320, topic:"agreement", en:"Ten years ____ a long time.", ko:"10년은 긴 시간이다.", options:["is","are","were","have"], answer:"is", explanation:"시간, 거리, 금액의 전체 덩어리는 단수 취급합니다." },
-  { id:321, topic:"agreement", en:"The rich ____ happy.", ko:"부자들은 행복하다.", options:["are","is","was","has"], answer:"are", explanation:"'The + 형용사'는 복수 보통명사(부자들) 취급합니다." },
+  { id:321, topic:"agreement", en:"The rich ____ happy.", ko:"부자들은 행복하다.", options:["are","is","was","has"], answer:"are", explanation:"'The + 형용사'는 복수 보통명사 취급합니다." },
   { id:322, topic:"agreement", en:"Half of the apples ____ rotten.", ko:"사과들 중 절반은 썩었다.", options:["are","is","was","has"], answer:"are", explanation:"부분 표현(Half of)은 뒤에 오는 명사(apples)에 수 일치합니다." },
-  { id:323, topic:"agreement", en:"Half of the apple ____ rotten.", ko:"사과(한 개)의 절반이 썩었다.", options:["is","are","were","have"], answer:"is", explanation:"뒤에 오는 명사(apple)가 단수이므로 단수 취급." },
+  { id:323, topic:"agreement", en:"Half of the apple ____ rotten.", ko:"사과 한 개의 절반이 썩었다.", options:["is","are","were","have"], answer:"is", explanation:"뒤에 오는 명사(apple)가 단수이므로 단수 취급." },
   { id:324, topic:"agreement", en:"She ____ not know the answer.", ko:"그녀는 답을 모른다.", options:["does","do","is","are"], answer:"does", explanation:"3인칭 단수의 부정문 조동사는 does입니다." },
-  { id:325, topic:"agreement", en:"My family ____ large.", ko:"나의 가족은 대가족이다.", options:["is","are","were","have"], answer:"is", explanation:"가족 전체를 하나의 덩어리(집합)로 볼 때는 단수 취급합니다." },
+  { id:325, topic:"agreement", en:"My family ____ large.", ko:"나의 가족은 대가족이다.", options:["is","are","were","have"], answer:"is", explanation:"가족 전체를 하나의 덩어리로 볼 때는 단수 취급합니다." },
   { id:326, topic:"agreement", en:"My family ____ all busy.", ko:"나의 가족 구성원들은 모두 바쁘다.", options:["are","is","was","has"], answer:"are", explanation:"가족 구성원 개개인을 가리킬 때는 복수 취급합니다." },
   { id:327, topic:"agreement", en:"Doing exercise ____ good.", ko:"운동을 하는 것은 좋다.", options:["is","are","were","have"], answer:"is", explanation:"동명사(Doing) 주어는 항상 단수 취급합니다." },
   { id:328, topic:"agreement", en:"To learn English ____ fun.", ko:"영어를 배우는 것은 재미있다.", options:["is","are","were","have"], answer:"is", explanation:"To부정사 주어는 항상 단수 취급합니다." },
   { id:329, topic:"agreement", en:"Fifty dollars ____ too expensive.", ko:"50달러는 너무 비싸다.", options:["is","are","were","have"], answer:"is", explanation:"금액(50달러)은 하나의 단위로 보아 단수 취급합니다." },
   { id:330, topic:"agreement", en:"Everybody ____ him.", ko:"모든 사람이 그를 좋아한다.", options:["likes","like","liking","to like"], answer:"likes", explanation:"-body, -one, -thing으로 끝나는 명사는 단수 취급합니다." },
- // 4. 1·2형식 (ID: 401 ~ 430) - [번호 정정: 300단위 -> 400단위]
-  
-  // --- [1형식: 주어 + 동사] (10문제) ---
-  { id:401, topic:"sentence12", en:"Birds ____ in the sky.", ko:"새들이 하늘을 난다.", options:["fly","flies","flying","flew"], answer:"fly", explanation:"1형식: 주어(Birds)가 복수이므로 원형 fly를 씁니다. (in the sky는 수식어)" },
+  { id:401, topic:"sentence12", en:"Birds ____ in the sky.", ko:"새들이 하늘을 난다.", options:["fly","flies","flying","flew"], answer:"fly", explanation:"1형식: 주어(Birds)가 복수이므로 원형 fly를 씁니다." },
   { id:402, topic:"sentence12", en:"The sun ____ in the east.", ko:"해는 동쪽에서 뜬다.", options:["rises","raise","rose","rising"], answer:"rises", explanation:"1형식: '뜨다(rise)'는 목적어가 필요 없는 자동사입니다." },
   { id:403, topic:"sentence12", en:"The accident ____ yesterday.", ko:"그 사고는 어제 일어났다.", options:["happened","happy","happening","happen"], answer:"happened", explanation:"1형식: happen(일어났다)은 대표적인 1형식 동사입니다." },
   { id:404, topic:"sentence12", en:"She ____ to school.", ko:"그녀는 학교에 걸어간다.", options:["walks","walk","walking","walker"], answer:"walks", explanation:"1형식: '걷다(walk)'는 목적어 없이 완전한 의미를 가집니다." },
-  { id:405, topic:"sentence12", en:"A baby ____ on the bed.", ko:"아기가 침대에서 자고 있다.", options:["is sleeping","sleeps","slept","sleep"], answer:"is sleeping", explanation:"1형식: '자다(sleep)'는 목적어가 필요 없습니다. (현재진행형)" },
+  { id:405, topic:"sentence12", en:"A baby ____ on the bed.", ko:"아기가 침대에서 자고 있다.", options:["is sleeping","sleeps","slept","sleep"], answer:"is sleeping", explanation:"1형식: '자다(sleep)'는 목적어가 필요 없습니다." },
   { id:406, topic:"sentence12", en:"Spring ____.", ko:"봄이 왔다.", options:["came","come","coming","comes"], answer:"came", explanation:"1형식: '오다(come)'는 주어의 동작만으로 충분합니다." },
   { id:407, topic:"sentence12", en:"He ____ fast.", ko:"그는 빨리 달린다.", options:["runs","run","running","ran"], answer:"runs", explanation:"1형식: fast는 부사이므로 문장 형식에 영향을 주지 않습니다." },
   { id:408, topic:"sentence12", en:"It ____ a lot last night.", ko:"어젯밤에 비가 많이 왔다.", options:["rained","rain","raining","rains"], answer:"rained", explanation:"1형식: 날씨를 나타내는 동사 rain." },
   { id:409, topic:"sentence12", en:"The train ____ at the station.", ko:"기차가 역에 도착했다.", options:["arrived","arrive","arriving","arrives"], answer:"arrived", explanation:"1형식: arrive(도착하다)는 자동사입니다." },
   { id:410, topic:"sentence12", en:"She ____ at me.", ko:"그녀가 나를 보고 미소 지었다.", options:["smiled","smile","smiling","smiles"], answer:"smiled", explanation:"1형식: smile(미소 짓다)은 목적어 없이 쓰입니다." },
-  // --- [2형식: 주어 + 동사 + 보어] (20문제) ---
   { id:411, topic:"sentence12", en:"She ____ happy.", ko:"그녀는 행복해 보인다.", options:["looks","look","looking","sees"], answer:"looks", explanation:"2형식: 감각동사 look 뒤에는 형용사 보어(happy)가 옵니다." },
   { id:412, topic:"sentence12", en:"He ____ a doctor.", ko:"그는 의사가 되었다.", options:["became","become","becoming","comes"], answer:"became", explanation:"2형식: become + 명사보어(신분 변화)." },
   { id:413, topic:"sentence12", en:"This soup ____ good.", ko:"이 수프는 맛이 좋다.", options:["tastes","taste","tasting","eats"], answer:"tastes", explanation:"2형식: 감각동사 taste + 형용사." },
   { id:414, topic:"sentence12", en:"I ____ a student.", ko:"나는 학생이다.", options:["am","is","are","be"], answer:"am", explanation:"2형식: be동사 + 명사보어(신분/정의)." },
   { id:415, topic:"sentence12", en:"You ____ busy.", ko:"너는 바빠 보인다.", options:["seem","seeming","seems","look like"], answer:"seem", explanation:"2형식: seem + 형용사 (~인 것 같다)." },
   { id:416, topic:"sentence12", en:"The music ____ great.", ko:"그 음악은 훌륭하게 들린다.", options:["sounds","sound","sounding","hears"], answer:"sounds", explanation:"2형식: 감각동사 sound + 형용사." },
-  { id:417, topic:"sentence12", en:"He ____ angry.", ko:"그는 화가 났다 (화난 상태가 되었다).", options:["got","get","getting","gets"], answer:"got", explanation:"2형식: get + 형용사 (~한 상태가 되다)." },
+  { id:417, topic:"sentence12", en:"He ____ angry.", ko:"그는 화가 났다.", options:["got","get","getting","gets"], answer:"got", explanation:"2형식: get + 형용사 (~한 상태가 되다)." },
   { id:418, topic:"sentence12", en:"This flower ____ sweet.", ko:"이 꽃은 달콤한 냄새가 난다.", options:["smells","smell","smelling","scents"], answer:"smells", explanation:"2형식: 감각동사 smell + 형용사." },
   { id:419, topic:"sentence12", en:"I ____ tired.", ko:"나는 피곤함을 느낀다.", options:["feel","fell","feeling","feels"], answer:"feel", explanation:"2형식: 감각동사 feel + 형용사." },
   { id:420, topic:"sentence12", en:"The weather ____ cold.", ko:"날씨가 추워졌다.", options:["turned","turn","turning","turns"], answer:"turned", explanation:"2형식: turn + 형용사 (상태 변화)." },
-  { id:421, topic:"sentence12", en:"Please ____ quiet.", ko:"조용히 해주세요 (조용한 상태 유지).", options:["keep","keeps","keeping","kept"], answer:"keep", explanation:"2형식: keep + 형용사 (~한 상태를 유지하다)." },
+  { id:421, topic:"sentence12", en:"Please ____ quiet.", ko:"조용히 해주세요.", options:["keep","keeps","keeping","kept"], answer:"keep", explanation:"2형식: keep + 형용사 (~한 상태를 유지하다)." },
   { id:422, topic:"sentence12", en:"The leaves ____ red.", ko:"나뭇잎들이 빨갛게 변했다.", options:["turned","turn","turning","turns"], answer:"turned", explanation:"2형식: turn + 색깔형용사." },
   { id:423, topic:"sentence12", en:"My dream ____ true.", ko:"나의 꿈이 실현되었다.", options:["came","come","coming","comes"], answer:"came", explanation:"2형식 관용구: come true (실현되다)." },
   { id:424, topic:"sentence12", en:"The milk ____ bad.", ko:"우유가 상했다.", options:["went","go","going","goes"], answer:"went", explanation:"2형식 관용구: go bad (상하다)." },
@@ -439,9 +342,7 @@
   { id:427, topic:"sentence12", en:"The room ____ warm.", ko:"방이 따뜻하게 느껴졌다.", options:["felt","feel","feeling","feels"], answer:"felt", explanation:"2형식: feel + 형용사." },
   { id:428, topic:"sentence12", en:"They ____ good friends.", ko:"그들은 좋은 친구가 되었다.", options:["became","become","becoming","comes"], answer:"became", explanation:"2형식: become + 명사." },
   { id:429, topic:"sentence12", en:"It ____ dark outside.", ko:"밖이 어두워지고 있다.", options:["is getting","gets","got","get"], answer:"is getting", explanation:"2형식: get + 형용사 (변화 진행 중)." },
-  { id:430, topic:"sentence12", en:"He ____ silent.", ko:"그는 침묵을 지켰다 (조용한 상태로 남았다).", options:["remained","remain","remaining","remains"], answer:"remained", explanation:"2형식: remain + 형용사 (~한 상태로 남다)." },
- // 5. 3형식 (ID: 501 ~ 530) - [번호 정정: 400단위 -> 500단위]
-  // --- [초급: 기초 어휘 및 단순 시제] (10문제) ---
+  { id:430, topic:"sentence12", en:"He ____ silent.", ko:"그는 침묵을 지켰다.", options:["remained","remain","remaining","remains"], answer:"remained", explanation:"2형식: remain + 형용사 (~한 상태로 남다)." },
   { id:501, topic:"sentence3", en:"I ____ pizza.", ko:"나는 피자를 좋아한다.", options:["like","likes","liking","am like"], answer:"like", explanation:"[초급] 주어(I)+동사(like)+목적어(pizza)의 가장 기본적인 3형식 문장입니다." },
   { id:502, topic:"sentence3", en:"She ____ a doll.", ko:"그녀는 인형을 원한다.", options:["wants","want","wanting","to want"], answer:"wants", explanation:"[초급] 주어가 3인칭 단수(She)이므로 동사에 -s를 붙입니다." },
   { id:503, topic:"sentence3", en:"We ____ soccer after school.", ko:"우리는 방과 후에 축구를 한다.", options:["play","plays","playing","played"], answer:"play", explanation:"[초급] '운동경기를 하다'는 타동사 play를 씁니다." },
@@ -452,31 +353,27 @@
   { id:508, topic:"sentence3", en:"You ____ milk every morning.", ko:"너는 매일 아침 우유를 마신다.", options:["drink","drinks","drinking","drank"], answer:"drink", explanation:"[초급] 매일 반복되는 습관은 현재시제(drink)를 씁니다." },
   { id:509, topic:"sentence3", en:"She ____ the window.", ko:"그녀는 창문을 열었다.", options:["opened","opens","opening","open"], answer:"opened", explanation:"[초급] 주어+동사+목적어(the window)." },
   { id:510, topic:"sentence3", en:"He ____ his car.", ko:"그는 그의 차를 세차한다.", options:["washes","wash","washing","washed"], answer:"washes", explanation:"[초급] 3인칭 단수 주어(He) + 동사(washes)." },
-  // --- [중급: 헷갈리는 타동사 (전치사 X)] (10문제) ---
-  { id:511, topic:"sentence3", en:"She ____ her father.", ko:"그녀는 그녀의 아버지를 닮았다.", options:["resembles","resembles with","resembling","resemble to"], answer:"resembles", explanation:"[중급] resemble은 '~와 닮다'지만 전치사(with)를 쓰지 않는 타동사입니다." },
-  { id:512, topic:"sentence3", en:"We ____ the problem.", ko:"우리는 그 문제에 대해 논의했다.", options:["discussed","discussed about","discussing","discuss"], answer:"discussed", explanation:"[중급] discuss는 '~에 대해 논의하다'지만 about을 쓰지 않는 완전타동사입니다." },
-  { id:513, topic:"sentence3", en:"He ____ the room.", ko:"그는 방에 들어갔다.", options:["entered","entered into","enter","entering"], answer:"entered", explanation:"[중급] '장소에 들어가다'는 enter 다음에 전치사(into)를 쓰지 않습니다." },
-  { id:514, topic:"sentence3", en:"Will you ____ me?", ko:"나와 결혼해 줄래?", options:["marry","marry with","marry to","marrying"], answer:"marry", explanation:"[중급] marry는 '~와 결혼하다'지만 with를 절대 쓰지 않는 타동사입니다." },
-  { id:515, topic:"sentence3", en:"They ____ the station.", ko:"그들은 역에 도착했다.", options:["reached","reached at","reached to","reach"], answer:"reached", explanation:"[중급] reach는 arrive at과 달리 전치사 없이 목적어를 바로 취합니다." },
+  { id:511, topic:"sentence3", en:"She ____ her father.", ko:"그녀는 그녀의 아버지를 닮았다.", options:["resembles","resembles with","resembling","resemble to"], answer:"resembles", explanation:"[중급] resemble은 전치사(with)를 쓰지 않는 타동사입니다." },
+  { id:512, topic:"sentence3", en:"We ____ the problem.", ko:"우리는 그 문제에 대해 논의했다.", options:["discussed","discussed about","discussing","discuss"], answer:"discussed", explanation:"[중급] discuss는 about을 쓰지 않는 완전타동사입니다." },
+  { id:513, topic:"sentence3", en:"He ____ the room.", ko:"그는 방에 들어갔다.", options:["entered","entered into","enter","entering"], answer:"entered", explanation:"[중급] enter 다음에 전치사(into)를 쓰지 않습니다." },
+  { id:514, topic:"sentence3", en:"Will you ____ me?", ko:"나와 결혼해 줄래?", options:["marry","marry with","marry to","marrying"], answer:"marry", explanation:"[중급] marry는 with를 절대 쓰지 않는 타동사입니다." },
+  { id:515, topic:"sentence3", en:"They ____ the station.", ko:"그들은 역에 도착했다.", options:["reached","reached at","reached to","reach"], answer:"reached", explanation:"[중급] reach는 전치사 없이 목적어를 바로 취합니다." },
   { id:516, topic:"sentence3", en:"Please ____ the question.", ko:"질문에 대답해 주세요.", options:["answer","answer to","answering","answered"], answer:"answer", explanation:"[중급] answer가 동사로 쓰일 때는 전치사 to 없이 목적어가 바로 옵니다." },
-  { id:517, topic:"sentence3", en:"I ____ the meeting.", ko:"나는 회의에 참석했다.", options:["attended","attended at","attended to","attending"], answer:"attended", explanation:"[중급] '참석하다'는 attend + 목적어입니다. (attend to는 '주의를 기울이다'임)" },
+  { id:517, topic:"sentence3", en:"I ____ the meeting.", ko:"나는 회의에 참석했다.", options:["attended","attended at","attended to","attending"], answer:"attended", explanation:"[중급] '참석하다'는 attend + 목적어입니다." },
   { id:518, topic:"sentence3", en:"She ____ the airport.", ko:"그녀는 공항을 떠났다.", options:["left","left from","leaving","leave"], answer:"left", explanation:"[중급] '장소를 떠나다'일 때 leave는 타동사로 전치사(from)를 쓰지 않습니다." },
   { id:519, topic:"sentence3", en:"You should ____ your parents.", ko:"너는 부모님께 순종해야 한다.", options:["obey","obey to","obey with","obeying"], answer:"obey", explanation:"[중급] obey(복종하다)는 전치사 to를 쓰지 않는 타동사입니다." },
-  { id:520, topic:"sentence3", en:"Does he ____ your name?", ko:"그가 너의 이름을 언급했니?", options:["mention","mention about","mentioning","mentioned"], answer:"mention", explanation:"[중급] mention(~에 대해 언급하다)은 about을 쓰지 않습니다." },
-  // --- [고급: 추상적/학술적 어휘] (10문제) ---
-  { id:521, topic:"sentence3", en:"The new law ____ everyone.", ko:"새로운 법은 모두에게 영향을 미친다.", options:["affects","affects to","effects","affecting"], answer:"affects", explanation:"[고급] affect(영향을 주다)는 타동사입니다. (effect는 주로 명사)" },
+  { id:520, topic:"sentence3", en:"Does he ____ your name?", ko:"그가 너의 이름을 언급했니?", options:["mention","mention about","mentioning","mentioned"], answer:"mention", explanation:"[중급] mention은 about을 쓰지 않습니다." },
+  { id:521, topic:"sentence3", en:"The new law ____ everyone.", ko:"새로운 법은 모두에게 영향을 미친다.", options:["affects","affects to","effects","affecting"], answer:"affects", explanation:"[고급] affect(영향을 주다)는 타동사입니다." },
   { id:522, topic:"sentence3", en:"Please ____ me via email.", ko:"이메일로 저에게 연락 주세요.", options:["contact","contact to","contact with","contacting"], answer:"contact", explanation:"[고급] contact(연락하다)는 타동사로 전치사 없이 목적어를 취합니다." },
   { id:523, topic:"sentence3", en:"We ____ your reply.", ko:"우리는 당신의 답변을 기다립니다.", options:["await","wait","await for","waiting"], answer:"await", explanation:"[고급] await는 타동사(= wait for)이므로 전치사 없이 쓰입니다." },
-  { id:524, topic:"sentence3", en:"He ____ a large family.", ko:"그는 대가족을 부양한다.", options:["supports","support","supporting","supported"], answer:"supports", explanation:"[고급] support(부양하다, 지지하다)는 목적어를 바로 취하는 3형식 동사입니다." },
-  { id:525, topic:"sentence3", en:"The storm ____ the village.", ko:"폭풍이 그 마을에 접근했다.", options:["approached","approached to","approaching","approach"], answer:"approached", explanation:"[고급] approach(접근하다)는 장소 목적어 앞에 전치사 to를 쓰지 않습니다." },
-  { id:526, topic:"sentence3", en:"Polar bears ____ the Arctic.", ko:"북극곰은 북극에 서식한다.", options:["inhabit","inhabit in","inhabiting","inhabits"], answer:"inhabit", explanation:"[고급] inhabit(거주하다)는 live in과 달리 전치사 없이 장소를 목적어로 취합니다." },
+  { id:524, topic:"sentence3", en:"He ____ a large family.", ko:"그는 대가족을 부양한다.", options:["supports","support","supporting","supported"], answer:"supports", explanation:"[고급] support(부양하다)는 목적어를 바로 취하는 3형식 동사입니다." },
+  { id:525, topic:"sentence3", en:"The storm ____ the village.", ko:"폭풍이 그 마을에 접근했다.", options:["approached","approached to","approaching","approach"], answer:"approached", explanation:"[고급] approach(접근하다)는 목적어 앞에 전치사 to를 쓰지 않습니다." },
+  { id:526, topic:"sentence3", en:"Polar bears ____ the Arctic.", ko:"북극곰은 북극에 서식한다.", options:["inhabit","inhabit in","inhabiting","inhabits"], answer:"inhabit", explanation:"[고급] inhabit(거주하다)는 전치사 없이 장소를 목적어로 취합니다." },
   { id:527, topic:"sentence3", en:"This book ____ the theory.", ko:"이 책은 그 이론을 설명한다.", options:["explains","explains about","explaining","explain"], answer:"explains", explanation:"[고급] explain은 목적어 앞에 about을 쓰지 않습니다." },
   { id:528, topic:"sentence3", en:"He ____ the speed limit.", ko:"그는 속도 제한을 초과했다.", options:["exceeded","exceeded at","exceeding","exceed"], answer:"exceeded", explanation:"[고급] exceed(초과하다)는 타동사입니다." },
-  { id:529, topic:"sentence3", en:"Lack of sleep ____ stress.", ko:"수면 부족은 스트레스를 유발한다.", options:["causes","cause","causing","caused"], answer:"causes", explanation:"[고급] cause(야기하다/유발하다) + 결과(목적어) 3형식 문장." },
+  { id:529, topic:"sentence3", en:"Lack of sleep ____ stress.", ko:"수면 부족은 스트레스를 유발한다.", options:["causes","cause","causing","caused"], answer:"causes", explanation:"[고급] cause(야기하다) + 결과(목적어) 3형식 문장." },
   { id:530, topic:"sentence3", en:"She ____ the difficulty.", ko:"그녀는 그 어려움을 극복했다.", options:["overcame","overcame with","overcoming","overcome"], answer:"overcame", explanation:"[고급] overcome(극복하다)은 타동사로 목적어를 바로 취합니다." },
-  // 6. 4형식 (ID: 601 ~ 630) - [번호 정정: 500단위 -> 600단위]
-  // --- [초급: 기본적인 '주다' 의미의 동사들] (10문제) ---
-  { id:601, topic:"sentence4", en:"He ____ me a gift.", ko:"그는 나에게 선물을 주었다.", options:["gave","give","given","giving"], answer:"gave", explanation:"[초급] '주다(give)'는 대표적인 4형식 동사입니다. (나에게 + 선물을)" },
+  { id:601, topic:"sentence4", en:"He ____ me a gift.", ko:"그는 나에게 선물을 주었다.", options:["gave","give","given","giving"], answer:"gave", explanation:"[초급] '주다(give)'는 대표적인 4형식 동사입니다." },
   { id:602, topic:"sentence4", en:"She ____ him a letter.", ko:"그녀는 그에게 편지를 보냈다.", options:["sent","send","sending","sends"], answer:"sent", explanation:"[초급] send + 사람 + 사물 = ~에게 ~를 보내다." },
   { id:603, topic:"sentence4", en:"My dad ____ me a car.", ko:"아빠가 나에게 차를 사주셨다.", options:["bought","buy","buying","buys"], answer:"bought", explanation:"[초급] buy + 사람 + 사물 = ~에게 ~를 사주다." },
   { id:604, topic:"sentence4", en:"Please ____ me the salt.", ko:"나에게 소금을 건네주세요.", options:["pass","passed","passing","passes"], answer:"pass", explanation:"[초급] pass + 사람 + 사물 = ~에게 ~를 건네주다." },
@@ -486,30 +383,27 @@
   { id:608, topic:"sentence4", en:"Grandma ____ me a story.", ko:"할머니께서 나에게 이야기를 해주셨다.", options:["told","said","spoke","talked"], answer:"told", explanation:"[초급] tell a story = 이야기를 해주다." },
   { id:609, topic:"sentence4", en:"I will ____ you some cookies.", ko:"내가 너에게 쿠키를 좀 만들어줄게.", options:["make","makes","making","made"], answer:"make", explanation:"[초급] make + 사람 + 사물 = ~에게 ~를 만들어주다." },
   { id:610, topic:"sentence4", en:"Give ____ the money.", ko:"그에게 그 돈을 줘라.", options:["him","he","his","himself"], answer:"him", explanation:"[초급] 간접목적어 자리에는 목적격(him)을 씁니다." },
-  // --- [중급: 어순 주의 및 다양한 수여동사] (10문제) ---
-  { id:611, topic:"sentence4", en:"Can you ____ me a favor?", ko:"내 부탁 하나만 들어줄래?", options:["ask","do","make","give"], answer:"do", explanation:"[중급] 관용구: ask a favor (부탁하다) 또는 do a favor (부탁을 들어주다). 문맥상 do me a favor가 적절." },
+  { id:611, topic:"sentence4", en:"Can you ____ me a favor?", ko:"내 부탁 하나만 들어줄래?", options:["do","ask","make","give"], answer:"do", explanation:"[중급] 관용구: do me a favor (부탁을 들어주다)." },
   { id:612, topic:"sentence4", en:"Can I ____ you a question?", ko:"질문 하나 해도 될까요?", options:["ask","do","say","tell"], answer:"ask", explanation:"[중급] ask + 사람 + 사물 = ~에게 ~를 묻다." },
   { id:613, topic:"sentence4", en:"He ____ me the newspaper.", ko:"그는 나에게 신문을 가져다주었다.", options:["brought","bring","bringing","brings"], answer:"brought", explanation:"[중급] bring + 사람 + 사물 = ~에게 ~를 가져다주다." },
   { id:614, topic:"sentence4", en:"She ____ him a warm dinner.", ko:"그녀는 그에게 따뜻한 저녁을 요리해 주었다.", options:["cooked","cook","cooking","cooks"], answer:"cooked", explanation:"[중급] cook + 사람 + 사물 = ~에게 ~를 요리해 주다." },
-  { id:615, topic:"sentence4", en:"They ____ him a job.", ko:"그들은 그에게 일자리를 제안했다.", options:["offered","suggested","explained","introduced"], answer:"offered", explanation:"[중급] offer는 4형식이 가능하지만, suggest/explain은 4형식이 불가한(3형식) 동사입니다." },
+  { id:615, topic:"sentence4", en:"They ____ him a job.", ko:"그들은 그에게 일자리를 제안했다.", options:["offered","suggested","explained","introduced"], answer:"offered", explanation:"[중급] offer는 4형식이 가능하지만, suggest/explain은 4형식이 불가합니다." },
   { id:616, topic:"sentence4", en:"Please ____ me a pen.", ko:"나에게 펜을 빌려줘.", options:["lend","borrow","rent","use"], answer:"lend", explanation:"[중급] lend(빌려주다)는 4형식 가능, borrow(빌리다)는 3형식만 가능." },
-  { id:617, topic:"sentence4", en:"I ____ you a Merry Christmas.", ko:"너에게 즐거운 크리스마스가 되길 빌어.", options:["wish","hope","want","expect"], answer:"wish", explanation:"[중급] 소망 동사 중 wish만이 'wish + 사람 + 행운' 형태의 4형식을 취합니다." },
+  { id:617, topic:"sentence4", en:"I ____ you a Merry Christmas.", ko:"너에게 즐거운 크리스마스가 되길 빌어.", options:["wish","hope","want","expect"], answer:"wish", explanation:"[중급] wish만이 'wish + 사람 + 행운' 형태의 4형식을 취합니다." },
   { id:618, topic:"sentence4", en:"Can you ____ me some water?", ko:"나에게 물 좀 갖다 줄래?", options:["get","got","getting","gets"], answer:"get", explanation:"[중급] get + 사람 + 사물 = ~에게 ~를 갖다 주다." },
   { id:619, topic:"sentence4", en:"He ____ me a nice tie.", ko:"그는 나에게 멋진 넥타이를 골라주었다.", options:["chose","choose","choosing","choice"], answer:"chose", explanation:"[중급] choose + 사람 + 사물 = ~에게 ~를 골라주다." },
-  { id:620, topic:"sentence4", en:"The teacher ____ us the answer.", ko:"선생님은 우리에게 정답을 주지 않았다(거부했다).", options:["refused","refuse","refusing","deny"], answer:"refused", explanation:"[중급] refuse/deny + 사람 + 사물 = ~에게 ~를 거절하다/주지 않다." },
-  // --- [고급: 특수 4형식 동사 및 3형식 전환 불가 동사] (10문제) ---
-  { id:621, topic:"sentence4", en:"This car ____ me a lot of money.", ko:"이 차는 나에게 많은 돈이 들게 했다(비쌌다).", options:["cost","spent","paid","used"], answer:"cost", explanation:"[고급] cost(비용이 들다)는 4형식 동사이며, 3형식으로 바꿀 수 없습니다." },
-  { id:622, topic:"sentence4", en:"I ____ you your success.", ko:"나는 너의 성공이 부럽다.", options:["envy","jealous","like","hate"], answer:"envy", explanation:"[고급] envy(부러워하다)는 'envy + 사람 + 대상' 형태의 4형식으로 씁니다." },
+  { id:620, topic:"sentence4", en:"The teacher ____ us the answer.", ko:"선생님은 우리에게 정답을 주지 않았다.", options:["refused","refuse","refusing","deny"], answer:"refused", explanation:"[중급] refuse/deny + 사람 + 사물 = ~에게 ~를 거절하다." },
+  { id:621, topic:"sentence4", en:"This car ____ me a lot of money.", ko:"이 차는 나에게 많은 돈이 들게 했다.", options:["cost","spent","paid","used"], answer:"cost", explanation:"[고급] cost(비용이 들다)는 4형식 동사이며, 3형식으로 바꿀 수 없습니다." },
+  { id:622, topic:"sentence4", en:"I ____ you your success.", ko:"나는 너의 성공이 부럽다.", options:["envy","jealous","like","hate"], answer:"envy", explanation:"[고급] envy는 'envy + 사람 + 대상' 형태의 4형식으로 씁니다." },
   { id:623, topic:"sentence4", en:"Please ____ me my sin.", ko:"제 죄를 용서해 주십시오.", options:["forgive","excuse","apologize","sorry"], answer:"forgive", explanation:"[고급] forgive + 사람 + 죄 = ~의 ~를 용서하다." },
-  { id:624, topic:"sentence4", en:"This machine ____ you time and energy.", ko:"이 기계는 너의 시간과 에너지를 아껴준다.", options:["saves","save","saving","saved"], answer:"saves", explanation:"[고급] save(덜어주다/절약해주다)는 'save + 사람 + 수고/시간' 형태로 쓰입니다." },
-  { id:625, topic:"sentence4", en:"I ____ him a promise.", ko:"나는 그에게 약속을 했다.", options:["made","did","gave","took"], answer:"made", explanation:"[고급] make a promise(약속하다)를 4형식으로 표현: make him a promise." },
-  { id:626, topic:"sentence4", en:"He ____ me the truth.", ko:"그는 나에게 사실을 말해주었다.", options:["told","said","explained","introduced"], answer:"told", explanation:"[고급] say, explain, introduce는 4형식 불가 동사(반드시 전치사 to 필요)이므로 답은 told." },
+  { id:624, topic:"sentence4", en:"This machine ____ you time and energy.", ko:"이 기계는 너의 시간과 에너지를 아껴준다.", options:["saves","save","saving","saved"], answer:"saves", explanation:"[고급] save(덜어주다)는 'save + 사람 + 수고/시간' 형태로 쓰입니다." },
+  { id:625, topic:"sentence4", en:"I ____ him a promise.", ko:"나는 그에게 약속을 했다.", options:["made","did","gave","took"], answer:"made", explanation:"[고급] make a promise를 4형식으로: make him a promise." },
+  { id:626, topic:"sentence4", en:"He ____ me the truth.", ko:"그는 나에게 사실을 말해주었다.", options:["told","said","explained","introduced"], answer:"told", explanation:"[고급] say, explain, introduce는 4형식 불가 동사이므로 답은 told." },
   { id:627, topic:"sentence4", en:"I found ____ a nice house.", ko:"나는 그에게 좋은 집을 찾아주었다.", options:["him","to him","for him","he"], answer:"him", explanation:"[고급] 4형식 어순: find + 간접목적어(him) + 직접목적어(a nice house)." },
-  { id:628, topic:"sentence4", en:"She wrote ____ a letter.", ko:"그녀는 나에게 편지를 썼다.", options:["me","to me","for me","my"], answer:"me", explanation:"[고급] 4형식 어순: wrote + 사람(me) + 사물(a letter). (to me를 쓰려면 'wrote a letter to me'여야 함)" },
+  { id:628, topic:"sentence4", en:"She wrote ____ a letter.", ko:"그녀는 나에게 편지를 썼다.", options:["me","to me","for me","my"], answer:"me", explanation:"[고급] 4형식 어순: wrote + 사람(me) + 사물(a letter)." },
   { id:629, topic:"sentence4", en:"The police ____ him a fine.", ko:"경찰은 그에게 벌금을 부과했다.", options:["charged","cost","priced","valued"], answer:"charged", explanation:"[고급] charge + 사람 + 금액 = ~에게 ~를 청구하다." },
-  { id:630, topic:"sentence4", en:"Promise ____ you won't tell.", ko:"말하지 않겠다고 나에게 약속해.", options:["me","to me","for me","with me"], answer:"me", explanation:"[고급] promise + 사람 + 대절(that...) = ~에게 ~를 약속하다." },
- // 7. 5형식 (ID: 701 ~ 730) - [번호 정정: 600단위 -> 700단위]
-  // --- [초급: 명사/형용사 보어 - 쉬운 어휘] (15문제) ---
+  { id:630, topic:"sentence4", en:"Promise ____ you won't tell.", ko:"말하지 않겠다고 나에게 약속해.", options:["me","to me","for me","with me"], answer:"me", explanation:"[고급] promise + 사람 + 내용(that...) = ~에게 ~를 약속하다." },
+
   { id:651, topic:"sentence5", en:"You ____ me happy.", ko:"너는 나를 행복하게 만든다.", options:["make","makes","making","made"], answer:"make", explanation:"[초급] 목적어(me)의 상태를 설명하는 형용사(happy) 보어." },
   { id:652, topic:"sentence5", en:"We ____ him a genius.", ko:"우리는 그를 천재라고 부른다.", options:["call","called","calling","calls"], answer:"call", explanation:"[초급] 목적어(him) = 명사보어(a genius)." },
   { id:653, topic:"sentence5", en:"The news ____ me sad.", ko:"그 소식은 나를 슬프게 만들었다.", options:["made","make","making","makes"], answer:"made", explanation:"[초급] make + 목적어 + 형용사(sad)." },
@@ -1044,8 +938,7 @@
   { id:2022, topic:"causative", en:"I'll have him ____ you back.", ko:"그에게 다시 전화하라고 할게요.", options:["call","to call","calling","called"], answer:"call", explanation:"[고급] 전화상의 정중한 표현: have + 사람 + call." },
   { id:2023, topic:"causative", en:"Let me ____ a look.", ko:"내가 한번 볼게.", options:["have","to have","having","had"], answer:"have", explanation:"[고급] 관용구: Let me have a look (= Let me see)." },
   { id:2024, topic:"causative", en:"Nothing can make me ____ my mind.", ko:"그 무엇도 내 마음을 바꾸게 할 수 없다.", options:["change","to change","changing","changed"], answer:"change", explanation:"[고급] 강한 의지 표현: make + change." },
-  { id:2025, topic:"causative", en:"Let it ____.", ko:"그냥 내버려 둬 (겨울왕국 OST).", options:["go","to go","going","gone"], answer:"go", explanation:"[고급] 관용구: Let it go (잊어버려, 놔둬)." },
-  { id:2031, topic:"causative", en:"You really made my day ____.", ko:"덕분에 정말 즐거운 하루가 되었어요. (문법적 구조)", options:["(shine)","(complete)","","(happy)"], answer:"", explanation:"[고급] 'You made my day' 자체가 완벽한 문장이지만, 굳이 분석하자면 'You made my day (become) happy'의 의미." }, 
+  { id:2025, topic:"causative", en:"Let it ____.", ko:"그냥 내버려 둬 (겨울왕국 OST).", options:["go","to go","going","gone"], answer:"go", explanation:"[고급] 관용구: Let it go (잊어버려, 놔둬)." }, 
   // * 2026번은 객관식으로 만들기 애매하여, 더 명확한 문제로 대체합니다.
   { id:2026, topic:"causative", en:"This song makes me ____ to dance.", ko:"이 노래는 나를 춤추고 싶게 만든다.", options:["want","to want","wanting","wanted"], answer:"want", explanation:"[고급] make + me + want (동사원형)." },
   { id:2027, topic:"causative", en:"He got his leg ____ in the game.", ko:"그는 경기 중에 다리가 부러졌다.", options:["broken","break","to break","breaking"], answer:"broken", explanation:"[고급] get + 신체부위 + p.p. (부상을 입다)." },
@@ -1223,6 +1116,7 @@
   { id:2529, topic:"emphasis", en:"It is ____ that broke the rule.", ko:"규칙을 어긴 사람은 바로 너다.", options:["you","your","yours","yourself"], answer:"you", explanation:"It is [강조 대상] that 구문. 주어(you) 강조." },
   { id:2530, topic:"emphasis", en:"Not only ____ she smart, but she was kind.", ko:"그녀는 똑똑했을 뿐만 아니라 친절했다.", options:["was","did","is","does"], answer:"was", explanation:"Not only + 도치 + but (also) ~: ~뿐만 아니라." }
 ];
+
   
        // 2. 초기화
     window.onload = function() {
@@ -1363,17 +1257,26 @@
         switchScreen('history-container'); 
         document.getElementById('exam-result-view').style.display = 'none';
         document.getElementById('history-list-view').style.display = 'block';
+        // Enter key for verb quiz input
+        const verbInput = document.getElementById('verbInput');
+        if (verbInput) {
+            verbInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') checkVerbAnswer();
+            });
+        }
     }
   // ==========================================
     // 4. 퀴즈 로직 (연습 퀴즈)
     // ==========================================
     let qList = [], qIndex = 0, qScore = 0;
-    let qWrongList = []; 
+    let qWrongList = [];
+        quizAllHistory = []; 
     let isFirstTry = true;
     let quizAllHistory = [];
 
     function startQuiz(topic) {
-        qWrongList = []; 
+        qWrongList = [];
+        quizAllHistory = []; 
         if(topic === 'random') qList = [...grammarQuestions].sort(()=>0.5-Math.random()).slice(0,10);
         else qList = grammarQuestions.filter(q => q.topic === topic);
         
@@ -1424,45 +1327,39 @@
     }
 
     function checkAnswer(selectedOpt) {
-        const q = qList[qIndex];
-        const feedbackEl = document.getElementById('quiz-feedback');
-        const optionsArea = document.getElementById('quiz-options-area'); 
-        
-        if (!feedbackEl || feedbackEl.innerHTML !== "") return;
-
-        const buttons = optionsArea.getElementsByTagName('button');
-        for (let btn of buttons) {
-            btn.disabled = true;
-            if (btn.innerText !== selectedOpt) {
-                btn.style.opacity = "0.5";
-            }
-        }
-
-        if (selectedOpt === q.answer) {
-            if (isFirstTry) qScore++;
-            feedbackEl.innerHTML = `🎉 정답입니다! <br><span style="font-size:0.9rem; color:#666;">${q.explanation || "설명이 없습니다."}</span>`;
-            feedbackEl.className = 'feedback correct';
-            feedbackEl.style.color = "#2b8a3e";
-            
-            if (isFirstTry) {
-                quizAllHistory.push({q: q.en, selected: selectedOpt, correct: q.answer, isCorrect: true, topic: q.topic});
-            }
+    const q = qList[qIndex];
+    const feedbackEl = document.getElementById('quiz-feedback');
+    const optionsArea = document.getElementById('quiz-options-area');
+    if (!feedbackEl || feedbackEl.innerHTML !== '') return;
+    const buttons = optionsArea.getElementsByTagName('button');
+    for (let btn of buttons) {
+        btn.disabled = true;
+        if (btn.innerText === q.answer) {
+            btn.style.borderColor = '#40c057';
+            btn.style.backgroundColor = '#d3f9d8';
+            btn.style.color = '#2b8a3e';
+        } else if (btn.innerText === selectedOpt && selectedOpt !== q.answer) {
+            btn.style.borderColor = '#e03131';
+            btn.style.backgroundColor = '#ffe3e3';
+            btn.style.color = '#e03131';
         } else {
-            const explanationText = q.explanation || "설명이 없습니다."; // 오타 수정
-            feedbackEl.innerHTML = `❌ 틀렸습니다. 정답은 <strong>${q.answer}</strong>입니다.<br>` +
-                                   `<span style="font-size:0.9rem; color:#666;">💡 해설: ${explanationText}</span>`;
-            feedbackEl.className = 'feedback wrong';
-            feedbackEl.style.color = "#e03131";
-
-            if (isFirstTry) {
-                qWrongList.push(q);
-                quizAllHistory.push({q: q.en, selected: selectedOpt, correct: q.answer, isCorrect: false, topic: q.topic});
-            }
+            btn.style.opacity = '0.5';
         }
-        
-        isFirstTry = false;
-        document.getElementById('next-quiz-btn').style.display = 'inline-block';
     }
+    const isCorrect = (selectedOpt === q.answer);
+    if (isCorrect && isFirstTry) qScore++;
+    if (!isCorrect && isFirstTry) qWrongList.push(q);
+    if (isFirstTry) quizAllHistory.push({q: q.en, selected: selectedOpt, correct: q.answer, isCorrect: isCorrect, topic: q.topic});
+    isFirstTry = false;
+    if (isCorrect) {
+        feedbackEl.innerHTML = '🎉 정답입니다! <br><span style="font-size:0.9rem; color:#2b8a3e;">' + (q.explanation || '') + '</span>';
+        feedbackEl.className = 'feedback correct';
+    } else {
+        feedbackEl.innerHTML = '❌ 틀렸습니다. 정답은 <strong>' + q.answer + '</strong>입니다.<br><span style="font-size:0.9rem; color:#666;">💡 해설: ' + (q.explanation || '') + '</span>';
+        feedbackEl.className = 'feedback wrong';
+    }
+    document.getElementById('next-quiz-btn').style.display = 'inline-block';
+}
 
     // (nextQuizQuestion, retry 함수들은 기존과 동일하므로 생략하거나 기존 것 유지)
     function nextQuizQuestion() {
@@ -1488,7 +1385,7 @@
     // 5. 최종 평가 & 오답 노트 (타이머 + 해설 수정)
     // ==========================================
     let eList = [], eIndex = 0, eScore = 0, eHistory = [], isRetry = false;
-    let allHistory = [];
+    
     let examInterval; 
     
     function startFinalExam() {
@@ -1562,25 +1459,37 @@
     }
     
     function finishExam() {
-        if(examInterval) clearInterval(examInterval);
-        switchScreen('history-container');
-        document.getElementById('exam-result-view').style.display = 'block';
-        document.getElementById('history-list-view').style.display = 'none';
-        
-        const finalScore = Math.round((eScore/eList.length)*100);
-        document.getElementById('exam-score').innerText = `최종 점수: ${finalScore}점 (${eScore}/${eList.length})`;
-        
-        const list = document.getElementById('exam-review-list');
-        list.innerHTML = '';
+    if(examInterval) clearInterval(examInterval);
+    switchScreen('history-container');
+    document.getElementById('exam-result-view').style.display = 'block';
+    document.getElementById('history-list-view').style.display = 'none';
+    const finalScore = Math.round((eScore/eList.length)*100);
+    document.getElementById('exam-score').innerText = '최종 점수: ' + finalScore + '점 (' + eScore + '/' + eList.length + ')';
+    let msg = '';
+    if (finalScore >= 90) msg = '🏆 최고! 완벽에 가깝습니다!';
+    else if (finalScore >= 70) msg = '👍 잘했어요! 조금만 더 노력하면!';
+    else if (finalScore >= 50) msg = '💪 괜찮아요! 다시 도전해보세요!';
+    else msg = '😢 더 열심히 공부해봐요!';
+    document.getElementById('exam-message').innerText = msg;
+    const wrongCount = eHistory.filter(h => !h.isCorrect).length;
+    const retryArea = document.getElementById('retry-btn-area');
+    if (wrongCount > 0) {
+        retryArea.innerHTML = '<button onclick="retryWrongQuestions()" style="padding:12px 30px; background:#fa5252; color:white; border:none; border-radius:30px; font-weight:bold; cursor:pointer;">🔄 틀린 문제 다시 풀기 (' + wrongCount + '개)</button>';
+    } else {
+        retryArea.innerHTML = '';
+    }
+    // populate review list
+    const reviewList = document.getElementById('exam-review-list');
+    if (reviewList) {
+        reviewList.innerHTML = '';
         eHistory.forEach((h, i) => {
             const div = document.createElement('div');
-            div.style.cssText = `padding:20px; margin-bottom:15px; background:white; border-radius:20px; border:3px solid ${h.isCorrect?'#b2f2bb':'#ffc9c9'}`;
-            div.innerHTML = `<div style="font-weight:bold;">Q${i+1}. ${h.q}</div>
-                             <div style="margin-top:8px;">내 답: <span style="color:${h.isCorrect?'#2b8a3e':'#e03131'}">${h.selected}</span> | 정답: ${h.correct}</div>
-                             <div style="margin-top:5px; font-size:0.85rem; color:#666;">💡 해설: ${h.explanation || "설명이 없습니다."}</div>`;
-            list.appendChild(div);
+            div.style.cssText = 'padding:10px; margin:5px 0; border-radius:8px; background:' + (h.isCorrect ? '#d3f9d8' : '#ffe3e3') + '; font-size:0.9rem;';
+            div.innerHTML = '<strong>' + (i+1) + '. ' + h.q + '</strong><br>선택: ' + h.selected + ' | 정답: ' + h.correct + ' ' + (h.isCorrect ? '✅' : '❌');
+            reviewList.appendChild(div);
         });
     }
+}
 
     // 6. 동사 퀴즈 (기존과 동일하되 인자 오류만 수정)
     let vCur = null;
@@ -1608,10 +1517,9 @@
             document.getElementById('verbQuizResult').innerHTML = `<span style='color:#e03131'>❌ 오답! 정답: ${cor}</span>`;
         }
     }
+
 </script>
 </body>
 </html>
-
-
 
 
