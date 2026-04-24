@@ -179,7 +179,25 @@
         /* 인쇄 기본 설정 */
         body { background:#fff !important; }
     }
+    /* ===== 도파민 애니메이션 ===== */
+    @keyframes dopa-bounce { 0%,100%{transform:translateY(0)} 30%{transform:translateY(-14px)} 60%{transform:translateY(-6px)} }
+    @keyframes dopa-shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-10px)} 40%{transform:translateX(10px)} 60%{transform:translateX(-8px)} 80%{transform:translateX(8px)} }
+    @keyframes dopa-pop { 0%{transform:scale(0) rotate(-10deg); opacity:0} 60%{transform:scale(1.25) rotate(5deg); opacity:1} 100%{transform:scale(1) rotate(0); opacity:1} }
+    @keyframes dopa-confetti { 0%{transform:translateY(-20px) rotate(0) scale(1); opacity:1} 100%{transform:translateY(100vh) rotate(720deg) scale(0.6); opacity:0} }
+    @keyframes dopa-glow { 0%,100%{box-shadow:0 0 0 0 rgba(255,212,59,0.7)} 50%{box-shadow:0 0 0 20px rgba(255,212,59,0)} }
+    @keyframes dopa-rainbow-text { 0%{color:#ff6b6b} 14%{color:#ff922b} 28%{color:#ffd43b} 42%{color:#51cf66} 57%{color:#4dabf7} 71%{color:#845ef7} 85%{color:#f783ac} 100%{color:#ff6b6b} }
+    @keyframes dopa-sparkle { 0%,100%{opacity:0; transform:scale(0) rotate(0)} 50%{opacity:1; transform:scale(1.2) rotate(180deg)} }
+    @keyframes dopa-slide-up { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+    @keyframes dopa-float-up { 0%{opacity:1; transform:translateY(0)} 100%{opacity:0; transform:translateY(-80px)} }
+    .dopa-correct-flash { animation: dopa-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .dopa-wrong-flash { animation: dopa-shake 0.5s; }
+    .dopa-praise { display:inline-block; font-size:1.6rem; font-weight:900; animation: dopa-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), dopa-rainbow-text 2s linear infinite; letter-spacing:-0.5px; }
+    .dopa-streak { display:inline-block; background:linear-gradient(135deg,#ff922b,#ff6b6b,#f783ac); color:white; padding:10px 22px; border-radius:30px; font-weight:900; margin-bottom:14px; animation: dopa-pop 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275), dopa-glow 1.5s ease-in-out infinite; font-size:1.05rem; box-shadow:0 6px 20px rgba(255,107,107,0.4); }
+    .dopa-score-pulse { animation: dopa-pop 0.4s; }
+    .dopa-float-plus { position:fixed; font-size:2rem; font-weight:900; color:#40c057; pointer-events:none; z-index:9999; animation: dopa-float-up 1.2s ease-out forwards; }
+    .dopa-sparkle-el { position:fixed; font-size:1.5rem; pointer-events:none; z-index:9999; animation: dopa-sparkle 1s ease-out forwards; }
 </style>
+
 </head>
 <body>
 <div id="welcome-screen">
@@ -264,6 +282,7 @@
         <button onclick="showTopic('syntax', 'gicho')">26. 구문분석 기초 <span id="count-syntax-gicho"></span></button>
     </div>
 </div>
+<button id="dopa-mute-btn" onclick="dopaToggleMute()" title="효과음 켜기/끄기" style="position:fixed; bottom:30px; right:170px; z-index:999; background:white; border:2px solid #ffd43b; width:52px; height:52px; border-radius:50%; cursor:pointer; font-size:1.3rem; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:all 0.2s;">🔊</button>
 <button id="print-fab" onclick="buildPrintBook(); window.print();">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
     PDF / 인쇄
@@ -2016,6 +2035,123 @@
 ];
 
   
+
+    // ==========================================
+    // 🎉 도파민 엔진
+    // ==========================================
+    const DOPA_PRAISE = [
+        '🎉 정답!', '✨ 대단해요!', '🌟 천재!', '🚀 완전 멋져!', '💯 최고!',
+        '🔥 불타는 실력!', '⚡ 번개같이!', '👑 문법 왕!', '🦄 환상적!',
+        '🏆 챔피언급!', '💫 반짝반짝!', '🎯 명중!', '🧠 똑똑해요!', '🌈 너무 잘해!'
+    ];
+    const DOPA_ENCOURAGE = [
+        '💪 괜찮아, 다시 해봐!', '🌱 실수는 성장의 씨앗!', '✏️ 한 번 더 도전!',
+        '🎈 포기하지 마!', '🌻 다음엔 맞출 거야!', '📚 공부의 기회!', '🔄 다시 보면 돼!'
+    ];
+    const DOPA_STREAK = {
+        3:  { icon:'🔥', msg:'3연속! 불타올라요!' },
+        5:  { icon:'⚡', msg:'5연속! 대단해요!' },
+        7:  { icon:'💎', msg:'7연속! 보석같은 실력!' },
+        10: { icon:'🏆', msg:'10연속! 퍼펙트!' },
+        15: { icon:'👑', msg:'15연속! 문법의 신!' },
+        20: { icon:'🚀', msg:'20연속! 우주급!' },
+        25: { icon:'🌌', msg:'25연속! 전설!' },
+        30: { icon:'🎇', msg:'30연속! 불가능을 이겼어요!' }
+    };
+    let dopaStreak = 0;
+    let dopaMaxStreak = 0;
+    let dopaMuted = localStorage.getItem('dopa_mute') === '1';
+
+    function dopaRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function dopaConfetti(count) {
+        const colors = ['#ffd43b','#ff922b','#ff6b6b','#20c997','#4dabf7','#ffa94d','#d0bfff','#f783ac','#51cf66','#ffe066'];
+        const shapes = ['50%','2px','0'];
+        const n = count || 40;
+        for (let i = 0; i < n; i++) {
+            const el = document.createElement('div');
+            const size = 6 + Math.random() * 10;
+            el.style.cssText = 'position:fixed; top:-20px; left:' + (Math.random()*100) + 'vw;' +
+                'width:' + size + 'px; height:' + size + 'px;' +
+                'background:' + colors[i % colors.length] + ';' +
+                'border-radius:' + shapes[Math.floor(Math.random()*shapes.length)] + ';' +
+                'z-index:9999; pointer-events:none;' +
+                'animation: dopa-confetti ' + (1.6 + Math.random()*1.4) + 's ease-in forwards;' +
+                'animation-delay:' + (Math.random()*0.4) + 's;';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 3500);
+        }
+    }
+
+    function dopaSparkles(x, y) {
+        const emojis = ['✨','⭐','💫','🌟','⚡'];
+        for (let i = 0; i < 6; i++) {
+            const el = document.createElement('div');
+            el.className = 'dopa-sparkle-el';
+            el.innerText = emojis[i % emojis.length];
+            const angle = (i / 6) * Math.PI * 2;
+            const dist = 40 + Math.random() * 40;
+            el.style.left = (x + Math.cos(angle) * dist) + 'px';
+            el.style.top = (y + Math.sin(angle) * dist) + 'px';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1100);
+        }
+    }
+
+    function dopaFloatPlus(text, x, y) {
+        const el = document.createElement('div');
+        el.className = 'dopa-float-plus';
+        el.innerText = text;
+        el.style.left = (x - 20) + 'px';
+        el.style.top = y + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1300);
+    }
+
+    let dopaAudioCtx = null;
+    function dopaSound(type) {
+        if (dopaMuted) return;
+        try {
+            if (!dopaAudioCtx) dopaAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = dopaAudioCtx;
+            const now = ctx.currentTime;
+            function tone(freq, start, dur, vol, wave) {
+                const o = ctx.createOscillator(), g = ctx.createGain();
+                o.connect(g); g.connect(ctx.destination);
+                o.type = wave || 'sine';
+                o.frequency.value = freq;
+                g.gain.setValueAtTime(vol || 0.08, now + start);
+                g.gain.exponentialRampToValueAtTime(0.001, now + start + dur);
+                o.start(now + start); o.stop(now + start + dur);
+            }
+            if (type === 'correct') {
+                tone(800, 0, 0.15, 0.1); tone(1200, 0.08, 0.2, 0.08);
+            } else if (type === 'wrong') {
+                tone(300, 0, 0.15, 0.1, 'triangle'); tone(200, 0.1, 0.25, 0.08, 'triangle');
+            } else if (type === 'streak') {
+                [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, i*0.07, 0.18, 0.08));
+            } else if (type === 'perfect') {
+                [523, 659, 784, 1047, 1319, 1568, 2093].forEach((f, i) => tone(f, i*0.08, 0.3, 0.09));
+            } else if (type === 'levelup') {
+                [400, 500, 600, 800, 1000].forEach((f, i) => tone(f, i*0.06, 0.15, 0.07));
+            }
+        } catch(e) {}
+    }
+
+    function dopaToggleMute() {
+        dopaMuted = !dopaMuted;
+        localStorage.setItem('dopa_mute', dopaMuted ? '1' : '0');
+        const btn = document.getElementById('dopa-mute-btn');
+        if (btn) btn.innerText = dopaMuted ? '🔇' : '🔊';
+    }
+
+    function dopaGetStreakMsg(n) {
+        // Find highest milestone reached
+        const keys = Object.keys(DOPA_STREAK).map(Number).sort((a,b)=>b-a);
+        for (const k of keys) { if (n >= k) return DOPA_STREAK[k]; }
+        return null;
+    }
+
        // 2. 초기화
     window.onload = function() {
         // 동사표 생성
@@ -2110,6 +2246,9 @@
         // 콘텐츠 초기 숨김 (웰컴 스크린 뒤에서 대기)
         switchScreen(null);
         startVerbQuiz();
+        // Mute button state
+        const mbtn = document.getElementById('dopa-mute-btn');
+        if (mbtn) mbtn.innerText = dopaMuted ? '🔇' : '🔊';
     };
     // ===== 웰컴 스크린 =====
     function dismissWelcome() {
@@ -2207,6 +2346,7 @@
         qWrongList = [];
         quizAllHistory = [];
         quizAnsweredMap = {};
+        dopaStreak = 0; dopaMaxStreak = 0;
         if(topic === 'random') {
             let pool = [...grammarQuestions];
             if(level) pool = pool.filter(q => q.level === level);
@@ -2329,12 +2469,46 @@
         quizAnsweredMap[qIndex] = {selected: selectedOpt, isCorrect: isCorrect, options: [...Array.from(document.getElementById('quiz-options-area').getElementsByTagName('button')).map(b => b.innerText)]};
     }
     isFirstTry = false;
+    const quizItem = document.querySelector('.quiz-item');
     if (isCorrect) {
-        feedbackEl.innerHTML = '🎉 정답입니다! <br><span style="font-size:0.9rem; color:#2b8a3e;">' + (q.explanation || '') + '</span>';
+        if (isFirstTry) {
+            dopaStreak++;
+            if (dopaStreak > dopaMaxStreak) dopaMaxStreak = dopaStreak;
+        }
+        const streak = dopaGetStreakMsg(dopaStreak);
+        const streakBanner = (isFirstTry && streak) ?
+            '<div class="dopa-streak">' + streak.icon + ' ' + streak.msg + '</div><br>' : '';
+        const praise = dopaRandom(DOPA_PRAISE);
+        feedbackEl.innerHTML = streakBanner +
+            '<div class="dopa-praise">' + praise + '</div>' +
+            '<br><span style="font-size:0.9rem; color:#2b8a3e; display:inline-block; margin-top:8px;">💡 ' + (q.explanation || '') + '</span>';
         feedbackEl.className = 'feedback correct';
+        if (quizItem) {
+            quizItem.classList.add('dopa-correct-flash');
+            setTimeout(() => quizItem.classList.remove('dopa-correct-flash'), 700);
+        }
+        // Score pulse
+        const sd = document.getElementById('score-display');
+        if (sd) { sd.classList.add('dopa-score-pulse'); setTimeout(()=>sd.classList.remove('dopa-score-pulse'), 450); }
+        if (isFirstTry) {
+            dopaConfetti(dopaStreak >= 5 ? 80 : dopaStreak >= 3 ? 55 : 35);
+            const rect = sd ? sd.getBoundingClientRect() : {left:100, top:100, width:50};
+            dopaFloatPlus('+1', rect.left + rect.width/2, rect.top);
+            dopaSound(dopaStreak >= 10 ? 'perfect' : dopaStreak >= 3 ? 'streak' : 'correct');
+        }
     } else {
-        feedbackEl.innerHTML = '❌ 틀렸습니다. 정답은 <strong>' + q.answer + '</strong>입니다.<br><span style="font-size:0.9rem; color:#666;">💡 해설: ' + (q.explanation || '') + '</span>';
+        if (isFirstTry) dopaStreak = 0;
+        const enc = dopaRandom(DOPA_ENCOURAGE);
+        feedbackEl.innerHTML =
+            '<div style="font-size:1.2rem; font-weight:800;">' + enc + '</div>' +
+            '<div style="margin-top:6px;">정답: <strong style="color:#2b8a3e;">' + q.answer + '</strong></div>' +
+            '<span style="font-size:0.9rem; color:#666; display:inline-block; margin-top:6px;">💡 ' + (q.explanation || '') + '</span>';
         feedbackEl.className = 'feedback wrong';
+        if (quizItem) {
+            quizItem.classList.add('dopa-wrong-flash');
+            setTimeout(() => quizItem.classList.remove('dopa-wrong-flash'), 550);
+        }
+        if (isFirstTry) dopaSound('wrong');
     }
     document.getElementById('next-quiz-btn').style.display = 'inline-block';
 }
@@ -2352,16 +2526,67 @@
         else {
             const totalAll = quizAllHistory.length;
             const correctAll = quizAllHistory.filter(h => h.isCorrect).length;
-            const wrongAll = quizAllHistory.filter(h => !h.isCorrect).length;
             const rate = totalAll > 0 ? Math.round((correctAll/totalAll)*100) : 0;
-            document.getElementById('quiz-question-text').innerHTML = `
-                <div style="text-align:center;">
-                    <div style="font-size:1.5rem; margin-bottom:15px;">👏 모든 문제를 풀었습니다!</div>
-                    <div style="font-size:1.2rem; margin-bottom:20px;">이번 점수: <b style="color:#1c7ed6;">${qScore}점 / ${qList.length}문제</b></div>
-                </div>`;
+            let grade, color, bigMsg, subMsg, emoji;
+            if (rate === 100) {
+                grade = 'S+'; color = '#f59f00'; emoji = '🏆';
+                bigMsg = '완벽 그 자체! 전설을 썼어요!';
+                subMsg = '모든 문제 정답! 지금 이 순간, 문법 마스터입니다!';
+                dopaConfetti(150); dopaSound('perfect');
+                setTimeout(() => dopaConfetti(100), 600);
+                setTimeout(() => dopaConfetti(100), 1200);
+            } else if (rate >= 90) {
+                grade = 'S'; color = '#e67700'; emoji = '👑';
+                bigMsg = '최상위 실력!';
+                subMsg = '거의 완벽해요! 조금만 더 하면 퍼펙트!';
+                dopaConfetti(100); dopaSound('perfect');
+            } else if (rate >= 80) {
+                grade = 'A'; color = '#1c7ed6'; emoji = '🌟';
+                bigMsg = '훌륭해요!';
+                subMsg = '높은 실력! 이 기세를 이어가세요!';
+                dopaConfetti(70); dopaSound('streak');
+            } else if (rate >= 70) {
+                grade = 'B+'; color = '#2b8a3e'; emoji = '💪';
+                bigMsg = '잘했어요!';
+                subMsg = '좋은 점수! 틀린 문제를 복습하면 더 좋아질 거예요.';
+                dopaConfetti(40); dopaSound('levelup');
+            } else if (rate >= 60) {
+                grade = 'B'; color = '#2b8a3e'; emoji = '👍';
+                bigMsg = '잘 했어요!';
+                subMsg = '한 걸음 더 나아갔어요!';
+                dopaConfetti(30); dopaSound('correct');
+            } else if (rate >= 40) {
+                grade = 'C'; color = '#e67700'; emoji = '📚';
+                bigMsg = '조금만 더!';
+                subMsg = '다음엔 더 잘할 수 있어요. 화이팅!';
+                dopaSound('correct');
+            } else {
+                grade = 'D'; color = '#e03131'; emoji = '🌱';
+                bigMsg = '처음엔 다 그래요!';
+                subMsg = '반복하면 늘어요. 다시 도전해봐요!';
+            }
+            const maxStreakLine = dopaMaxStreak >= 3 ?
+                '<div style="margin-top:12px; font-size:1rem; color:#ff6b6b; font-weight:800;">🔥 최대 연속 정답: ' + dopaMaxStreak + '개</div>' : '';
+            document.getElementById('quiz-question-text').innerHTML =
+                '<div style="text-align:center; padding:20px 10px;">' +
+                    '<div style="font-size:4rem; animation: dopa-pop 0.7s;">' + emoji + '</div>' +
+                    '<div style="font-size:2.2rem; font-weight:900; color:' + color + '; margin:12px 0; animation: dopa-pop 0.6s 0.2s both;">' + grade + ' 등급</div>' +
+                    '<div style="font-size:1.4rem; font-weight:800; color:#333; margin-bottom:8px;">' + bigMsg + '</div>' +
+                    '<div style="font-size:0.95rem; color:#888; margin-bottom:20px;">' + subMsg + '</div>' +
+                    '<div style="display:inline-block; background:#fff9f0; border:3px solid ' + color + '; border-radius:25px; padding:20px 40px;">' +
+                        '<div style="font-size:3rem; font-weight:900; color:' + color + ';">' + correctAll + ' <span style="font-size:1.3rem; color:#aaa;">/ ' + totalAll + '</span></div>' +
+                        '<div style="font-size:1rem; color:#666; margin-top:4px; font-weight:700;">정답률 ' + rate + '%</div>' +
+                    '</div>' +
+                    maxStreakLine +
+                '</div>';
             document.getElementById('quiz-options-area').innerHTML = '';
-            document.getElementById('quiz-feedback').innerHTML = `<div style="text-align:center;"><button onclick="showQuizSelection()" style="padding:12px 30px; border-radius:30px; border:none; background:#f1f3f5; cursor:pointer; font-weight:bold;">목록으로</button></div>`;
+            document.getElementById('quiz-feedback').innerHTML =
+                '<div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">' +
+                    '<button onclick="showQuizSelection()" style="padding:14px 30px; border-radius:30px; border:none; background:linear-gradient(135deg,#ffd43b,#ff922b); color:white; cursor:pointer; font-weight:800; font-size:1rem; box-shadow:0 6px 18px rgba(255,146,43,0.35);">📚 다른 퀴즈 풀기</button>' +
+                '</div>';
             document.getElementById('next-quiz-btn').style.display = 'none';
+            document.getElementById('prev-quiz-btn').style.display = 'none';
+            dopaStreak = 0;
         }
     }
 
@@ -2427,20 +2652,58 @@
         }, 1000);
     }
 
+    let dopaExamStreak = 0;
     function handleExamSelection(selectedOpt, question) {
         if(examInterval) clearInterval(examInterval);
         const isCorrect = (selectedOpt === question.answer);
-        if(isCorrect) eScore++;
-        // 기록 시 explanation을 반드시 포함해야 함!
-        eHistory.push({
-            q: question.en, 
-            selected: selectedOpt || "시간 초과", 
-            correct: question.answer, 
-            isCorrect: isCorrect,
-            explanation: question.explanation // 이 줄이 있어야 나중에 해설이 보임
+        if(isCorrect) {
+            eScore++;
+            dopaExamStreak++;
+        } else {
+            dopaExamStreak = 0;
+        }
+        // 순간 피드백 (0.6초)
+        const optionButtons = document.querySelectorAll('#exam-options-area button');
+        optionButtons.forEach(b => {
+            b.disabled = true;
+            if (b.innerText === question.answer) {
+                b.style.background = '#d3f9d8'; b.style.borderColor = '#40c057'; b.style.color = '#2b8a3e';
+            } else if (b.innerText === selectedOpt && !isCorrect) {
+                b.style.background = '#ffe3e3'; b.style.borderColor = '#e03131'; b.style.color = '#e03131';
+            } else {
+                b.style.opacity = '0.5';
+            }
         });
-        eIndex++;
-        showExamQuestion();
+        const examBox = document.getElementById('exam-question-box');
+        if (isCorrect) {
+            dopaConfetti(dopaExamStreak >= 5 ? 60 : 30);
+            dopaSound(dopaExamStreak >= 5 ? 'streak' : 'correct');
+            if (examBox) { examBox.classList.add('dopa-correct-flash'); setTimeout(() => examBox.classList.remove('dopa-correct-flash'), 700); }
+            const streak = dopaGetStreakMsg(dopaExamStreak);
+            if (streak) {
+                const popup = document.createElement('div');
+                popup.className = 'dopa-streak';
+                popup.innerText = streak.icon + ' ' + streak.msg;
+                popup.style.cssText = 'position:fixed; top:80px; left:50%; transform:translateX(-50%); z-index:9999;';
+                document.body.appendChild(popup);
+                setTimeout(() => popup.remove(), 1600);
+            }
+        } else {
+            dopaSound('wrong');
+            if (examBox) { examBox.classList.add('dopa-wrong-flash'); setTimeout(() => examBox.classList.remove('dopa-wrong-flash'), 550); }
+        }
+        eHistory.push({
+            q: question.en,
+            selected: selectedOpt || "시간 초과",
+            correct: question.answer,
+            isCorrect: isCorrect,
+            explanation: question.explanation
+        });
+        // 다음 문제로 자동 전환 (0.9초 후)
+        setTimeout(() => {
+            eIndex++;
+            showExamQuestion();
+        }, 900);
     }
     
     function finishExam() {
@@ -2449,13 +2712,16 @@
     document.getElementById('exam-result-view').style.display = 'block';
     document.getElementById('history-list-view').style.display = 'none';
     const finalScore = Math.round((eScore/eList.length)*100);
-    document.getElementById('exam-score').innerText = '최종 점수: ' + finalScore + '점 (' + eScore + '/' + eList.length + ')';
+    document.getElementById('exam-score').innerText = '🎓 최종 점수: ' + finalScore + '점 (' + eScore + '/' + eList.length + ')';
     let msg = '';
-    if (finalScore >= 90) msg = '🏆 최고! 완벽에 가깝습니다!';
-    else if (finalScore >= 70) msg = '👍 잘했어요! 조금만 더 노력하면!';
-    else if (finalScore >= 50) msg = '💪 괜찮아요! 다시 도전해보세요!';
-    else msg = '😢 더 열심히 공부해봐요!';
+    if (finalScore === 100) { msg = '🏆 완벽! 당신은 문법 마스터!'; dopaConfetti(200); dopaSound('perfect'); setTimeout(() => dopaConfetti(120), 700); setTimeout(() => dopaConfetti(120), 1400); }
+    else if (finalScore >= 90) { msg = '👑 최상위 실력! 거의 완벽!'; dopaConfetti(120); dopaSound('perfect'); }
+    else if (finalScore >= 80) { msg = '🌟 훌륭해요! 이 기세 이어가요!'; dopaConfetti(80); dopaSound('streak'); }
+    else if (finalScore >= 70) { msg = '👍 잘했어요! 조금만 더!'; dopaConfetti(50); dopaSound('levelup'); }
+    else if (finalScore >= 50) { msg = '💪 괜찮아요! 다시 도전!'; dopaConfetti(25); dopaSound('correct'); }
+    else { msg = '🌱 포기하지 마요! 실력은 반복에서 커져요!'; }
     document.getElementById('exam-message').innerText = msg;
+    dopaExamStreak = 0;
     const wrongCount = eHistory.filter(h => !h.isCorrect).length;
     const retryArea = document.getElementById('retry-btn-area');
     if (wrongCount > 0) {
@@ -2669,6 +2935,7 @@
     }
 
     function markDayDone(dayIdx, dayData) {
+        dopaConfetti(100); dopaSound('levelup');
         loadPlan();
         if(!planDone.includes(dayIdx)) {
             planDone.push(dayIdx);
@@ -2691,22 +2958,51 @@
         let qText = (type === 'past') ? `[${vCur.base}]의 과거형?` : (type === 'pp' ? `[${vCur.base}]의 과거분사?` : `[${vCur.past}]의 원형?`);
         let wordToSpeak = (type === 'base') ? vCur.past : vCur.base;
 
-        document.getElementById('verbQuizQuestion').innerHTML = "Q. " + qText + 
-            ` <button onclick="speakEnglish('${wordToSpeak}')" style="background:none; border:2px solid #ffd43b; border-radius:50%; width:34px; height:34px; cursor:pointer;">🔊</button>`;
+        const streakBadge = dopaVerbStreak >= 1 ?
+            ' <span style="display:inline-block; background:linear-gradient(135deg,#ff922b,#ff6b6b); color:white; padding:3px 12px; border-radius:14px; font-size:0.75rem; font-weight:800; margin-left:8px; vertical-align:middle;">🔥 연속 ' + dopaVerbStreak + '</span>' : '';
+        document.getElementById('verbQuizQuestion').innerHTML = "Q. " + qText +
+            ` <button onclick="speakEnglish('${wordToSpeak}')" style="background:none; border:2px solid #ffd43b; border-radius:50%; width:34px; height:34px; cursor:pointer;">🔊</button>` + streakBadge;
         document.getElementById('verbQuizAnswer').value = '';
         document.getElementById('verbQuizResult').innerText = '';
+        document.getElementById('verbQuizAnswer').focus();
     }
 
+    let dopaVerbStreak = 0;
     function checkVerbQuiz() {
         const ans = document.getElementById('verbQuizAnswer').value.trim().toLowerCase();
         const type = document.getElementById('verbQuizType').value;
         let cor = type === 'past' ? vCur.past : (type === 'pp' ? vCur.pp : vCur.base);
         const possible = cor.split('/').map(s => s.trim());
+        const resultEl = document.getElementById('verbQuizResult');
+        const verbContainer = document.getElementById('verb-container');
 
         if(possible.includes(ans) && ans !== '') {
-            document.getElementById('verbQuizResult').innerHTML = `<span style='color:#2b8a3e'>🎉 정답: ${cor}</span>`;
+            dopaVerbStreak++;
+            const streak = dopaGetStreakMsg(dopaVerbStreak);
+            const streakBanner = streak ? '<div class="dopa-streak" style="margin-bottom:8px;">' + streak.icon + ' ' + streak.msg + '</div><br>' : '';
+            const praise = dopaRandom(DOPA_PRAISE);
+            resultEl.innerHTML = streakBanner +
+                '<span class="dopa-praise" style="font-size:1.3rem;">' + praise + '</span>' +
+                '<div style="margin-top:6px; color:#2b8a3e; font-size:1rem;">정답: <b>' + cor + '</b></div>';
+            dopaConfetti(dopaVerbStreak >= 5 ? 70 : 40);
+            dopaSound(dopaVerbStreak >= 10 ? 'perfect' : dopaVerbStreak >= 3 ? 'streak' : 'correct');
+            if (verbContainer) {
+                verbContainer.classList.add('dopa-correct-flash');
+                setTimeout(() => verbContainer.classList.remove('dopa-correct-flash'), 700);
+            }
+            // Auto-advance to next question after 1.2s
+            setTimeout(() => startVerbQuiz(), 1400);
         } else {
-            document.getElementById('verbQuizResult').innerHTML = `<span style='color:#e03131'>❌ 오답! 정답: ${cor}</span>`;
+            dopaVerbStreak = 0;
+            const enc = dopaRandom(DOPA_ENCOURAGE);
+            resultEl.innerHTML =
+                '<div style="color:#e03131; font-weight:800;">' + enc + '</div>' +
+                '<div style="margin-top:4px; color:#666;">정답: <b style="color:#2b8a3e;">' + cor + '</b></div>';
+            dopaSound('wrong');
+            if (verbContainer) {
+                verbContainer.classList.add('dopa-wrong-flash');
+                setTimeout(() => verbContainer.classList.remove('dopa-wrong-flash'), 550);
+            }
         }
     }
 
